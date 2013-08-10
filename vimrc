@@ -339,7 +339,7 @@ autocmd BufNewFile,BufRead Capfile set filetype=ruby
 autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
-autocmd BufNewFile,BufRead *.mkd set ai formatoptions=tcroqn2 comments=n:>
+autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
 autocmd Filetype gitcommit setlocal textwidth=72"}}}
 
 " encoding configuration {{{
