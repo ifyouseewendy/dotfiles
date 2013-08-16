@@ -21,6 +21,7 @@ Bundle 'scrollfix'
 Bundle 'sudo.vim'
 Bundle 'taglist.vim'
 Bundle 'tComment'
+Bundle 'wombat256.vim'
 
 " original repos on GitHub
 Bundle 'larrylv/ShowMarks'
