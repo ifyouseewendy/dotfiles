@@ -14,8 +14,13 @@ function josh_prompt {
   path_size=${#PWD}
   branch_size=${#branch}
   ruby_size=${#ruby_version}
-  user_machine_size=${#${(%):-%n@%m-}}
-  # user_machine_size=0
+  # user_machine_size=${#${(%):-%n@%m-}}
+  user_machine_size=${#${-%m-}}
+
+  if [[ `pwd` =~ "/Users/wendi" ]] ; then
+    (( path_size = path_size - 11 ))
+  else
+  fi
 
   if [[ ${#branch} -eq 0 ]]
     then (( ruby_size = ruby_size + 1 ))
@@ -26,14 +31,14 @@ function josh_prompt {
     fi
   fi
 
-  (( spare_width = ${spare_width} - (${path_size} + ${branch_size} + ${ruby_size}) - 1 ))
+  (( spare_width = ${spare_width} - ( 2 + ${user_machine_size} + ${path_size} + ${branch_size} + ${ruby_size}) ))
 
   while [ ${#prompt} -lt $spare_width ]; do
     prompt=" $prompt"
   done
 
   # prompt="%{%F{green}%}$PWD$prompt%{%F{red}%}$(rvm_prompt_info || rbenv_prompt_info)%{$reset_color%} $(git_prompt_info)"
-  prompt="%{$fg_bold[red]%}➜ %m%{$fg_bold[green]%}%p %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}$prompt%{$fg_bold[red]%}$(rvm_prompt_info || rbenv_prompt_info)%{$fg_bold[red]%}"
+  prompt="%{$fg_bold[red]%}➜  %m%{$fg_bold[green]%}%p %{$fg[cyan]%}%~ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}$prompt%{$fg_bold[red]%}$(rvm_prompt_info || rbenv_prompt_info)%{$fg_bold[red]%}"
 
   echo $prompt
 }
@@ -42,5 +47,5 @@ setopt prompt_subst
 
 PROMPT='
 $(josh_prompt)
-%(?,%{$fg_bold[red]%},%{$fg_bold[green]%})➜%{$reset_color%} '
+%(?,%{$fg_bold[red]%},%{$fg_bold[green]%})➜%{$reset_color%}  '
 
