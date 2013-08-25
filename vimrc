@@ -24,13 +24,15 @@ Bundle 'tComment'
 Bundle 'wombat256.vim'
 
 " original repos on GitHub
+Bundle 'bling/vim-airline'
+" Bundle 'Lokaltog/vim-powerline'
+" Bundle 'tpope/vim-fugitive'
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/vim-snippets'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-speeddating'
@@ -41,7 +43,6 @@ Bundle 'Shougo/neosnippet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'mileszs/ack.vim'
-Bundle 'Lokaltog/vim-powerline'
 Bundle 'flazz/vim-colorschemes'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'depuracao/vim-rdoc'
@@ -88,9 +89,10 @@ set hlsearch
 set incsearch
 
 " status line configuration
-let g:Powerline_symbols = 'fancy'
 set laststatus=2
+" let g:Powerline_symbols = 'fancy'
 " set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
+let g:airline_powerline_fonts = 1
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
@@ -140,6 +142,7 @@ endfunction
 map <leader>n :call RenameFile()<cr>
 
 " scrollfix.vim shortcut for open/close scrollfix
+" let g:scrollfix=-1
 map <leader>on   :let g:scrollfix=60<cr>
 map <leader>off  :let g:scrollfix=-1<cr>
 
@@ -358,3 +361,4 @@ set ambiwidth=double
 "set formatoptions+=mM
 "set ambiwidth=double
 "}}}
+
