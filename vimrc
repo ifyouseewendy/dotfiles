@@ -312,7 +312,7 @@ map <F1> :NERDTreeToggle<CR>"}}}
 
 " ctags/Tagbar plugin configuration"{{{
 nmap <F2> :TagbarToggle<CR>
-map <F5> :!ctags -R --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
+map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;"}}}
