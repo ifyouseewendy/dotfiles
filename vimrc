@@ -25,8 +25,6 @@ Bundle 'wombat256.vim'
 
 " original repos on GitHub
 Bundle 'bling/vim-airline'
-" Bundle 'Lokaltog/vim-powerline'
-" Bundle 'tpope/vim-fugitive'
 Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/vim-snippets'
 Bundle 'tpope/vim-ragtag'
@@ -56,6 +54,7 @@ Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'michaeljsmith/vim-indent-object'
+Bundle 'benmills/vimux'
 
 " set colorscheme
 set t_Co=256
@@ -343,7 +342,7 @@ nnoremap <silent> <F6> :A<CR>"}}}
 " ack.vim configuration"{{{
 if executable("ack")
     " ,a to Ack (search in files)
-    nnoremap <leader>a :Ack 
+    nnoremap <leader>a :Ack
     let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
     let g:ackhighlight=1
 endif
@@ -382,3 +381,21 @@ set ambiwidth=double
 "set ambiwidth=double
 "}}}
 
+" vimux configuration"{{{
+" Run the current file with rspec
+map <Leader>vs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+
+" Close vim tmux runner opened by VimuxRunCommand
+map <Leader>vq :VimuxCloseRunner<CR>
+
+" Interrupt any command running in the runner pane
+map <Leader>vx :VimuxInterruptRunner<CR>"}}}
