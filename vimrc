@@ -141,6 +141,12 @@ function! RenameFile()
 endfunction
 map <leader>n :call RenameFile()<cr>
 
+" edit for cronjobs
+if $VIM_CRONTAB == 'true'
+  set nobackup
+  set nowritebackup
+endif
+
 " scrollfix.vim shortcut for open/close scrollfix
 " let g:scrollfix=-1
 map <leader>on   :let g:scrollfix=60<cr>
