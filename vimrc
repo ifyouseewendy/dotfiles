@@ -85,6 +85,7 @@ filetype plugin indent on
 
 " search configuration
 set smartcase
+set ignorecase
 set hlsearch
 set incsearch
 
@@ -107,10 +108,20 @@ set undoreload=10000
 imap <c-c> <ESC>
 imap jj <ESC>
 " Move around splits with <c-hjkl>
-map <C-k> <C-w><Up>
-map <C-j> <C-w><Down>
-map <C-l> <C-w><Right>
-map <C-h> <C-w><Left>
+nmap <C-k> <C-w><Up>
+nmap <C-j> <C-w><Down>
+nmap <C-l> <C-w><Right>
+nmap <C-h> <C-w><Left>
+" Buffer and tab operations with <s-hjkl>
+nnoremap <s-h> :bprevious<cr>
+nnoremap <s-l> :bnext<cr>
+nnoremap <s-j> :tabnext<cr>
+nnoremap <s-k> :tabprev<cr>
+" Window navi
+nnoremap <c-w>j 3<c-w>+
+nnoremap <c-w>k 3<c-w>-
+nnoremap <c-w>h 3<c-w><
+nnoremap <c-w>l 3<c-w>>
 " Clear the search buffer when hitting return
 function! MapCR()
   nnoremap <c-n> :nohlsearch<cr>
@@ -128,6 +139,9 @@ let mapleader=","
 
 " source vimrc
 map <leader>so :source ~/.vimrc<cr>
+
+" open buffer explorer
+map <leader>b :BufExplorer<cr>
 
 " Rename current file
 function! RenameFile()
