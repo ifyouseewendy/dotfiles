@@ -136,6 +136,9 @@ nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 " use comma as <Leader> key instead of backslash
 let mapleader=","
 
+" insert binding.pry
+map <leader>d i<cr>binding.pry<cr><ESC>
+
 " source vimrc
 map <leader>so :source ~/.vimrc<cr>
 
