@@ -139,6 +139,13 @@ let mapleader=","
 " insert binding.pry
 map <leader>d i<cr>binding.pry<cr><ESC>
 
+" map toggling line number
+nmap <leader>no :set nonu<cr>
+nmap <leader>nu :set nu<cr>
+
+" map no highlight search
+nmap <leader>nh :nohls<cr>
+
 " source vimrc
 map <leader>so :source ~/.vimrc<cr>
 
@@ -155,7 +162,7 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <leader>n :call RenameFile()<cr>
+map <leader>new :call RenameFile()<cr>
 
 " edit for cronjobs
 if $VIM_CRONTAB == 'true'
@@ -345,7 +352,7 @@ nnoremap <silent> <F6> :A<CR>"}}}
 " ack.vim configuration"{{{
 if executable("ack")
     " ,a to Ack (search in files)
-    nnoremap <leader>a :Ack
+    nnoremap <leader>a :Ack 
     let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp"
     let g:ackhighlight=1
 endif
