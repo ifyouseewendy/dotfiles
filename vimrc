@@ -137,7 +137,7 @@ nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 let mapleader=","
 
 " insert binding.pry
-map <leader>d i<cr>binding.pry<cr><ESC>
+map <leader>d obinding.pry<ESC>
 
 " map toggling line number
 nmap <leader>no :set nonu<cr>
