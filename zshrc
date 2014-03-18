@@ -45,3 +45,8 @@ source $ZSH/oh-my-zsh.sh
 . ~/.oh-my-zsh/custom/set-iterm-title.zsh
 . ~/.oh-my-zsh/custom/edit-command-line.zsh
 . ~/.oh-my-zsh/custom/ssh-completion.zsh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
