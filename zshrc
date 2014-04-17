@@ -3,7 +3,8 @@ ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each # time that oh-my-zsh is loaded.
+# Optionally, if you set this to "random", it'll load a random theme each
+# time that oh-my-zsh is loaded.
 ZSH_THEME="wendi"
 
 setopt prompt_subst
@@ -33,8 +34,7 @@ DISABLE_AUTO_TITLE="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(autojump bundler cap gem git github git-flow heroku history-substring-search node npm osx pow powder rails rails3 ruby rvm ssh-agent zsh-syntax-highlightinm)
-
+plugins=(autojump brew bundler cap gem git github git-flow heroku history-substring-search node npm osx pow powder rails rails3 ruby rbenv zsh-syntax-highlighting forklift)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs, just add a zsh file in custom/ directory.
@@ -49,6 +49,11 @@ source $ZSH/oh-my-zsh.sh
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
 
+# bower
 bower completion
+
+# Set the environment variable for the docker daemon
+export DOCKER_HOST=tcp://localhost:4243
