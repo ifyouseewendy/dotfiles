@@ -27,3 +27,15 @@ export LANG=en_US.UTF-8
 # export RUBY_FREE_MIN=200000
 
 export PGHOST=localhost
+
+# Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
+
+# bower
+# bower completion
+
+# Set the environment variable for the docker daemon
+export DOCKER_HOST=tcp://localhost:4243
