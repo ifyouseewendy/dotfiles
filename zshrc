@@ -53,7 +53,7 @@ export PATH="/usr/local/heroku/bin:$PATH"
 PATH=$PATH:$HOME/.rvm/bin
 
 # bower
-bower completion
+# bower completion
 
 # Set the environment variable for the docker daemon
 export DOCKER_HOST=tcp://localhost:4243
