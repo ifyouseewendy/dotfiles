@@ -1,0 +1,18 @@
+
+# = Rule 1, use meta operation
+
+# Add: new function to rule the world
+# Mod: query_date logic
+# Rem: hello.rake is not used anymore
+# Fix: #1900, stupid typo
+# Ref: extract to an abstract class.
+# Opt: cache in get_active_table
+
+# = Rule 2, leave a "*" in the end to flag folding
+
+# Mod: query_date logic*
+#
+# Use chronic to guess date.
+#
+# Chronic.parse('may 27th', :guess => false)
+# #=> Sun May 27 00:00:00 PDT 2007..Mon May 28 00:00:00 PDT 2007
