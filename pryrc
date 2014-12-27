@@ -22,4 +22,4 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
 end
 
 
-require 'awesome_print'
+# require 'awesome_print'
