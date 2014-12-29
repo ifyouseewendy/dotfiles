@@ -45,3 +45,15 @@ source $ZSH/oh-my-zsh.sh
 . ~/.oh-my-zsh/custom/set-iterm-title.zsh
 . ~/.oh-my-zsh/custom/edit-command-line.zsh
 . ~/.oh-my-zsh/custom/ssh-completion.zsh
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
+# Add RVM to PATH for scripting
+PATH=$PATH:$HOME/.rvm/bin
+
+# bower
+# bower completion
+
+# Set the environment variable for the docker daemon
+export DOCKER_HOST=tcp://localhost:4243

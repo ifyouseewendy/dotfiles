@@ -34,3 +34,5 @@ alias bower='noglob bower'
 
 alias pbcopy='reattach-to-user-namespace pbcopy'
 alias pbpaste='reattach-to-user-namespace pbpaste'
+
+alias be='bundle exec'
