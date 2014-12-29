@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+# Init repo
+exit 0 if `git log --oneline -1`.empty?
+
+message_file = ARGV[0]
+lines = File.readlines(message_file).reject{|l| l =~ /^#/}.map(&:strip).reject(&:empty?)
+
+oneline_regex = '[Add|Mod|Rem|Fix|Ref|Opt]:\s\S+'
+regex = lines.count > 1 ? /#{oneline_regex}\*$/ : /#{oneline_regex}/
+
+unless lines[0] =~ regex
+  puts "[POLICY] Your message is not formatted correctly"
+  puts "[POLICY] Please check ~/.gitmessage.txt"
+  exit 1
+end
