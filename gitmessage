@@ -3,7 +3,8 @@
 
 # Add: new function to rule the world
 # Mod: query_date logic
-# Rem: hello.rake is not used anymore
+# Rem: user.rake is not used anymore
+# Ren: hello-world to hell-world
 # Fix: #1900, stupid typo
 # Ref: extract to an abstract class.
 # Opt: cache in get_active_table
