@@ -21,5 +21,13 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   end
 end
 
+require "awesome_print"
+AwesomePrint.pry!
+AwesomePrint.defaults = { :indent => -2, :limit => 50 }
 
-# require 'awesome_print'
+Pry.config.print = proc { |output, value| output.puts "=> #{value.ai}" }
+
+def reload
+  extend Rails::ConsoleMethods if require 'rails/console/app'
+  reload!
+end
