@@ -45,4 +45,3 @@ source $ZSH/oh-my-zsh.sh
 . ~/.oh-my-zsh/custom/set-iterm-title.zsh
 . ~/.oh-my-zsh/custom/edit-command-line.zsh
 . ~/.oh-my-zsh/custom/ssh-completion.zsh
-

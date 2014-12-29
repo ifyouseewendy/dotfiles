@@ -39,3 +39,5 @@ PATH=$PATH:$HOME/.rvm/bin
 
 # Set the environment variable for the docker daemon
 export DOCKER_HOST=tcp://localhost:4243
+
+export PATH=/usr/local/git/bin:/usr/local/sbin:$PATH
