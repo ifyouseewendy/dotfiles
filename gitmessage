@@ -9,7 +9,7 @@
 # Ref: extract to an abstract class.
 # Opt: cache in get_active_table
 
-# = Rule 2, leave a "*" in the end to flag folding
+# = Rule 2, leave a "*" at the end to flag folding
 
 # Mod: query_date logic*
 #
