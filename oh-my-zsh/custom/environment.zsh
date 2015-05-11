@@ -34,10 +34,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin
 
-# bower
-# bower completion
-
 # Set the environment variable for the docker daemon
 export DOCKER_HOST=tcp://localhost:4243
 
 export PATH=/usr/local/git/bin:/usr/local/sbin:$PATH
+
+# export GOROOT=/usr/local/Cellar/go/1.2.1
+export GOPATH=$HOME/Workspace/go/packages
+# export PATH=$PATH:$GOROOT/bin
