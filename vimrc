@@ -139,6 +139,9 @@ let mapleader=","
 " insert binding.pry
 map <leader>d obinding.pry<ESC>
 
+" insert copyright
+map <leader>au i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
+
 " map toggling line number
 nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
