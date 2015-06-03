@@ -1,0 +1,61 @@
+[user]
+    name  = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+    email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+[core]
+    excludesfile = <%= ENV['HOME'] %>/.gitignore
+    pager        = less -+FRSX -FRX
+    editor       = vim
+    autocrlf     = input
+    safecrlf     = true
+    whitespace   = cr-at-eol
+[alias]
+    alias   = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
+
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    sb = show-branch
+    cp = cherry-pick
+
+    lg       = log --stat --source
+    l        = log --stat -1 --source
+    last     = log --stat -1
+    logg     = log --pretty=format:'%h - %an -%ad -%s'
+    glog     = log --graph
+    h        = log --pretty=format:\"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset\" --graph --date=short -10
+    hist     = log --pretty=format:\"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset\" --graph --date=short
+    news     = log -p HEAD@{1}..HEAD@{0}
+
+    pb       = pull --rebase
+    pick     = cherry-pick
+    pl       = pull
+    ps       = push
+
+    df       = diff
+    dfs      = diff --stat -r
+    diffstat = diff --stat -r
+    wdf      = diff --word-diff
+    wdiff    = diff --word-diff
+    changes  = diff --name-status -r
+    unstage  = reset HEAD --
+
+    type     = cat-file -t
+    dump     = cat-file -p
+
+    visual   = !gitk
+
+    sbi = submodule init
+    sbu = submodule update
+    sbp = submodule foreach git pull
+    sbc = submodule foreach git co master
+[merge]
+    tool = vimdiff
+    conflictstyle = diff3
+[push]
+    default = tracking
+[color]
+    ui = true
+[i18n]
+    commitEncoding = utf8
+    logOutputEncoding = utf8
