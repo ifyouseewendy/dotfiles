@@ -1,6 +1,6 @@
 "
-" Author:         Larry Lv <larrylv1990@gmail.com>
-" Last Modified:  August 05, 2013
+" Author:         Di Wen <ifyouseewendy@gmail.com>
+" Last Modified:  2015-06-03
 "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,6 +173,7 @@ nmap <leader>new :call RenameFile()<cr>
 nmap <leader>w :wq<cr>
 cmap w!! %!sudo tee > /dev/null %
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
+command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
 " System clipboard copy/paste
 vmap <Leader>y "+y
