@@ -415,3 +415,13 @@ map <Leader>vq :VimuxCloseRunner<CR>
 
 " Interrupt any command running in the runner pane
 map <Leader>vx :VimuxInterruptRunner<CR>"}}}
+
+" system clipboard copy/paste"{{{
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P"}}}
+
+
