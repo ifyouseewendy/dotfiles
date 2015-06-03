@@ -21,9 +21,12 @@ if File.exist?(rails) && ENV['SKIP_RAILS'].nil?
   end
 end
 
-require "awesome_print"
-AwesomePrint.pry!
-AwesomePrint.defaults = { :indent => -2, :limit => 50 }
+begin
+  require "awesome_print"
+  AwesomePrint.pry!
+  AwesomePrint.defaults = { :indent => -2, :limit => 50 }
+rescue => e
+end
 
 Pry.config.print = proc { |output, value| output.puts "=> #{value.ai}" }
 
