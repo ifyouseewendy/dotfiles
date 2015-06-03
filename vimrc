@@ -3,15 +3,16 @@
 " Last Modified:  August 05, 2013
 "
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" VUNDLE
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
 filetype off " required by vundle
 
 set rtp+=~/.gmarik-vundle
 call vundle#rc()
 
-" non GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
-
-" vim-scripts repos
+" Vim-scripts repos
 Bundle 'genutils'
 Bundle 'matchit.zip'
 Bundle 'scratch.vim'
@@ -20,7 +21,10 @@ Bundle 'taglist.vim'
 Bundle 'tComment'
 Bundle 'wombat256.vim'
 
-" original repos on GitHub
+" Non GitHub repos
+Bundle 'git://git.wincent.com/command-t.git'
+
+" Github repos
 Bundle 'bling/vim-airline'
 Bundle 'larrylv/vim-snippets'
 Bundle 'tpope/vim-ragtag'
@@ -46,11 +50,15 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
 Bundle 'benmills/vimux'
 
-" set colorscheme
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+" BASIC CONFIGURATION
+"""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Set colorscheme
 set t_Co=256
 colorscheme wombat256mod
 
-" basic configuration
+" Basic configuration
 syntax on
 set nocompatible
 set nu
@@ -61,7 +69,7 @@ set bs=2
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set diffopt+=iwhite " ignore whitespaces with vimdiff
 
-" tab/indent configuration
+" Tab/indent configuration
 set tabstop=2
 set shiftwidth=2
 set expandtab
@@ -69,15 +77,13 @@ set softtabstop=2
 set autoindent
 set cindent
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
-
 filetype plugin indent on
 
-" search configuration
+" Search configuration
 set smartcase
 set ignorecase
 set hlsearch
 set incsearch
-
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
@@ -88,29 +94,61 @@ set undofile
 set undolevels=1000
 set undoreload=10000
 
-" Misc Key Maps
-imap <c-c> <ESC>
-imap jj <ESC>
+" Encoding configuration
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,ucs-bom,chinese
+set formatoptions+=mM
+set ambiwidth=double
+
+" Highlight trailing whitespaceb
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
+
+" Filetype detection
+autocmd BufNewFile,BufRead Thorfile set filetype=ruby
+autocmd BufNewFile,BufRead *.thor set filetype=ruby
+autocmd BufNewFile,BufRead Gemfile set filetype=ruby
+autocmd BufNewFile,BufRead Capfile set filetype=ruby
+autocmd BufNewFile,BufRead pryrc set filetype=ruby
+autocmd BufNewFile,BufRead *.less set filetype=css
+autocmd BufNewFile,BufRead *.god set filetype=ruby
+autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
+autocmd Filetype gitcommit setlocal textwidth=72
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEY MAPPINGS
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Move around splits with <c-hjkl>
 nmap <C-k> <C-w><Up>
 nmap <C-j> <C-w><Down>
 nmap <C-l> <C-w><Right>
 nmap <C-h> <C-w><Left>
+
 " Buffer and tab operations with <s-hjkl>
 nnoremap <s-h> :bprevious<cr>
 nnoremap <s-l> :bnext<cr>
 nnoremap <s-j> :tabnext<cr>
 nnoremap <s-k> :tabprev<cr>
+
 " Window navi
 nnoremap <c-w>j 3<c-w>+
 nnoremap <c-w>k 3<c-w>-
 nnoremap <c-w>h 3<c-w><
 nnoremap <c-w>l 3<c-w>>
+
 " Clear the search buffer when hitting return
 function! MapCR()
   nnoremap <c-n> :nohlsearch<cr>
 endfunction
 call MapCR()
+
 " Paste with <F3>
 nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
@@ -118,24 +156,31 @@ set pastetoggle=<F3>
 " Remove trailing whitespaces
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
-" use comma as <Leader> key instead of backslash
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" KEY MAPPINGS with LEADERSHIP
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let mapleader=","
 
-" insert binding.pry
-map <leader>d obinding.pry<ESC>
-
-" insert copyright
-map <leader>au i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
-
-" map toggling line number
+nmap <leader>d obinding.pry<ESC>
+nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
 nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
-
-" map no highlight search
 nmap <leader>nh :nohls<cr>
+nmap <leader>so :source ~/.vimrc<cr>
+nmap <leader>new :call RenameFile()<cr>
+nmap <leader>w :wq<cr>
+cmap w!! %!sudo tee > /dev/null %
+command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
-" source vimrc
-map <leader>so :source ~/.vimrc<cr>
+" System clipboard copy/paste
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
 
 " Rename current file
 function! RenameFile()
@@ -147,40 +192,13 @@ function! RenameFile()
         redraw!
     endif
 endfunction
-map <leader>new :call RenameFile()<cr>
-
-" edit for cronjobs
-if $VIM_CRONTAB == 'true'
-  set nobackup
-  set nowritebackup
-endif
-
-" close quickfix window
-map <leader>cc :ccl<cr>
-au FileType qf call AdjustWindowHeight(3, 10)
-function! AdjustWindowHeight(minheight, maxheight)
-  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
-endfunction
-
-" close current window
-map <leader>w :wq<cr>
-
-" force write and save
-cmap w!! %!sudo tee > /dev/null %
-
-" Insert the current time
-command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
 
-" Highlight trailing whitespace"{{{
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()"}}}
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS CONFIGURATION
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" CommandT plugin configuration {{{
+" command-t {{{
 " double percentage sign in command mode is expanded
 " to directory of current file - http://vimcasts.org/e/14
 let g:CommandTCancelMap=['<Esc>', '<C-c>']
@@ -204,47 +222,6 @@ map <leader>gg :topleft :vsplit Gemfile<cr>
 map <leader>gr :topleft :vsplit config/routes.rb<cr>
 " }}}
 
-" vim-javascript plugin configuration"{{{
-let g:html_indent_inctags = "html,body,head,tbody"
-let g:html_indent_script1 = "inc"
-let g:html_indent_style1 = "inc""}}}
-
-" filetype detection"{{{
-autocmd BufNewFile,BufRead Thorfile set filetype=ruby
-autocmd BufNewFile,BufRead *.thor set filetype=ruby
-autocmd BufNewFile,BufRead Gemfile set filetype=ruby
-autocmd BufNewFile,BufRead Capfile set filetype=ruby
-autocmd BufNewFile,BufRead pryrc set filetype=ruby
-autocmd BufNewFile,BufRead *.less set filetype=css
-autocmd BufNewFile,BufRead *.god set filetype=ruby
-autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
-autocmd Filetype gitcommit setlocal textwidth=72"}}}
-
-" encoding configuration {{{
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8,ucs-bom,chinese
-set formatoptions+=mM
-set ambiwidth=double
-"}}}
-
-" gb2312 encoding configuration {{{
-"set encoding=gb2312
-"set fileencoding=chinese
-"set fileencodings=chinese,ucs-bom,utf-8
-"set formatoptions+=mM
-"set ambiwidth=double
-"}}}
-
-" system clipboard copy/paste"{{{
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P"}}}
-
-
 " scratch.vim"{{{
 map <leader>s :Sscratch<ESC>i
 "}}}
@@ -257,7 +234,7 @@ map <leader>off  :let g:scrollfix=-1<cr>"}}}
 set laststatus=2
 let g:airline_powerline_fonts = 1"}}}
 
-" Map shortcuts for vim-rails "{{{
+" vim-rails "{{{
 map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
 map <leader>m :Rmodel<cr>
@@ -358,7 +335,14 @@ if executable("ack")
     let g:ackhighlight=1
 endif
 map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>"}}}
+map <leader>cp :cp<cr>
+
+" Close quickfix window
+map <leader>cc :ccl<cr>
+au FileType qf call AdjustWindowHeight(3, 10)
+function! AdjustWindowHeight(minheight, maxheight)
+  exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
+endfunction"}}}
 
 " tabular"{{{
 vmap <leader>= :Tab /=<cr>
