@@ -211,13 +211,6 @@ map <leader>gg :topleft :vsplit Gemfile<cr>
 map <leader>gr :topleft :vsplit config/routes.rb<cr>
 " }}}
 
-" ctags/Tagbar plugin configuration"{{{
-nmap <F2> :TagbarToggle<CR>
-map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
-map <F7> :tprevious<CR>
-map <F8> :tnext<CR>
-set tags=./tags;"}}}
-
 " vim-javascript plugin configuration"{{{
 let g:html_indent_inctags = "html,body,head,tbody"
 let g:html_indent_script1 = "inc"
@@ -400,3 +393,12 @@ map <leader>cp :cp<cr>"}}}
 vmap <leader>= :Tab /=<cr>
 vmap <leader>: :Tab /:\zs<cr>
 vmap <leader>ta :Tab /"}}}
+
+" tagbar (ctags) "{{{
+nmap <F2> :TagbarToggle<CR>
+map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
+map <F7> :tprevious<CR>
+map <F8> :tnext<CR>
+set tags=./tags;
+"}}}
+
