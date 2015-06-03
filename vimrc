@@ -282,7 +282,8 @@ vmap <Leader>P "+P"}}}
 
 
 " scratch.vim"{{{
-map <leader>s :Sscratch<ESC>"}}}
+map <leader>s :Sscratch<ESC>i
+"}}}
 
 " scrollfix.vim"{{{
 map <leader>on   :let g:scrollfix=60<cr>
