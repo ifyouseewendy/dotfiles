@@ -22,7 +22,6 @@ Bundle 'wombat256.vim'
 
 " original repos on GitHub
 Bundle 'bling/vim-airline'
-Bundle 'larrylv/ShowMarks'
 Bundle 'larrylv/vim-snippets'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
@@ -222,17 +221,6 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 nnoremap <leader>s :call OpenTestAlternate()<cr>
 "map <leader>u :Runittest<cr>
 "map <leader>s :Rfunctionaltest<cr>"}}}
-
-" Marks settings"{{{
-let showmarks_enable = 1
-let showmarks_include = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
-" Ignore help, quickfix, non-modifiable buffers
-let showmarks_ignore_type = "hqm"
-" Hilight lower & upper marks
-let showmarks_hlline_lower = 1
-let showmarks_hlline_upper = 1
-hi ShowMarksHLl ctermbg=Yellow  ctermfg=Black guibg=#FFDB72 guifg=Black
-hi ShowMarksHLu ctermbg=Magenta ctermfg=Black guibg=#FFB3FF guifg=Black"}}}
 
 " Syntastic settings"{{{
 set statusline+=\ %#warningmsg#
