@@ -12,7 +12,6 @@ call vundle#rc()
 Bundle 'git://git.wincent.com/command-t.git'
 
 " vim-scripts repos
-Bundle 'bufexplorer.zip'
 Bundle 'genutils'
 Bundle 'matchit.zip'
 Bundle 'scratch.vim'
@@ -150,9 +149,6 @@ nmap <leader>nh :nohls<cr>
 
 " source vimrc
 map <leader>so :source ~/.vimrc<cr>
-
-" open buffer explorer
-map <leader>b :BufExplorer<cr>
 
 " Rename current file
 function! RenameFile()
