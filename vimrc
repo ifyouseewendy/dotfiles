@@ -168,11 +168,6 @@ if $VIM_CRONTAB == 'true'
   set nowritebackup
 endif
 
-" scrollfix.vim shortcut for open/close scrollfix
-" let g:scrollfix=-1
-map <leader>on   :let g:scrollfix=60<cr>
-map <leader>off  :let g:scrollfix=-1<cr>
-
 " close quickfix window
 map <leader>cc :ccl<cr>
 au FileType qf call AdjustWindowHeight(3, 10)
@@ -416,4 +411,12 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P"}}}
 
+
+" scratch.vim
+map <leader>s :Sscratch<ESC>
+
+" scrollfix.vim
+" shortcut for open/close scrollfix
+map <leader>on   :let g:scrollfix=60<cr>
+map <leader>off  :let g:scrollfix=-1<cr>
 
