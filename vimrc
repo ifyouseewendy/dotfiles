@@ -85,11 +85,6 @@ set ignorecase
 set hlsearch
 set incsearch
 
-" status line configuration
-set laststatus=2
-" let g:Powerline_symbols = 'fancy'
-" set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
-let g:airline_powerline_fonts = 1
 
 " Tab triggers buffer-name auto-completion
 set wildchar=<Tab> wildmenu wildmode=full
@@ -131,7 +126,7 @@ set pastetoggle=<F3>
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " use comma as <Leader> key instead of backslash
-let mapleader="\<Space>"
+let mapleader=","
 
 " insert binding.pry
 map <leader>d obinding.pry<ESC>
@@ -419,3 +414,9 @@ map <leader>s :Sscratch<ESC>
 map <leader>on   :let g:scrollfix=60<cr>
 map <leader>off  :let g:scrollfix=-1<cr>
 
+" vim-airline
+" status line configuration
+set laststatus=2
+" let g:Powerline_symbols = 'fancy'
+" set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
+let g:airline_powerline_fonts = 1
