@@ -186,42 +186,6 @@ map <leader>ggp :GitGutterPrevHunk<cr>
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" Map shortcuts for rails.vim"{{{
-map <leader>c :Rcontroller<cr>
-map <leader>v :Rview<cr>
-map <leader>m :Rmodel<cr>
-map <leader>h :Rhelper<cr>
-map <leader>t :Rtest<cr>
-function! OpenTestAlternate()
-  let new_file = AlternateForCurrentFile()
-  exec ':e ' . new_file
-endfunction
-function! AlternateForCurrentFile()
-  let current_file = expand("%")
-  let new_file = current_file
-  let in_spec = match(current_file, '^spec/') != -1
-  let going_to_spec = !in_spec
-  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') || match(current_file, '\<helpers\>') != -1
-  if going_to_spec
-    if in_app
-      let new_file = substitute(new_file, '^app/', '', '')
-    end
-    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
-    let new_file = 'spec/' . new_file
-  else
-    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
-    let new_file = substitute(new_file, '^spec/', '', '')
-    if in_app
-      let new_file = 'app/' . new_file
-    end
-  endif
-  return new_file
-endfunction
-nnoremap <leader>. :call OpenTestAlternate()<cr>
-nnoremap <leader>s :call OpenTestAlternate()<cr>
-"map <leader>u :Runittest<cr>
-"map <leader>s :Rfunctionaltest<cr>"}}}
-
 " Syntastic settings"{{{
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -394,17 +358,50 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P"}}}
 
 
-" scratch.vim
-map <leader>s :Sscratch<ESC>
+" scratch.vim"{{{
+map <leader>s :Sscratch<ESC>"}}}
 
-" scrollfix.vim
-" shortcut for open/close scrollfix
+" scrollfix.vim"{{{
 map <leader>on   :let g:scrollfix=60<cr>
-map <leader>off  :let g:scrollfix=-1<cr>
+map <leader>off  :let g:scrollfix=-1<cr>"}}}
 
-" vim-airline
-" status line configuration
+" vim-airline"{{{
 set laststatus=2
-" let g:Powerline_symbols = 'fancy'
-" set statusline=\ %<%F[%1*%M%*%n%R%H]%=\ %y\ %0(%{&fileformat}\ [%{(&fenc==\"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ %l:%c\ \(%p%%\)%)
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1"}}}
+
+" Map shortcuts for vim-rails "{{{
+map <leader>c :Rcontroller<cr>
+map <leader>v :Rview<cr>
+map <leader>m :Rmodel<cr>
+map <leader>h :Rhelper<cr>
+map <leader>t :A<cr>
+function! OpenTestAlternate()
+  let new_file = AlternateForCurrentFile()
+  exec ':e ' . new_file
+endfunction
+function! AlternateForCurrentFile()
+  let current_file = expand("%")
+  let new_file = current_file
+  let in_spec = match(current_file, '^spec/') != -1
+  let going_to_spec = !in_spec
+  let in_app = match(current_file, '\<controllers\>') != -1 || match(current_file, '\<models\>') != -1 || match(current_file, '\<views\>') || match(current_file, '\<helpers\>') != -1
+  if going_to_spec
+    if in_app
+      let new_file = substitute(new_file, '^app/', '', '')
+    end
+    let new_file = substitute(new_file, '\.rb$', '_spec.rb', '')
+    let new_file = 'spec/' . new_file
+  else
+    let new_file = substitute(new_file, '_spec\.rb$', '.rb', '')
+    let new_file = substitute(new_file, '^spec/', '', '')
+    if in_app
+      let new_file = 'app/' . new_file
+    end
+  endif
+  return new_file
+endfunction
+nnoremap <leader>. :call OpenTestAlternate()<cr>
+nnoremap <leader>s :call OpenTestAlternate()<cr>
+"map <leader>u :Runittest<cr>
+"map <leader>s :Rfunctionaltest<cr>"}}}
+
