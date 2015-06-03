@@ -208,6 +208,7 @@ map <leader>c :Rcontroller<cr>
 map <leader>v :Rview<cr>
 map <leader>m :Rmodel<cr>
 map <leader>h :Rhelper<cr>
+map <leader>t :Rtest<cr>
 function! OpenTestAlternate()
   let new_file = AlternateForCurrentFile()
   exec ':e ' . new_file
@@ -397,6 +398,8 @@ set ambiwidth=double
 " vimux configuration"{{{
 " Run the current file with rspec
 map <Leader>vs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+" Run the current file with minitest
+map <Leader>vt :call VimuxRunCommand("clear; rake test " . bufname("%"))<CR>
 
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
