@@ -25,8 +25,8 @@ Bundle 'wombat256.vim'
 Bundle 'git://git.wincent.com/command-t.git'
 
 " Github repos
+Bundle 'ifyouseewendy/vim-snippets'
 Bundle 'bling/vim-airline'
-Bundle 'larrylv/vim-snippets'
 Bundle 'tpope/vim-ragtag'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-surround'
