@@ -172,10 +172,6 @@ cmap w!! %!sudo tee > /dev/null %
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
-" Shortcuts for vim-gitgutter
-map <leader>ggn :GitGutterNextHunk<cr>
-map <leader>ggp :GitGutterPrevHunk<cr>
-
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 
@@ -401,4 +397,11 @@ map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;
 "}}}
+
+" vim-gitgutter
+map <leader>gn :GitGutterNextHunk<cr>
+map <leader>gp :GitGutterPrevHunk<cr>
+map <leader>ga :GitGutterStageHunk<cr>
+map <leader>gr :GitGutterRevertHunk<cr>
+map <leader>gv :GitGutterPreviewHunk<cr>
 
