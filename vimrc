@@ -236,27 +236,6 @@ set ambiwidth=double
 "set ambiwidth=double
 "}}}
 
-" vimux configuration"{{{
-" Run the current file with rspec
-map <Leader>vs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
-" Run the current file with minitest
-map <Leader>vt :call VimuxRunCommand("clear; rake test " . bufname("%"))<CR>
-
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
-
-" Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
-
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-
-" Close vim tmux runner opened by VimuxRunCommand
-map <Leader>vq :VimuxCloseRunner<CR>
-
-" Interrupt any command running in the runner pane
-map <Leader>vx :VimuxInterruptRunner<CR>"}}}
-
 " system clipboard copy/paste"{{{
 vmap <Leader>y "+y
 vmap <Leader>d "+d
@@ -403,4 +382,25 @@ map <leader>gv :GitGutterPreviewHunk<cr>"}}}
 
 " supertab"{{{
 let g:SuperTabDefaultCompletionType = "<c-n>""}}}
+
+" vimux "{{{
+" Run the current file with rspec
+map <Leader>vs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+" Run the current file with minitest
+map <Leader>vt :call VimuxRunCommand("clear; rake test " . bufname("%"))<CR>
+
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+
+" Close vim tmux runner opened by VimuxRunCommand
+map <Leader>vq :VimuxCloseRunner<CR>
+
+" Interrupt any command running in the runner pane
+map <Leader>vx :VimuxInterruptRunner<CR>"}}}
 
