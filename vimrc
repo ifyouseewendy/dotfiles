@@ -44,7 +44,6 @@ Bundle 'majutsushi/tagbar'
 Bundle 'hail2u/vim-css3-syntax'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'ervandew/supertab'
-Bundle 'michaeljsmith/vim-indent-object'
 Bundle 'benmills/vimux'
 
 " set colorscheme
