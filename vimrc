@@ -172,8 +172,6 @@ cmap w!! %!sudo tee > /dev/null %
 " Insert the current time
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
 
 " Highlight trailing whitespace"{{{
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -318,8 +316,7 @@ map <leader>t :A<cr>
 "map <leader>s :Rfunctionaltest<cr>"}}}
 
 " vim-speeddating"{{{
-map <c-k> <c-a>
-map <c-j> <c-x>"}}}
+map <c-i> <c-a>"}}}
 
 " autocomplete"{{{
 set complete=.,w,b,u,t,i
@@ -398,10 +395,13 @@ map <F8> :tnext<CR>
 set tags=./tags;
 "}}}
 
-" vim-gitgutter
+" vim-gitgutter"{{{
 map <leader>gn :GitGutterNextHunk<cr>
 map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>ga :GitGutterStageHunk<cr>
 map <leader>gr :GitGutterRevertHunk<cr>
-map <leader>gv :GitGutterPreviewHunk<cr>
+map <leader>gv :GitGutterPreviewHunk<cr>"}}}
+
+" supertab"{{{
+let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 
