@@ -12,7 +12,6 @@ call vundle#rc()
 Bundle 'git://git.wincent.com/command-t.git'
 
 " vim-scripts repos
-Bundle 'a.vim'
 Bundle 'bufexplorer.zip'
 Bundle 'genutils'
 Bundle 'matchit.zip'
@@ -349,9 +348,6 @@ map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;"}}}
-
-" a.vim configuration"{{{
-nnoremap <silent> <F6> :A<CR>"}}}
 
 " ack.vim configuration"{{{
 if executable("ack")
