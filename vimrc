@@ -7,48 +7,52 @@
 " VUNDLE
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-filetype off " required by vundle
+set nocompatible
+filetype off
 
-set rtp+=~/.gmarik-vundle
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Vim-scripts repos
-Bundle 'genutils'
-Bundle 'matchit.zip'
-Bundle 'scratch.vim'
-Bundle 'scrollfix'
-Bundle 'taglist.vim'
-Bundle 'tComment'
-Bundle 'wombat256.vim'
+Plugin 'genutils'
+Plugin 'matchit.zip'
+Plugin 'scratch.vim'
+Plugin 'scrollfix'
+Plugin 'taglist.vim'
+Plugin 'tComment'
+Plugin 'wombat256.vim'
 
 " Non GitHub repos
-Bundle 'git://git.wincent.com/command-t.git'
+Plugin 'git://git.wincent.com/command-t.git'
 
 " Github repos
-Bundle 'ifyouseewendy/vim-snippets'
-Bundle 'bling/vim-airline'
-Bundle 'tpope/vim-ragtag'
-Bundle 'tpope/vim-rails'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-speeddating'
-Bundle 'tpope/vim-abolish'
-Bundle 'tpope/vim-dispatch'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'mileszs/ack.vim'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'docunext/closetag.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'Townk/vim-autoclose'
-Bundle 'majutsushi/tagbar'
-Bundle 'hail2u/vim-css3-syntax'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'ervandew/supertab'
-Bundle 'benmills/vimux'
+Plugin 'ifyouseewendy/vim-snippets'
+Plugin 'bling/vim-airline'
+Plugin 'tpope/vim-ragtag'
+Plugin 'tpope/vim-rails'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-speeddating'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-dispatch'
+Plugin 'Shougo/neocomplcache'
+Plugin 'Shougo/neosnippet'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'mileszs/ack.vim'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'docunext/closetag.vim'
+Plugin 'godlygeek/tabular'
+Plugin 'Townk/vim-autoclose'
+Plugin 'majutsushi/tagbar'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'ervandew/supertab'
+Plugin 'benmills/vimux'
+
+call vundle#end()
+filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC CONFIGURATION
@@ -77,7 +81,6 @@ set softtabstop=2
 set autoindent
 set cindent
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
-filetype plugin indent on
 
 " Search configuration
 set smartcase
