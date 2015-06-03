@@ -181,16 +181,6 @@ map <leader>ggp :GitGutterPrevHunk<cr>
 
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
-" Syntastic settings"{{{
-set statusline+=\ %#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_check_on_open=1
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=0
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'passive_filetypes': ['tex'] }"}}}
-
 
 " Highlight trailing whitespace"{{{
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -224,27 +214,12 @@ map <leader>gg :topleft :vsplit Gemfile<cr>
 map <leader>gr :topleft :vsplit config/routes.rb<cr>
 " }}}
 
-" NERDTree plugin configuration"{{{
-let NERDTreeWinSize = 26
-let NERDTreeAutoCenter=1
-map <F1> :NERDTreeToggle<CR>"}}}
-
 " ctags/Tagbar plugin configuration"{{{
 nmap <F2> :TagbarToggle<CR>
 map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
 map <F7> :tprevious<CR>
 map <F8> :tnext<CR>
 set tags=./tags;"}}}
-
-" ack.vim configuration"{{{
-if executable("ack")
-    " ,a to Ack (search in files)
-    nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:tags"
-    let g:ackhighlight=1
-endif
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>"}}}
 
 " vim-javascript plugin configuration"{{{
 let g:html_indent_inctags = "html,body,head,tbody"
@@ -397,4 +372,29 @@ imap <silent><C-l> <Plug>(neosnippet_expand)
 smap <silent><C-l> <Plug>(neosnippet_expand)
 imap <silent><C-j> <Plug>(neosnippet_jump)
 smap <silent><C-j> <Plug>(neosnippet_jump)"}}}
+
+" nerdtree "{{{
+let NERDTreeWinSize = 26
+let NERDTreeAutoCenter=1
+map <F1> :NERDTreeToggle<CR>"}}}
+
+" syntastic "{{{
+set statusline+=\ %#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=0
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'passive_filetypes': ['tex'] }"}}}
+
+" ack.vim "{{{
+if executable("ack")
+    " ,a to Ack (search in files)
+    nnoremap <leader>a :Ack 
+    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:tags"
+    let g:ackhighlight=1
+endif
+map <leader>cn :cn<cr>
+map <leader>cp :cp<cr>"}}}
 
