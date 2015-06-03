@@ -134,7 +134,7 @@ set pastetoggle=<F3>
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " use comma as <Leader> key instead of backslash
-let mapleader=","
+let mapleader="\<Space>"
 
 " insert binding.pry
 map <leader>d obinding.pry<ESC>
