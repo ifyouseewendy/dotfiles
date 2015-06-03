@@ -191,51 +191,6 @@ let g:syntastic_auto_jump=0
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['tex'] }"}}}
 
-" Autocomplete configuration"{{{
-set complete=.,w,b,u,t,i
-set completeopt=longest,menu
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-highlight Pmenu ctermbg=238 gui=bold
-
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_force_overwrite_completefunc = 1
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-" Enable omni completion.
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-inoremap <expr><C-g>     neocomplcache#undo_completion()
-inoremap <expr><C-l>     neocomplcache#complete_common_string()
-
-" Enable snipMate compatibility feature.
-let g:neosnippet#enable_snipmate_compatibility = 1
-
-" Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-" Set snips_author & snips_email for snipMate.vim
-let g:snips_author="Larry Lv"
-let g:snips_email="larrylv1990@gmail.com""
-
-imap <silent><C-l> <Plug>(neosnippet_expand)
-smap <silent><C-l> <Plug>(neosnippet_expand)
-imap <silent><C-j> <Plug>(neosnippet_jump)
-smap <silent><C-j> <Plug>(neosnippet_jump)
-inoremap <expr><CR>  neocomplcache#smart_close_popup() . "\<CR>"
-inoremap <expr><C-e>  neocomplcache#close_popup()
-inoremap <expr><C-y>  neocomplcache#cancel_popup()
-"inoremap <expr><C-h> neocomplcache#smart_close_popup()
-inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>""}}}
 
 " Highlight trailing whitespace"{{{
 highlight ExtraWhitespace ctermbg=red guibg=red
@@ -400,7 +355,46 @@ nnoremap <leader>s :call OpenTestAlternate()<cr>
 "map <leader>u :Runittest<cr>
 "map <leader>s :Rfunctionaltest<cr>"}}}
 
-" vim-speeddating
+" vim-speeddating"{{{
 map <c-k> <c-a>
-map <c-j> <c-x>
+map <c-j> <c-x>"}}}
+
+" autocomplete"{{{
+set complete=.,w,b,u,t,i
+set completeopt=longest,menu
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+highlight Pmenu ctermbg=238 gui=bold"}}}
+
+" neocomplcache {{{
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_camel_case_completion = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion = 1
+let g:neocomplcache_force_overwrite_completefunc = 1
+if !exists('g:neocomplcache_omni_patterns')
+  let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+
+" Enable omni completion.
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+
+inoremap <expr><C-g>  neocomplcache#undo_completion()
+inoremap <expr><C-l>  neocomplcache#complete_common_string()
+inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
+inoremap <expr><C-e>  neocomplcache#close_popup()
+inoremap <expr><C-y>  neocomplcache#cancel_popup()
+inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>""}}}
+
+" neosnippet"{{{
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+imap <silent><C-l> <Plug>(neosnippet_expand)
+smap <silent><C-l> <Plug>(neosnippet_expand)
+imap <silent><C-j> <Plug>(neosnippet_jump)
+smap <silent><C-j> <Plug>(neosnippet_jump)"}}}
 
