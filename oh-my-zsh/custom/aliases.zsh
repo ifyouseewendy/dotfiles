@@ -38,3 +38,5 @@ alias pbpaste='reattach-to-user-namespace pbpaste'
 alias be='bundle exec'
 
 alias lessf='less +F'
+
+alias hop='~/hop'
