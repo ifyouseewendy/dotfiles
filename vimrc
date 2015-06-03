@@ -168,9 +168,6 @@ function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction
 
-" increase number, <c-a> is prefix for tmux.
-map <c-i> <c-a>
-
 " close current window
 map <leader>w :wq<cr>
 
@@ -404,4 +401,8 @@ nnoremap <leader>. :call OpenTestAlternate()<cr>
 nnoremap <leader>s :call OpenTestAlternate()<cr>
 "map <leader>u :Runittest<cr>
 "map <leader>s :Rfunctionaltest<cr>"}}}
+
+" vim-speeddating
+map <c-k> <c-a>
+map <c-j> <c-x>
 
