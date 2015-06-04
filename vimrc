@@ -288,7 +288,8 @@ map <leader>t :A<cr>
 "map <leader>s :Rfunctionaltest<cr>"}}}
 
 " vim-speeddating"{{{
-map <c-i> <c-a>"}}}
+map <c-i> <c-a>
+"}}}
 
 " vim-fugtive
 nmap <leader>gb :Gblame<cr>
