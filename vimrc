@@ -185,6 +185,8 @@ nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.vimrc<cr>
 nmap <leader>new :call RenameFile()<cr>
 nmap <leader>w :wq<cr>
+nmap <leader>e :e!<cr>
+nmap <leader>q :q!<cr>
 cmap w!! %!sudo tee > /dev/null %
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 command! InsertDate :normal a<c-r>=strftime('%F')<cr>
