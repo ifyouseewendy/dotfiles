@@ -165,6 +165,9 @@ vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
 
+" Playback of recorded keys. http://goo.gl/ZlXa8X
+" start by qq, end by q, replay by Q
+noremap Q @q
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS with LEADERSHIP
@@ -401,4 +404,5 @@ map <Leader>vx :VimuxInterruptRunner<CR>"}}}
 " vim-expand-region"{{{
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)"}}}
+
 
