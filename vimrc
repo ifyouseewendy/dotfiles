@@ -35,6 +35,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-fugitive'
 Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
 Plugin 'scrooloose/nerdtree'
@@ -286,6 +287,15 @@ map <leader>t :A<cr>
 
 " vim-speeddating"{{{
 map <c-i> <c-a>"}}}
+
+" vim-fugtive
+nmap <leader>gb :Gblame<cr>
+nmap <leader>gd :Gdiff<cr>
+nmap <leader>gh :Git hist<cr>
+nmap <leader>gl :Git l<cr>
+nmap <leader>gs :Gstatus<cr>
+nmap <leader>gc :Gcommit<cr>
+nmap <leader>gt :!tig status<cr>
 
 " autocomplete"{{{
 set complete=.,w,b,u,t,i
