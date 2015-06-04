@@ -50,6 +50,7 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux'
+Plugin 'terryma/vim-expand-region'
 
 call vundle#end()
 filetype plugin indent on
@@ -391,4 +392,8 @@ map <Leader>vq :VimuxCloseRunner<CR>
 
 " Interrupt any command running in the runner pane
 map <Leader>vx :VimuxInterruptRunner<CR>"}}}
+
+" vim-expand-region"{{{
+vmap v <Plug>(expand_region_expand)
+vmap <c-v> <Plug>(expand_region_shrink)"}}}
 
