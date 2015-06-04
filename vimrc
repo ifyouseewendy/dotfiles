@@ -326,7 +326,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 inoremap <expr><C-g>  neocomplcache#undo_completion()
 inoremap <expr><C-l>  neocomplcache#complete_common_string()
-inoremap <expr><CR>   neocomplcache#smart_close_popup() . "\<CR>"
 inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>""}}}
