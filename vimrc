@@ -177,8 +177,9 @@ noremap Q @q
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader=","
-
-nmap <leader>d obinding.pry<ESC>
+nmap <leader>bp orequire'pry';binding.pry<ESC>
+" Nab lines from ~/.pry_history (respects 'count')
+nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=pc<cr> ~/.pry_history<cr>:.-<c-r>=pc-1<cr>:norm <c-r>=pc<cr>==<cr>
 nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
 nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
