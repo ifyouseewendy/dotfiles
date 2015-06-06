@@ -54,6 +54,7 @@ Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux'
 Plugin 'terryma/vim-expand-region'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'duwanis/tomdoc.vim'
 
 call vundle#end()
 filetype plugin indent on
