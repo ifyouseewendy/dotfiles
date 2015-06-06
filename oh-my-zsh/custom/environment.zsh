@@ -39,6 +39,8 @@ export DOCKER_HOST=tcp://localhost:4243
 
 export PATH=/usr/local/git/bin:/usr/local/sbin:$PATH
 
-# export GOROOT=/usr/local/Cellar/go/1.2.1
 export GOPATH=$HOME/Workspace/go/packages
-# export PATH=$PATH:$GOROOT/bin
+export GOROOT=/usr/local/Cellar/go/1.2.1/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
