@@ -52,3 +52,5 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Add RVM to PATH for scripting
 PATH=$PATH:$HOME/.rvm/bin
 
+# Setting for direnv
+eval "$(direnv hook zsh)"
