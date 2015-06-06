@@ -232,21 +232,22 @@ map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
 nnoremap <leader><leader> <c-^>
 set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
 
-map <leader>ga :CommandTFlush<cr>\|:CommandT app/assets<cr>
-map <leader>gv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>gc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>gm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>gh :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>gf :CommandTFlush<cr>\|:CommandT config<cr>
-map <leader>gl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>gp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>gs :CommandTFlush<cr>\|:CommandT spec<cr>
-map <leader>gg :topleft :vsplit Gemfile<cr>
-map <leader>gr :topleft :vsplit config/routes.rb<cr>
+map <leader>ta :CommandTFlush<cr>\|:CommandT app/assets<cr>
+map <leader>tv :CommandTFlush<cr>\|:CommandT app/views<cr>
+map <leader>tc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
+map <leader>tm :CommandTFlush<cr>\|:CommandT app/models<cr>
+map <leader>th :CommandTFlush<cr>\|:CommandT app/helpers<cr>
+map <leader>tf :CommandTFlush<cr>\|:CommandT config<cr>
+map <leader>tl :CommandTFlush<cr>\|:CommandT lib<cr>
+map <leader>tp :CommandTFlush<cr>\|:CommandT public<cr>
+map <leader>ts :CommandTFlush<cr>\|:CommandT spec<cr>
+map <leader>tt :CommandTFlush<cr>\|:CommandT test<cr>
+map <leader>tg :topleft :vsplit Gemfile<cr>
+map <leader>tr :topleft :vsplit config/routes.rb<cr>
 " }}}
 
 " scratch.vim"{{{
-map <leader>s :Sscratch<ESC>i
+map <leader>ss :Sscratch<ESC>i
 "}}}
 
 " scrollfix.vim"{{{
@@ -297,14 +298,14 @@ map <leader>t :A<cr>
 map <c-i> <c-a>
 "}}}
 
-" vim-fugtive
+" vim-fugtive"{{{
 nmap <leader>gb :Gblame<cr>
 nmap <leader>gd :Gdiff<cr>
 nmap <leader>gh :Git hist<cr>
 nmap <leader>gl :Git l<cr>
 nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<cr>
-nmap <leader>gt :!tig status<cr>
+nmap <leader>gt :!tig status<cr>"}}}
 
 " autocomplete"{{{
 set complete=.,w,b,u,t,i
@@ -379,7 +380,8 @@ endfunction"}}}
 " tabular"{{{
 vmap <leader>= :Tab /=<cr>
 vmap <leader>: :Tab /:\zs<cr>
-vmap <leader>ta :Tab /"}}}
+vmap <leader>ta :Tab /
+"}}}
 
 " tagbar (ctags) "{{{
 nmap <F2> :TagbarToggle<CR>
