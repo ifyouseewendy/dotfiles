@@ -213,6 +213,9 @@ function! RenameFile()
     endif
 endfunction
 
+" Quick window split
+map <leader>sp :split<cr>
+map <leader>vs :vsplit<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
@@ -398,7 +401,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 
 " vimux "{{{
 " Run the current file with rspec
-map <Leader>vs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+map <Leader>vr :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
 " Run the current file with minitest
 map <Leader>vt :call VimuxRunCommand("clear; rake test " . bufname("%"))<CR>
 
