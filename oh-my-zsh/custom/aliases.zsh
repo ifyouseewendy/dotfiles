@@ -40,3 +40,5 @@ alias be='bundle exec'
 alias lessf='less +F'
 
 alias hop='~/hop'
+
+alias tmux="TERM=screen-256color-bce tmux"
