@@ -1,6 +1,6 @@
 # Load plugins (only those I whitelist)
-Pry.config.should_load_plugins = false
-Pry.plugins["doc"].activate!
+# Pry.config.should_load_plugins = false
+# Pry.plugins["doc"].activate!
 
 # Launch Pry with access to the entire Rails stack.
 # If you have Pry in your Gemfile, you can pass: ./script/console --irb=pry instead.
@@ -47,3 +47,5 @@ end
 Pry::Commands.command /^$/, "repeat last command" do
   _pry_.run_command Pry.history.to_a.last
 end
+
+Pry.config.theme = "peaksea"
