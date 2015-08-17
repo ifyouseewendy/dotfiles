@@ -13,3 +13,6 @@
 # useful options, almost same as defined in vimrc
 -H
 --smart-case
+
+# Ignore log dir by default
+--ignore-dir=log
