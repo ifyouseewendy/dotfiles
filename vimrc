@@ -56,8 +56,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux'
 Plugin 'terryma/vim-expand-region'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'duwanis/tomdoc.vim'
+" Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
 filetype plugin indent on
@@ -193,6 +193,7 @@ nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.vimrc<cr>
 nmap <leader>new :call RenameFile()<cr>
 nmap <leader>w :wq<cr>
+nmap <leader>s :w<cr>
 nmap <leader>e :e!<cr>
 nmap <leader>q :q!<cr>
 cmap w!! %!sudo tee > /dev/null %
