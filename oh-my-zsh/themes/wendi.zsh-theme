@@ -17,10 +17,10 @@ function josh_prompt {
   # user_machine_size=${#${(%):-%n@%m-}}
   user_machine_size=${#${-%m-}}
 
-  if [[ `pwd` =~ "/Users/wendi" ]] ; then
-    (( path_size = path_size - 11 ))
-  else
-  fi
+  # if [[ `pwd` =~ "/Users/wendi" ]] ; then
+  #   (( path_size = path_size - 11 ))
+  # else
+  # fi
 
   if [[ ${#branch} -eq 0 ]]
     then (( ruby_size = ruby_size + 1 ))
@@ -31,7 +31,7 @@ function josh_prompt {
     fi
   fi
 
-  (( spare_width = ${spare_width} - ( 2 + ${user_machine_size} + ${path_size} + ${branch_size} + ${ruby_size}) ))
+  (( spare_width = ${spare_width} - (${user_machine_size} + ${path_size} + ${branch_size} + ${ruby_size}) ))
 
   while [ ${#prompt} -lt $spare_width ]; do
     prompt=" $prompt"
