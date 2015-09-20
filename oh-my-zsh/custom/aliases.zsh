@@ -42,3 +42,5 @@ alias lessf='less +F'
 alias hop='~/hop'
 
 alias tmux="TERM=screen-256color-bce tmux"
+
+alias cat="ccat"

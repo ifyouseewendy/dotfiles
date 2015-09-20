@@ -16,3 +16,8 @@
 
 # Ignore log dir by default
 --ignore-dir=log
+--ignore-dir=tmp
+--ignore-dir=vendor
+
+# Ignore ctags file
+--ignore-file=is:tags

@@ -10,6 +10,7 @@ SAVEHIST=HISTSIZE
 [[ -s "/usr/local/bin" ]] && export PATH=/usr/local/bin:$PATH
 [[ -s "/usr/local/sbin" ]] && export PATH=/usr/local/sbin:$PATH
 [[ -s "/sbin" ]] && export PATH=/sbin:$PATH
+[[ -s "/usr/sbin" ]] && export PATH=/usr/sbin:$PATH
 
 # I dropped rvm a few days ago, so shell won't add append BUNDLE_BIN path to the
 # PATH when changing directories. And I always use `--binstubs=.binstubs`
