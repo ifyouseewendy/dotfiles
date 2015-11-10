@@ -76,6 +76,7 @@ set nocompatible
 set nu
 set ruler
 set nobackup
+set noswapfile
 set fdm=marker
 set bs=2
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
