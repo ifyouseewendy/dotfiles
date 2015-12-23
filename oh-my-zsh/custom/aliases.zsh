@@ -44,3 +44,5 @@ alias hop='~/hop'
 alias tmux="TERM=screen-256color-bce tmux"
 
 alias cat="ccat"
+
+alias cleardns="sudo killall -HUP mDNSResponder"
