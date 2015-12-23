@@ -22,6 +22,7 @@
 # end
 
 begin
+  $LOAD_PATH << '/Users/wendi/.rvm/gems/ruby-2.2.2/gems/awesome_print-1.6.1/lib/'
   require "awesome_print"
   AwesomePrint.pry!
   AwesomePrint.defaults = { :indent => -2, :limit => 50 }
