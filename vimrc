@@ -35,7 +35,7 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-speeddating'
+" Plugin 'tpope/vim-speeddating'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
@@ -302,7 +302,7 @@ map <leader>t :A<cr>
 "map <leader>s :Rfunctionaltest<cr>"}}}
 
 " vim-speeddating"{{{
-map <c-i> <c-a>
+" map <c-i> <c-a>
 "}}}
 
 " vim-fugtive"{{{
