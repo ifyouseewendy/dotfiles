@@ -1,1 +1,3 @@
 bind status a !git commit --amend
+set refresh-mode = periodic
+set refresh-interval = 1
