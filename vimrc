@@ -44,7 +44,7 @@ Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
-Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'docunext/closetag.vim'
@@ -367,15 +367,22 @@ let g:syntastic_auto_jump=0
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['tex'] }"}}}
 
-" ack.vim "{{{
-if executable("ack")
-    " ,a to Ack (search in files)
-    nnoremap <leader>a :Ack 
-    let g:ackprg="ack -H --smart-case --nocolor --nogroup --column --nojs --nocss --ignore-dir=.binstubs --ignore-dir=vendor --ignore-dir=log --ignore-dir=tmp --ignore-file=is:tags"
-    let g:ackhighlight=1
+" ag.vim
+let g:ag_working_path_mode="r" "always start searching from your project root instead of the cwd
+if executable('Ag')
+  let g:ag_prg="Ag --vimgrep"
+
+  nnoremap <leader>a :Ag 
+
+  " Word under cursor
+  nnoremap <leader>A :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  " let g:ctrlp_use_caching = 0
 endif
-map <leader>cn :cn<cr>
-map <leader>cp :cp<cr>
 
 " Close quickfix window
 map <leader>cc :ccl<cr>
@@ -383,6 +390,7 @@ au FileType qf call AdjustWindowHeight(3, 10)
 function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction"}}}
+
 
 " tabular"{{{
 vmap <leader>= :Tab /=<cr>
