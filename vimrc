@@ -57,6 +57,7 @@ Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux'
 Plugin 'terryma/vim-expand-region'
 Plugin 'duwanis/tomdoc.vim'
+Plugin 'danchoi/ri.vim'
 " Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
