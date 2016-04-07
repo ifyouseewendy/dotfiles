@@ -46,11 +46,5 @@ source $ZSH/oh-my-zsh.sh
 . ~/.oh-my-zsh/custom/edit-command-line.zsh
 . ~/.oh-my-zsh/custom/ssh-completion.zsh
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-# Add RVM to PATH for scripting
-PATH=$PATH:$HOME/.rvm/bin
-
-# Setting for direnv
-eval "$(direnv hook zsh)"
+# Rvm setting needs to be at the bottom of zshrc
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
