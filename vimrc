@@ -58,6 +58,7 @@ Plugin 'benmills/vimux'
 Plugin 'terryma/vim-expand-region'
 Plugin 'duwanis/tomdoc.vim'
 Plugin 'danchoi/ri.vim'
+Plugin 'danro/rename.vim'
 " Plugin 'christoomey/vim-tmux-navigator'
 
 call vundle#end()
