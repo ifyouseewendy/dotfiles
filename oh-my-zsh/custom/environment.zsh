@@ -42,10 +42,10 @@ export PATH=$PATH:$GOROOT/bin
 # PATH when changing directories. And I always use `--binstubs=.binstubs`
 # option for bundler. So it will be great to add `.binstubs` to the PATH.
 # Thank god I won't type `bundle exec` or its alias `be` any more.
-export PATH=.binstubs:$PATH
+# export PATH=.binstubs:$PATH
 
 # rvmsudo
-export rvmsudo_secure_path=0
+# export rvmsudo_secure_path=0
 
 # Add RVM to PATH for scripting
 # PATH=$HOME/.rvm/bin:$PATH
