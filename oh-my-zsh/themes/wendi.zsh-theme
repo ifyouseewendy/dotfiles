@@ -38,7 +38,7 @@ function josh_prompt {
   done
 
   # prompt="%{%F{green}%}$PWD$prompt%{%F{red}%}$(rvm_prompt_info || rbenv_prompt_info)%{$reset_color%} $(git_prompt_info)"
-  prompt="%{$fg_bold[red]%}➜  wendi-mac%{$fg_bold[green]%}%p %{$fg[cyan]%}%1/ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}$prompt%{$fg_bold[red]%}$(rvm_prompt_info || rbenv_prompt_info)%{$fg_bold[red]%}"
+  prompt="%{$fg_bold[red]%}➜  wendi-mac%{$fg_bold[green]%}%p %{$fg[cyan]%}%1/ %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}$prompt%{$fg_bold[red]%}[$(rvm_prompt_info || rbenv_prompt_info)]%{$fg_bold[red]%}"
 
   echo $prompt
 }
