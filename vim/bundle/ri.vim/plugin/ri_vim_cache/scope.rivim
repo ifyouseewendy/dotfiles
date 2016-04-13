@@ -1,6 +1,45 @@
 = scope
 
-(from gem activerecord-4.2.5)
+(from gem actionpack-4.2.5.2)
+=== Implementation from Scoping
+------------------------------------------------------------------------------
+  scope(*args) { || ... }
+
+------------------------------------------------------------------------------
+
+Scopes a set of routes to the given default options.
+
+Take the following route definition as an example:
+
+  scope path: ":account_id", as: "account" do
+    resources :projects
+  end
+
+This generates helpers such as <tt>account_projects_path</tt>, just like
+<tt>resources</tt> does. The difference here being that the routes generated
+are like /:account_id/projects, rather than /accounts/:account_id/projects.
+
+=== Options
+
+Takes same options as <tt>Base#match</tt> and <tt>Resources#resources</tt>.
+
+  # route /posts (without the prefix /admin) to <tt>Admin::PostsController</tt>
+  scope module: "admin" do
+    resources :posts
+  end
+
+  # prefix the posts resource's requests with '/admin'
+  scope path: "/admin" do
+    resources :posts
+  end
+
+  # prefix the routing helper name: +sekret_posts_path+ instead of +posts_path+
+  scope as: "sekret" do
+    resources :posts
+  end
+
+
+(from gem activerecord-4.2.5.2)
 === Implementation from CollectionProxy
 ------------------------------------------------------------------------------
   scope()
@@ -10,12 +49,12 @@
 Returns a <tt>Relation</tt> object for the records in this association
 
 
-(from gem activerecord-4.2.5)
+(from gem activerecord-4.2.5.2)
 === Implementation from ActiveRecord::Reflection::MacroReflection
 ------------------------------------------------------------------------------
 
 
-(from gem activerecord-4.2.5)
+(from gem activerecord-4.2.5.2)
 === Implementation from ClassMethods
 ------------------------------------------------------------------------------
   scope(name, body, &block)
@@ -132,6 +171,17 @@ When setting this value, the argument should be a symbol referencing a
 `belongs_to` relation, or a column.
 
 @return Symbol The scope value
+
+
+(from gem cutest-1.2.3)
+=== Implementation from Kernel
+------------------------------------------------------------------------------
+  scope(name = nil, &block)
+
+------------------------------------------------------------------------------
+
+Create an instance where the block will be evaluated. Recommended to improve
+isolation between tests.
 
 
 (from gem rake-10.4.2)

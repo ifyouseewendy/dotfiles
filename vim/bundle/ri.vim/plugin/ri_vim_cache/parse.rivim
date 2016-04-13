@@ -1,0 +1,1051 @@
+= parse
+
+(from gem activesupport-4.2.5)
+=== Implementation from TimeZone
+------------------------------------------------------------------------------
+  parse(str, now=now())
+
+------------------------------------------------------------------------------
+
+Method for creating new ActiveSupport::TimeWithZone instance in time zone of
+<tt>self</tt> from parsed string.
+
+  Time.zone = 'Hawaii'                   # => "Hawaii"
+  Time.zone.parse('1999-12-31 14:00:00') # => Fri, 31 Dec 1999 14:00:00 HST -10:00
+
+If upper components are missing from the string, they are supplied from
+TimeZone#now:
+
+  Time.zone.now               # => Fri, 31 Dec 1999 14:00:00 HST -10:00
+  Time.zone.parse('22:30:00') # => Fri, 31 Dec 1999 22:30:00 HST -10:00
+
+However, if the date component is not provided, but any other upper components
+are supplied, then the day of the month defaults to 1:
+
+  Time.zone.parse('Mar 2000') # => Wed, 01 Mar 2000 00:00:00 HST -10:00
+
+
+(from gem addressable-2.4.0)
+=== Implementation from URI
+------------------------------------------------------------------------------
+  parse(uri)
+
+------------------------------------------------------------------------------
+
+Returns a URI object based on the parsed string.
+
+@param [String, Addressable::URI, #to_str] uri
+  The URI string to parse.
+  No parsing is performed if the object is already an
+  <code>Addressable::URI</code>.
+
+@return [Addressable::URI] The parsed URI.
+
+
+(from ruby site)
+=== Implementation from CGI
+------------------------------------------------------------------------------
+  parse(query)
+
+------------------------------------------------------------------------------
+
+Parse an HTTP query string into a hash of key=>value pairs.
+
+  params = CGI::parse("query_string")
+    # {"name1" => ["value1", "value2", ...],
+    #  "name2" => ["value1", "value2", ...], ... }
+
+
+(from ruby site)
+=== Implementation from Cookie
+------------------------------------------------------------------------------
+  parse(raw_cookie)
+
+------------------------------------------------------------------------------
+
+Parse a raw cookie string into a hash of cookie-name=>Cookie pairs.
+
+  cookies = CGI::Cookie.parse("raw_cookie_string")
+    # { "name1" => cookie1, "name2" => cookie2, ... }
+
+
+(from ruby site)
+=== Implementation from CSV
+------------------------------------------------------------------------------
+  parse( str, options = Hash.new ) { |row| ... }
+  parse( str, options = Hash.new )
+
+------------------------------------------------------------------------------
+
+This method can be used to easily parse CSV out of a String.  You may either
+provide a <tt>block</tt> which will be called with each row of the String in
+turn, or just use the returned Array of Arrays (when no <tt>block</tt> is
+given).
+
+You pass your <tt>str</tt> to read from, and an optional <tt>options</tt> Hash
+containing anything CSV::new() understands.
+
+
+(from gem celluloid-supervision-0.20.5)
+=== Implementation from Configuration
+------------------------------------------------------------------------------
+  parse(args)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from Date
+------------------------------------------------------------------------------
+  Date.parse(string='-4712-01-01'[, comp=true[, start=ITALY]])  ->  date
+
+------------------------------------------------------------------------------
+
+Parses the given representation of date and time, and creates a date object. 
+This method does not function as a validator.
+
+If the optional second argument is true and the detected year is in the range
+"00" to "99", considers the year a 2-digit form and makes it full.
+
+  Date.parse('2001-02-03')          #=> #<Date: 2001-02-03 ...>
+  Date.parse('20010203')            #=> #<Date: 2001-02-03 ...>
+  Date.parse('3rd Feb 2001')        #=> #<Date: 2001-02-03 ...>
+
+
+(from ruby site)
+=== Implementation from DateTime
+------------------------------------------------------------------------------
+  DateTime.parse(string='-4712-01-01T00:00:00+00:00'[, comp=true[, start=ITALY]])  ->  datetime
+
+------------------------------------------------------------------------------
+
+Parses the given representation of date and time, and creates a date object. 
+This method does not function as a validator.
+
+If the optional second argument is true and the detected year is in the range
+"00" to "99", makes it full.
+
+  DateTime.parse('2001-02-03T04:05:06+07:00')
+                            #=> #<DateTime: 2001-02-03T04:05:06+07:00 ...>
+  DateTime.parse('20010203T040506+0700')
+                            #=> #<DateTime: 2001-02-03T04:05:06+07:00 ...>
+  DateTime.parse('3rd Feb 2001 04:05:06 PM')
+                            #=> #<DateTime: 2001-02-03T16:05:06+00:00 ...>
+
+
+(from ruby site)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from Requirement
+------------------------------------------------------------------------------
+  parse(obj)
+
+------------------------------------------------------------------------------
+
+Parse <tt>obj</tt>, returning an <tt>[op, version]</tt> pair. <tt>obj</tt> can
+be a String or a Gem::Version.
+
+If <tt>obj</tt> is a String, it can be either a full requirement
+specification, like <tt>">= 1.2"</tt>, or a simple version number, like
+<tt>"1.2"</tt>.
+
+  parse("> 1.0")                 # => [">", Gem::Version.new("1.0")]
+  parse("1.0")                   # => ["=", Gem::Version.new("1.0")]
+  parse(Gem::Version.new("1.0")) # => ["=,  Gem::Version.new("1.0")]
+
+
+(from gem i18n-0.7.0)
+=== Implementation from Gettext
+------------------------------------------------------------------------------
+  parse(filename)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from JSON
+------------------------------------------------------------------------------
+  parse(source, opts = {})
+
+------------------------------------------------------------------------------
+
+Parse the JSON document <em>source</em> into a Ruby data structure and return
+it.
+
+<em>opts</em> can have the following keys:
+* <b>max_nesting</b>: The maximum depth of nesting allowed in the parsed data
+  structures. Disable depth checking with :max_nesting => false. It defaults
+  to 100.
+* <b>allow_nan</b>: If set to true, allow NaN, Infinity and -Infinity in
+  defiance of RFC 4627 to be parsed by the Parser. This option defaults to
+  false.
+* <b>symbolize_names</b>: If set to true, returns symbols for the names (keys)
+  in a JSON object. Otherwise strings are returned. Strings are the default.
+* <b>create_additions</b>: If set to false, the Parser doesn't create
+  additions even if a matching class and create_id was found. This option
+  defaults to false.
+* <b>object_class</b>: Defaults to Hash
+* <b>array_class</b>: Defaults to Array
+
+
+(from ruby site)
+=== Implementation from Response
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+Parses the received response and separates the reply code and the human
+readable reply text
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from Nokogiri
+------------------------------------------------------------------------------
+  parse(string, url = nil, encoding = nil, options = nil) { |doc| ... }
+
+------------------------------------------------------------------------------
+
+Parse an HTML or XML document.  <tt>string</tt> contains the document.
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from CSS
+------------------------------------------------------------------------------
+  parse(selector)
+
+------------------------------------------------------------------------------
+
+Parse this CSS selector in <tt>selector</tt>.  Returns an AST.
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse(selector)
+
+------------------------------------------------------------------------------
+
+Parse this CSS selector in <tt>selector</tt>.  Returns an AST.
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse(string)
+
+------------------------------------------------------------------------------
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from HTML
+------------------------------------------------------------------------------
+  parse(thing, url = nil, encoding = nil, options = XML::ParseOptions::DEFAULT_HTML, &block)
+
+------------------------------------------------------------------------------
+
+Parse HTML.  Convenience method for Nokogiri::HTML::Document.parse
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from Document
+------------------------------------------------------------------------------
+  parse(string_or_io, url = nil, encoding = nil, options = XML::ParseOptions::DEFAULT_HTML) { |options| ... }
+
+------------------------------------------------------------------------------
+
+Parse HTML.  <tt>string_or_io</tt> may be a String, or any object that
+responds to <em>read</em> and <em>close</em> such as an IO, or StringIO.
+<tt>url</tt> is resource where this document is located.  <tt>encoding</tt> is
+the encoding that should be used when processing the document.
+<tt>options</tt> is a number that sets options in the parser, such as
+Nokogiri::XML::ParseOptions::RECOVER.  See the constants in
+Nokogiri::XML::ParseOptions.
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from DocumentFragment
+------------------------------------------------------------------------------
+  parse(tags, encoding = nil)
+
+------------------------------------------------------------------------------
+
+Create a Nokogiri::XML::DocumentFragment from <tt>tags</tt>, using
+<tt>encoding</tt>
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from XML
+------------------------------------------------------------------------------
+  parse(thing, url = nil, encoding = nil, options = ParseOptions::DEFAULT_XML, &block)
+
+------------------------------------------------------------------------------
+
+Parse XML.  Convenience method for Nokogiri::XML::Document.parse
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from Document
+------------------------------------------------------------------------------
+  parse(string_or_io, url = nil, encoding = nil, options = ParseOptions::DEFAULT_XML) { |options| ... }
+
+------------------------------------------------------------------------------
+
+Parse an XML file.
+
+<tt>string_or_io</tt> may be a String, or any object that responds to
+<em>read</em> and <em>close</em> such as an IO, or StringIO.
+
+<tt>url</tt> (optional) is the URI where this document is located.
+
+<tt>encoding</tt> (optional) is the encoding that should be used when
+processing the document.
+
+<tt>options</tt> (optional) is a configuration object that sets options during
+parsing, such as Nokogiri::XML::ParseOptions::RECOVER. See the
+Nokogiri::XML::ParseOptions for more information.
+
+<tt>block</tt> (optional) is passed a configuration object on which parse
+options may be set.
+
+When parsing untrusted documents, it's recommended that the <tt>nonet</tt>
+option be used, as shown in this example code:
+
+  Nokogiri::XML::Document.parse(xml_string) { |config| config.nonet }
+
+Nokogiri.XML() is a convenience method which will call this method.
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from DocumentFragment
+------------------------------------------------------------------------------
+  parse(tags)
+
+------------------------------------------------------------------------------
+
+Create a Nokogiri::XML::DocumentFragment from <tt>tags</tt>
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from Node
+------------------------------------------------------------------------------
+  parse(string_or_io, options = nil) { |options| ... }
+
+------------------------------------------------------------------------------
+
+Parse <tt>string_or_io</tt> as a document fragment within the context of
+<b>this</b> node.  Returns a XML::NodeSet containing the nodes parsed from
+<tt>string_or_io</tt>.
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse(thing, &block)
+
+------------------------------------------------------------------------------
+
+Parse given <tt>thing</tt> which may be a string containing xml, or an IO
+object.
+
+
+(from gem nokogiri-1.6.7.1)
+=== Implementation from XSLT
+------------------------------------------------------------------------------
+  parse(string, modules = {})
+
+------------------------------------------------------------------------------
+
+Parse the stylesheet in <tt>string</tt>, register any <tt>modules</tt>
+
+
+(from ruby site)
+=== Implementation from Config
+------------------------------------------------------------------------------
+  parse(string)
+
+------------------------------------------------------------------------------
+
+Parses a given <tt>string</tt> as a blob that contains configuration for
+openssl.
+
+If the source of the IO is a file, then consider using #parse_config.
+
+
+(from ruby site)
+=== Implementation from Name
+------------------------------------------------------------------------------
+  parse(str, template=OBJECT_TYPE_TEMPLATE)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from OptParse
+------------------------------------------------------------------------------
+  parse(*argv)
+
+------------------------------------------------------------------------------
+
+Parses command line arguments <tt>argv</tt> in order when environment variable
+POSIXLY_CORRECT is set, and in permutation mode otherwise.
+
+
+(from ruby site)
+=== Implementation from OptParse
+------------------------------------------------------------------------------
+  parse(*argv)
+
+------------------------------------------------------------------------------
+
+Parses command line arguments <tt>argv</tt> in order when environment variable
+POSIXLY_CORRECT is set, and in permutation mode otherwise.
+
+
+(from ruby site)
+=== Implementation from NoArgument
+------------------------------------------------------------------------------
+  parse(arg, argv) { |NeedlessArgument, arg| ... }
+
+------------------------------------------------------------------------------
+
+Raises an exception if any arguments given.
+
+
+(from ruby site)
+=== Implementation from OptionalArgument
+------------------------------------------------------------------------------
+  parse(arg, argv, &error)
+
+------------------------------------------------------------------------------
+
+Parses argument if given, or uses default value.
+
+
+(from ruby site)
+=== Implementation from PlacedArgument
+------------------------------------------------------------------------------
+  parse(arg, argv, &error)
+
+------------------------------------------------------------------------------
+
+Returns nil if argument is not present or begins with '-'.
+
+
+(from ruby site)
+=== Implementation from RequiredArgument
+------------------------------------------------------------------------------
+  parse(arg, argv)
+
+------------------------------------------------------------------------------
+
+Raises an exception if argument is not present.
+
+
+(from ruby site)
+=== Implementation from Psych
+------------------------------------------------------------------------------
+  parse(yaml, filename = nil)
+
+------------------------------------------------------------------------------
+
+Parse a YAML string in <tt>yaml</tt>.  Returns the Psych::Nodes::Document.
+<tt>filename</tt> is used in the exception message if a Psych::SyntaxError is
+raised.
+
+Raises a Psych::SyntaxError when a YAML syntax error is detected.
+
+Example:
+
+  Psych.parse("---\n - a\n - b") # => #<Psych::Nodes::Document:0x00>
+
+  begin
+    Psych.parse("--- `", "file.txt")
+  rescue Psych::SyntaxError => ex
+    ex.file    # => 'file.txt'
+    ex.message # => "(file.txt): found character that cannot start any token"
+  end
+
+See Psych::Nodes for more information about YAML AST.
+
+
+(from ruby site)
+=== Implementation from ClassModule
+------------------------------------------------------------------------------
+  parse(comment_location)
+
+------------------------------------------------------------------------------
+
+Parses <tt>comment_location</tt> into an RDoc::Markup::Document composed of
+multiple RDoc::Markup::Documents with their file set.
+
+
+(from ruby site)
+=== Implementation from Comment
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+Parses the comment into an RDoc::Markup::Document.  The parsed document is
+cached until the text is changed.
+
+
+(from ruby site)
+=== Implementation from Section
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+Parses <tt>comment_location</tt> into an RDoc::Markup::Document composed of
+multiple RDoc::Markup::Documents with their file set.
+
+
+(from ruby site)
+=== Implementation from Text
+------------------------------------------------------------------------------
+  parse(&block)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from Markdown
+------------------------------------------------------------------------------
+  parse(markdown)
+
+------------------------------------------------------------------------------
+
+Parses the <tt>markdown</tt> document into an RDoc::Document using the default
+extensions.
+
+
+(from ruby site)
+=== Implementation from Markdown
+------------------------------------------------------------------------------
+  parse(markdown)
+
+------------------------------------------------------------------------------
+
+Parses <tt>markdown</tt> into an RDoc::Document
+
+
+(from ruby site)
+=== Implementation from Markup
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+Parses <tt>str</tt> into an RDoc::Markup::Document.
+
+
+(from ruby site)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+Parses <tt>str</tt> into a Document.
+
+Use RDoc::Markup#parse instead of this method.
+
+
+(from ruby site)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse(parent, indent = 0)
+
+------------------------------------------------------------------------------
+
+Parses the tokens into an array of RDoc::Markup::XXX objects, and appends them
+to the passed <tt>parent</tt> RDoc::Markup::YYY object.
+
+Exits at the end of the token stream, or when it encounters a token in a
+column less than <tt>indent</tt> (unless it is a NEWLINE).
+
+Returns <tt>parent</tt>.
+
+
+(from ruby site)
+=== Implementation from Options
+------------------------------------------------------------------------------
+  parse(argv)
+
+------------------------------------------------------------------------------
+
+Parses command line options.
+
+
+(from ruby site)
+=== Implementation from RD
+------------------------------------------------------------------------------
+  parse(rd)
+
+------------------------------------------------------------------------------
+
+Parses <tt>rd</tt> source and returns an RDoc::Markup::Document.  If the
+<tt>=begin</tt> or <tt>=end</tt> lines are missing they will be added.
+
+
+(from ruby site)
+=== Implementation from BlockParser
+------------------------------------------------------------------------------
+  parse(src)
+
+------------------------------------------------------------------------------
+
+Parses <tt>src</tt> and returns an RDoc::Markup::Document.
+
+
+(from ruby site)
+=== Implementation from InlineParser
+------------------------------------------------------------------------------
+  parse(inline)
+
+------------------------------------------------------------------------------
+
+Parses the <tt>inline</tt> text from RD format into RDoc format.
+
+
+(from ruby site)
+=== Implementation from Text
+------------------------------------------------------------------------------
+  parse(text, format = 'rdoc')
+
+------------------------------------------------------------------------------
+
+Normalizes <tt>text</tt> then builds a RDoc::Markup::Document from it
+
+
+(from ruby site)
+=== Implementation from TomDoc
+------------------------------------------------------------------------------
+  parse(text)
+
+------------------------------------------------------------------------------
+
+Parses TomDoc from text
+
+text:
+  A String containing TomDoc-format text.
+
+
+=== Examples
+
+  RDoc::TomDoc.parse <<-TOMDOC
+  This method does some things
+
+  Returns nothing.
+  TOMDOC
+  # => #<RDoc::Markup::Document:0xXXX @parts=[...], @file=nil>
+
+=== Returns
+
+Returns an RDoc::Markup::Document representing the TomDoc format.
+
+
+(from ruby site)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse( input )
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from LightParser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from SAX2Parser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from StreamParser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from TreeParser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from UltraLightParser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from XPathParser
+------------------------------------------------------------------------------
+  parse(path)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from XPathParser
+------------------------------------------------------------------------------
+  parse(path, nodeset)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from BaseParser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from ITunesDuration
+------------------------------------------------------------------------------
+  parse(duration, do_validate=true)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse(rss, do_validate=true, ignore_unknown_element=true, parser_class=default_parser)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from CSV
+------------------------------------------------------------------------------
+  parse(value, &block)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from YesCleanOther
+------------------------------------------------------------------------------
+  parse(value)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from YesOther
+------------------------------------------------------------------------------
+  parse(value)
+
+------------------------------------------------------------------------------
+
+
+(from gem rack-1.5.2)
+=== Implementation from Nonce
+------------------------------------------------------------------------------
+  parse(string)
+
+------------------------------------------------------------------------------
+
+
+(from gem rack-1.5.2)
+=== Implementation from Params
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+
+(from gem rack-1.5.2)
+=== Implementation from Parser
+------------------------------------------------------------------------------
+  parse()
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from Ripper
+------------------------------------------------------------------------------
+  parse(src, filename = '(ripper)', lineno = 1)
+
+------------------------------------------------------------------------------
+
+Parses the given Ruby program read from <tt>src</tt>. <tt>src</tt> must be a
+String or an IO or a object with a #gets method.
+
+
+(from ruby site)
+=== Implementation from Ripper
+------------------------------------------------------------------------------
+  ripper#parse
+
+------------------------------------------------------------------------------
+
+Start parsing and returns the value of the root action.
+
+
+(from ruby site)
+=== Implementation from Filter
+------------------------------------------------------------------------------
+  parse(init = nil)
+
+------------------------------------------------------------------------------
+
+Starts the parser. <tt>init</tt> is a data accumulator and is passed to the
+next event handler (as of Enumerable#inject).
+
+
+(from gem slop-3.6.0)
+=== Implementation from Slop
+------------------------------------------------------------------------------
+  parse(items = ARGV, config = {}, &block)
+
+------------------------------------------------------------------------------
+
+items  - The Array of items to extract options from (default: ARGV). config -
+The Hash of configuration options to send to Slop.new(). block  - An optional
+block used to add options.
+
+Examples:
+
+  Slop.parse(ARGV, :help => true) do
+    on '-n', '--name', 'Your username', :argument => true
+  end
+
+Returns a new instance of Slop.
+
+
+(from gem slop-3.6.0)
+=== Implementation from Slop
+------------------------------------------------------------------------------
+  parse(items = ARGV, &block)
+
+------------------------------------------------------------------------------
+
+Parse a list of items, executing and gathering options along the way.
+
+items - The Array of items to extract options from (default: ARGV). block - An
+optional block which when used will yield non options.
+
+Returns an Array of original items.
+
+
+(from gem slop-3.6.0)
+=== Implementation from Commands
+------------------------------------------------------------------------------
+  parse(items = ARGV)
+
+------------------------------------------------------------------------------
+
+Parse a list of items.
+
+items - The Array of items to parse.
+
+Returns the original Array of items.
+
+
+(from ruby site)
+=== Implementation from Time
+------------------------------------------------------------------------------
+  parse(date, now=self.now) { |year| ... }
+
+------------------------------------------------------------------------------
+
+Parses <tt>date</tt> using Date._parse and converts it to a Time object.
+
+If a block is given, the year described in <tt>date</tt> is converted by the
+block.  For example:
+
+  Time.parse(...) {|y| 0 <= y && y < 100 ? (y >= 69 ? y + 1900 : y + 2000) : y}
+
+If the upper components of the given time are broken or missing, they are
+supplied with those of <tt>now</tt>.  For the lower components, the minimum
+values (1 or 0) are assumed if broken or missing.  For example:
+
+  # Suppose it is "Thu Nov 29 14:33:20 2001" now and
+  # your time zone is EST which is GMT-5.
+  now = Time.parse("Thu Nov 29 14:33:20 2001")
+  Time.parse("16:30", now)     #=> 2001-11-29 16:30:00 -0500
+  Time.parse("7/23", now)      #=> 2001-07-23 00:00:00 -0500
+  Time.parse("Aug 31", now)    #=> 2001-08-31 00:00:00 -0500
+  Time.parse("Aug 2000", now)  #=> 2000-08-01 00:00:00 -0500
+
+Since there are numerous conflicts among locally defined time zone
+abbreviations all over the world, this method is not intended to understand
+all of them.  For example, the abbreviation "CST" is used variously as:
+
+  -06:00 in America/Chicago,
+  -05:00 in America/Havana,
+  +08:00 in Asia/Harbin,
+  +09:30 in Australia/Darwin,
+  +10:30 in Australia/Adelaide,
+  etc.
+
+Based on this fact, this method only understands the time zone abbreviations
+described in RFC 822 and the system time zone, in the order named. (i.e. a
+definition in RFC 822 overrides the system time zone definition.)  The system
+time zone is taken from <tt>Time.local(year, 1, 1).zone</tt> and
+<tt>Time.local(year, 7, 1).zone</tt>. If the extracted time zone abbreviation
+does not match any of them, it is ignored and the given time is regarded as a
+local time.
+
+ArgumentError is raised if Date._parse cannot extract information from
+<tt>date</tt> or if the Time class cannot represent specified date.
+
+This method can be used as a fail-safe for other parsing methods as:
+
+  Time.rfc2822(date) rescue Time.parse(date)
+  Time.httpdate(date) rescue Time.parse(date)
+  Time.xmlschema(date) rescue Time.parse(date)
+
+A failure of Time.parse should be checked, though.
+
+You must require 'time' to use this method.
+
+
+(from ruby site)
+=== Implementation from URI
+------------------------------------------------------------------------------
+  parse(uri)
+
+------------------------------------------------------------------------------
+
+== Synopsis
+
+  URI::parse(uri_str)
+
+== Args
+
+<tt>uri_str</tt>:
+  String with URI.
+
+
+== Description
+
+Creates one of the URI's subclasses instance from the string.
+
+== Raises
+
+URI::InvalidURIError
+  Raised if URI given is not a correct one.
+
+== Usage
+
+  require 'uri'
+
+  uri = URI.parse("http://www.ruby-lang.org/")
+  p uri
+  # => #<URI::HTTP:0x202281be URL:http://www.ruby-lang.org/>
+  p uri.scheme
+  # => "http"
+  p uri.host
+  # => "www.ruby-lang.org"
+
+It's recommended to first ::escape the provided <tt>uri_str</tt> if there are
+any invalid URI characters.
+
+
+(from ruby site)
+=== Implementation from RFC2396_Parser
+------------------------------------------------------------------------------
+  parse(uri)
+
+------------------------------------------------------------------------------
+
+== Args
+
+<tt>uri</tt>:
+  String
+
+
+== Description
+
+parses <tt>uri</tt> and constructs either matching URI scheme object (FTP,
+HTTP, HTTPS, LDAP, LDAPS, or MailTo) or URI::Generic
+
+== Usage
+
+  p = URI::Parser.new
+  p.parse("ldap://ldap.example.com/dc=example?user=john")
+  #=> #<URI::LDAP:0x00000000b9e7e8 URL:ldap://ldap.example.com/dc=example?user=john>
+
+
+(from ruby site)
+=== Implementation from Cookie
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+Parses a Cookie field sent from the user-agent.  Returns an array of cookies.
+
+
+(from ruby site)
+=== Implementation from HTTPRequest
+------------------------------------------------------------------------------
+  parse(socket=nil)
+
+------------------------------------------------------------------------------
+
+Parses a request from <tt>socket</tt>.  This is called internally by
+WEBrick::HTTPServer.
+
+
+(from ruby site)
+=== Implementation from LibXMLStreamListener
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from XMLRPCParser
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from StreamListener
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+
+(from ruby site)
+=== Implementation from XMLScanParser
+------------------------------------------------------------------------------
+  parse(str)
+
+------------------------------------------------------------------------------
+
+
