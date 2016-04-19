@@ -420,7 +420,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 
 " vimux "{{{
 " Run the current file with rspec
-map <Leader>vr :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+map <Leader>vr :call VimuxRunCommand("clear; dotenv rspec " . bufname("%"))<CR>
+map <Leader>vs :call VimuxRunCommand("clear; dotenv rspec " . bufname("%") . ":" . line('.'))<CR>
 " Run the current file with minitest
 map <Leader>vt :call VimuxRunCommand("clear; rake test " . bufname("%"))<CR>
 
