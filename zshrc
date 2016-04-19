@@ -38,7 +38,7 @@ unset GEM_HOME
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # plugins=(autojump brew bundler cap gem git github git-flow heroku history-substring-search node npm osx pow powder rails rails3 ruby rbenv zsh-syntax-highlighting forklift)
-plugins=(autojump brew bundler cap gem git github history-substring-search node npm osx pow powder rails ruby zsh-syntax-highlighting forklift rbenv)
+plugins=(autojump brew cap gem git github history-substring-search node npm osx pow powder rails ruby zsh-syntax-highlighting forklift rbenv)
 source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs, just add a zsh file in custom/ directory.
