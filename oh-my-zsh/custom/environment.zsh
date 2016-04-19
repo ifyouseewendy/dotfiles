@@ -28,8 +28,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # Set the environment variable for the docker daemon
 export DOCKER_HOST=tcp://localhost:4243
 
-export PATH=/usr/local/git/bin:/usr/local/sbin:$PATH
-
 # GO Path
 export GOPATH=$HOME/Workspace/go/packages
 export GOROOT=/usr/local/Cellar/go/1.2.1/libexec

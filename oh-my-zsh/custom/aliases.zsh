@@ -7,7 +7,7 @@ alias tigs='tig status'
 alias rb='rbenv'
 alias be='bundle exec'
 alias pt='pstree'
-alias bi='bundle install --path=vendor/bundle'
+alias bi='bundle install --path=vendor/bundle --binstubs .bundle/bin'
 alias gi='gem install'
 alias vless='/usr/share/vim/vim73/macros/less.sh'
 
