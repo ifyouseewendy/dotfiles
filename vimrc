@@ -31,37 +31,37 @@ Plugin 'git://git.wincent.com/command-t.git'
 " Github repos
 Plugin 'ifyouseewendy/vim-snippets'
 Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-ragtag'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'benmills/vimux'
+Plugin 'tpope/vim-ragtag' " ghetto HTML/XML mappings (formerly allml.vim)
+Plugin 'docunext/closetag.vim' " Functions and mappings to close open HTML/XML tags
+Plugin 'Townk/vim-autoclose' " This plugin for Vim enable an auto-close chars feature for you
+Plugin 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by scope
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-" Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
-" Plugin 'tpope/vim-dispatch' " asynchronous build and test dispatcher
+Plugin 'airblade/vim-gitgutter' " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 Plugin 'tpope/vim-fugitive' " a Git wrapper so awesome
 Plugin 'tpope/vim-endwise' " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
-Plugin 'rking/ag.vim'
-" Plugin 'flazz/vim-colorschemes' " one colorscheme pack to rule them all!
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'docunext/closetag.vim' " Functions and mappings to close open HTML/XML tags
-Plugin 'godlygeek/tabular'
-Plugin 'Townk/vim-autoclose' " This plugin for Vim enable an auto-close chars feature for you
-Plugin 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by scope
-" Plugin 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim
-Plugin 'airblade/vim-gitgutter' " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 Plugin 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
-Plugin 'benmills/vimux'
+Plugin 'rking/ag.vim'
+Plugin 'godlygeek/tabular'
 Plugin 'terryma/vim-expand-region' " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
+Plugin 'Yggdroot/indentLine' " A vim plugin to display the indention levels with thin vertical lines
 Plugin 'duwanis/tomdoc.vim'
 Plugin 'danchoi/ri.vim'
 Plugin 'danro/rename.vim' " Rename the current file in the vim buffer + retain relative path.
-" Plugin 'christoomey/vim-tmux-navigator'
-
 Plugin 'dracula/vim' " A dark theme for Vim
-Plugin 'Yggdroot/indentLine' " A vim plugin to display the indention levels with thin vertical lines
+
+" Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
+" Plugin 'tpope/vim-dispatch' " asynchronous build and test dispatcher
+" Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim
+" Plugin 'flazz/vim-colorschemes' " one colorscheme pack to rule them all!
 
 call vundle#end()
 filetype plugin indent on
