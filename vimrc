@@ -44,7 +44,7 @@ Plugin 'Shougo/neosnippet'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
-Plugin 'flazz/vim-colorschemes'
+" Plugin 'flazz/vim-colorschemes' " one colorscheme pack to rule them all!
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'docunext/closetag.vim' " Functions and mappings to close open HTML/XML tags
 Plugin 'godlygeek/tabular'
@@ -60,8 +60,8 @@ Plugin 'danchoi/ri.vim'
 Plugin 'danro/rename.vim' " Rename the current file in the vim buffer + retain relative path.
 " Plugin 'christoomey/vim-tmux-navigator'
 
-Plugin 'dracula/vim'
-Plugin 'Yggdroot/indentLine'
+Plugin 'dracula/vim' " A dark theme for Vim
+Plugin 'Yggdroot/indentLine' " A vim plugin to display the indention levels with thin vertical lines
 
 call vundle#end()
 filetype plugin indent on
