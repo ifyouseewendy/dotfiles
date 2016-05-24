@@ -28,6 +28,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 
 " Github repos
 Plugin 'ifyouseewendy/vim-snippets'
+Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'benmills/vimux'
@@ -54,7 +55,6 @@ Plugin 'danchoi/ri.vim'
 Plugin 'danro/rename.vim' " Rename the current file in the vim buffer + retain relative path.
 Plugin 'dracula/vim' " A dark theme for Vim
 
-" Plugin 'bling/vim-airline'
 " Plugin 'scratch.vim' " Plugin to create and use a scratch Vim buffer
 " Plugin 'taglist.vim'
 " Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
@@ -257,8 +257,8 @@ map <leader>on   :let g:scrollfix=60<cr>
 map <leader>off  :let g:scrollfix=-1<cr>"}}}
 
 " vim-airline"{{{
-" set laststatus=2
-" let g:airline_powerline_fonts = 1"}}}
+set laststatus=2
+let g:airline_powerline_fonts = 1"}}}
 
 " vim-rails "{{{
 map <leader>c :Rcontroller<cr>
