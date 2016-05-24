@@ -252,6 +252,7 @@ map <leader>ss :Sscratch<ESC>i
 "}}}
 
 " scrollfix.vim"{{{
+let g:scrollfix=-1
 map <leader>on   :let g:scrollfix=60<cr>
 map <leader>off  :let g:scrollfix=-1<cr>"}}}
 
