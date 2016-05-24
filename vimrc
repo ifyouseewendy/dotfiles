@@ -17,12 +17,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " Vim-scripts repos
-Plugin 'genutils'
-Plugin 'matchit.zip'
-Plugin 'scratch.vim'
+Plugin 'genutils' " General utility functions
+Plugin 'matchit.zip' " extended % matching for HTML, LaTeX, and many other languages
 Plugin 'scrollfix'
-Plugin 'taglist.vim'
-Plugin 'tComment'
+Plugin 'tComment' " An extensible & universal comment plugin that also handles embedded filetypes
 Plugin 'wombat256.vim'
 
 " Non GitHub repos
@@ -30,7 +28,6 @@ Plugin 'git://git.wincent.com/command-t.git'
 
 " Github repos
 Plugin 'ifyouseewendy/vim-snippets'
-" Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'benmills/vimux'
@@ -57,6 +54,9 @@ Plugin 'danchoi/ri.vim'
 Plugin 'danro/rename.vim' " Rename the current file in the vim buffer + retain relative path.
 Plugin 'dracula/vim' " A dark theme for Vim
 
+" Plugin 'bling/vim-airline'
+" Plugin 'scratch.vim' " Plugin to create and use a scratch Vim buffer
+" Plugin 'taglist.vim'
 " Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
 " Plugin 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 " Plugin 'christoomey/vim-tmux-navigator'
