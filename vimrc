@@ -61,6 +61,8 @@ Plugin 'danchoi/ri.vim'
 Plugin 'danro/rename.vim'
 " Plugin 'christoomey/vim-tmux-navigator'
 
+Plugin 'dracula/vim'
+
 call vundle#end()
 filetype plugin indent on
 
@@ -70,10 +72,12 @@ filetype plugin indent on
 
 " Set colorscheme
 set t_Co=256
-colorscheme wombat256mod
+" colorscheme wombat256mod
+colorscheme dracula
+syntax on
+highlight NonText ctermbg=none
 
 " Basic configuration
-syntax on
 set nocompatible
 set nu
 set ruler
