@@ -37,8 +37,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 " Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
 " Plugin 'tpope/vim-dispatch' " asynchronous build and test dispatcher
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-fugitive' " a Git wrapper so awesome
+Plugin 'tpope/vim-endwise' " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Plugin 'Shougo/neocomplcache'
 Plugin 'Shougo/neosnippet'
 Plugin 'scrooloose/nerdtree'
@@ -46,9 +46,9 @@ Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'docunext/closetag.vim'
+Plugin 'docunext/closetag.vim' " Functions and mappings to close open HTML/XML tags
 Plugin 'godlygeek/tabular'
-Plugin 'Townk/vim-autoclose'
+Plugin 'Townk/vim-autoclose' " This plugin for Vim enable an auto-close chars feature for you
 Plugin 'majutsushi/tagbar'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'airblade/vim-gitgutter'
@@ -174,7 +174,7 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
 " Remove trailing whitespaces
-nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
@@ -405,10 +405,10 @@ vmap <leader>ta :Tab /
 "}}}
 
 " tagbar (ctags) "{{{
-nmap <F2> :TagbarToggle<CR>
+nmap <F4> :TagbarToggle<CR>
 map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
-map <F7> :tprevious<CR>
-map <F8> :tnext<CR>
+map <F6> :tprevious<CR>
+map <F7> :tnext<CR>
 set tags=./tags;
 "}}}
 
