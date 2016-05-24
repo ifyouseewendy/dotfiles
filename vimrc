@@ -52,12 +52,12 @@ Plugin 'Townk/vim-autoclose' " This plugin for Vim enable an auto-close chars fe
 Plugin 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by scope
 " Plugin 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim
 Plugin 'airblade/vim-gitgutter' " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
-Plugin 'ervandew/supertab'
+Plugin 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 Plugin 'benmills/vimux'
-Plugin 'terryma/vim-expand-region'
+Plugin 'terryma/vim-expand-region' " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
 Plugin 'duwanis/tomdoc.vim'
 Plugin 'danchoi/ri.vim'
-Plugin 'danro/rename.vim'
+Plugin 'danro/rename.vim' " Rename the current file in the vim buffer + retain relative path.
 " Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'dracula/vim'
@@ -198,7 +198,6 @@ nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
 nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.vimrc<cr>
-nmap <leader>new :call RenameFile()<cr>
 nmap <leader>w :wq<cr>
 nmap <leader>s :w<cr>
 nmap <leader>e :e!<cr>
@@ -214,17 +213,6 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
-
-" Rename current file
-function! RenameFile()
-    let old_name = expand('%')
-    let new_name = input('New file name: ', expand('%'), 'file')
-    if new_name != '' && new_name != old_name
-        exec ':saveas ' . new_name
-        exec ':silent !rm ' . old_name
-        redraw!
-    endif
-endfunction
 
 " Quick window split
 map <leader>sp :split<cr>
