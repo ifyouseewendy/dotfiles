@@ -49,9 +49,9 @@ Plugin 'vim-ruby/vim-ruby'
 Plugin 'docunext/closetag.vim' " Functions and mappings to close open HTML/XML tags
 Plugin 'godlygeek/tabular'
 Plugin 'Townk/vim-autoclose' " This plugin for Vim enable an auto-close chars feature for you
-Plugin 'majutsushi/tagbar'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'airblade/vim-gitgutter'
+Plugin 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by scope
+" Plugin 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim
+Plugin 'airblade/vim-gitgutter' " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 Plugin 'ervandew/supertab'
 Plugin 'benmills/vimux'
 Plugin 'terryma/vim-expand-region'
@@ -451,4 +451,10 @@ vmap <c-v> <Plug>(expand_region_shrink)"}}}
 " vim-fugitive"{{{
 " :Gblame
 " :Gbrowse
+" }}}
+
+" vim-gitgutter"{{{
+let g:gitgutter_map_keys = 0 " No need to map keys
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
 " }}}
