@@ -30,7 +30,7 @@ Plugin 'git://git.wincent.com/command-t.git'
 
 " Github repos
 Plugin 'ifyouseewendy/vim-snippets'
-Plugin 'bling/vim-airline'
+" Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
 Plugin 'benmills/vimux'
@@ -256,8 +256,8 @@ map <leader>on   :let g:scrollfix=60<cr>
 map <leader>off  :let g:scrollfix=-1<cr>"}}}
 
 " vim-airline"{{{
-set laststatus=2
-let g:airline_powerline_fonts = 1"}}}
+" set laststatus=2
+" let g:airline_powerline_fonts = 1"}}}
 
 " vim-rails "{{{
 map <leader>c :Rcontroller<cr>
