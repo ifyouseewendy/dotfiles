@@ -35,9 +35,8 @@ Plugin 'tpope/vim-ragtag'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-" Plugin 'tpope/vim-speeddating'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-dispatch'
+" Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
+" Plugin 'tpope/vim-dispatch' " asynchronous build and test dispatcher
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-endwise'
 Plugin 'Shougo/neocomplcache'
@@ -448,5 +447,3 @@ map <Leader>vx :VimuxInterruptRunner<CR>"}}}
 " vim-expand-region"{{{
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)"}}}
-
-
