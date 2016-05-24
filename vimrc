@@ -62,6 +62,7 @@ Plugin 'danro/rename.vim'
 " Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'dracula/vim'
+Plugin 'Yggdroot/indentLine'
 
 call vundle#end()
 filetype plugin indent on
