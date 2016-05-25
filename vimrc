@@ -86,6 +86,7 @@ set fdm=marker
 set bs=2
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
 set diffopt+=iwhite " ignore whitespaces with vimdiff
+set statusline+=%f " display relative path
 
 " Tab/indent configuration
 set tabstop=2
