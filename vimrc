@@ -19,7 +19,6 @@ Plugin 'gmarik/Vundle.vim'
 " Vim-scripts repos
 Plugin 'genutils' " General utility functions
 Plugin 'matchit.zip' " extended % matching for HTML, LaTeX, and many other languages
-Plugin 'scrollfix'
 Plugin 'tComment' " An extensible & universal comment plugin that also handles embedded filetypes
 Plugin 'wombat256.vim'
 
@@ -250,11 +249,6 @@ map <leader>tr :topleft :vsplit config/routes.rb<cr>
 " scratch.vim"{{{
 map <leader>ss :Sscratch<ESC>i
 "}}}
-
-" scrollfix.vim"{{{
-let g:scrollfix=-1
-map <leader>on   :let g:scrollfix=60<cr>
-map <leader>off  :let g:scrollfix=-1<cr>"}}}
 
 " vim-airline"{{{
 set laststatus=2
