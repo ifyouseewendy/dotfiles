@@ -447,3 +447,7 @@ let g:gitgutter_map_keys = 0 " No need to map keys
 let g:gitgutter_realtime = 0
 let g:gitgutter_eager = 0
 " }}}
+
+" indentLine"{{{
+let g:indentLine_color_term=239
+"}}}
