@@ -72,12 +72,12 @@ filetype plugin indent on
 
 " Set colorscheme
 set t_Co=256
-" colorscheme wombat256mod
-colorscheme dracula
-syntax on
-highlight NonText ctermbg=none
+colorscheme wombat256mod
+" colorscheme dracula
+" highlight NonText ctermbg=none
 
 " Basic configuration
+syntax on
 set nocompatible
 set nu
 set ruler
