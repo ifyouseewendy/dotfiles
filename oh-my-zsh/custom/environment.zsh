@@ -51,3 +51,4 @@ export PATH=$PATH:$GOROOT/bin
 # Setting for direnv
 eval "$(direnv hook zsh)"
 
+export TERMINFO="$HOME/.terminfo"
