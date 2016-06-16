@@ -218,6 +218,11 @@ vmap <Leader>P "+P
 map <leader>sp :split<cr>
 map <leader>vs :vsplit<cr>
 
+"nvim
+if has('nvim')
+  nmap <BS> <C-W>h
+endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
