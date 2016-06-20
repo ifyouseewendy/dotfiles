@@ -221,6 +221,7 @@ map <leader>vs :vsplit<cr>
 "nvim
 if has('nvim')
   nmap <BS> <C-W>h
+  set mouse-=a
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
