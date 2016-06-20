@@ -17,6 +17,7 @@ alias g='git status'
 
 alias tm='open -a /Applications/TextMate.app'
 alias mvim='open -a /Applications/MacVim.app'
+alias vim='nvim'
 # alias dman='open dash://{query}'
 
 alias crontab="VIM_CRONTAB=true crontab"
