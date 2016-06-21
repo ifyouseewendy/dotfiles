@@ -7,7 +7,7 @@
 " VUNDLE
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible
+set nocompatible " Disable strange Vi defaults
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -51,7 +51,7 @@ Plugin 'ap/vim-css-color'                   " Preview colours in source code whi
 " Plugin 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
 " Plugin 'bling/vim-airline'                " Lean & mean status/tabline for vim that's light as air
 " Plugin 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
-" Plugin 'danchoi/ri.vim'                     " browse ri documentation from Vim
+" Plugin 'danchoi/ri.vim'                   " browse ri documentation from Vim
 " Plugin 'dracula/vim'                      " A dark theme for Vim
 " Plugin 'flazz/vim-colorschemes'           " one colorscheme pack to rule them all!
 " Plugin 'hail2u/vim-css3-syntax'           " Add CSS3 syntax support to vim's built-in `syntax/css.vim
@@ -70,38 +70,54 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set colorscheme
-set t_Co=256
+"set t_Co=256
 colorscheme wombat256mod
 
 " Basic configuration
 syntax on
 set nu
-set ruler
+set ruler                                   " Show the line and column number of the cursor position.
+set showcmd                                 " Show the size of block one selected in visual mode.
 set nobackup
-set noswapfile
+set noswapfile                              " Disable swap to prevent annoying messages.
 set fdm=marker
 set bs=2
-set backspace=indent,eol,start " allow backspacing over everything in insert mode
-set diffopt+=iwhite " ignore whitespaces with vimdiff
-set statusline+=%f " display relative path
+set backspace=indent,eol,start              " Allow backspacing over everything in insert mode
+set diffopt+=iwhite                         " Ignore whitespaces with vimdiff
+set statusline+=%f                          " Display relative path
+set complete-=i                             " Don't scan included files. The .tags file is more performant
+set nrformats=                              " Treat all numerals as decimal. Use <c-a> on 007 and return 008, not octal 010
+set laststatus=2                            " Always show window statuses, even if there's only one.
+set autoread                                " Reload unchanged files automatically.
+set fileformats+=mac                        " Support all kind of EOLs by default.
+set history=1000                            " Increase history size to 1000 items.
+set cursorline                              " Highlight line under cursor. It helps with navigation.
+set scrolloff=8                             " Keep 8 lines above or below the cursor when scrolling.
+set sidescroll=1                            " Keep 15 columns next to the cursor when scrolling horizontally.
+set sidescrolloff=15
+set wrap linebreak                          " Wrap lines by default
+set showbreak=" "
+set noerrorbells                            " Disable any annoying beeps on errors.
+set visualbell
+set nomodeline                              " Don't parse modelines (google 'vim modeline vulnerability')
+set iskeyword+=-                            " Use dash as word separator.
+set wildchar=<Tab> wildmenu wildmode=full   " Tab triggers buffer-name auto-completion
+set wildmenu                                " Autocomplete commands using nice menu in place of window status.
 
 " Tab/indent configuration
 set tabstop=2
 set shiftwidth=2
 set expandtab
 set softtabstop=2
-set autoindent
+set autoindent                              " Autoindent when starting new line, or using o or O
 set cindent
-autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
+set smarttab                                " Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
 
 " Search configuration
-set smartcase
-set ignorecase
-set hlsearch
-set incsearch
-
-" Tab triggers buffer-name auto-completion
-set wildchar=<Tab> wildmenu wildmode=full
+set smartcase                               " Don't ignore case when search has capital letter (although also don't ignore case by default).
+set ignorecase                              " Ignore case when searching.
+set hlsearch                                " Enable search highlighting.
+set incsearch                               " Enable highlighted case-insensitive incremential search.
 
 " Undo file settings
 set undodir=~/.vim/.undo
@@ -134,14 +150,17 @@ autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
 autocmd Filetype gitcommit setlocal textwidth=72
-
-" Treat all numerals as decimal. Use <c-a> on 007 and return 008, not octal 010
-set nrformats=
+autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 
 " nvim
 if has('nvim')
   nmap <BS> <C-W>h
-  set mouse-=a
+  set mouse-=a                           " Disable mouse
+  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 "" " Switch cursor shape when using NeoVim
+endif
+
+if !has('nvim')
+  set ttyfast " Send more characters at a given time
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -188,6 +207,12 @@ nnoremap <silent> p p`]
 " start by qq, end by q, replay by Q
 noremap Q @q
 
+" Clear the highlighting of :set hlsearch.
+nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+
+" Auto center on matched string.
+noremap n nzz
+noremap N Nzz
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS with LEADERSHIP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,7 +224,7 @@ nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=
 nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
 nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
-nmap <leader>nh :nohls<cr>
+" nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.vimrc<cr>
 nmap <leader>w :wq<cr>
 nmap <leader>s :w<cr>
