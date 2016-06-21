@@ -333,11 +333,11 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>gt :!tig status<cr>"}}}
 
 " autocomplete"{{{
-set complete=.,w,b,u,t,i
-set completeopt=longest,menu
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-highlight Pmenu ctermbg=238 gui=bold"}}}
+" set complete=.,w,b,u,t,i
+" set completeopt=longest,menu
+" " <TAB>: completion.
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" highlight Pmenu ctermbg=238 gui=bold"}}}
 
 " neocomplcache {{{
 let g:neocomplcache_enable_at_startup = 1
