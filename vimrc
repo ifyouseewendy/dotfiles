@@ -259,11 +259,29 @@ map <leader>ss :Sscratch<ESC>i
 " vim-airline"{{{
 set laststatus=2
 set noshowmode
+
+let g:airline_theme='wombat'
+
+let g:airline_extensions = []
+
+let g:airline#extensions#default#layout = [
+      \ [ 'a', 'c' ],
+      \ [ 'y', 'z', 'error', 'warning' ]
+      \ ]
+
+" Display airline symbols
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
 let g:airline_symbols.space = "\ua0"
-let g:airline_powerline_fonts = 1"}}}
+
+
+" When use powerline font, the percentage/line/column chaos displayed
+" let g:airline_powerline_fonts = 1
+
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+"}}}
 
 " vim-rails "{{{
 map <leader>c :Rcontroller<cr>
