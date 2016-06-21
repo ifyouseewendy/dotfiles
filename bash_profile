@@ -39,3 +39,5 @@ export PROJECT_PATHS=/Users/wendi/Workspace
 
 export EDITOR='vim'
 
+# Enable neovim true color
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
