@@ -20,43 +20,45 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'git://git.wincent.com/command-t.git'
 
 " Github repos
-Plugin 'tomtom/tcomment_vim'          " An extensible & universal comment plugin that also handles embedded filetypes
-Plugin 'vim-scripts/wombat256.vim'    " Wombat for 256 color xterms
-Plugin 'scrooloose/nerdtree'          " A tree explorer plugin for vim
-Plugin 'scrooloose/syntastic'         " Syntax checking hacks for vim
-Plugin 'benmills/vimux'               " Vim plugin to interact with tmux
-Plugin 'tpope/vim-ragtag'             " Ghetto HTML/XML mappings (formerly allml.vim)
-Plugin 'docunext/closetag.vim'        " Functions and mappings to close open HTML/XML tags
-Plugin 'Townk/vim-autoclose'          " This plugin for Vim enable an auto-close chars feature for you
-Plugin 'majutsushi/tagbar'            " Vim plugin that displays tags in a window, ordered by scope
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-rails'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'airblade/vim-gitgutter' " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
-Plugin 'tpope/vim-fugitive' " a Git wrapper so awesome
-Plugin 'tpope/vim-endwise' " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
-Plugin 'Shougo/neocomplcache'
-Plugin 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
-Plugin 'rking/ag.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'terryma/vim-expand-region' " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
-Plugin 'Yggdroot/indentLine' " A vim plugin to display the indention levels with thin vertical lines
-Plugin 'duwanis/tomdoc.vim'
-Plugin 'danchoi/ri.vim'
-Plugin 'danro/rename.vim' " Rename the current file in the vim buffer + retain relative path.
-Plugin 'dracula/vim' " A dark theme for Vim
+Plugin 'Shougo/neocomplcache'               " Ultimate auto-completion system for Vim.
+Plugin 'Townk/vim-autoclose'                " This plugin for Vim enable an auto-close chars feature for you
+Plugin 'Yggdroot/indentLine'                " A vim plugin to display the indention levels with thin vertical lines
+Plugin 'airblade/vim-gitgutter'             " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
+Plugin 'benmills/vimux'                     " Vim plugin to interact with tmux
+Plugin 'danchoi/ri.vim'                     " browse ri documentation from Vim
+Plugin 'danro/rename.vim'                   " Rename the current file in the vim buffer + retain relative path.
+Plugin 'docunext/closetag.vim'              " Functions and mappings to close open HTML/XML tags
+Plugin 'duwanis/tomdoc.vim'                 " A simple syntax add-on for vim that highlights your TomDoc comments.
+Plugin 'ervandew/supertab'                  " Perform all your vim insert mode completions with Tab
+Plugin 'godlygeek/tabular'                  " Vim script for text filtering and alignment
+Plugin 'majutsushi/tagbar'                  " Vim plugin that displays tags in a window, ordered by scope
+Plugin 'rking/ag.vim'                       " Vim plugin for the_silver_searcher, 'ag'
+Plugin 'scrooloose/nerdtree'                " A tree explorer plugin for vim
+Plugin 'scrooloose/syntastic'               " Syntax checking hacks for vim
+Plugin 'terryma/vim-expand-region'          " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
+Plugin 'tomtom/tcomment_vim'                " An extensible & universal comment plugin that also handles embedded filetypes
+Plugin 'tpope/vim-endwise'                  " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
+Plugin 'tpope/vim-fugitive'                 " a Git wrapper so awesome
+Plugin 'tpope/vim-ragtag'                   " Ghetto HTML/XML mappings (formerly allml.vim)
+Plugin 'tpope/vim-rails' 							      " rails.vim: Ruby on Rails power tools
+Plugin 'tpope/vim-repeat'							      " repeat.vim: enable repeating supported plugin maps with '.'
+Plugin 'tpope/vim-surround' 					      " surround.vim: quoting/parenthesizing made simple
+Plugin 'vim-ruby/vim-ruby' 						      " Vim/Ruby Configuration Files
+Plugin 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
 
-" Plugin 'Shougo/neosnippet'            " neo-snippet plugin contains neocomplcache snippets source
-" Plugin 'ifyouseewendy/vim-snippets'
-" Plugin 'bling/vim-airline'
-" Plugin 'scratch.vim' " Plugin to create and use a scratch Vim buffer
-" Plugin 'taglist.vim'
-" Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
-" Plugin 'tpope/vim-dispatch' " asynchronous build and test dispatcher
-" Plugin 'christoomey/vim-tmux-navigator'
-" Plugin 'hail2u/vim-css3-syntax' " Add CSS3 syntax support to vim's built-in `syntax/css.vim
-" Plugin 'flazz/vim-colorschemes' " one colorscheme pack to rule them all!
+" == Deprecated
+"
+" Plugin 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
+" Plugin 'bling/vim-airline'                " Lean & mean status/tabline for vim that's light as air
+" Plugin 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
+" Plugin 'dracula/vim'                      " A dark theme for Vim
+" Plugin 'flazz/vim-colorschemes'           " one colorscheme pack to rule them all!
+" Plugin 'hail2u/vim-css3-syntax'           " Add CSS3 syntax support to vim's built-in `syntax/css.vim
+" Plugin 'ifyouseewendy/vim-snippets'       " Vim-snipmate default snippets
+" Plugin 'scratch.vim'                      " Plugin to create and use a scratch Vim buffer
+" Plugin 'taglist.vim'                      " Source code browser
+" Plugin 'tpope/vim-abolish'                " Easily search for, substitute, and abbreviate multiple variants of a word
+" Plugin 'tpope/vim-dispatch'               " Asynchronous build and test dispatcher
 
 call vundle#end()
 filetype plugin indent on
@@ -356,7 +358,7 @@ let g:syntastic_auto_jump=0
 let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'passive_filetypes': ['tex'] }"}}}
 
-" ag.vim
+" ag.vim "{{{
 let g:ag_working_path_mode="r" "always start searching from your project root instead of the cwd
 if executable('Ag')
   let g:ag_prg="Ag --vimgrep"
@@ -379,7 +381,6 @@ au FileType qf call AdjustWindowHeight(3, 10)
 function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
 endfunction"}}}
-
 
 " tabular"{{{
 vmap <leader>= :Tab /=<cr>
