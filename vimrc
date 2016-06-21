@@ -44,6 +44,7 @@ Plugin 'tpope/vim-repeat'							      " repeat.vim: enable repeating supported p
 Plugin 'tpope/vim-surround' 					      " surround.vim: quoting/parenthesizing made simple
 Plugin 'vim-ruby/vim-ruby' 						      " Vim/Ruby Configuration Files
 Plugin 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
+Plugin 'ap/vim-css-color'                   " Preview colours in source code while editing
 
 " == Deprecated
 "
@@ -63,6 +64,7 @@ Plugin 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
 call vundle#end()
 filetype plugin indent on
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC CONFIGURATION
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -70,12 +72,9 @@ filetype plugin indent on
 " Set colorscheme
 set t_Co=256
 colorscheme wombat256mod
-" colorscheme dracula
-" highlight NonText ctermbg=none
 
 " Basic configuration
 syntax on
-set nocompatible
 set nu
 set ruler
 set nobackup
@@ -138,6 +137,12 @@ autocmd Filetype gitcommit setlocal textwidth=72
 
 " Treat all numerals as decimal. Use <c-a> on 007 and return 008, not octal 010
 set nrformats=
+
+" nvim
+if has('nvim')
+  nmap <BS> <C-W>h
+  set mouse-=a
+endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS
@@ -215,12 +220,6 @@ vmap <Leader>P "+P
 " Quick window split
 map <leader>sp :split<cr>
 map <leader>vs :vsplit<cr>
-
-"nvim
-if has('nvim')
-  nmap <BS> <C-W>h
-  set mouse-=a
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
