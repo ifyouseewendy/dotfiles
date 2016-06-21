@@ -20,12 +20,10 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'git://git.wincent.com/command-t.git'
 
 " Github repos
-Plugin 'tomtom/tcomment_vim' " An extensible & universal comment plugin that also handles embedded filetypes
-Plugin 'vim-scripts/wombat256.vim' " Wombat for 256 color xterms
-Plugin 'ifyouseewendy/vim-snippets'
-" Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+Plugin 'tomtom/tcomment_vim'          " An extensible & universal comment plugin that also handles embedded filetypes
+Plugin 'vim-scripts/wombat256.vim'    " Wombat for 256 color xterms
+Plugin 'scrooloose/nerdtree'          " A tree explorer plugin for vim
+Plugin 'scrooloose/syntastic'         " Syntax checking hacks for vim
 Plugin 'benmills/vimux'
 Plugin 'tpope/vim-ragtag' " ghetto HTML/XML mappings (formerly allml.vim)
 Plugin 'docunext/closetag.vim' " Functions and mappings to close open HTML/XML tags
@@ -39,7 +37,6 @@ Plugin 'airblade/vim-gitgutter' " A Vim plugin which shows a git diff in the gut
 Plugin 'tpope/vim-fugitive' " a Git wrapper so awesome
 Plugin 'tpope/vim-endwise' " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Plugin 'Shougo/neocomplcache'
-Plugin 'Shougo/neosnippet'
 Plugin 'ervandew/supertab' " Perform all your vim insert mode completions with Tab
 Plugin 'rking/ag.vim'
 Plugin 'godlygeek/tabular'
@@ -50,6 +47,9 @@ Plugin 'danchoi/ri.vim'
 Plugin 'danro/rename.vim' " Rename the current file in the vim buffer + retain relative path.
 Plugin 'dracula/vim' " A dark theme for Vim
 
+" Plugin 'Shougo/neosnippet'            " neo-snippet plugin contains neocomplcache snippets source
+" Plugin 'ifyouseewendy/vim-snippets'
+" Plugin 'bling/vim-airline'
 " Plugin 'scratch.vim' " Plugin to create and use a scratch Vim buffer
 " Plugin 'taglist.vim'
 " Plugin 'tpope/vim-abolish' " easily search for, substitute, and abbreviate multiple variants of a word
@@ -336,14 +336,6 @@ inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>""}}}
 
-" neosnippet"{{{
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-imap <silent><C-l> <Plug>(neosnippet_expand)
-smap <silent><C-l> <Plug>(neosnippet_expand)
-imap <silent><C-j> <Plug>(neosnippet_jump)
-smap <silent><C-j> <Plug>(neosnippet_jump)"}}}
-
 " nerdtree "{{{
 let NERDTreeWinSize = 26
 let NERDTreeAutoCenter=1
@@ -353,7 +345,12 @@ map <F1> :NERDTreeToggle<CR>"}}}
 set statusline+=\ %#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-let g:syntastic_check_on_open=1
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=0
 let g:syntastic_mode_map = { 'mode': 'active',
