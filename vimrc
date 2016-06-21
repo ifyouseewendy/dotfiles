@@ -91,7 +91,7 @@ set laststatus=2                            " Always show window statuses, even 
 set autoread                                " Reload unchanged files automatically.
 set fileformats+=mac                        " Support all kind of EOLs by default.
 set history=1000                            " Increase history size to 1000 items.
-set cursorline                              " Highlight line under cursor. It helps with navigation.
+" set cursorline                              " Highlight line under cursor. It helps with navigation.
 set scrolloff=8                             " Keep 8 lines above or below the cursor when scrolling.
 set sidescroll=1                            " Keep 15 columns next to the cursor when scrolling horizontally.
 set sidescrolloff=15
@@ -162,6 +162,11 @@ endif
 if !has('nvim')
   set ttyfast " Send more characters at a given time
 endif
+
+" Loading python is slow when first start neovim
+" https://github.com/neovim/neovim/issues/2437
+let g:python_host_skip_check = 1
+let g:python3_host_skip_check = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS
