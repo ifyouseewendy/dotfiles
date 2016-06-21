@@ -25,7 +25,6 @@ Plugin 'Townk/vim-autoclose'                " This plugin for Vim enable an auto
 Plugin 'Yggdroot/indentLine'                " A vim plugin to display the indention levels with thin vertical lines
 Plugin 'airblade/vim-gitgutter'             " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 Plugin 'benmills/vimux'                     " Vim plugin to interact with tmux
-Plugin 'danchoi/ri.vim'                     " browse ri documentation from Vim
 Plugin 'danro/rename.vim'                   " Rename the current file in the vim buffer + retain relative path.
 Plugin 'docunext/closetag.vim'              " Functions and mappings to close open HTML/XML tags
 Plugin 'duwanis/tomdoc.vim'                 " A simple syntax add-on for vim that highlights your TomDoc comments.
@@ -51,6 +50,7 @@ Plugin 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
 " Plugin 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
 " Plugin 'bling/vim-airline'                " Lean & mean status/tabline for vim that's light as air
 " Plugin 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
+" Plugin 'danchoi/ri.vim'                     " browse ri documentation from Vim
 " Plugin 'dracula/vim'                      " A dark theme for Vim
 " Plugin 'flazz/vim-colorschemes'           " one colorscheme pack to rule them all!
 " Plugin 'hail2u/vim-css3-syntax'           " Add CSS3 syntax support to vim's built-in `syntax/css.vim
