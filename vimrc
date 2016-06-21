@@ -212,9 +212,6 @@ nnoremap <silent> p p`]
 " start by qq, end by q, replay by Q
 noremap Q @q
 
-" Clear the highlighting of :set hlsearch.
-nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-
 " Auto center on matched string.
 noremap n nzz
 noremap N Nzz
@@ -229,7 +226,7 @@ nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=
 nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
 nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
-" nmap <leader>nh :nohls<cr>
+nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.vimrc<cr>
 nmap <leader>w :wq<cr>
 nmap <leader>s :w<cr>
