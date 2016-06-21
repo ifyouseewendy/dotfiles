@@ -16,16 +16,12 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Vim-scripts repos
-Plugin 'genutils' " General utility functions
-Plugin 'matchit.zip' " extended % matching for HTML, LaTeX, and many other languages
-Plugin 'tComment' " An extensible & universal comment plugin that also handles embedded filetypes
-Plugin 'wombat256.vim'
-
 " Non GitHub repos
 Plugin 'git://git.wincent.com/command-t.git'
 
 " Github repos
+Plugin 'tomtom/tcomment_vim' " An extensible & universal comment plugin that also handles embedded filetypes
+Plugin 'vim-scripts/wombat256.vim' " Wombat for 256 color xterms
 Plugin 'ifyouseewendy/vim-snippets'
 " Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
