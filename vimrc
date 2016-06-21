@@ -44,6 +44,7 @@ Plugin 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
 Plugin 'ap/vim-css-color'                   " Preview colours in source code while editing
 Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim that's light as air
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'tmux-plugins/vim-tmux-focus-events' " Makes the autoread option work properly for terminal vim
 
 " == Deprecated
 "
