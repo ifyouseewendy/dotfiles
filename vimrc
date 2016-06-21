@@ -42,11 +42,12 @@ Plugin 'tpope/vim-surround' 					      " surround.vim: quoting/parenthesizing ma
 Plugin 'vim-ruby/vim-ruby' 						      " Vim/Ruby Configuration Files
 Plugin 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
 Plugin 'ap/vim-css-color'                   " Preview colours in source code while editing
+Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim that's light as air
+Plugin 'vim-airline/vim-airline-themes'
 
 " == Deprecated
 "
 " Plugin 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
-" Plugin 'bling/vim-airline'                " Lean & mean status/tabline for vim that's light as air
 " Plugin 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
 " Plugin 'danchoi/ri.vim'                   " browse ri documentation from Vim
 " Plugin 'dracula/vim'                      " A dark theme for Vim
@@ -257,8 +258,13 @@ map <leader>ss :Sscratch<ESC>i
 "}}}
 
 " vim-airline"{{{
-" set laststatus=2
-" let g:airline_powerline_fonts = 1"}}}
+set laststatus=2
+set noshowmode
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+let g:airline_symbols.space = "\ua0"
+let g:airline_powerline_fonts = 1"}}}
 
 " vim-rails "{{{
 map <leader>c :Rcontroller<cr>
