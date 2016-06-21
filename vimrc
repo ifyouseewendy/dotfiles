@@ -16,9 +16,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 
-" Non GitHub repos
-Plugin 'git://git.wincent.com/command-t.git'
-
 " Github repos
 Plugin 'Shougo/neocomplcache'               " Ultimate auto-completion system for Vim.
 Plugin 'Townk/vim-autoclose'                " This plugin for Vim enable an auto-close chars feature for you
@@ -254,31 +251,6 @@ map <leader>vs :vsplit<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" command-t {{{
-" double percentage sign in command mode is expanded
-" to directory of current file - http://vimcasts.org/e/14
-let g:CommandTCancelMap=['<Esc>', '<C-c>']
-let g:CommandTAcceptSelectionSplitMap=['<C-f>']
-cnoremap %% <C-R>=expand('%:h').'/'<cr>
-map <leader>f :CommandTFlush<cr>\|:CommandT<cr>
-map <leader>F :CommandTFlush<cr>\|:CommandT %%<cr>
-nnoremap <leader><leader> <c-^>
-set wildignore+=*.o,*.log,*.obj,.git,*.jpg,*.png,*.gif,vendor/bundle,vendor/cache,tmp,public/download " exclude files from listings
-
-map <leader>ta :CommandTFlush<cr>\|:CommandT app/assets<cr>
-map <leader>tv :CommandTFlush<cr>\|:CommandT app/views<cr>
-map <leader>tc :CommandTFlush<cr>\|:CommandT app/controllers<cr>
-map <leader>tm :CommandTFlush<cr>\|:CommandT app/models<cr>
-map <leader>th :CommandTFlush<cr>\|:CommandT app/helpers<cr>
-map <leader>tf :CommandTFlush<cr>\|:CommandT config<cr>
-map <leader>tl :CommandTFlush<cr>\|:CommandT lib<cr>
-map <leader>tp :CommandTFlush<cr>\|:CommandT public<cr>
-map <leader>ts :CommandTFlush<cr>\|:CommandT spec<cr>
-map <leader>tt :CommandTFlush<cr>\|:CommandT test<cr>
-map <leader>tg :topleft :vsplit Gemfile<cr>
-map <leader>tr :topleft :vsplit config/routes.rb<cr>
-" }}}
 
 " scratch.vim"{{{
 map <leader>ss :Sscratch<ESC>i
