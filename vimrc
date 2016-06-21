@@ -152,7 +152,9 @@ autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 
 " nvim
 if has('nvim')
-  nmap <BS> <C-W>h
+  " nmap <BS> <C-W>h
+  " Fix c-h issue by https://github.com/neovim/neovim/issues/2048#issuecomment-162072750
+
   set mouse-=a                           " Disable mouse
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 "" " Switch cursor shape when using NeoVim
 endif
