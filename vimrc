@@ -24,11 +24,11 @@ Plugin 'tomtom/tcomment_vim'          " An extensible & universal comment plugin
 Plugin 'vim-scripts/wombat256.vim'    " Wombat for 256 color xterms
 Plugin 'scrooloose/nerdtree'          " A tree explorer plugin for vim
 Plugin 'scrooloose/syntastic'         " Syntax checking hacks for vim
-Plugin 'benmills/vimux'
-Plugin 'tpope/vim-ragtag' " ghetto HTML/XML mappings (formerly allml.vim)
-Plugin 'docunext/closetag.vim' " Functions and mappings to close open HTML/XML tags
-Plugin 'Townk/vim-autoclose' " This plugin for Vim enable an auto-close chars feature for you
-Plugin 'majutsushi/tagbar' " Vim plugin that displays tags in a window, ordered by scope
+Plugin 'benmills/vimux'               " Vim plugin to interact with tmux
+Plugin 'tpope/vim-ragtag'             " Ghetto HTML/XML mappings (formerly allml.vim)
+Plugin 'docunext/closetag.vim'        " Functions and mappings to close open HTML/XML tags
+Plugin 'Townk/vim-autoclose'          " This plugin for Vim enable an auto-close chars feature for you
+Plugin 'majutsushi/tagbar'            " Vim plugin that displays tags in a window, ordered by scope
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
@@ -170,7 +170,7 @@ nnoremap <F3> :set invpaste paste?<CR>
 set pastetoggle=<F3>
 
 " Remove trailing whitespaces
-nnoremap <silent> <F2> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
@@ -388,7 +388,7 @@ vmap <leader>ta :Tab /
 "}}}
 
 " tagbar (ctags) "{{{
-nmap <F4> :TagbarToggle<CR>
+nmap <F2> :TagbarToggle<CR>
 map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
 map <F6> :tprevious<CR>
 map <F7> :tnext<CR>
