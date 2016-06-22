@@ -126,7 +126,7 @@ set undolevels=1000
 set undoreload=10000
 
 " Encoding configuration
-set encoding=utf-8
+" set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set formatoptions+=mM
@@ -230,6 +230,7 @@ nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
 nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.vimrc<cr>
+nmap <leader>se :sp ~/.vimrc<cr>
 nmap <leader>w :wq<cr>
 nmap <leader>s :w<cr>
 nmap <leader>e :e!<cr>
@@ -472,3 +473,41 @@ let g:gitgutter_eager = 0
 " indentLine"{{{
 let g:indentLine_color_term=239
 "}}}
+
+" vim-signature"{{{
+"
+" Check ':help signature' for default usage
+"
+" Tweak usage:
+"
+"   Add:
+"
+"     + Use mm to auto set next mark, or unset marks:w
+"     + Use ma, mb, mc to set mark manually
+"
+"   Del:
+"
+"     + Use m<Space> to unset all
+"     + Use mm to unset
+"
+"   Navi:
+"
+"     + Use mn to jump next, mp to jump prev
+"     + Use 'a, 'b, 'c to jump manually
+"
+"   Show:
+"
+"     + Use m/
+"
+let g:SignatureIncludeMarks = 'abcdefghijkloqrstuvwxyz'
+let g:SignatureIncludeMarkers = ''
+
+let g:SignatureMap = {
+  \ 'ToggleMarkAtLine'   :  "mm",
+  \ 'DeleteMark'         :  "dm",
+  \ 'PurgeMarks'         :  "m<Space>",
+  \ 'GotoNextSpotAlpha'  :  "mn",
+  \ 'GotoPrevSpotAlpha'  :  "mp",
+  \ 'ListBufferMarks'    :  "m/",
+  \}
+" }}}
