@@ -45,6 +45,7 @@ Plugin 'ap/vim-css-color'                   " Preview colours in source code whi
 Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim that's light as air
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmux-plugins/vim-tmux-focus-events' " Makes the autoread option work properly for terminal vim
+Plugin 'kshenoy/vim-signature'              " Plugin to toggle, display and navigate marks
 
 " == Deprecated
 "
