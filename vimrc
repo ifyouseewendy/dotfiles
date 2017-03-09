@@ -74,6 +74,9 @@ filetype plugin indent on
 " Set colorscheme
 "set t_Co=256
 colorscheme wombat256mod
+if has("termguicolors")
+  set termguicolors
+end
 
 " Basic configuration
 syntax on
