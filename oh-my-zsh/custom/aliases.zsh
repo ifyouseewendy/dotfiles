@@ -47,6 +47,6 @@ alias tmux="TERM=screen-256color-bce tmux"
 
 alias cat="ccat"
 
-alias cleardns="sudo killall -HUP mDNSResponder"
+alias flushdns="sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder"
 
 alias ri='ri -f ansi'
