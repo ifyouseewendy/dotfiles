@@ -46,6 +46,8 @@ Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmux-plugins/vim-tmux-focus-events' " Makes the autoread option work properly for terminal vim
 Plugin 'kshenoy/vim-signature'              " Plugin to toggle, display and navigate marks
+Plugin 'elmcast/elm-vim'                    " Elm plugin for Vim
+" Plugin 'lambdatoast/elm.vim'
 
 " == Deprecated
 "
@@ -151,6 +153,7 @@ autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
+autocmd FileType elm set ai ts=4 sw=4 sts=4 et
 
 " nvim
 if has('nvim')
@@ -222,7 +225,7 @@ noremap N Nzz
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let mapleader=","
-nmap <leader>bp orequire'pry';binding.pry<ESC>
+nmap <leader>bp orequire'pry-byebug';binding.pry<ESC>
 " Nab lines from ~/.pry_history (respects 'count')
 nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=pc<cr> ~/.pry_history<cr>:.-<c-r>=pc-1<cr>:norm <c-r>=pc<cr>==<cr>
 nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
@@ -510,4 +513,21 @@ let g:SignatureMap = {
   \ 'GotoPrevSpotAlpha'  :  "mp",
   \ 'ListBufferMarks'    :  "m/",
   \}
+" }}}
+
+" elm.vim"{{{
+" https://github.com/lambdatoast/elm.vim
+" nnoremap <leader>el :ElmEvalLine<CR>
+" vnoremap <leader>es :<C-u>ElmEvalSelection<CR>
+" nnoremap <leader>em :ElmMakeCurrentFile<CR>
+"
+" :au BufWritePost *.elm ElmMakeCurrentFile
+" :au BufWritePost *.elm ElmMakeFile("Main.elm")
+" :au! BufWritePost *.elm
+" }}}
+
+" elm-vim"{{{
+" https://github.com/ElmCast/elm-vim
+let g:elm_setup_keybindings = 0
+let g:elm_format_autosave = 1
 " }}}
