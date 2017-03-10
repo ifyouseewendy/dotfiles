@@ -41,3 +41,6 @@ export EDITOR='vim'
 
 # Enable neovim true color
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+# Support dev
+if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
