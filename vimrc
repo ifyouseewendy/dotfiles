@@ -246,6 +246,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
 " System clipboard copy/paste
+set clipboard=unnamed
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
