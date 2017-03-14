@@ -47,7 +47,9 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmux-plugins/vim-tmux-focus-events' " Makes the autoread option work properly for terminal vim
 Plugin 'kshenoy/vim-signature'              " Plugin to toggle, display and navigate marks
 Plugin 'elmcast/elm-vim'                    " Elm plugin for Vim
-" Plugin 'lambdatoast/elm.vim'
+Plugin 'ctrlpvim/ctrlp.vim'                 " Fuzzy file, buffer, mru, tag, etc finder
+Plugin 'ivalkeen/vim-ctrlp-tjump'           " CtrlP extension for fuzzy-search in tag matches (:tjump replacement).
+Plugin 'FelikZ/ctrlp-py-matcher'            " Fast vim CtrlP matcher based on python
 
 " == Deprecated
 "
@@ -62,6 +64,7 @@ Plugin 'elmcast/elm-vim'                    " Elm plugin for Vim
 " Plugin 'taglist.vim'                      " Source code browser
 " Plugin 'tpope/vim-abolish'                " Easily search for, substitute, and abbreviate multiple variants of a word
 " Plugin 'tpope/vim-dispatch'               " Asynchronous build and test dispatcher
+" Plugin 'lambdatoast/elm.vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -246,7 +249,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
 " System clipboard copy/paste
-set clipboard=unnamed
+" set clipboard=unnamed
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -445,7 +448,7 @@ let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 map <Leader>vr :call VimuxRunCommand("clear; dotenv rspec " . bufname("%"))<CR>
 map <Leader>vs :call VimuxRunCommand("clear; dotenv rspec " . bufname("%") . ":" . line('.'))<CR>
 " Run the current file with minitest
-map <Leader>vt :call VimuxRunCommand("clear; rake test " . bufname("%"))<CR>
+map <Leader>vt :call VimuxRunCommand("clear; rake test TEST=" . bufname("%"))<CR>
 
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
@@ -535,3 +538,29 @@ let g:SignatureMap = {
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
 " }}}
+
+" ctrlp.vim"{{{
+silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
+silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
+silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
+silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
+" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_by_filename = 0
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
+" let g:ctrlp_map = '<\-t>'
+let g:ctrlp_max_files = 0
+let g:ctrlp_regexp = 1
+let g:ctrlp_working_path_mode = 'ra'
+let g:ctrlp_extensions = [ 'ctrlp-filetpe' ]
+let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_switch_buffer = 0
+let g:ctrlp_mruf_max = 0
+let g:ctrlp_mruf_relative = 1
+nnoremap <c-]> :CtrlPtjump<cr>
+vnoremap <c-]> :CtrlPtjumpVisual<cr>
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff)$',
+  \ }
+"}}}
+
