@@ -140,7 +140,7 @@ set fileencodings=utf-8,ucs-bom,chinese
 set formatoptions+=mM
 set ambiwidth=double
 
-" Highlight trailing whitespaceb
+" Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -249,7 +249,7 @@ command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 command! InsertDate :normal a<c-r>=strftime('%F')<cr>
 
 " System clipboard copy/paste
-" set clipboard=unnamed
+" set clipboard=unnamedplus
 vmap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
@@ -448,13 +448,14 @@ let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 map <Leader>vr :call VimuxRunCommand("clear; dotenv rspec " . bufname("%"))<CR>
 map <Leader>vs :call VimuxRunCommand("clear; dotenv rspec " . bufname("%") . ":" . line('.'))<CR>
 " Run the current file with minitest
+map <Leader>vl :call VimuxRunCommand("clear; rake test TEST=" . bufname("%") . ":" . line('.'))<CR>
 map <Leader>vt :call VimuxRunCommand("clear; rake test TEST=" . bufname("%"))<CR>
 
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
 
 " Run last command executed by VimuxRunCommand
-map <Leader>vl :VimuxRunLastCommand<CR>
+" map <Leader>vl :VimuxRunLastCommand<CR>
 
 " Inspect runner pane
 map <Leader>vi :VimuxInspectRunner<CR>
@@ -546,7 +547,7 @@ silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
 silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
 " let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_by_filename = 0
+let g:ctrlp_by_filename = 1
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 " let g:ctrlp_map = '<\-t>'
 let g:ctrlp_max_files = 0
