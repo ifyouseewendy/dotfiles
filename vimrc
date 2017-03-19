@@ -159,6 +159,7 @@ autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
+autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType elm set ai ts=4 sw=4 sts=4 et
@@ -391,6 +392,11 @@ set statusline+=%*
 let g:syntastic_ruby_checkers       = [ 'mri' ]
 let g:syntastic_ruby_exec           = "/opt/rubies/2.3.3/bin/ruby"
 let g:syntastic_ruby_mri_exec       = "/opt/rubies/2.3.3/bin/ruby"
+
+let g:syntastic_javascript_checkers = [ 'eslint' ]
+" let g:syntastic_html_checkers       = [ 'jshint' ]
+" let g:syntastic_css_checkers        = [ 'csslint' ]
+" let g:syntastic_json_checkers       = [ 'jsonlint' ]
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
