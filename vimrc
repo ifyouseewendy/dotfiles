@@ -50,6 +50,8 @@ Plugin 'elmcast/elm-vim'                    " Elm plugin for Vim
 Plugin 'ctrlpvim/ctrlp.vim'                 " Fuzzy file, buffer, mru, tag, etc finder
 Plugin 'ivalkeen/vim-ctrlp-tjump'           " CtrlP extension for fuzzy-search in tag matches (:tjump replacement).
 Plugin 'FelikZ/ctrlp-py-matcher'            " Fast vim CtrlP matcher based on python
+Plugin 'pangloss/vim-javascript'            " Vastly improved Javascript indentation and syntax support in Vim.
+Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
 
 " == Deprecated
 "
