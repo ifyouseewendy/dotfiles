@@ -90,3 +90,16 @@ Rails/ScopeArgs:
 Rails/Validation:
   Include:
     - app/models/**/*.rb
+
+# Customization
+
+Metrics/LineLength:
+  Max: 90
+  AllowHeredoc: true
+  AllowURI: true
+  URISchemes:
+  - http
+  - https
+  IgnoreCopDirectives: false
+  IgnoredPatterns:
+  - '\A\s*test(_\w+)?\s.*(do|->)(\s|\Z)'
