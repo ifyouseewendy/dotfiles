@@ -292,8 +292,8 @@ let g:airline_theme='wombat'
 let g:airline_extensions = []
 
 let g:airline#extensions#default#layout = [
-      \ [ 'a', 'c' ],
-      \ [ 'y', 'z', 'error', 'warning' ]
+      \ [ 'a', 'error', 'warning', 'c' ],
+      \ [ 'y', 'z' ]
       \ ]
 
 " Display airline symbols
@@ -302,6 +302,8 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.space = "\ua0"
 
+" Display ale linting result
+let g:airline_section_error = '%{ALEGetStatusLine()}'
 
 " When use powerline font, the percentage/line/column chaos displayed
 " let g:airline_powerline_fonts = 1
@@ -589,3 +591,22 @@ let g:ctrlp_custom_ignore = {
   \ }
 "}}}
 
+" ale.vim"{{{
+" Run linters only a file is saved
+let g:ale_lint_on_text_changed = 'never'
+
+" Use quickfix instead of loclist
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+" Open list to show warnings or errors
+" let g:ale_open_list = 1
+
+" Enable particular linters
+let g:ale_linters = {
+\   'javascript': ['eslint'],
+\   'scss': []
+\}
+
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"}}}
