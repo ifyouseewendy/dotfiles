@@ -1,0 +1,92 @@
+# Rubcocop
+#
+#   - Repo:           https://github.com/bbatsov/rubocop
+#   - Default:        https://github.com/bbatsov/rubocop/blob/master/config/default.yml
+#   - Configuration:  https://github.com/bbatsov/rubocop/blob/master/manual/configuration.md
+#
+# Styleguide
+#
+#   - Community:      https://github.com/bbatsov/ruby-style-guide
+#   - Shopify:        http://shopify.github.io/ruby-style-guide/
+#
+# This config file inherits from Shopify Ruby style guide and enables Rails.
+
+inherit_from:
+  - http://shopify.github.io/ruby-style-guide/rubocop.yml
+
+AllCops:
+  TargetRubyVersion: 2.3
+
+Rails:
+  Enabled: true
+
+Style/RegexpLiteral:
+  Exclude:
+    - test/**/*
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - app/controllers/**/*
+    - app/helpers/**/*
+    - test/**/*
+
+Style/AccessorMethodName:
+  Enabled: false
+
+Rails/Output:
+  Enabled: false
+
+Rails/OutputSafety:
+  Enabled: false
+
+ShopifyRails/ActiveSupportOnLoad:
+  Enabled: true
+
+require: shopify-rails-cops
+
+Rails/DynamicFindBy:
+  Whitelist:
+    - find_by_global_id
+    - find_by_sql
+
+Rails/Exit:
+  Include:
+    - app/**/*.rb
+    - config/**/*.rb
+    - lib/**/*.rb
+  Exclude:
+    - config/deploy/**/*
+    - config/deploy.rb
+    - lib/**/*.rake
+
+Rails/ActionFilter:
+  Include:
+    - app/controllers/**/*.rb
+
+Rails/EnumUniqueness:
+  Include:
+    - app/models/**/*.rb
+
+Rails/FindBy:
+  Include:
+    - app/models/**/*.rb
+
+Rails/FindEach:
+  Include:
+    - app/models/**/*.rb
+
+Rails/HasAndBelongsToMany:
+  Include:
+    - app/models/**/*.rb
+
+Rails/ReadWriteAttribute:
+  Include:
+    - app/models/**/*.rb
+
+Rails/ScopeArgs:
+  Include:
+    - app/models/**/*.rb
+
+Rails/Validation:
+  Include:
+    - app/models/**/*.rb
