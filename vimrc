@@ -169,6 +169,9 @@ autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
 if has('nvim')
   " nmap <BS> <C-W>h
   " Fix c-h issue by https://github.com/neovim/neovim/issues/2048#issuecomment-162072750
+  "
+  " Udpate: Fix by https://github.com/neovim/neovim/issues/2048 without
+  " setting c-h as escape [104;5u in iterm
 
   set mouse-=a                           " Disable mouse
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 "" " Switch cursor shape when using NeoVim
