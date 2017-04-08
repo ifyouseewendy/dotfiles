@@ -37,7 +37,7 @@ fi
 # Set for projects.plugin.bash
 export PROJECT_PATHS=/Users/wendi/Workspace
 
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Enable neovim true color
 export NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -46,4 +46,4 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
 
 # Install iterm2 shell integration
-test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
