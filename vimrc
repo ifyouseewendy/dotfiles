@@ -193,6 +193,12 @@ nmap <C-j> <C-w><Down>
 nmap <C-l> <C-w><Right>
 nmap <C-h> <C-w><Left>
 
+imap <C-k> <Up>
+imap <C-j> <Down>
+imap <C-l> <Right>
+imap <C-h> <Left>
+
+
 " Buffer and tab operations with <s-hjkl>
 nnoremap <s-h> :bprevious<cr>
 nnoremap <s-l> :bnext<cr>
@@ -374,7 +380,7 @@ autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 
 inoremap <expr><C-g>  neocomplcache#undo_completion()
-inoremap <expr><C-l>  neocomplcache#complete_common_string()
+" inoremap <expr><C-l>  neocomplcache#complete_common_string()
 inoremap <expr><C-e>  neocomplcache#close_popup()
 inoremap <expr><C-y>  neocomplcache#cancel_popup()
 inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>""}}}
