@@ -208,6 +208,7 @@ nnoremap <s-h> :bprevious<cr>
 nnoremap <s-l> :bnext<cr>
 nnoremap <s-j> :tabnext<cr>
 nnoremap <s-k> :tabprev<cr>
+nnoremap <s-t> :tabnew<cr>
 
 " Window navi
 nnoremap <c-w>j 3<c-w>+
