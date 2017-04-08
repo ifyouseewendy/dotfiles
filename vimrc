@@ -30,7 +30,6 @@ Plugin 'godlygeek/tabular'                  " Vim script for text filtering and 
 Plugin 'majutsushi/tagbar'                  " Vim plugin that displays tags in a window, ordered by scope
 Plugin 'rking/ag.vim'                       " Vim plugin for the_silver_searcher, 'ag'
 Plugin 'scrooloose/nerdtree'                " A tree explorer plugin for vim
-Plugin 'scrooloose/syntastic'               " Syntax checking hacks for vim
 Plugin 'terryma/vim-expand-region'          " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
 Plugin 'tomtom/tcomment_vim'                " An extensible & universal comment plugin that also handles embedded filetypes
 Plugin 'tpope/vim-endwise'                  " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
@@ -52,6 +51,7 @@ Plugin 'ivalkeen/vim-ctrlp-tjump'           " CtrlP extension for fuzzy-search i
 Plugin 'FelikZ/ctrlp-py-matcher'            " Fast vim CtrlP matcher based on python
 Plugin 'pangloss/vim-javascript'            " Vastly improved Javascript indentation and syntax support in Vim.
 Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
+Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
 
 " == Deprecated
 "
@@ -67,6 +67,7 @@ Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and 
 " Plugin 'tpope/vim-abolish'                " Easily search for, substitute, and abbreviate multiple variants of a word
 " Plugin 'tpope/vim-dispatch'               " Asynchronous build and test dispatcher
 " Plugin 'lambdatoast/elm.vim'
+" Plugin 'scrooloose/syntastic'               " Syntax checking hacks for vim
 
 call vundle#end()
 filetype plugin indent on
@@ -394,29 +395,29 @@ let NERDTreeAutoCenter=1
 map <F1> :NERDTreeToggle<CR>"}}}
 
 " syntastic "{{{
-set statusline+=\ %#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_ruby_checkers       = [ 'mri' ]
-let g:syntastic_ruby_exec           = "/opt/rubies/2.3.3/bin/ruby"
-let g:syntastic_ruby_mri_exec       = "/opt/rubies/2.3.3/bin/ruby"
-
-let g:syntastic_javascript_checkers = [ 'eslint' ]
-" let g:syntastic_html_checkers       = [ 'jshint' ]
-" let g:syntastic_css_checkers        = [ 'csslint' ]
-" let g:syntastic_json_checkers       = [ 'jsonlint' ]
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_cursor_column = 0
-let g:syntastic_enable_highlighting = 1
-let g:syntastic_enable_signs = 1
-let g:syntastic_auto_jump = 0
-let g:syntastic_mode_map = { 'mode': 'active',
-                           \ 'passive_filetypes': ['tex'] }"}}}
+" set statusline+=\ %#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
+"
+" let g:syntastic_ruby_checkers       = [ 'mri' ]
+" let g:syntastic_ruby_exec           = "/opt/rubies/2.3.3/bin/ruby"
+" let g:syntastic_ruby_mri_exec       = "/opt/rubies/2.3.3/bin/ruby"
+"
+" let g:syntastic_javascript_checkers = [ 'eslint' ]
+" " let g:syntastic_html_checkers       = [ 'jshint' ]
+" " let g:syntastic_css_checkers        = [ 'csslint' ]
+" " let g:syntastic_json_checkers       = [ 'jsonlint' ]
+"
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list = 1
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_cursor_column = 0
+" let g:syntastic_enable_highlighting = 1
+" let g:syntastic_enable_signs = 1
+" let g:syntastic_auto_jump = 0
+" let g:syntastic_mode_map = { 'mode': 'active',
+"                            \ 'passive_filetypes': ['tex'] }"}}}
 
 " ag.vim "{{{
 let g:ag_working_path_mode="r" "always start searching from your project root instead of the cwd
