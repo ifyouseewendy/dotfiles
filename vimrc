@@ -52,6 +52,7 @@ Plugin 'FelikZ/ctrlp-py-matcher'            " Fast vim CtrlP matcher based on py
 Plugin 'pangloss/vim-javascript'            " Vastly improved Javascript indentation and syntax support in Vim.
 Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
 Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
+Plugin 'Chiel92/vim-autoformat'             " Provide easy code formatting in Vim by integrating existing code formatters.
 
 " == Deprecated
 "
@@ -249,7 +250,7 @@ let mapleader=","
 nmap <leader>bp orequire'pry-byebug';binding.pry<ESC>
 " Nab lines from ~/.pry_history (respects 'count')
 nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=pc<cr> ~/.pry_history<cr>:.-<c-r>=pc-1<cr>:norm <c-r>=pc<cr>==<cr>
-nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
+" nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
 nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
 nmap <leader>nh :nohls<cr>
@@ -441,6 +442,7 @@ endif
 
 " Close quickfix window
 map <leader>cc :ccl<cr>
+map <leader>co :copen<cr>
 au FileType qf call AdjustWindowHeight(3, 10)
 function! AdjustWindowHeight(minheight, maxheight)
   exe max([min([line("$"), a:maxheight]), a:minheight]) . "wincmd _"
@@ -605,9 +607,15 @@ let g:ale_set_quickfix = 1
 
 " Enable particular linters
 let g:ale_linters = {
-\   'javascript': ['eslint'],
+\   'javascript': ['xo'],
 \   'scss': []
 \}
 
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+"}}}
+
+"{{{vim-autoformat
+noremap == :Autoformat<CR>
+
+let g:formatters_javascript = ['xo_javascript']
 "}}}
