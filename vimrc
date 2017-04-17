@@ -82,9 +82,6 @@ filetype plugin indent on
 " Set colorscheme
 "set t_Co=256
 colorscheme wombat256mod
-if has("termguicolors")
-  set termguicolors
-end
 
 " Basic configuration
 syntax on
@@ -168,6 +165,9 @@ autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType elm set ai ts=4 sw=4 sts=4 et
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
 
+" Filetype colorschemes
+autocmd BufWinEnter,FileType javascript colorscheme OceanicNext
+
 " nvim
 if has('nvim')
   " nmap <BS> <C-W>h
@@ -178,6 +178,10 @@ if has('nvim')
 
   set mouse-=a                           " Disable mouse
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 "" " Switch cursor shape when using NeoVim
+
+  if (has("termguicolors"))
+    set termguicolors
+  endif
 endif
 
 if !has('nvim')
