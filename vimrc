@@ -573,8 +573,8 @@ let g:elm_format_autosave = 1
 silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
 silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
 silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
-silent! nnoremap <unique> <silent> <leader>f :CtrlP<CR>
-" let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+silent! nnoremap <unique> <silent> <leader>f :CtrlPCurWD<CR>
+let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_clear_cache_on_exit = 0
 let g:ctrlp_by_filename = 1
 let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
@@ -590,7 +590,7 @@ let g:ctrlp_mruf_relative = 1
 nnoremap <c-]> :CtrlPtjump<cr>
 vnoremap <c-]> :CtrlPtjumpVisual<cr>
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff)$',
+  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff|node_modules)$',
   \ }
 "}}}
 
