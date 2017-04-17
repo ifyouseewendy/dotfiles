@@ -599,15 +599,16 @@ let g:ctrlp_custom_ignore = {
 let g:ale_lint_on_text_changed = 'never'
 
 " Use quickfix instead of loclist
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 1
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
 
 " Open list to show warnings or errors
-" let g:ale_open_list = 1
+let g:ale_open_list = 1
+" let g:ale_keep_list_window_open = 1
 
 " Enable particular linters
 let g:ale_linters = {
-\   'javascript': ['xo'],
+\   'javascript': ['eslint'],
 \   'scss': []
 \}
 
