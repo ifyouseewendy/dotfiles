@@ -624,4 +624,9 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 noremap == :Autoformat<CR>
 
 let g:formatters_javascript = ['xo_javascript']
+let g:formatdef_xo_javascript = '"xo --fix --stdin"'
+"}}}
+
+"{{{vim-jsx
+let g:jsx_ext_required = 0
 "}}}
