@@ -53,6 +53,7 @@ Plugin 'pangloss/vim-javascript'            " Vastly improved Javascript indenta
 Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
 Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
 Plugin 'Chiel92/vim-autoformat'             " Provide easy code formatting in Vim by integrating existing code formatters.
+Plugin 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
 
 " == Deprecated
 "
