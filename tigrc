@@ -1,2 +1,2 @@
 bind status a !git commit --amend
-set refresh-mode = auto
+set refresh-mode=auto
