@@ -603,3 +603,18 @@ let g:formatdef_xo_javascript = '"xo --fix --stdin"'
 "{{{vim-jsx
 let g:jsx_ext_required = 0
 "}}}
+
+"{{{fzf
+set rtp+=/usr/local/opt/fzf
+
+silent! nnoremap <unique> <silent> <leader>ff :FZF<CR>
+silent! nnoremap <unique> <silent> <leader>fb :Buffers<CR>
+silent! nnoremap <unique> <silent> <leader>fg :Commits<CR>
+" Maps, Tags, BCommits are also useful ones.
+
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
+" [[B]Commits] Customize the options used by 'git log'
+let g:fzf_commits_log_options ='--pretty=format:"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset" --graph --date=short'
+"}}}
