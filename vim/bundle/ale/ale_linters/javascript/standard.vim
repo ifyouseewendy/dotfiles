@@ -11,20 +11,20 @@ let g:ale_javascript_standard_use_global =
 \   get(g:, 'ale_javascript_standard_use_global', 0)
 
 function! ale_linters#javascript#standard#GetExecutable(buffer) abort
-    if g:ale_javascript_standard_use_global
-        return g:ale_javascript_standard_executable
+    if ale#Var(a:buffer, 'javascript_standard_use_global')
+        return ale#Var(a:buffer, 'javascript_standard_executable')
     endif
 
-    return ale#util#ResolveLocalPath(
+    return ale#path#ResolveLocalPath(
     \   a:buffer,
     \   'node_modules/.bin/standard',
-    \   g:ale_javascript_standard_executable
+    \   ale#Var(a:buffer, 'javascript_standard_executable')
     \)
 endfunction
 
 function! ale_linters#javascript#standard#GetCommand(buffer) abort
     return ale_linters#javascript#standard#GetExecutable(a:buffer)
-    \   . ' ' . g:ale_javascript_standard_options
+    \   . ' ' . ale#Var(a:buffer, 'javascript_standard_options')
     \   . ' --stdin %s'
 endfunction
 
@@ -37,13 +37,7 @@ function! ale_linters#javascript#standard#Handle(buffer, lines) abort
     let l:pattern = '^.*:\(\d\+\):\(\d\+\): \(.\+\)$'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            continue
-        endif
-
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
         let l:type = 'Error'
         let l:text = l:match[3]
 

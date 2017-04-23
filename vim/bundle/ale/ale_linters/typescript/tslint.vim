@@ -7,11 +7,18 @@ let g:ale_typescript_tslint_executable =
 let g:ale_typescript_tslint_config_path =
 \   get(g:, 'ale_typescript_tslint_config_path', '')
 
+let g:ale_typescript_tslint_use_global =
+\   get(g:, 'ale_typescript_tslint_use_global', 0)
+
 function! ale_linters#typescript#tslint#GetExecutable(buffer) abort
-    return ale#util#ResolveLocalPath(
+    if ale#Var(a:buffer, 'typescript_tslint_use_global')
+        return ale#Var(a:buffer, 'typescript_tslint_executable')
+    endif
+
+    return ale#path#ResolveLocalPath(
     \   a:buffer,
     \   'node_modules/.bin/tslint',
-    \   g:ale_typescript_tslint_executable
+    \   ale#Var(a:buffer, 'typescript_tslint_executable')
     \)
 endfunction
 
@@ -25,24 +32,15 @@ function! ale_linters#typescript#tslint#Handle(buffer, lines) abort
     let l:pattern = '.\+' . l:ext . '\[\(\d\+\), \(\d\+\)\]: \(.\+\)'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            continue
-        endif
-
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
         let l:line = l:match[1] + 0
         let l:column = l:match[2] + 0
-        let l:type = 'E'
         let l:text = l:match[3]
 
         call add(l:output, {
-        \   'bufnr': a:buffer,
         \   'lnum': l:line,
         \   'col': l:column,
         \   'text': l:text,
-        \   'type': l:type,
         \})
     endfor
 
@@ -50,18 +48,18 @@ function! ale_linters#typescript#tslint#Handle(buffer, lines) abort
 endfunction
 
 function! ale_linters#typescript#tslint#BuildLintCommand(buffer) abort
-    let g:ale_typescript_tslint_config_path =
-    \   empty(g:ale_typescript_tslint_config_path)
-    \   ? ale#util#FindNearestFile(a:buffer, 'tslint.json')
-    \   : g:ale_typescript_tslint_config_path
+    let l:tslint_config_path = ale#path#ResolveLocalPath(
+    \   a:buffer,
+    \   'tslint.json',
+    \   ale#Var(a:buffer, 'typescript_tslint_config_path')
+    \)
 
-    let l:tslint_options =
-    \   empty(g:ale_typescript_tslint_config_path)
-    \   ? ''
-    \   : '-c ' . fnameescape(g:ale_typescript_tslint_config_path)
+    let l:tslint_config_option = !empty(l:tslint_config_path)
+    \   ? '-c ' . fnameescape(l:tslint_config_path)
+    \   : ''
 
     return ale_linters#typescript#tslint#GetExecutable(a:buffer)
-    \   . ' ' . l:tslint_options
+    \   . ' ' . l:tslint_config_option
     \   . ' %t'
 endfunction
 

@@ -139,6 +139,8 @@ endfunction
 "{{{1 function! s:Setup()
 function! s:Setup()
     if index(g:indentLine_fileTypeExclude, &filetype) isnot -1
+        let &l:concealcursor = ""
+        let &l:conceallevel = "0"
         return
     endif
 
@@ -198,16 +200,17 @@ endfunction
 "{{{1 augroup indentLine
 augroup indentLine
     autocmd!
-    autocmd BufWinEnter * call <SID>Setup()
+    autocmd BufWinEnter,BufEnter * call <SID>Setup()
     autocmd User * if exists("b:indentLine_enabled") && b:indentLine_enabled ||
                     \ exists("b:indentLine_leadingSpaceEnabled") && b:indentLine_leadingSpaceEnabled |
                     \ call <SID>Setup() |
                     \ endif
 
-    autocmd BufRead,BufNewFile,ColorScheme,Syntax * call <SID>InitColor()
+    autocmd BufRead,BufNewFile,ColorScheme * call <SID>InitColor()
     autocmd BufUnload * let b:indentLine_enabled = 0 | let b:indentLine_leadingSpaceEnabled = 0
     autocmd SourcePre $VIMRUNTIME/syntax/nosyntax.vim doautocmd indentLine BufUnload
     autocmd FileChangedShellPost * doautocmd indentLine BufUnload | call <SID>Setup()
+    autocmd Syntax * doautocmd indentLine BufUnload | call <SID>Setup()
 augroup END
 
 "{{{1 commands

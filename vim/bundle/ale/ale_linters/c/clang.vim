@@ -14,7 +14,7 @@ function! ale_linters#c#clang#GetCommand(buffer) abort
     "  headers in the same directory.
     return 'clang -S -x c -fsyntax-only '
     \   . '-iquote ' . fnameescape(fnamemodify(bufname(a:buffer), ':p:h'))
-    \   . ' ' . g:ale_c_clang_options . ' -'
+    \   . ' ' . ale#Var(a:buffer, 'c_clang_options') . ' -'
 endfunction
 
 call ale#linter#Define('c', {
@@ -22,5 +22,5 @@ call ale#linter#Define('c', {
 \   'output_stream': 'stderr',
 \   'executable': 'clang',
 \   'command_callback': 'ale_linters#c#clang#GetCommand',
-\   'callback': 'ale#handlers#HandleGCCFormat',
+\   'callback': 'ale#handlers#gcc#HandleGCCFormat',
 \})

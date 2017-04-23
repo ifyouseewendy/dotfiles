@@ -20,22 +20,22 @@ In other words, this plugin allows you to lint while you type.
 1. [Supported Languages and Tools](#supported-languages)
 2. [Usage](#usage)
 3. [Installation](#installation)
- 1. [Installation with Pathogen](#installation-with-pathogen)
- 2. [Installation with Vundle](#installation-with-vundle)
- 3. [Manual Installation](#manual-installation)
+    1. [Installation with Pathogen](#installation-with-pathogen)
+    2. [Installation with Vundle](#installation-with-vundle)
+    3. [Manual Installation](#manual-installation)
 4. [Contributing](#contributing)
 5. [FAQ](#faq)
- 1. [How do I disable particular linters?](#faq-disable-linters)
- 2. [How can I keep the sign gutter open?](#faq-disable-linters)
- 3. [How can I change the signs ALE uses?](#faq-change-signs)
- 4. [How can I show errors or warnings in my statusline?](#faq-statusline)
- 5. [How can I change the format for echo messages?](#faq-echo-format)
- 6. [How can I execute some code when ALE stops linting?](#faq-autocmd)
- 7. [How can I navigate between errors quickly?](#faq-navigation)
- 8. [How can I run linters only when I save files?](#faq-lint-on-save)
- 9. [How can I use the quickfix list instead of the loclist?](#faq-quickfix)
- 10. [How can I check JSX files with both stylelint and eslint?](#faq-jsx-stylelint-eslint)
- 11. [Will this plugin eat all of my laptop battery power?](#faq-my-battery-is-sad)
+    1. [How do I disable particular linters?](#faq-disable-linters)
+    2. [How can I keep the sign gutter open?](#faq-keep-signs)
+    3. [How can I change the signs ALE uses?](#faq-change-signs)
+    4. [How can I show errors or warnings in my statusline?](#faq-statusline)
+    5. [How can I change the format for echo messages?](#faq-echo-format)
+    6. [How can I execute some code when ALE stops linting?](#faq-autocmd)
+    7. [How can I navigate between errors quickly?](#faq-navigation)
+    8. [How can I run linters only when I save files?](#faq-lint-on-save)
+    9. [How can I use the quickfix list instead of the loclist?](#faq-quickfix)
+    10. [How can I check JSX files with both stylelint and eslint?](#faq-jsx-stylelint-eslint)
+    11. [Will this plugin eat all of my laptop battery power?](#faq-my-battery-is-sad)
 
 <a name="supported-languages"></a>
 
@@ -58,11 +58,12 @@ name. That seems to be the fairest way to arrange this table.
 | Bash | [-n flag](https://www.gnu.org/software/bash/manual/bash.html#index-set), [shellcheck](https://www.shellcheck.net/) |
 | Bourne Shell | [-n flag](http://linux.die.net/man/1/sh), [shellcheck](https://www.shellcheck.net/) |
 | C | [cppcheck](http://cppcheck.sourceforge.net), [gcc](https://gcc.gnu.org/), [clang](http://clang.llvm.org/)|
-| C++ (filetype cpp) | [clang](http://clang.llvm.org/), [clangtidy](http://clang.llvm.org/extra/clang-tidy/), [cppcheck] (http://cppcheck.sourceforge.net), [gcc](https://gcc.gnu.org/)|
+| C++ (filetype cpp) | [clang](http://clang.llvm.org/), [clangtidy](http://clang.llvm.org/extra/clang-tidy/), [cppcheck](http://cppcheck.sourceforge.net), [gcc](https://gcc.gnu.org/)|
 | C# | [mcs](http://www.mono-project.com/docs/about-mono/languages/csharp/) |
 | Chef | [foodcritic](http://www.foodcritic.io/) |
 | CMake | [cmakelint](https://github.com/richq/cmake-lint) |
 | CoffeeScript | [coffee](http://coffeescript.org/), [coffeelint](https://www.npmjs.com/package/coffeelint) |
+| Crystal | [crystal](https://crystal-lang.org/) |
 | CSS | [csslint](http://csslint.net/), [stylelint](https://github.com/stylelint/stylelint) |
 | Cython (pyrex filetype) | [cython](http://cython.org/) |
 | D | [dmd](https://dlang.org/dmd-linux.html) |
@@ -71,7 +72,7 @@ name. That seems to be the fairest way to arrange this table.
 | Elm | [elm-make](https://github.com/elm-lang/elm-make) |
 | Erlang | [erlc](http://erlang.org/doc/man/erlc.html) |
 | Fortran | [gcc](https://gcc.gnu.org/) |
-| Go | [gofmt -e](https://golang.org/cmd/gofmt/), [go vet](https://golang.org/cmd/vet/), [golint](https://godoc.org/github.com/golang/lint), [go build](https://golang.org/cmd/go/), [gosimple](https://github.com/dominikh/go-tools/tree/master/cmd/gosimple), [staticcheck](https://github.com/dominikh/go-tools/tree/master/cmd/staticcheck) |
+| Go | [gofmt -e](https://golang.org/cmd/gofmt/), [go vet](https://golang.org/cmd/vet/), [golint](https://godoc.org/github.com/golang/lint), [gometalinter](https://github.com/alecthomas/gometalinter), [go build](https://golang.org/cmd/go/), [gosimple](https://github.com/dominikh/go-tools/tree/master/cmd/gosimple), [staticcheck](https://github.com/dominikh/go-tools/tree/master/cmd/staticcheck) |
 | Haml | [haml-lint](https://github.com/brigade/haml-lint)
 | Handlebars | [ember-template-lint](https://github.com/rwjblue/ember-template-lint) |
 | Haskell | [ghc](https://www.haskell.org/ghc/), [hlint](https://hackage.haskell.org/package/hlint), [hdevtools](https://hackage.haskell.org/package/hdevtools) |
@@ -94,13 +95,15 @@ name. That seems to be the fairest way to arrange this table.
 | Puppet | [puppet](https://puppet.com), [puppet-lint](https://puppet-lint.com) |
 | Python | [flake8](http://flake8.pycqa.org/en/latest/), [mypy](http://mypy-lang.org/), [pylint](https://www.pylint.org/) |
 | reStructuredText | [proselint](http://proselint.com/)|
-| Ruby | [rubocop](https://github.com/bbatsov/rubocop), [ruby](https://www.ruby-lang.org) |
+| RPM spec | [rpmlint](https://github.com/rpm-software-management/rpmlint) (disabled by default; see `:help ale-integration-spec`) |
+| Ruby | [reek](https://github.com/troessner/reek), [rubocop](https://github.com/bbatsov/rubocop), [ruby](https://www.ruby-lang.org) |
 | Rust | [rustc](https://www.rust-lang.org/), cargo (see `:help ale-integration-rust` for configuration instructions) |
 | SASS | [sass-lint](https://www.npmjs.com/package/sass-lint), [stylelint](https://github.com/stylelint/stylelint) |
 | SCSS | [sass-lint](https://www.npmjs.com/package/sass-lint), [scss-lint](https://github.com/brigade/scss-lint), [stylelint](https://github.com/stylelint/stylelint) |
 | Scala | [scalac](http://scala-lang.org) |
 | Slim | [slim-lint](https://github.com/sds/slim-lint)
 | SML | [smlnj](http://www.smlnj.org/) |
+| SQL | [sqlint](https://github.com/purcell/sqlint) |
 | Swift | [swiftlint](https://swift.org/) |
 | Tex | [proselint](http://proselint.com/) |
 | Texinfo | [proselint](http://proselint.com/)|
@@ -216,6 +219,9 @@ If you are interested in the general direction of the project, check out the
 [wiki home page](https://github.com/w0rp/ale/wiki). The wiki includes a
 Roadmap for the future, and more.
 
+If you'd liked to discuss the project more directly, check out the `#vim-ale` channel
+on Freenode. Web chat is available [here](https://webchat.freenode.net/?channels=vim-ale).
+
 <a name="faq"></a>
 
 ## 5. FAQ
@@ -309,9 +315,9 @@ let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 There are 3 global options that allow customizing the echoed message.
 
 - `g:ale_echo_msg_format` where:
-  * `%s` is the error message itself
-  * `%linter%` is the linter name
-  * `%severity` is the severity type
+    * `%s` is the error message itself
+    * `%linter%` is the linter name
+    * `%severity` is the severity type
 - `g:ale_echo_msg_error_str` is the string used for error severity.
 - `g:ale_echo_msg_warning_str` is the string used for warning severity.
 

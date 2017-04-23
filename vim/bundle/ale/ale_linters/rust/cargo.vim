@@ -4,7 +4,7 @@
 let g:ale_rust_cargo_use_check = get(g:, 'ale_rust_cargo_use_check', 0)
 
 function! ale_linters#rust#cargo#GetCargoExecutable(bufnr) abort
-    if ale#util#FindNearestFile(a:bufnr, 'Cargo.toml') !=# ''
+    if ale#path#FindNearestFile(a:bufnr, 'Cargo.toml') !=# ''
         return 'cargo'
     else
         " if there is no Cargo.toml file, we don't use cargo even if it exists,
@@ -14,7 +14,7 @@ function! ale_linters#rust#cargo#GetCargoExecutable(bufnr) abort
 endfunction
 
 function! ale_linters#rust#cargo#GetCommand(buffer) abort
-    let l:command = g:ale_rust_cargo_use_check
+    let l:command = ale#Var(a:buffer, 'rust_cargo_use_check')
     \   ? 'check'
     \   : 'build'
 

@@ -1,15 +1,15 @@
 " Author: jwilliams108 <https://github.com/jwilliams108>
 " Description: phpcs for PHP files
 
+let g:ale_php_phpcs_standard = get(g:, 'ale_php_phpcs_standard', '')
+
 function! ale_linters#php#phpcs#GetCommand(buffer) abort
-    let l:command = 'phpcs -s --report=emacs --stdin-path=%s'
+    let l:standard = ale#Var(a:buffer, 'php_phpcs_standard')
+    let l:standard_option = !empty(l:standard)
+    \   ? '--standard=' . l:standard
+    \   : ''
 
-    " This option can be set to change the standard used by phpcs
-    if exists('g:ale_php_phpcs_standard')
-        let l:command .= ' --standard=' . g:ale_php_phpcs_standard
-    endif
-
-    return l:command
+    return 'phpcs -s --report=emacs --stdin-path=%s ' . l:standard_option
 endfunction
 
 function! ale_linters#php#phpcs#Handle(buffer, lines) abort
@@ -19,18 +19,11 @@ function! ale_linters#php#phpcs#Handle(buffer, lines) abort
     let l:pattern = '^.*:\(\d\+\):\(\d\+\): \(.\+\) - \(.\+\) \(\(.\+\)\)$'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            continue
-        endif
-
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
         let l:text = l:match[4]
         let l:type = l:match[3]
 
         call add(l:output, {
-        \   'bufnr': a:buffer,
         \   'lnum': l:match[1] + 0,
         \   'col': l:match[2] + 0,
         \   'text': l:text,

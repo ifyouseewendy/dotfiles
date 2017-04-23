@@ -11,12 +11,12 @@ let g:ale_javascript_eslint_use_global =
 \   get(g:, 'ale_javascript_eslint_use_global', 0)
 
 function! ale_linters#javascript#eslint#GetExecutable(buffer) abort
-    if g:ale_javascript_eslint_use_global
-        return g:ale_javascript_eslint_executable
+    if ale#Var(a:buffer, 'javascript_eslint_use_global')
+        return ale#Var(a:buffer, 'javascript_eslint_executable')
     endif
 
     " Look for the kinds of paths that create-react-app generates first.
-    let l:executable = ale#util#ResolveLocalPath(
+    let l:executable = ale#path#ResolveLocalPath(
     \   a:buffer,
     \   'node_modules/eslint/bin/eslint.js',
     \   ''
@@ -26,22 +26,23 @@ function! ale_linters#javascript#eslint#GetExecutable(buffer) abort
         return l:executable
     endif
 
-    return ale#util#ResolveLocalPath(
+    return ale#path#ResolveLocalPath(
     \   a:buffer,
     \   'node_modules/.bin/eslint',
-    \   g:ale_javascript_eslint_executable
+    \   ale#Var(a:buffer, 'javascript_eslint_executable')
     \)
 endfunction
 
 function! ale_linters#javascript#eslint#GetCommand(buffer) abort
     return ale_linters#javascript#eslint#GetExecutable(a:buffer)
-    \   . ' ' . g:ale_javascript_eslint_options
+    \   . ' ' . ale#Var(a:buffer, 'javascript_eslint_options')
     \   . ' -f unix --stdin --stdin-filename %s'
 endfunction
 
 function! ale_linters#javascript#eslint#Handle(buffer, lines) abort
     let l:config_error_pattern = '\v^ESLint couldn''t find a configuration file'
     \   . '|^Cannot read config file'
+    \   . '|^.*Configuration for rule .* is invalid'
 
     " Look for a message in the first few lines which indicates that
     " a configuration file couldn't be found.
@@ -66,18 +67,7 @@ function! ale_linters#javascript#eslint#Handle(buffer, lines) abort
     let l:parsing_pattern = '^.*:\(\d\+\):\(\d\+\): \(.\+\)$'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            " Try the parsing pattern for parsing errors.
-            let l:match = matchlist(l:line, l:parsing_pattern)
-        endif
-
-        if len(l:match) == 0
-            continue
-        endif
-
+    for l:match in ale#util#GetMatches(a:lines, [l:pattern, l:parsing_pattern])
         let l:type = 'Error'
         let l:text = l:match[3]
 

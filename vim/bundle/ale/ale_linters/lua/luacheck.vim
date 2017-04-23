@@ -4,6 +4,15 @@
 let g:ale_lua_luacheck_executable =
 \   get(g:, 'ale_lua_luacheck_executable', 'luacheck')
 
+function! ale_linters#lua#luacheck#GetExecutable(buffer) abort
+    return ale#Var(a:buffer, 'lua_luacheck_executable')
+endfunction
+
+function! ale_linters#lua#luacheck#GetCommand(buffer) abort
+    return ale_linters#lua#luacheck#GetExecutable(a:buffer)
+    \   . ' --formatter plain --codes --filename %s -'
+endfunction
+
 function! ale_linters#lua#luacheck#Handle(buffer, lines) abort
     " Matches patterns line the following:
     "
@@ -12,15 +21,8 @@ function! ale_linters#lua#luacheck#Handle(buffer, lines) abort
     let l:pattern = '^.*:\(\d\+\):\(\d\+\): (\([WE]\)\d\+) \(.\+\)$'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            continue
-        endif
-
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
         call add(l:output, {
-        \   'bufnr': a:buffer,
         \   'lnum': l:match[1] + 0,
         \   'col': l:match[2] + 0,
         \   'text': l:match[4],
@@ -33,7 +35,7 @@ endfunction
 
 call ale#linter#Define('lua', {
 \   'name': 'luacheck',
-\   'executable': g:ale_lua_luacheck_executable,
-\   'command': g:ale_lua_luacheck_executable . ' --formatter plain --codes --filename %s -',
+\   'executable_callback': 'ale_linters#lua#luacheck#GetExecutable',
+\   'command_callback': 'ale_linters#lua#luacheck#GetCommand',
 \   'callback': 'ale_linters#lua#luacheck#Handle',
 \})

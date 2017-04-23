@@ -6,7 +6,7 @@ let g:ale_cpp_clangtidy_options =
 \   get(g:, 'ale_cpp_clangtidy_options', '-std=c++14 -Wall')
 
 function! ale_linters#cpp#clangtidy#GetCommand(buffer) abort
-    return 'clang-tidy %t -- ' . g:ale_cpp_clangtidy_options
+    return 'clang-tidy %t -- ' . ale#Var(a:buffer, 'cpp_clangtidy_options')
 endfunction
 
 call ale#linter#Define('cpp', {
@@ -14,5 +14,5 @@ call ale#linter#Define('cpp', {
 \   'output_stream': 'stdout',
 \   'executable': 'clang-tidy',
 \   'command_callback': 'ale_linters#cpp#clangtidy#GetCommand',
-\   'callback': 'ale#handlers#HandleGCCFormat',
+\   'callback': 'ale#handlers#gcc#HandleGCCFormat',
 \})

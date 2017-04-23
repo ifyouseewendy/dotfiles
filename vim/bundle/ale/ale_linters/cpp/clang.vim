@@ -11,7 +11,7 @@ function! ale_linters#cpp#clang#GetCommand(buffer) abort
     "  headers in the same directory.
     return 'clang++ -S -x c++ -fsyntax-only '
     \   . '-iquote ' . fnameescape(fnamemodify(bufname(a:buffer), ':p:h'))
-    \   . ' ' . g:ale_cpp_clang_options . ' -'
+    \   . ' ' . ale#Var(a:buffer, 'cpp_clang_options') . ' -'
 endfunction
 
 call ale#linter#Define('cpp', {
@@ -19,5 +19,5 @@ call ale#linter#Define('cpp', {
 \   'output_stream': 'stderr',
 \   'executable': 'clang++',
 \   'command_callback': 'ale_linters#cpp#clang#GetCommand',
-\   'callback': 'ale#handlers#HandleGCCFormat',
+\   'callback': 'ale#handlers#gcc#HandleGCCFormat',
 \})

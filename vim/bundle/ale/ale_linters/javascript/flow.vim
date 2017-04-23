@@ -8,19 +8,19 @@ let g:ale_javascript_flow_use_global =
 \   get(g:, 'ale_javascript_flow_use_global', 0)
 
 function! ale_linters#javascript#flow#GetExecutable(buffer) abort
-    if g:ale_javascript_flow_use_global
-        return g:ale_javascript_flow_executable
+    if ale#Var(a:buffer, 'javascript_flow_use_global')
+        return ale#Var(a:buffer, 'javascript_flow_executable')
     endif
 
-    return ale#util#ResolveLocalPath(
+    return ale#path#ResolveLocalPath(
     \   a:buffer,
     \   'node_modules/.bin/flow',
-    \   g:ale_javascript_flow_executable
+    \   ale#Var(a:buffer, 'javascript_flow_executable')
     \)
 endfunction
 
 function! ale_linters#javascript#flow#GetCommand(buffer) abort
-    let l:flow_config = ale#util#FindNearestFile(a:buffer, '.flowconfig')
+    let l:flow_config = ale#path#FindNearestFile(a:buffer, '.flowconfig')
 
     if empty(l:flow_config)
         " Don't run Flow if we can't find a .flowconfig file.
@@ -48,8 +48,10 @@ function! ale_linters#javascript#flow#Handle(buffer, lines) abort
         let l:col = 0
 
         for l:message in l:error.message
-            " Comments have no line of column information
-            if has_key(l:message, 'loc') && l:line ==# 0
+            " Comments have no line of column information, so we skip them.
+            " In certain cases, `l:message.loc.source` points to a different path
+            " than the buffer one, thus we skip this loc information too.
+            if has_key(l:message, 'loc') && l:line ==# 0 && l:message.loc.source ==# expand('#' . a:buffer . ':p')
                 let l:line = l:message.loc.start.line + 0
                 let l:col = l:message.loc.start.column + 0
             endif
@@ -66,7 +68,6 @@ function! ale_linters#javascript#flow#Handle(buffer, lines) abort
         endif
 
         call add(l:output, {
-        \   'bufnr': a:buffer,
         \   'lnum': l:line,
         \   'col': l:col,
         \   'text': l:text,
