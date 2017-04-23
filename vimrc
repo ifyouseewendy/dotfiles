@@ -46,14 +46,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmux-plugins/vim-tmux-focus-events' " Makes the autoread option work properly for terminal vim
 Plugin 'kshenoy/vim-signature'              " Plugin to toggle, display and navigate marks
 Plugin 'elmcast/elm-vim'                    " Elm plugin for Vim
-Plugin 'ctrlpvim/ctrlp.vim'                 " Fuzzy file, buffer, mru, tag, etc finder
-Plugin 'ivalkeen/vim-ctrlp-tjump'           " CtrlP extension for fuzzy-search in tag matches (:tjump replacement).
-Plugin 'FelikZ/ctrlp-py-matcher'            " Fast vim CtrlP matcher based on python
 Plugin 'pangloss/vim-javascript'            " Vastly improved Javascript indentation and syntax support in Vim.
 Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
 Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
 Plugin 'Chiel92/vim-autoformat'             " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
+Plugin 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder written in Go
 
 " == Deprecated
 "
@@ -573,31 +571,6 @@ let g:SignatureMap = {
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
 " }}}
-
-" ctrlp.vim"{{{
-silent! nnoremap <unique> <silent> <leader>bb :CtrlPBuffer<CR>
-silent! nnoremap <unique> <silent> <leader>cl :CtrlPClearCache<CR>
-silent! nnoremap <unique> <silent> <leader>dt :CtrlPTag<CR>
-silent! nnoremap <unique> <silent> <leader>f :CtrlPCurWD<CR>
-let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_by_filename = 1
-let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
-" let g:ctrlp_map = '<\-t>'
-let g:ctrlp_max_files = 0
-let g:ctrlp_regexp = 1
-let g:ctrlp_working_path_mode = 'ra'
-let g:ctrlp_extensions = [ 'ctrlp-filetpe' ]
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_switch_buffer = 0
-let g:ctrlp_mruf_max = 0
-let g:ctrlp_mruf_relative = 1
-nnoremap <c-]> :CtrlPtjump<cr>
-vnoremap <c-]> :CtrlPtjumpVisual<cr>
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v(_build|build|bower_components|deps|dist|node_modules|public|tmp|vendor\/bundle|elm-stuff|node_modules)$',
-  \ }
-"}}}
 
 " ale.vim"{{{
 " Run linters only a file is saved
