@@ -45,5 +45,10 @@ export NVIM_TUI_ENABLE_TRUE_COLOR=1
 # Support dev
 if [[ -f /opt/dev/dev.sh ]]; then source /opt/dev/dev.sh; fi
 
-# Install iterm2 shell integration
-# test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+# Enable fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_OPTS='--reverse --bind ctrl-d:page-down,ctrl-u:page-up'
+export FZF_TMUX=1
+export FZF_TMUX_HEIGHT=30%
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_COMMAND='ag -g ""'
