@@ -575,6 +575,7 @@ let g:elm_format_autosave = 1
 " ale.vim"{{{
 " Run linters only a file is saved
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
 
 " Use quickfix instead of loclist
 " let g:ale_set_loclist = 0
