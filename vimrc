@@ -480,8 +480,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 map <Leader>vr :call VimuxRunCommand("clear; dotenv rspec " . bufname("%"))<CR>
 map <Leader>vs :call VimuxRunCommand("clear; dotenv rspec " . bufname("%") . ":" . line('.'))<CR>
 " Run the current file with minitest
-map <Leader>vl :call VimuxRunCommand("clear; rake test TEST=" . bufname("%") . ":" . line('.'))<CR>
-map <Leader>vt :call VimuxRunCommand("clear; rake test TEST=" . bufname("%"))<CR>
+map <Leader>vl :call VimuxRunCommand("clear; rails test " . bufname("%") . ":" . line('.'))<CR>
+map <Leader>vt :call VimuxRunCommand("clear; rails test " . bufname("%"))<CR>
 
 " Prompt for a command to run
 map <Leader>vp :VimuxPromptCommand<CR>
@@ -608,9 +608,9 @@ let g:jsx_ext_required = 0
 "{{{fzf
 set rtp+=/usr/local/opt/fzf
 
-silent! nnoremap <unique> <silent> <leader>ff :FZF<CR>
-silent! nnoremap <unique> <silent> <leader>fb :Buffers<CR>
-silent! nnoremap <unique> <silent> <leader>fg :Commits<CR>
+silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
+silent! nnoremap <unique> <silent> <leader>b :Buffers<CR>
+" silent! nnoremap <unique> <silent> <leader>fg :Commits<CR>
 " Maps, Tags, BCommits are also useful ones.
 
 " [Buffers] Jump to the existing window if possible
