@@ -619,3 +619,7 @@ let g:fzf_buffers_jump = 1
 " [[B]Commits] Customize the options used by 'git log'
 let g:fzf_commits_log_options ='--pretty=format:"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset" --graph --date=short'
 "}}}
+
+"{{{vim-javascript
+let g:javascript_plugin_flow = 1
+"}}}
