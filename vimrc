@@ -164,7 +164,6 @@ autocmd FileType elm set ai ts=4 sw=4 sts=4 et
 autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
 
 " Filetype colorschemes
-autocmd BufWinEnter,FileType javascript colorscheme OceanicNext
 
 " nvim
 if has('nvim')
@@ -206,7 +205,6 @@ imap <C-j> <Down>
 imap <C-l> <Right>
 imap <C-h> <Left>
 
-
 " Buffer and tab operations with <s-hjkl>
 nnoremap <s-h> :bprevious<cr>
 nnoremap <s-l> :bnext<cr>
@@ -245,6 +243,7 @@ noremap Q @q
 " Auto center on matched string.
 noremap n nzz
 noremap N Nzz
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS with LEADERSHIP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -279,6 +278,9 @@ vmap <Leader>P "+P
 " Quick window split
 map <leader>sp :split<cr>
 map <leader>vs :vsplit<cr>
+
+" Select entire line without newline
+nnoremap <leader>v<CR> 0vg_
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
