@@ -479,8 +479,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 
 " vimux "{{{
 " Run the current file with rspec
-map <Leader>vr :call VimuxRunCommand("clear; dotenv rspec " . bufname("%"))<CR>
-map <Leader>vs :call VimuxRunCommand("clear; dotenv rspec " . bufname("%") . ":" . line('.'))<CR>
+map <Leader>vr :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+map <Leader>vs :call VimuxRunCommand("clear; rspec " . bufname("%") . ":" . line('.'))<CR>
 " Run the current file with minitest
 map <Leader>vl :call VimuxRunCommand("clear; rails test " . bufname("%") . ":" . line('.'))<CR>
 map <Leader>vt :call VimuxRunCommand("clear; rails test " . bufname("%"))<CR>
@@ -577,6 +577,7 @@ let g:elm_format_autosave = 1
 " ale.vim"{{{
 " Run linters only a file is saved
 let g:ale_lint_on_text_changed = 'never'
+" Don't want linters to run on opening a file
 let g:ale_lint_on_enter = 0
 
 " Use quickfix instead of loclist
@@ -584,16 +585,24 @@ let g:ale_lint_on_enter = 0
 " let g:ale_set_quickfix = 1
 
 " Open list to show warnings or errors
-let g:ale_open_list = 1
-" let g:ale_keep_list_window_open = 1
+" let g:ale_open_list = 1
+" let g:ale_keep_list_window_open = 0
 
 " Enable particular linters
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'scss': []
+\   'javascript': ['stylelint', 'eslint'],
+\   'scss': ['stylelint'],
+\   'yaml': [],
 \}
 
+" Use stylelint to lint jsx
+" let g:ale_linter_aliases = {'jsx': 'css'}
+
+" Message format
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+nmap <silent> <leader>j <Plug>(ale_next_wrap)
+nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 "}}}
 
 "{{{vim-autoformat
