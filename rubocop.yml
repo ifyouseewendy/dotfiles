@@ -94,7 +94,7 @@ Rails/Validation:
 # Customization
 
 Metrics/LineLength:
-  Max: 90
+  Max: 100
   AllowHeredoc: true
   AllowURI: true
   URISchemes:
