@@ -49,7 +49,6 @@ Plugin 'elmcast/elm-vim'                    " Elm plugin for Vim
 Plugin 'pangloss/vim-javascript'            " Vastly improved Javascript indentation and syntax support in Vim.
 Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
 Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
-Plugin 'Chiel92/vim-autoformat'             " Provide easy code formatting in Vim by integrating existing code formatters.
 Plugin 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
 Plugin 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder written in Go
 
@@ -603,13 +602,6 @@ let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
-"}}}
-
-"{{{vim-autoformat
-noremap == :Autoformat<CR>
-
-let g:formatters_javascript = ['xo_javascript']
-let g:formatdef_xo_javascript = '"xo --fix --stdin"'
 "}}}
 
 "{{{vim-jsx
