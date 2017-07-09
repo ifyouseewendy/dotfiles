@@ -71,7 +71,6 @@ Plugin 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder w
 call vundle#end()
 filetype plugin indent on
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC CONFIGURATION
 """""""""""""""""""""""""""""""""""""""""""""""""""
@@ -153,10 +152,11 @@ autocmd BufNewFile,BufRead *.thor set filetype=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
 autocmd BufNewFile,BufRead Capfile set filetype=ruby
 autocmd BufNewFile,BufRead pryrc set filetype=ruby
-autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.god set filetype=ruby
+autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
+autocmd BufNewFile,BufRead *.json set filetype=json
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType elm set ai ts=4 sw=4 sts=4 et
@@ -402,31 +402,6 @@ let NERDTreeWinSize = 26
 let NERDTreeAutoCenter=1
 map <F1> :NERDTreeToggle<CR>"}}}
 
-" syntastic "{{{
-" set statusline+=\ %#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-"
-" let g:syntastic_ruby_checkers       = [ 'mri' ]
-" let g:syntastic_ruby_exec           = "/opt/rubies/2.3.3/bin/ruby"
-" let g:syntastic_ruby_mri_exec       = "/opt/rubies/2.3.3/bin/ruby"
-"
-" let g:syntastic_javascript_checkers = [ 'eslint' ]
-" " let g:syntastic_html_checkers       = [ 'jshint' ]
-" " let g:syntastic_css_checkers        = [ 'csslint' ]
-" " let g:syntastic_json_checkers       = [ 'jsonlint' ]
-"
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_auto_loc_list = 1
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_cursor_column = 0
-" let g:syntastic_enable_highlighting = 1
-" let g:syntastic_enable_signs = 1
-" let g:syntastic_auto_jump = 0
-" let g:syntastic_mode_map = { 'mode': 'active',
-"                            \ 'passive_filetypes': ['tex'] }"}}}
-
 " ag.vim "{{{
 let g:ag_working_path_mode="r" "always start searching from your project root instead of the cwd
 if executable('Ag')
@@ -471,7 +446,12 @@ map <leader>gn :GitGutterNextHunk<cr>
 map <leader>gp :GitGutterPrevHunk<cr>
 map <leader>ga :GitGutterStageHunk<cr>
 map <leader>gr :GitGutterRevertHunk<cr>
-map <leader>gv :GitGutterPreviewHunk<cr>"}}}
+map <leader>gv :GitGutterPreviewHunk<cr>
+
+let g:gitgutter_map_keys = 0 " No need to map keys
+let g:gitgutter_realtime = 0
+let g:gitgutter_eager = 0
+" }}}
 
 " supertab"{{{
 let g:SuperTabDefaultCompletionType = "<c-n>""}}}
@@ -502,17 +482,6 @@ map <Leader>vx :VimuxInterruptRunner<CR>"}}}
 " vim-expand-region"{{{
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)"}}}
-
-" vim-fugitive"{{{
-" :Gblame
-" :Gbrowse
-" }}}
-
-" vim-gitgutter"{{{
-let g:gitgutter_map_keys = 0 " No need to map keys
-let g:gitgutter_realtime = 0
-let g:gitgutter_eager = 0
-" }}}
 
 " indentLine"{{{
 let g:indentLine_color_term=239
