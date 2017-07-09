@@ -52,3 +52,6 @@ export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=30%
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+# Enable yarn global
+export PATH="`yarn global bin`: $PATH"
