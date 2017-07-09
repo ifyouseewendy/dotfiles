@@ -156,7 +156,6 @@ autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
-autocmd BufNewFile,BufRead *.json set filetype=json
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType elm set ai ts=4 sw=4 sts=4 et
@@ -560,17 +559,28 @@ let g:ale_lint_on_enter = 0
 let g:ale_linters = {
 \   'javascript': ['stylelint', 'eslint'],
 \   'scss': ['stylelint'],
-\   'yaml': [],
 \}
 
 " Use stylelint to lint jsx
 " let g:ale_linter_aliases = {'jsx': 'css'}
 
+" Config :ALEFix to use prettier
+let g:ale_fixers = {
+\  'javascript': ['prettier'],
+\}
+
+" Run fixer on save
+let g:ale_fix_on_save = 1
+let g:ale_javascript_prettier_options = "--trailing-comma all"
+
 " Message format
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 
-nmap <silent> <leader>j <Plug>(ale_next_wrap)
-nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <leader>lj <Plug>(ale_next_wrap)
+nmap <silent> <leader>lk <Plug>(ale_previous_wrap)
+
+" nmap <F8> <Plug>(ale_fix)
+nmap <silent> <leader>= <Plug>(ale_fix)
 "}}}
 
 "{{{vim-jsx
