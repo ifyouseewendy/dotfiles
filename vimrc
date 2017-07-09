@@ -559,7 +559,12 @@ let g:ale_lint_on_enter = 0
 let g:ale_linters = {
 \   'javascript': ['stylelint', 'eslint'],
 \   'scss': ['stylelint'],
+\   'json': ['jsonlint'],
+\   'yaml': ['yamllint'],
+\   'ruby': ['ruby', 'rubocop'],
 \}
+
+let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
 
 " Use stylelint to lint jsx
 " let g:ale_linter_aliases = {'jsx': 'css'}
@@ -567,10 +572,12 @@ let g:ale_linters = {
 " Config :ALEFix to use prettier
 let g:ale_fixers = {
 \  'javascript': ['prettier'],
+\  'json': ['prettier'],
+\  'ruby': ['rubocop'],
 \}
 
 " Run fixer on save
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_javascript_prettier_options = "--trailing-comma all"
 
 " Message format
