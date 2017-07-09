@@ -7,6 +7,8 @@ let s:global_variable_list = [
 \    'ale_echo_msg_format',
 \    'ale_echo_msg_warning_str',
 \    'ale_enabled',
+\    'ale_fix_on_save',
+\    'ale_fixers',
 \    'ale_keep_list_window_open',
 \    'ale_lint_delay',
 \    'ale_lint_on_enter',
@@ -51,12 +53,20 @@ endfunction
 function! s:EchoLinterVariables(variable_list) abort
     for l:key in a:variable_list
         echom 'let g:' . l:key . ' = ' . string(g:[l:key])
+
+        if has_key(b:, l:key)
+            echom 'let b:' . l:key . ' = ' . string(b:[l:key])
+        endif
     endfor
 endfunction
 
 function! s:EchoGlobalVariables() abort
     for l:key in s:global_variable_list
         echom 'let g:' . l:key . ' = ' . string(get(g:, l:key, v:null))
+
+        if has_key(b:, l:key)
+            echom 'let b:' . l:key . ' = ' . string(b:[l:key])
+        endif
     endfor
 endfunction
 
@@ -97,6 +107,22 @@ function! s:EchoCommandHistory() abort
     endfor
 endfunction
 
+function! s:EchoLinterAliases(all_linters) abort
+    let l:first = 1
+
+    for l:linter in a:all_linters
+        if !empty(l:linter.aliases)
+            if l:first
+                echom '   Linter Aliases:'
+            endif
+
+            let l:first = 0
+
+            echom string(l:linter.name) . ' -> ' . string(l:linter.aliases)
+        endif
+    endfor
+endfunction
+
 function! ale#debugging#Info() abort
     let l:filetype = &filetype
 
@@ -112,8 +138,8 @@ function! ale#debugging#Info() abort
         call extend(l:all_linters, ale#linter#GetAll(l:aliased_filetype))
     endfor
 
-    let l:all_names = map(l:all_linters, 'v:val[''name'']')
-    let l:enabled_names = map(l:enabled_linters, 'v:val[''name'']')
+    let l:all_names = map(copy(l:all_linters), 'v:val[''name'']')
+    let l:enabled_names = map(copy(l:enabled_linters), 'v:val[''name'']')
 
     " Load linter variables to display
     " This must be done after linters are loaded.
@@ -121,6 +147,7 @@ function! ale#debugging#Info() abort
 
     echom ' Current Filetype: ' . l:filetype
     echom 'Available Linters: ' . string(l:all_names)
+    call s:EchoLinterAliases(l:all_linters)
     echom '  Enabled Linters: ' . string(l:enabled_names)
     echom ' Linter Variables:'
     echom ''

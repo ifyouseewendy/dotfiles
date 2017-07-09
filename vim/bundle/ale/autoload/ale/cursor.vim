@@ -7,15 +7,13 @@ function! s:GetMessage(linter, type, text) abort
     let l:type = a:type ==# 'E'
     \   ? g:ale_echo_msg_error_str
     \   : g:ale_echo_msg_warning_str
-    " Capitalize the 1st character
-    let l:text = toupper(a:text[0]) . a:text[1:-1]
 
     " Replace handlers if they exist
     for [l:k, l:v] in items({'linter': a:linter, 'severity': l:type})
         let l:msg = substitute(l:msg, '\V%' . l:k . '%', l:v, '')
     endfor
 
-    return printf(l:msg, l:text)
+    return printf(l:msg, a:text)
 endfunction
 
 function! s:EchoWithShortMess(setting, message) abort
@@ -68,6 +66,10 @@ function! s:StopCursorTimer() abort
 endfunction
 
 function! ale#cursor#EchoCursorWarning(...) abort
+    if ale#ShouldDoNothing()
+        return
+    endif
+
     " Only echo the warnings in normal mode, otherwise we will get problems.
     if mode() !=# 'n'
         return
@@ -110,6 +112,10 @@ function! ale#cursor#EchoCursorWarningWithDelay() abort
 endfunction
 
 function! ale#cursor#ShowCursorDetail() abort
+    if ale#ShouldDoNothing()
+        return
+    endif
+
     " Only echo the warnings in normal mode, otherwise we will get problems.
     if mode() !=# 'n'
         return

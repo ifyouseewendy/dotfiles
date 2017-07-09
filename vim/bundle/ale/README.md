@@ -15,6 +15,9 @@ back to a filesystem.
 
 In other words, this plugin allows you to lint while you type.
 
+ALE also supports fixing problems with files by running commands in the
+background with a command `ALEFix`.
+
 ## Table of Contents
 
 1. [Supported Languages and Tools](#supported-languages)
@@ -55,10 +58,11 @@ name. That seems to be the fairest way to arrange this table.
 | ASM | [gcc](https://gcc.gnu.org) |
 | Ansible | [ansible-lint](https://github.com/willthames/ansible-lint) |
 | AsciiDoc | [proselint](http://proselint.com/)|
+| Awk | [gawk](https://www.gnu.org/software/gawk/)|
 | Bash | [-n flag](https://www.gnu.org/software/bash/manual/bash.html#index-set), [shellcheck](https://www.shellcheck.net/) |
 | Bourne Shell | [-n flag](http://linux.die.net/man/1/sh), [shellcheck](https://www.shellcheck.net/) |
 | C | [cppcheck](http://cppcheck.sourceforge.net), [gcc](https://gcc.gnu.org/), [clang](http://clang.llvm.org/)|
-| C++ (filetype cpp) | [clang](http://clang.llvm.org/), [clangtidy](http://clang.llvm.org/extra/clang-tidy/), [cppcheck](http://cppcheck.sourceforge.net), [gcc](https://gcc.gnu.org/)|
+| C++ (filetype cpp) | [clang](http://clang.llvm.org/), [clangcheck](http://clang.llvm.org/docs/ClangCheck.html), [clangtidy](http://clang.llvm.org/extra/clang-tidy/), [cppcheck](http://cppcheck.sourceforge.net), [cpplint](https://github.com/google/styleguide/tree/gh-pages/cpplint), [gcc](https://gcc.gnu.org/)|
 | C# | [mcs](http://www.mono-project.com/docs/about-mono/languages/csharp/) |
 | Chef | [foodcritic](http://www.foodcritic.io/) |
 | CMake | [cmakelint](https://github.com/richq/cmake-lint) |
@@ -70,49 +74,57 @@ name. That seems to be the fairest way to arrange this table.
 | Dockerfile | [hadolint](https://github.com/lukasmartinelli/hadolint) |
 | Elixir | [credo](https://github.com/rrrene/credo), [dogma](https://github.com/lpil/dogma) |
 | Elm | [elm-make](https://github.com/elm-lang/elm-make) |
+| Erb | [erb](https://github.com/jeremyevans/erubi) |
 | Erlang | [erlc](http://erlang.org/doc/man/erlc.html) |
 | Fortran | [gcc](https://gcc.gnu.org/) |
+| FusionScript | [fusion-lint](https://github.com/RyanSquared/fusionscript) |
 | Go | [gofmt -e](https://golang.org/cmd/gofmt/), [go vet](https://golang.org/cmd/vet/), [golint](https://godoc.org/github.com/golang/lint), [gometalinter](https://github.com/alecthomas/gometalinter), [go build](https://golang.org/cmd/go/), [gosimple](https://github.com/dominikh/go-tools/tree/master/cmd/gosimple), [staticcheck](https://github.com/dominikh/go-tools/tree/master/cmd/staticcheck) |
 | Haml | [haml-lint](https://github.com/brigade/haml-lint)
 | Handlebars | [ember-template-lint](https://github.com/rwjblue/ember-template-lint) |
-| Haskell | [ghc](https://www.haskell.org/ghc/), [hlint](https://hackage.haskell.org/package/hlint), [hdevtools](https://hackage.haskell.org/package/hdevtools) |
+| Haskell | [ghc](https://www.haskell.org/ghc/), [ghc-mod](https://github.com/DanielG/ghc-mod), [hlint](https://hackage.haskell.org/package/hlint), [hdevtools](https://hackage.haskell.org/package/hdevtools) |
 | HTML | [HTMLHint](http://htmlhint.com/), [proselint](http://proselint.com/), [tidy](http://www.html-tidy.org/) |
-| Java | [javac](http://www.oracle.com/technetwork/java/javase/downloads/index.html) |
-| JavaScript | [eslint](http://eslint.org/), [jscs](http://jscs.info/), [jshint](http://jshint.com/), [flow](https://flowtype.org/), [standard](http://standardjs.com/)
+| Java | [checkstyle](http://checkstyle.sourceforge.net), [javac](http://www.oracle.com/technetwork/java/javase/downloads/index.html) |
+| JavaScript | [eslint](http://eslint.org/), [jscs](http://jscs.info/), [jshint](http://jshint.com/), [flow](https://flowtype.org/), [standard](http://standardjs.com/), [prettier](https://github.com/prettier/prettier) (and `prettier-eslint`, `prettier-standard`), [xo](https://github.com/sindresorhus/xo)
 | JSON | [jsonlint](http://zaa.ch/jsonlint/) |
-| LaTeX | [chktex](http://www.nongnu.org/chktex/), [lacheck](https://www.ctan.org/pkg/lacheck) |
+| Kotlin | [kotlinc](https://kotlinlang.org), [ktlint](https://ktlint.github.io) see `:help ale-integration-kotlin` for configuration instructions
+| LaTeX | [chktex](http://www.nongnu.org/chktex/), [lacheck](https://www.ctan.org/pkg/lacheck), [proselint](http://proselint.com/) |
 | Lua | [luacheck](https://github.com/mpeterv/luacheck) |
-| Markdown | [mdl](https://github.com/mivok/markdownlint), [proselint](http://proselint.com/)|
+| Markdown | [mdl](https://github.com/mivok/markdownlint), [proselint](http://proselint.com/), [vale](https://github.com/ValeLint/vale) |
 | MATLAB | [mlint](https://www.mathworks.com/help/matlab/ref/mlint.html) |
 | Nim | [nim](https://nim-lang.org/docs/nimc.html) |
 | nix | [nix-instantiate](http://nixos.org/nix/manual/#sec-nix-instantiate) |
 | nroff | [proselint](http://proselint.com/)|
+| Objective-C | [clang](http://clang.llvm.org/) |
+| Objective-C++ | [clang](http://clang.llvm.org/) |
 | OCaml | [merlin](https://github.com/the-lambda-church/merlin) see `:help ale-integration-ocaml-merlin` for configuration instructions
 | Perl | [perl -c](https://perl.org/), [perl-critic](https://metacpan.org/pod/Perl::Critic) |
 | PHP | [hack](http://hacklang.org/), [php -l](https://secure.php.net/), [phpcs](https://github.com/squizlabs/PHP_CodeSniffer), [phpmd](https://phpmd.org) |
 | Pod | [proselint](http://proselint.com/)|
 | Pug | [pug-lint](https://github.com/pugjs/pug-lint) |
 | Puppet | [puppet](https://puppet.com), [puppet-lint](https://puppet-lint.com) |
-| Python | [flake8](http://flake8.pycqa.org/en/latest/), [mypy](http://mypy-lang.org/), [pylint](https://www.pylint.org/) |
+| Python | [autopep8](https://github.com/hhatto/autopep8), [flake8](http://flake8.pycqa.org/en/latest/), [isort](https://github.com/timothycrosley/isort), [mypy](http://mypy-lang.org/), [pylint](https://www.pylint.org/), [yapf](https://github.com/google/yapf) |
+| R | [lintr](https://github.com/jimhester/lintr) |
+| ReasonML | [merlin](https://github.com/the-lambda-church/merlin) see `:help ale-integration-reason-merlin` for configuration instructions
 | reStructuredText | [proselint](http://proselint.com/)|
 | RPM spec | [rpmlint](https://github.com/rpm-software-management/rpmlint) (disabled by default; see `:help ale-integration-spec`) |
-| Ruby | [reek](https://github.com/troessner/reek), [rubocop](https://github.com/bbatsov/rubocop), [ruby](https://www.ruby-lang.org) |
+| Ruby | [brakeman](http://brakemanscanner.org/), [reek](https://github.com/troessner/reek), [rubocop](https://github.com/bbatsov/rubocop), [ruby](https://www.ruby-lang.org) |
 | Rust | [rustc](https://www.rust-lang.org/), cargo (see `:help ale-integration-rust` for configuration instructions) |
 | SASS | [sass-lint](https://www.npmjs.com/package/sass-lint), [stylelint](https://github.com/stylelint/stylelint) |
 | SCSS | [sass-lint](https://www.npmjs.com/package/sass-lint), [scss-lint](https://github.com/brigade/scss-lint), [stylelint](https://github.com/stylelint/stylelint) |
 | Scala | [scalac](http://scala-lang.org) |
 | Slim | [slim-lint](https://github.com/sds/slim-lint)
 | SML | [smlnj](http://www.smlnj.org/) |
+| Stylus | [stylelint](https://github.com/stylelint/stylelint) |
 | SQL | [sqlint](https://github.com/purcell/sqlint) |
 | Swift | [swiftlint](https://swift.org/) |
-| Tex | [proselint](http://proselint.com/) |
 | Texinfo | [proselint](http://proselint.com/)|
-| Text^ | [proselint](http://proselint.com/) |
-| TypeScript | [tslint](https://github.com/palantir/tslint), typecheck |
+| Text^ | [proselint](http://proselint.com/), [vale](https://github.com/ValeLint/vale) |
+| TypeScript | [eslint](http://eslint.org/), [tslint](https://github.com/palantir/tslint), tsserver, typecheck |
 | Verilog | [iverilog](https://github.com/steveicarus/iverilog), [verilator](http://www.veripool.org/projects/verilator/wiki/Intro) |
 | Vim | [vint](https://github.com/Kuniwak/vint) |
 | Vim help^ | [proselint](http://proselint.com/)|
 | XHTML | [proselint](http://proselint.com/)|
+| XML | [xmllint](http://xmlsoft.org/xmllint.html/)|
 | YAML | [yamllint](https://yamllint.readthedocs.io/) |
 
 * *^ No linters for text or Vim help filetypes are enabled by default.*
@@ -132,6 +144,9 @@ The behaviour of linting can be configured with a variety of options,
 documented in [the Vim help file](doc/ale.txt). For more information on the
 options ALE offers, consult `:help ale-options` for global options and `:help
 ale-linter-options` for options specified to particular linters.
+
+ALE can fix files with the `ALEFix` command. Functions need to be configured
+for different filetypes with the `g:ale_fixers` variable. See `:help ale-fix`.
 
 <a name="installation"></a>
 
@@ -285,28 +300,41 @@ highlight clear ALEWarningSign
 
 ### 5.iv. How can I show errors or warnings in my statusline?
 
-You can use `ALEGetStatusLine()` to integrate ALE into vim statusline.
-To enable it, you should have in your `statusline` settings
+[vim-airline](https://github.com/vim-airline/vim-airline) integrates with ALE
+for displaying error information in the status bar. If you want to see the
+status for ALE in a nice format, it is recommended to use vim-airline with ALE.
+The airline extension can be enabled by adding the following to your vimrc:
 
 ```vim
-%{ALEGetStatusLine()}
+" Set this. Airline will handle the rest.
+let g:airline#extensions#ale#enabled = 1
 ```
 
-When errors are detected a string showing the number of errors will be shown.
-You can customize the output format using the global list `g:ale_statusline_format` where:
+If you don't want to use vim-airline, you can implement your own statusline
+function without adding any other plugins. ALE provides a function for counting
+the number of problems for this purpose, named `ale#statusline#Count`.
 
-- The 1st element is for errors
-- The 2nd element is for warnings
-- The 3rd element is for when no errors are detected
-
-e.g
+Say you want to display all errors as one figure, and all non-errors as another
+figure. You can do the following:
 
 ```vim
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+function! LinterStatus() abort
+    let l:counts = ale#statusline#Count(bufnr(''))
+
+    let l:all_errors = l:counts.error + l:counts.style_error
+    let l:all_non_errors = l:counts.total - l:all_errors
+
+    return l:counts.total == 0 ? 'OK' : printf(
+    \   '%dW %dE',
+    \   all_non_errors,
+    \   all_errors
+    \)
+endfunction
+
+set statusline=%{LinterStatus()}
 ```
 
-![Statusline with issues](img/issues.png)
-![Statusline with no issues](img/no_issues.png)
+See `:help ale#statusline#Count()` for more information.
 
 <a name="faq-echo-format"></a>
 
@@ -419,7 +447,7 @@ If you configure ALE options correctly in your vimrc file, and install
 the right tools, you can check JSX files with stylelint and eslint.
 
 First, install eslint and install stylelint with
-[https://github.com/styled-components/stylelint-processor-styled-components](stylelint-processor-styled-components).
+[stylelint-processor-styled-components](https://github.com/styled-components/stylelint-processor-styled-components).
 
 Supposing you have installed both tools correctly, configure your .jsx files so
 `jsx` is included in the filetype. You can use an `autocmd` for this.
@@ -467,4 +495,4 @@ still be an advantage.
 
 If you are still concerned, you can turn the automatic linting off altogether,
 including the option `g:ale_lint_on_enter`, and you can run ALE manually with
-`:call ale#Lint()`.
+`:ALELint`.

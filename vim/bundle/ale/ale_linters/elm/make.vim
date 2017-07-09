@@ -5,6 +5,7 @@ function! ale_linters#elm#make#Handle(buffer, lines) abort
     let l:output = []
     let l:is_windows = has('win32')
     let l:temp_dir = l:is_windows ? $TMP : $TMPDIR
+    let l:unparsed_lines = []
     for l:line in a:lines
         if l:line[0] ==# '['
             let l:errors = json_decode(l:line)
@@ -20,17 +21,29 @@ function! ale_linters#elm#make#Handle(buffer, lines) abort
 
                 if l:file_is_buffer
                     call add(l:output, {
-                    \    'bufnr': a:buffer,
                     \    'lnum': l:error.region.start.line,
                     \    'col': l:error.region.start.column,
+                    \    'end_lnum': l:error.region.end.line,
+                    \    'end_col': l:error.region.end.column,
                     \    'type': (l:error.type ==? 'error') ? 'E' : 'W',
                     \    'text': l:error.overview,
                     \    'detail': l:error.overview . "\n\n" . l:error.details
                     \})
                 endif
             endfor
+        elseif l:line !=# 'Successfully generated /dev/null'
+            call add(l:unparsed_lines, l:line)
         endif
     endfor
+
+    if len(l:unparsed_lines) > 0
+        call add(l:output, {
+        \    'lnum': 1,
+        \    'type': 'E',
+        \    'text': l:unparsed_lines[0],
+        \    'detail': join(l:unparsed_lines, "\n")
+        \})
+    endif
 
     return l:output
 endfunction
@@ -43,14 +56,14 @@ function! ale_linters#elm#make#GetCommand(buffer) abort
         let l:dir_set_cmd = ''
     else
         let l:root_dir = fnamemodify(l:elm_package, ':p:h')
-        let l:dir_set_cmd = 'cd ' . fnameescape(l:root_dir) . ' && '
+        let l:dir_set_cmd = 'cd ' . ale#Escape(l:root_dir) . ' && '
     endif
 
     " The elm-make compiler, at the time of this writing, uses '/dev/null' as
     " a sort of flag to tell the compiler not to generate an output file,
     " which is why this is hard coded here.
     " Source: https://github.com/elm-lang/elm-make/blob/master/src/Flags.hs
-    let l:elm_cmd = 'elm-make --report=json --output='.shellescape('/dev/null')
+    let l:elm_cmd = 'elm-make --report=json --output='.ale#Escape('/dev/null')
 
     return l:dir_set_cmd . ' ' . l:elm_cmd . ' %t'
 endfunction

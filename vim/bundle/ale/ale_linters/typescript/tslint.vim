@@ -1,47 +1,30 @@
 " Author: Prashanth Chandra https://github.com/prashcr
 " Description: tslint for TypeScript files
 
-let g:ale_typescript_tslint_executable =
-\   get(g:, 'ale_typescript_tslint_executable', 'tslint')
-
-let g:ale_typescript_tslint_config_path =
-\   get(g:, 'ale_typescript_tslint_config_path', '')
-
-let g:ale_typescript_tslint_use_global =
-\   get(g:, 'ale_typescript_tslint_use_global', 0)
+call ale#Set('typescript_tslint_executable', 'tslint')
+call ale#Set('typescript_tslint_config_path', '')
+call ale#Set('typescript_tslint_use_global', 0)
 
 function! ale_linters#typescript#tslint#GetExecutable(buffer) abort
-    if ale#Var(a:buffer, 'typescript_tslint_use_global')
-        return ale#Var(a:buffer, 'typescript_tslint_executable')
-    endif
-
-    return ale#path#ResolveLocalPath(
-    \   a:buffer,
+    return ale#node#FindExecutable(a:buffer, 'typescript_tslint', [
     \   'node_modules/.bin/tslint',
-    \   ale#Var(a:buffer, 'typescript_tslint_executable')
-    \)
+    \])
 endfunction
 
 function! ale_linters#typescript#tslint#Handle(buffer, lines) abort
-    " Matches patterns like the following:
-    "
-    " hello.ts[7, 41]: trailing whitespace
-    " hello.ts[5, 1]: Forbidden 'var' keyword, use 'let' or 'const' instead
-    "
-    let l:ext = '.' . fnamemodify(bufname(a:buffer), ':e')
-    let l:pattern = '.\+' . l:ext . '\[\(\d\+\), \(\d\+\)\]: \(.\+\)'
     let l:output = []
 
-    for l:match in ale#util#GetMatches(a:lines, l:pattern)
-        let l:line = l:match[1] + 0
-        let l:column = l:match[2] + 0
-        let l:text = l:match[3]
-
-        call add(l:output, {
-        \   'lnum': l:line,
-        \   'col': l:column,
-        \   'text': l:text,
-        \})
+    for l:error in json_decode(join(a:lines, ''))
+        if ale#path#IsBufferPath(a:buffer, l:error.name)
+            call add(l:output, {
+            \   'type': (get(l:error, 'ruleSeverity', '') ==# 'WARNING' ? 'W' : 'E'),
+            \   'text': l:error.failure,
+            \   'lnum': l:error.startPosition.line + 1,
+            \   'col': l:error.startPosition.character + 1,
+            \   'end_lnum': l:error.endPosition.line + 1,
+            \   'end_col': l:error.endPosition.character + 1,
+            \})
+        endif
     endfor
 
     return l:output
@@ -55,11 +38,12 @@ function! ale_linters#typescript#tslint#BuildLintCommand(buffer) abort
     \)
 
     let l:tslint_config_option = !empty(l:tslint_config_path)
-    \   ? '-c ' . fnameescape(l:tslint_config_path)
+    \   ? ' -c ' . ale#Escape(l:tslint_config_path)
     \   : ''
 
     return ale_linters#typescript#tslint#GetExecutable(a:buffer)
-    \   . ' ' . l:tslint_config_option
+    \   . ' --format json'
+    \   . l:tslint_config_option
     \   . ' %t'
 endfunction
 

@@ -1,25 +1,21 @@
 " Author: Zach Perrault -- @zperrault
 " Description: FlowType checking for JavaScript files
 
-let g:ale_javascript_flow_executable =
-\   get(g:, 'ale_javascript_flow_executable', 'flow')
-
-let g:ale_javascript_flow_use_global =
-\   get(g:, 'ale_javascript_flow_use_global', 0)
+call ale#Set('javascript_flow_executable', 'flow')
+call ale#Set('javascript_flow_use_global', 0)
 
 function! ale_linters#javascript#flow#GetExecutable(buffer) abort
-    if ale#Var(a:buffer, 'javascript_flow_use_global')
-        return ale#Var(a:buffer, 'javascript_flow_executable')
-    endif
-
-    return ale#path#ResolveLocalPath(
-    \   a:buffer,
+    return ale#node#FindExecutable(a:buffer, 'javascript_flow', [
     \   'node_modules/.bin/flow',
-    \   ale#Var(a:buffer, 'javascript_flow_executable')
-    \)
+    \])
 endfunction
 
-function! ale_linters#javascript#flow#GetCommand(buffer) abort
+function! ale_linters#javascript#flow#VersionCheck(buffer) abort
+    return ale#Escape(ale_linters#javascript#flow#GetExecutable(a:buffer))
+    \   . ' --version'
+endfunction
+
+function! ale_linters#javascript#flow#GetCommand(buffer, version_lines) abort
     let l:flow_config = ale#path#FindNearestFile(a:buffer, '.flowconfig')
 
     if empty(l:flow_config)
@@ -27,8 +23,21 @@ function! ale_linters#javascript#flow#GetCommand(buffer) abort
         return ''
     endif
 
-    return ale_linters#javascript#flow#GetExecutable(a:buffer)
-    \   . ' check-contents --respect-pragma --json --from ale %s'
+    let l:use_respect_pragma = 1
+
+    " If we can parse the version number, then only use --respect-pragma
+    " if the version is >= 0.36.0, which added the argument.
+    for l:match in ale#util#GetMatches(a:version_lines, '\v\d+\.\d+\.\d+$')
+        let l:use_respect_pragma = ale#semver#GreaterOrEqual(
+        \   ale#semver#Parse(l:match[0]),
+        \   [0, 36, 0]
+        \)
+    endfor
+
+    return ale#Escape(ale_linters#javascript#flow#GetExecutable(a:buffer))
+    \   . ' check-contents'
+    \   . (l:use_respect_pragma ? ' --respect-pragma': '')
+    \   . ' --json --from ale %s'
 endfunction
 
 function! ale_linters#javascript#flow#Handle(buffer, lines) abort
@@ -51,7 +60,9 @@ function! ale_linters#javascript#flow#Handle(buffer, lines) abort
             " Comments have no line of column information, so we skip them.
             " In certain cases, `l:message.loc.source` points to a different path
             " than the buffer one, thus we skip this loc information too.
-            if has_key(l:message, 'loc') && l:line ==# 0 && l:message.loc.source ==# expand('#' . a:buffer . ':p')
+            if has_key(l:message, 'loc')
+            \&& l:line ==# 0
+            \&& ale#path#IsBufferPath(a:buffer, l:message.loc.source)
                 let l:line = l:message.loc.start.line + 0
                 let l:col = l:message.loc.start.column + 0
             endif
@@ -81,6 +92,10 @@ endfunction
 call ale#linter#Define('javascript', {
 \   'name': 'flow',
 \   'executable_callback': 'ale_linters#javascript#flow#GetExecutable',
-\   'command_callback': 'ale_linters#javascript#flow#GetCommand',
+\   'command_chain': [
+\       {'callback': 'ale_linters#javascript#flow#VersionCheck'},
+\       {'callback': 'ale_linters#javascript#flow#GetCommand'},
+\   ],
 \   'callback': 'ale_linters#javascript#flow#Handle',
+\   'add_newline': 1,
 \})

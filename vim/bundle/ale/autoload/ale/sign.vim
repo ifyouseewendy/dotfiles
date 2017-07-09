@@ -8,15 +8,58 @@ if !hlexists('ALEErrorSign')
     highlight link ALEErrorSign error
 endif
 
+if !hlexists('ALEStyleErrorSign')
+    highlight link ALEStyleErrorSign ALEErrorSign
+endif
+
 if !hlexists('ALEWarningSign')
     highlight link ALEWarningSign todo
+endif
+
+if !hlexists('ALEStyleWarningSign')
+    highlight link ALEStyleWarningSign ALEWarningSign
+endif
+
+if !hlexists('ALEInfoSign')
+    highlight link ALEInfoSign ALEWarningSign
+endif
+
+if !hlexists('ALESignColumnWithErrors')
+    highlight link ALESignColumnWithErrors error
+endif
+
+if !hlexists('ALESignColumnWithoutErrors')
+    function! s:SetSignColumnWithoutErrorsHighlight() abort
+        redir => l:output
+            silent highlight SignColumn
+        redir end
+
+        let l:highlight_syntax = join(split(l:output)[2:])
+
+        let l:match = matchlist(l:highlight_syntax, '\vlinks to (.+)$')
+
+        if !empty(l:match)
+            execute 'highlight link ALESignColumnWithoutErrors ' . l:match[1]
+        elseif l:highlight_syntax !=# 'cleared'
+            execute 'highlight ALESignColumnWithoutErrors ' . l:highlight_syntax
+        endif
+    endfunction
+
+    call s:SetSignColumnWithoutErrorsHighlight()
+    delfunction s:SetSignColumnWithoutErrorsHighlight
 endif
 
 " Signs show up on the left for error markers.
 execute 'sign define ALEErrorSign text=' . g:ale_sign_error
 \   . ' texthl=ALEErrorSign linehl=ALEErrorLine'
+execute 'sign define ALEStyleErrorSign text=' . g:ale_sign_style_error
+\   . ' texthl=ALEStyleErrorSign linehl=ALEErrorLine'
 execute 'sign define ALEWarningSign text=' . g:ale_sign_warning
 \   . ' texthl=ALEWarningSign linehl=ALEWarningLine'
+execute 'sign define ALEStyleWarningSign text=' . g:ale_sign_style_warning
+\   . ' texthl=ALEStyleWarningSign linehl=ALEWarningLine'
+execute 'sign define ALEInfoSign text=' . g:ale_sign_info
+\   . ' texthl=ALEInfoSign linehl=ALEInfoLine'
 sign define ALEDummySign
 
 " Read sign data for a buffer to a list of lines.
@@ -36,7 +79,7 @@ function! ale#sign#ParseSigns(line_list) abort
     " 行=1  識別子=1000001  名前=ALEWarningSign
     " línea=12 id=1000001 nombre=ALEWarningSign
     " riga=1 id=1000001, nome=ALEWarningSign
-    let l:pattern = '^.*=\(\d\+\).*=\(\d\+\).*=ALE\(Error\|Warning\|Dummy\)Sign'
+    let l:pattern = '\v^.*\=(\d+).*\=(\d+).*\=(ALE[a-zA-Z]+Sign)'
     let l:result = []
 
     for l:line in a:line_list
@@ -46,7 +89,7 @@ function! ale#sign#ParseSigns(line_list) abort
             call add(l:result, [
             \   str2nr(l:match[1]),
             \   str2nr(l:match[2]),
-            \   'ALE' . l:match[3] . 'Sign',
+            \   l:match[3],
             \])
         endif
     endfor
@@ -75,7 +118,20 @@ function! s:GroupLoclistItems(loclist) abort
         let l:last_lnum = l:obj.lnum
     endfor
 
-    return l:grouped_items
+    " Now we've gathered the items in groups, filter the groups down to
+    " the groups containing at least one new item.
+    let l:new_grouped_items = []
+
+    for l:group in l:grouped_items
+        for l:obj in l:group
+            if !has_key(l:obj, 'sign_id')
+                call add(l:new_grouped_items, l:group)
+                break
+            endif
+        endfor
+    endfor
+
+    return l:new_grouped_items
 endfunction
 
 function! s:IsDummySignSet(current_id_list) abort
@@ -108,14 +164,58 @@ function! s:SetDummySignIfNeeded(buffer, current_sign_list, new_signs) abort
     return l:is_dummy_sign_set
 endfunction
 
-function! s:PlaceNewSigns(buffer, grouped_items) abort
+function! ale#sign#GetSignType(sublist) abort
+    let l:highest_level = 100
+
+    for l:item in a:sublist
+        let l:level = (l:item.type ==# 'I' ? 2 : l:item.type ==# 'W')
+
+        if get(l:item, 'sub_type', '') ==# 'style'
+            let l:level += 10
+        endif
+
+        if l:level < l:highest_level
+            let l:highest_level = l:level
+        endif
+    endfor
+
+    if l:highest_level == 10
+        return 'ALEStyleErrorSign'
+    elseif l:highest_level == 11
+        return 'ALEStyleWarningSign'
+    elseif l:highest_level == 2
+        return 'ALEInfoSign'
+    elseif l:highest_level == 1
+        return 'ALEWarningSign'
+    endif
+
+    return 'ALEErrorSign'
+endfunction
+
+function! ale#sign#SetSignColumnHighlight(has_problems) abort
+    highlight clear SignColumn
+
+    if a:has_problems
+        highlight link SignColumn ALESignColumnWithErrors
+    else
+        highlight link SignColumn ALESignColumnWithoutErrors
+    endif
+endfunction
+
+function! s:PlaceNewSigns(buffer, grouped_items, current_sign_offset) abort
+    if g:ale_change_sign_column_color
+        call ale#sign#SetSignColumnHighlight(!empty(a:grouped_items))
+    endif
+
+    let l:offset = a:current_sign_offset > 0
+    \   ? a:current_sign_offset
+    \   : g:ale_sign_offset
+
     " Add the new signs,
     for l:index in range(0, len(a:grouped_items) - 1)
-        let l:sign_id = l:index + g:ale_sign_offset + 1
+        let l:sign_id = l:offset + l:index + 1
         let l:sublist = a:grouped_items[l:index]
-        let l:type = !empty(filter(copy(l:sublist), 'v:val.type ==# ''E'''))
-        \   ? 'ALEErrorSign'
-        \   : 'ALEWarningSign'
+        let l:type = ale#sign#GetSignType(a:grouped_items[l:index])
 
         " Save the sign IDs we are setting back on our loclist objects.
         " These IDs will be used to preserve items which are set many times.
@@ -149,30 +249,36 @@ endfunction
 
 " Given some current signs and a loclist, look for items with sign IDs,
 " and change the line numbers for loclist items to match the signs.
-function! s:UpdateLineNumbers(current_sign_list, loclist) abort
-    let l:items_by_sign_id = s:GetItemsWithSignIDs(a:loclist)
-
+function! s:UpdateLineNumbers(current_sign_list, items_by_sign_id) abort
     " Do nothing if there's nothing to work with.
-    if empty(l:items_by_sign_id)
+    if empty(a:items_by_sign_id)
         return
     endif
 
     for [l:line, l:sign_id, l:name] in a:current_sign_list
-        for l:obj in get(l:items_by_sign_id, l:sign_id, [])
+        for l:obj in get(a:items_by_sign_id, l:sign_id, [])
             let l:obj.lnum = l:line
         endfor
     endfor
-
-    " Sort items again.
-    call sort(a:loclist, 'ale#util#LocItemCompare')
 endfunction
 
 " This function will set the signs which show up on the left.
 function! ale#sign#SetSigns(buffer, loclist) abort
+    if !bufexists(str2nr(a:buffer))
+        " Stop immediately when attempting to set signs for a buffer which
+        " does not exist.
+        return
+    endif
+
     " Find the current markers
     let l:current_sign_list = ale#sign#FindCurrentSigns(a:buffer)
+    " Get a mapping from sign IDs to current loclist items which have them.
+    let l:items_by_sign_id = s:GetItemsWithSignIDs(a:loclist)
 
-    call s:UpdateLineNumbers(l:current_sign_list, a:loclist)
+    " Use sign information to update the line numbers for the loclist items.
+    call s:UpdateLineNumbers(l:current_sign_list, l:items_by_sign_id)
+    " Sort items again, as the line numbers could have changed.
+    call sort(a:loclist, 'ale#util#LocItemCompare')
 
     let l:grouped_items = s:GroupLoclistItems(a:loclist)
 
@@ -188,16 +294,19 @@ function! ale#sign#SetSigns(buffer, loclist) abort
     " while we add the new signs, if we had signs before.
     for [l:line, l:sign_id, l:name] in l:current_sign_list
         if l:sign_id != g:ale_sign_offset
+        \&& !has_key(l:items_by_sign_id, l:sign_id)
             exec 'sign unplace ' . l:sign_id . ' buffer=' . a:buffer
         endif
     endfor
 
-    call s:PlaceNewSigns(a:buffer, l:grouped_items)
+    " Compute a sign ID offset so we don't hit the same sign IDs again.
+    let l:current_sign_offset = max(map(keys(l:items_by_sign_id), 'str2nr(v:val)'))
 
-    " Remove the dummy sign now we've updated the signs, unless we want
-    " to keep it, which will keep the sign column open even when there are
-    " no warnings or errors.
-    if l:is_dummy_sign_set && !g:ale_sign_column_always
+    call s:PlaceNewSigns(a:buffer, l:grouped_items, l:current_sign_offset)
+endfunction
+
+function! ale#sign#RemoveDummySignIfNeeded(buffer) abort
+    if !g:ale_sign_column_always
         execute 'sign unplace ' . g:ale_sign_offset . ' buffer=' . a:buffer
     endif
 endfunction
