@@ -51,6 +51,7 @@ Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and 
 Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
 Plugin 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
 Plugin 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder written in Go
+Plugin 'janko-m/vim-test'                   " Run your tests at the speed of thought
 
 " == Deprecated
 "
@@ -255,7 +256,7 @@ nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
 nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.vimrc<cr>
-nmap <leader>se :sp ~/.vimrc<cr>
+nmap <leader>se :vsp ~/.vimrc<cr>
 nmap <leader>w :wq<cr>
 nmap <leader>s :w<cr>
 nmap <leader>e :e!<cr>
@@ -455,28 +456,19 @@ let g:gitgutter_eager = 0
 " supertab"{{{
 let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 
-" vimux "{{{
-" Run the current file with rspec
-map <Leader>vr :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
-map <Leader>vs :call VimuxRunCommand("clear; rspec " . bufname("%") . ":" . line('.'))<CR>
-" Run the current file with minitest
-map <Leader>vl :call VimuxRunCommand("clear; rails test " . bufname("%") . ":" . line('.'))<CR>
-map <Leader>vt :call VimuxRunCommand("clear; rails test " . bufname("%"))<CR>
+" vim-text && vimux "{{{
+let test#strategy = "vimux"
 
-" Prompt for a command to run
-map <Leader>vp :VimuxPromptCommand<CR>
+nmap <silent> <leader>tl :TestNearest<CR>
+nmap <silent> <leader>ts :TestSuite<CR>
+nmap <silent> <leader>tf :TestFile<CR>
+nmap <silent> <leader>tl :TestLast<CR>
+nmap <silent> <leader>tg :TestVisit<CR>
 
-" Run last command executed by VimuxRunCommand
-" map <Leader>vl :VimuxRunLastCommand<CR>
-
-" Inspect runner pane
-map <Leader>vi :VimuxInspectRunner<CR>
-
-" Close vim tmux runner opened by VimuxRunCommand
-map <Leader>vq :VimuxCloseRunner<CR>
-
-" Interrupt any command running in the runner pane
-map <Leader>vx :VimuxInterruptRunner<CR>"}}}
+let test#javascript#jest#options = {
+\ 'suite': '--bail',
+\}
+"}}}
 
 " vim-expand-region"{{{
 vmap v <Plug>(expand_region_expand)
