@@ -557,7 +557,7 @@ let g:ale_lint_on_enter = 0
 
 " Enable particular linters
 let g:ale_linters = {
-\   'javascript': ['stylelint', 'eslint'],
+\   'javascript': ['stylelint', 'eslint', 'flow'],
 \   'scss': ['stylelint'],
 \   'json': ['jsonlint'],
 \   'yaml': ['yamllint'],
