@@ -35,7 +35,6 @@ Plugin 'tomtom/tcomment_vim'                " An extensible & universal comment 
 Plugin 'tpope/vim-endwise'                  " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Plugin 'tpope/vim-fugitive'                 " a Git wrapper so awesome
 Plugin 'tpope/vim-ragtag'                   " Ghetto HTML/XML mappings (formerly allml.vim)
-Plugin 'tpope/vim-rails' 							      " rails.vim: Ruby on Rails power tools
 Plugin 'tpope/vim-repeat'							      " repeat.vim: enable repeating supported plugin maps with '.'
 Plugin 'tpope/vim-surround' 					      " surround.vim: quoting/parenthesizing made simple
 Plugin 'vim-ruby/vim-ruby' 						      " Vim/Ruby Configuration Files
@@ -68,6 +67,7 @@ Plugin 'janko-m/vim-test'                   " Run your tests at the speed of tho
 " Plugin 'tpope/vim-dispatch'               " Asynchronous build and test dispatcher
 " Plugin 'lambdatoast/elm.vim'
 " Plugin 'scrooloose/syntastic'               " Syntax checking hacks for vim
+" Plugin 'tpope/vim-rails' 							      " rails.vim: Ruby on Rails power tools
 
 call vundle#end()
 filetype plugin indent on
@@ -319,11 +319,11 @@ let g:airline_right_sep = ''
 "}}}
 
 " vim-rails "{{{
-map <leader>c :Rcontroller<cr>
-map <leader>v :Rview<cr>
-map <leader>m :Rmodel<cr>
-map <leader>h :Rhelper<cr>
-map <leader>t :A<cr>
+" map <leader>c :Rcontroller<cr>
+" map <leader>v :Rview<cr>
+" map <leader>m :Rmodel<cr>
+" map <leader>h :Rhelper<cr>
+" map <leader>t :A<cr>
 " function! OpenTestAlternate()
 "   let new_file = AlternateForCurrentFile()
 "   exec ':e ' . new_file
@@ -462,7 +462,6 @@ let test#strategy = "vimux"
 nmap <silent> <leader>tl :TestNearest<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tf :TestFile<CR>
-nmap <silent> <leader>tl :TestLast<CR>
 nmap <silent> <leader>tg :TestVisit<CR>
 
 let test#javascript#jest#options = {
