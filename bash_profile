@@ -54,4 +54,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # Enable yarn global
-export PATH="`yarn global bin`: $PATH"
+export PATH="`yarn global bin`:$PATH"
