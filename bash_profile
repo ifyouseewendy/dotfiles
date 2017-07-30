@@ -55,3 +55,6 @@ export FZF_DEFAULT_COMMAND='ag -g ""'
 
 # Enable yarn global
 export PATH="`yarn global bin`:$PATH"
+
+# Set up default docker-machine
+eval $(docker-machine env default)
