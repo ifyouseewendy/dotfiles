@@ -1154,3 +1154,14 @@ Security/Eval:
 
 Security/JSONLoad:
   Enabled: true
+
+# Customization
+
+Style/StringLiterals:
+  EnforcedStyle: double_quotes
+
+Style/WordArray:
+  EnforcedStyle: brackets
+
+Style/ParallelAssignment:
+  Enabled: false
