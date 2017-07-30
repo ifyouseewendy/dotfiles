@@ -428,7 +428,7 @@ function! AdjustWindowHeight(minheight, maxheight)
 endfunction"}}}
 
 " tabular"{{{
-vmap <leader>= :Tab /=<cr>
+" vmap <leader>= :Tab /=<cr>
 vmap <leader>: :Tab /:\zs<cr>
 vmap <leader>ta :Tab /
 "}}}
