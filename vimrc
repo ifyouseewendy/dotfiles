@@ -51,6 +51,7 @@ Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
 Plugin 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
 Plugin 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder written in Go
 Plugin 'janko-m/vim-test'                   " Run your tests at the speed of thought
+Plugin 'rakr/vim-one'                       " Adaptation of one-light and one-dark colorschemes for Vim
 
 " == Deprecated
 "
@@ -77,8 +78,10 @@ filetype plugin indent on
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Set colorscheme
-"set t_Co=256
-colorscheme wombat256mod
+" set t_Co=256
+" colorscheme wombat256mod
+colorscheme one
+set background=dark
 
 " Basic configuration
 syntax on
@@ -565,11 +568,14 @@ let g:ale_fixers = {
 \  'javascript': ['prettier'],
 \  'json': ['prettier'],
 \  'ruby': ['rubocop'],
+\  'css': ['stylelint'],
 \}
+
+let g:ale_javascript_prettier_options = "--trailing-comma all"
+let g:ale_scss_stylelint_options = "--fix"
 
 " Run fixer on save
 let g:ale_fix_on_save = 0
-let g:ale_javascript_prettier_options = "--trailing-comma all"
 
 " Message format
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
