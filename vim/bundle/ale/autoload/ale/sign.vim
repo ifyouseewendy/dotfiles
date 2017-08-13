@@ -40,7 +40,7 @@ if !hlexists('ALESignColumnWithoutErrors')
 
         if !empty(l:match)
             execute 'highlight link ALESignColumnWithoutErrors ' . l:match[1]
-        elseif l:highlight_syntax !=# 'cleared'
+        elseif l:highlight_syntax isnot# 'cleared'
             execute 'highlight ALESignColumnWithoutErrors ' . l:highlight_syntax
         endif
     endfunction
@@ -65,7 +65,7 @@ sign define ALEDummySign
 " Read sign data for a buffer to a list of lines.
 function! ale#sign#ReadSigns(buffer) abort
     redir => l:output
-       silent exec 'sign place buffer=' . a:buffer
+       silent execute 'sign place buffer=' . a:buffer
     redir end
 
     return split(l:output, "\n")
@@ -104,11 +104,15 @@ function! ale#sign#FindCurrentSigns(buffer) abort
 endfunction
 
 " Given a loclist, group the List into with one List per line.
-function! s:GroupLoclistItems(loclist) abort
+function! s:GroupLoclistItems(buffer, loclist) abort
     let l:grouped_items = []
     let l:last_lnum = -1
 
     for l:obj in a:loclist
+        if l:obj.bufnr != a:buffer
+            continue
+        endif
+
         " Create a new sub-List when we hit a new line.
         if l:obj.lnum != l:last_lnum
             call add(l:grouped_items, [])
@@ -154,7 +158,7 @@ function! s:SetDummySignIfNeeded(buffer, current_sign_list, new_signs) abort
     " If we haven't already set a dummy sign, and we have some previous signs
     " or always want a dummy sign, then set one, to keep the sign column open.
     if !l:is_dummy_sign_set && (a:new_signs || g:ale_sign_column_always)
-        execute 'sign place ' .  g:ale_sign_offset
+        silent! execute 'sign place ' .  g:ale_sign_offset
         \   . ' line=1 name=ALEDummySign buffer='
         \   . a:buffer
 
@@ -168,9 +172,9 @@ function! ale#sign#GetSignType(sublist) abort
     let l:highest_level = 100
 
     for l:item in a:sublist
-        let l:level = (l:item.type ==# 'I' ? 2 : l:item.type ==# 'W')
+        let l:level = (l:item.type is# 'I' ? 2 : l:item.type is# 'W')
 
-        if get(l:item, 'sub_type', '') ==# 'style'
+        if get(l:item, 'sub_type', '') is# 'style'
             let l:level += 10
         endif
 
@@ -223,7 +227,7 @@ function! s:PlaceNewSigns(buffer, grouped_items, current_sign_offset) abort
             let l:obj.sign_id = l:sign_id
         endfor
 
-        execute 'sign place ' . l:sign_id
+        silent! execute 'sign place ' . l:sign_id
         \   . ' line=' . l:sublist[0].lnum
         \   . ' name=' . l:type
         \   . ' buffer=' . a:buffer
@@ -231,11 +235,11 @@ function! s:PlaceNewSigns(buffer, grouped_items, current_sign_offset) abort
 endfunction
 
 " Get items grouped by any current sign IDs they might have.
-function! s:GetItemsWithSignIDs(loclist) abort
+function! s:GetItemsWithSignIDs(buffer, loclist) abort
     let l:items_by_sign_id = {}
 
     for l:item in a:loclist
-        if has_key(l:item, 'sign_id')
+        if l:item.bufnr == a:buffer && has_key(l:item, 'sign_id')
             if !has_key(l:items_by_sign_id, l:item.sign_id)
                 let l:items_by_sign_id[l:item.sign_id] = []
             endif
@@ -273,14 +277,14 @@ function! ale#sign#SetSigns(buffer, loclist) abort
     " Find the current markers
     let l:current_sign_list = ale#sign#FindCurrentSigns(a:buffer)
     " Get a mapping from sign IDs to current loclist items which have them.
-    let l:items_by_sign_id = s:GetItemsWithSignIDs(a:loclist)
+    let l:items_by_sign_id = s:GetItemsWithSignIDs(a:buffer, a:loclist)
 
     " Use sign information to update the line numbers for the loclist items.
     call s:UpdateLineNumbers(l:current_sign_list, l:items_by_sign_id)
     " Sort items again, as the line numbers could have changed.
     call sort(a:loclist, 'ale#util#LocItemCompare')
 
-    let l:grouped_items = s:GroupLoclistItems(a:loclist)
+    let l:grouped_items = s:GroupLoclistItems(a:buffer, a:loclist)
 
     " Set the dummy sign if we need to.
     " This keeps the sign gutter open while we remove things, etc.
@@ -295,7 +299,7 @@ function! ale#sign#SetSigns(buffer, loclist) abort
     for [l:line, l:sign_id, l:name] in l:current_sign_list
         if l:sign_id != g:ale_sign_offset
         \&& !has_key(l:items_by_sign_id, l:sign_id)
-            exec 'sign unplace ' . l:sign_id . ' buffer=' . a:buffer
+            execute 'sign unplace ' . l:sign_id . ' buffer=' . a:buffer
         endif
     endfor
 

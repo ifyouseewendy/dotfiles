@@ -120,17 +120,32 @@ Execute(Only ALE highlights should be restored when buffers are restored):
 
   call matchaddpos('SomeOtherGroup', [[1, 1, 1]])
 
-  " We should have one more match here.
-  AssertEqual 2, len(GetMatchesWithoutIDs()), 'The highlights weren''t initially set!'
+  " We should have both highlights.
+  AssertEqual
+  \ [
+  \   {'group': 'ALEError', 'priority': 10, 'pos1': [3, 2, 1]},
+  \   {'group': 'SomeOtherGroup', 'priority': 10, 'pos1': [1, 1, 1]},
+  \ ],
+  \ GetMatchesWithoutIDs()
 
   call ale#highlight#BufferHidden(bufnr('%'))
 
-  AssertEqual 0, len(GetMatchesWithoutIDs()), 'The highlights weren''t cleared!'
+  " We should remove our highlight, but not the other one.
+  AssertEqual
+  \ [
+  \   {'group': 'SomeOtherGroup', 'priority': 10, 'pos1': [1, 1, 1]}
+  \ ],
+  \ GetMatchesWithoutIDs()
 
   call ale#highlight#UpdateHighlights()
 
-  " Only our matches should appear again.
-  AssertEqual 1, len(GetMatchesWithoutIDs()), 'The highlights weren''t set again!'
+  " Our highlight should apper again.
+  AssertEqual
+  \ [
+  \   {'group': 'SomeOtherGroup', 'priority': 10, 'pos1': [1, 1, 1]},
+  \   {'group': 'ALEError', 'priority': 10, 'pos1': [3, 2, 1]},
+  \ ],
+  \ GetMatchesWithoutIDs()
 
 Execute(Higlight end columns should set an appropriate size):
   call ale#highlight#SetHighlights(bufnr('%'), [
@@ -147,6 +162,7 @@ Execute(Higlight end columns should set an appropriate size):
 
 Execute(Higlight end columns should set an appropriate size):
   call ale#highlight#SetHighlights(bufnr('%'), [
+  \ {'bufnr': bufnr('%') - 1, 'type': 'E', 'lnum': 1, 'col': 1},
   \ {'bufnr': bufnr('%'), 'type': 'E', 'lnum': 1, 'col': 1},
   \ {'bufnr': bufnr('%'), 'type': 'E', 'lnum': 2, 'col': 1},
   \ {'bufnr': bufnr('%'), 'type': 'E', 'sub_type': 'style', 'lnum': 3, 'col': 1},
@@ -154,6 +170,7 @@ Execute(Higlight end columns should set an appropriate size):
   \ {'bufnr': bufnr('%'), 'type': 'W', 'lnum': 5, 'col': 1},
   \ {'bufnr': bufnr('%'), 'type': 'W', 'sub_type': 'style', 'lnum': 6, 'col': 1},
   \ {'bufnr': bufnr('%'), 'type': 'I', 'lnum': 7, 'col': 1},
+  \ {'bufnr': bufnr('%') + 1, 'type': 'E', 'lnum': 1, 'col': 1},
   \])
 
   AssertEqual
@@ -187,5 +204,31 @@ Execute(Highlighting should support errors spanning many lines):
   \     'group': 'ALEError', 'priority': 10,
   \     'pos1': [9], 'pos2': [10, 1, 3]
   \   },
+  \ ],
+  \ GetMatchesWithoutIDs()
+  \
+Execute(Highlights should always be cleared when the buffer highlight list is empty):
+  " Add our highlights and something else.
+  call matchaddpos('ALEError', [[1, 1, 1]])
+  call matchaddpos('SomeOtherGroup', [[1, 1, 1]])
+
+  AssertEqual
+  \ [
+  \   {'group': 'ALEError', 'priority': 10, 'pos1': [1, 1, 1]},
+  \   {'group': 'SomeOtherGroup', 'priority': 10, 'pos1': [1, 1, 1]},
+  \ ],
+  \ GetMatchesWithoutIDs()
+
+  " Set the List we use for holding highlights for buffers.
+  let b:ale_highlight_items = []
+
+  " Call the function for updating the highlights called when buffers
+  " are entered, or when problems are presented.
+  call ale#highlight#UpdateHighlights()
+
+  " Check that we remove our highlights.
+  AssertEqual
+  \ [
+  \   {'group': 'SomeOtherGroup', 'priority': 10, 'pos1': [1, 1, 1]},
   \ ],
   \ GetMatchesWithoutIDs()

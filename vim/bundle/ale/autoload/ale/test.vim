@@ -12,7 +12,7 @@
 "
 " This function should be run in a Vader Before: block.
 function! ale#test#SetDirectory(docker_path) abort
-    if a:docker_path[:len('/testplugin/') - 1] !=# '/testplugin/'
+    if a:docker_path[:len('/testplugin/') - 1] isnot# '/testplugin/'
         throw 'docker_path must start with /testplugin/!'
     endif
 
@@ -25,8 +25,11 @@ endfunction
 " When g:dir is defined, switch back to the directory we saved, and then
 " delete that variable.
 "
+" The filename will be reset to dummy.txt
+"
 " This function should be run in a Vader After: block.
 function! ale#test#RestoreDirectory() abort
+    call ale#test#SetFilename('dummy.txt')
     silent execute 'cd ' . fnameescape(g:dir)
     unlet! g:dir
 endfunction

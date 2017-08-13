@@ -55,7 +55,13 @@ let g:ale_buffer_info = {}
 
 " This option prevents ALE autocmd commands from being run for particular
 " filetypes which can cause issues.
-let g:ale_filetype_blacklist = ['nerdtree', 'unite', 'tags']
+let g:ale_filetype_blacklist = [
+\   'dirvish',
+\   'nerdtree',
+\   'qf',
+\   'tags',
+\   'unite',
+\]
 
 " This Dictionary configures which linters are enabled for which languages.
 let g:ale_linters = get(g:, 'ale_linters', {})
@@ -183,7 +189,7 @@ call ale#Set('type_map', {})
 
 " Enable automatic completion with LSP servers and tsserver
 call ale#Set('completion_enabled', 0)
-call ale#Set('completion_delay', 300)
+call ale#Set('completion_delay', 100)
 call ale#Set('completion_max_suggestions', 20)
 
 function! ALEInitAuGroups() abort
@@ -200,11 +206,11 @@ function! ALEInitAuGroups() abort
     augroup ALERunOnTextChangedGroup
         autocmd!
         if g:ale_enabled
-            if l:text_changed ==? 'always' || l:text_changed ==# '1'
+            if l:text_changed is? 'always' || l:text_changed is# '1'
                 autocmd TextChanged,TextChangedI * call ale#Queue(g:ale_lint_delay)
-            elseif l:text_changed ==? 'normal'
+            elseif l:text_changed is? 'normal'
                 autocmd TextChanged * call ale#Queue(g:ale_lint_delay)
-            elseif l:text_changed ==? 'insert'
+            elseif l:text_changed is? 'insert'
                 autocmd TextChangedI * call ale#Queue(g:ale_lint_delay)
             endif
         endif
@@ -213,11 +219,11 @@ function! ALEInitAuGroups() abort
     augroup ALERunOnEnterGroup
         autocmd!
         if g:ale_enabled && g:ale_lint_on_enter
-            autocmd BufWinEnter,BufRead * call ale#Queue(300, 'lint_file')
+            autocmd BufWinEnter,BufRead * call ale#Queue(0, 'lint_file', str2nr(expand('<abuf>')))
             " Track when the file is changed outside of Vim.
             autocmd FileChangedShellPost * call ale#events#FileChangedEvent(str2nr(expand('<abuf>')))
             " If the file has been changed, then check it again on enter.
-            autocmd BufEnter * call ale#events#EnterEvent()
+            autocmd BufEnter * call ale#events#EnterEvent(str2nr(expand('<abuf>')))
         endif
     augroup END
 
@@ -230,7 +236,7 @@ function! ALEInitAuGroups() abort
             " opening a buffer. The FileType will fire when buffers are opened.
             autocmd FileType *
             \   if has_key(b:, 'ale_original_filetype')
-            \   && b:ale_original_filetype !=# expand('<amatch>')
+            \   && b:ale_original_filetype isnot# expand('<amatch>')
             \|      call ale#Queue(300, 'lint_file')
             \|  endif
         endif
@@ -239,7 +245,7 @@ function! ALEInitAuGroups() abort
     augroup ALERunOnSaveGroup
         autocmd!
         if (g:ale_enabled && g:ale_lint_on_save) || g:ale_fix_on_save
-            autocmd BufWrite * call ale#events#SaveEvent()
+            autocmd BufWritePost * call ale#events#SaveEvent(str2nr(expand('<abuf>')))
         endif
     augroup END
 

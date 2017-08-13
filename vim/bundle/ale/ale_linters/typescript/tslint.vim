@@ -14,10 +14,10 @@ endfunction
 function! ale_linters#typescript#tslint#Handle(buffer, lines) abort
     let l:output = []
 
-    for l:error in json_decode(join(a:lines, ''))
+    for l:error in ale#util#FuzzyJSONDecode(a:lines, [])
         if ale#path#IsBufferPath(a:buffer, l:error.name)
             call add(l:output, {
-            \   'type': (get(l:error, 'ruleSeverity', '') ==# 'WARNING' ? 'W' : 'E'),
+            \   'type': (get(l:error, 'ruleSeverity', '') is# 'WARNING' ? 'W' : 'E'),
             \   'text': l:error.failure,
             \   'lnum': l:error.startPosition.line + 1,
             \   'col': l:error.startPosition.character + 1,
