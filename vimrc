@@ -52,6 +52,7 @@ Plugin 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
 Plugin 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder written in Go
 Plugin 'janko-m/vim-test'                   " Run your tests at the speed of thought
 Plugin 'rakr/vim-one'                       " Adaptation of one-light and one-dark colorschemes for Vim
+Plugin 'tpope/vim-dispatch'                 " dispatch.vim: asynchronous build and test dispatcher
 
 " == Deprecated
 "
