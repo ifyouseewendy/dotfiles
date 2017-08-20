@@ -4,55 +4,49 @@
 "
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
-" VUNDLE
+" vim-plug
 """""""""""""""""""""""""""""""""""""""""""""""""""
 
-set nocompatible " Disable strange Vi defaults
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin("~/.vim/bundle")
 
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-
-" Github repos
-Plugin 'Shougo/neocomplcache'               " Ultimate auto-completion system for Vim.
-Plugin 'Townk/vim-autoclose'                " This plugin for Vim enable an auto-close chars feature for you
-Plugin 'Yggdroot/indentLine'                " A vim plugin to display the indention levels with thin vertical lines
-Plugin 'airblade/vim-gitgutter'             " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
-Plugin 'benmills/vimux'                     " Vim plugin to interact with tmux
-Plugin 'danro/rename.vim'                   " Rename the current file in the vim buffer + retain relative path.
-Plugin 'docunext/closetag.vim'              " Functions and mappings to close open HTML/XML tags
-Plugin 'duwanis/tomdoc.vim'                 " A simple syntax add-on for vim that highlights your TomDoc comments.
-Plugin 'ervandew/supertab'                  " Perform all your vim insert mode completions with Tab
-Plugin 'godlygeek/tabular'                  " Vim script for text filtering and alignment
-Plugin 'majutsushi/tagbar'                  " Vim plugin that displays tags in a window, ordered by scope
-Plugin 'rking/ag.vim'                       " Vim plugin for the_silver_searcher, 'ag'
-Plugin 'scrooloose/nerdtree'                " A tree explorer plugin for vim
-Plugin 'terryma/vim-expand-region'          " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
-Plugin 'tomtom/tcomment_vim'                " An extensible & universal comment plugin that also handles embedded filetypes
-Plugin 'tpope/vim-endwise'                  " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
-Plugin 'tpope/vim-fugitive'                 " a Git wrapper so awesome
-Plugin 'tpope/vim-ragtag'                   " Ghetto HTML/XML mappings (formerly allml.vim)
-Plugin 'tpope/vim-repeat'							      " repeat.vim: enable repeating supported plugin maps with '.'
-Plugin 'tpope/vim-surround' 					      " surround.vim: quoting/parenthesizing made simple
-Plugin 'vim-ruby/vim-ruby' 						      " Vim/Ruby Configuration Files
-Plugin 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
-Plugin 'ap/vim-css-color'                   " Preview colours in source code while editing
-Plugin 'bling/vim-airline'                  " Lean & mean status/tabline for vim that's light as air
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'tmux-plugins/vim-tmux-focus-events' " Makes the autoread option work properly for terminal vim
-Plugin 'kshenoy/vim-signature'              " Plugin to toggle, display and navigate marks
-Plugin 'elmcast/elm-vim'                    " Elm plugin for Vim
-Plugin 'pangloss/vim-javascript'            " Vastly improved Javascript indentation and syntax support in Vim.
-Plugin 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
-Plugin 'w0rp/ale'                           " Asynchronous Lint Engine
-Plugin 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
-Plugin 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder written in Go
-Plugin 'janko-m/vim-test'                   " Run your tests at the speed of thought
-Plugin 'rakr/vim-one'                       " Adaptation of one-light and one-dark colorschemes for Vim
-Plugin 'tpope/vim-dispatch'                 " dispatch.vim: asynchronous build and test dispatcher
+Plug 'Shougo/neocomplcache'               " Ultimate auto-completion system for Vim.
+Plug 'Townk/vim-autoclose'                " This plugin for Vim enable an auto-close chars feature for you
+Plug 'Yggdroot/indentLine'                " A vim plugin to display the indention levels with thin vertical lines
+Plug 'airblade/vim-gitgutter'             " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
+Plug 'benmills/vimux'                     " Vim plugin to interact with tmux
+Plug 'danro/rename.vim'                   " Rename the current file in the vim buffer + retain relative path.
+Plug 'docunext/closetag.vim'              " Functions and mappings to close open HTML/XML tags
+Plug 'duwanis/tomdoc.vim'                 " A simple syntax add-on for vim that highlights your TomDoc comments.
+Plug 'ervandew/supertab'                  " Perform all your vim insert mode completions with Tab
+Plug 'godlygeek/tabular'                  " Vim script for text filtering and alignment
+Plug 'majutsushi/tagbar'                  " Vim plugin that displays tags in a window, ordered by scope
+Plug 'rking/ag.vim'                       " Vim plugin for the_silver_searcher, 'ag'
+Plug 'scrooloose/nerdtree'                " A tree explorer plugin for vim
+Plug 'terryma/vim-expand-region'          " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
+Plug 'tomtom/tcomment_vim'                " An extensible & universal comment plugin that also handles embedded filetypes
+Plug 'tpope/vim-endwise'                  " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
+Plug 'tpope/vim-fugitive'                 " a Git wrapper so awesome
+Plug 'tpope/vim-ragtag'                   " Ghetto HTML/XML mappings (formerly allml.vim)
+Plug 'tpope/vim-repeat'							      " repeat.vim: enable repeating supported plugin maps with '.'
+Plug 'tpope/vim-surround' 					      " surround.vim: quoting/parenthesizing made simple
+Plug 'vim-ruby/vim-ruby' 						      " Vim/Ruby Configuration Files
+Plug 'vim-scripts/wombat256.vim'          " Wombat for 256 color xterms
+Plug 'ap/vim-css-color'                   " Preview colours in source code while editing
+Plug 'bling/vim-airline'                  " Lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tmux-plugins/vim-tmux-focus-events' " Makes the autoread option work properly for terminal vim
+Plug 'kshenoy/vim-signature'              " Plugin to toggle, display and navigate marks
+Plug 'elmcast/elm-vim'                    " Elm plugin for Vim
+Plug 'pangloss/vim-javascript'            " Vastly improved Javascript indentation and syntax support in Vim.
+Plug 'mxw/vim-jsx'                        " React JSX syntax highlighting and indenting for vim.
+Plug 'w0rp/ale'                           " Asynchronous Lint Engine
+Plug 'mhartington/oceanic-next'           " Oceanic Next theme for neovim
+Plug 'junegunn/fzf.vim'                   " 🌸 A command-line fuzzy finder written in Go
+Plug 'janko-m/vim-test'                   " Run your tests at the speed of thought
+Plug 'rakr/vim-one'                       " Adaptation of one-light and one-dark colorschemes for Vim
+Plug 'tpope/vim-dispatch'                 " dispatch.vim: asynchronous build and test dispatcher
 
 " == Deprecated
 "
@@ -71,7 +65,7 @@ Plugin 'tpope/vim-dispatch'                 " dispatch.vim: asynchronous build a
 " Plugin 'scrooloose/syntastic'               " Syntax checking hacks for vim
 " Plugin 'tpope/vim-rails' 							      " rails.vim: Ruby on Rails power tools
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""
