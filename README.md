@@ -8,3 +8,19 @@ Check [Larry's Dotfile](https://github.com/larrylv/dotfiles) for details on
 + Git
 + Tmux
 + Zsh
+
+## Vim Setup
+
++ Create vimrc by `curl https://raw.githubusercontent.com/ifyouseewendy/dotfiles/master/vimrc -o ~/.vimrc`
++ [Install Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim). To let nvim use vim config, create `~/.config/nvim/init.vim` with these contents:
+
+```vim
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let &packpath = &runtimepath
+source ~/.vimrc
+```
+
++ [Install vim-plug](https://github.com/junegunn/vim-plug#neovim)  as vim plugin manager
++ Open file by neovim, and input `:PlugInstall`.
++ Install external dependency (optional)
+  + [junegunn/fzf](https://github.com/junegunn/fzf)
