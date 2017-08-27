@@ -30,38 +30,38 @@ Plug 'tpope/vim-ragtag'                                         " Ghetto HTML/XM
 Plug 'tpope/vim-repeat'							                            " repeat.vim: enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-surround' 					                            " surround.vim: quoting/parenthesizing made simple
 Plug 'vim-ruby/vim-ruby' 						                            " Vim/Ruby Configuration Files
-Plug 'bling/vim-airline'                                        " Lean & mean status/tabline for vim that's light as air
+Plug 'vim-airline/vim-airline'                                  " Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'                       " Makes the autoread option work properly for terminal vim
 Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
 Plug 'junegunn/fzf.vim'                                         " 🌸 A command-line fuzzy finder written in Go
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
 Plug 'mhartington/oceanic-next'                                 " Oceanic Next theme for neovim
-Plug 'vim-scripts/wombat256.vim'                                " Wombat for 256 color xterms
-Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
 Plug 'tpope/vim-dispatch'                                       " dispatch.vim: asynchronous build and test dispatcher
 Plug 'w0rp/ale'                                                 " Asynchronous Lint Engine
-Plug 'elmcast/elm-vim',         { 'for': 'elm' }                " Elm plugin for Vim
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }         " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mxw/vim-jsx',             { 'for': 'javascript' }         " React JSX syntax highlighting and indenting for vim.
 Plug 'ap/vim-css-color',        { 'for': ['css', 'scss'] }      " Preview colours in source code while editing
+Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
 
 " == Deprecated
 "
-" Plugin 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
-" Plugin 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
-" Plugin 'danchoi/ri.vim'                   " browse ri documentation from Vim
-" Plugin 'dracula/vim'                      " A dark theme for Vim
-" Plugin 'flazz/vim-colorschemes'           " one colorscheme pack to rule them all!
-" Plugin 'hail2u/vim-css3-syntax'           " Add CSS3 syntax support to vim's built-in `syntax/css.vim
-" Plugin 'ifyouseewendy/vim-snippets'       " Vim-snipmate default snippets
-" Plugin 'scratch.vim'                      " Plugin to create and use a scratch Vim buffer
-" Plugin 'taglist.vim'                      " Source code browser
-" Plugin 'tpope/vim-abolish'                " Easily search for, substitute, and abbreviate multiple variants of a word
-" Plugin 'tpope/vim-dispatch'               " Asynchronous build and test dispatcher
-" Plugin 'lambdatoast/elm.vim'
-" Plugin 'scrooloose/syntastic'               " Syntax checking hacks for vim
-" Plugin 'tpope/vim-rails' 							      " rails.vim: Ruby on Rails power tools
+" Plug 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
+" Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
+" Plug 'danchoi/ri.vim'                   " browse ri documentation from Vim
+" Plug 'dracula/vim'                      " A dark theme for Vim
+" Plug 'flazz/vim-colorschemes'           " one colorscheme pack to rule them all!
+" Plug 'hail2u/vim-css3-syntax'           " Add CSS3 syntax support to vim's built-in `syntax/css.vim
+" Plug 'ifyouseewendy/vim-snippets'       " Vim-snipmate default snippets
+" Plug 'scratch.vim'                      " Plugin to create and use a scratch Vim buffer
+" Plug 'taglist.vim'                      " Source code browser
+" Plug 'tpope/vim-abolish'                " Easily search for, substitute, and abbreviate multiple variants of a word
+" Plug 'tpope/vim-dispatch'               " Asynchronous build and test dispatcher
+" Plug 'lambdatoast/elm.vim'
+" Plug 'scrooloose/syntastic'             " Syntax checking hacks for vim
+" Plug 'tpope/vim-rails' 							    " rails.vim: Ruby on Rails power tools
+" Plug 'elmcast/elm-vim'                  " Elm plugin for Vim
+" Plug 'vim-scripts/wombat256.vim'        " Wombat for 256 color xterms
 
 call plug#end()
 
@@ -288,7 +288,7 @@ map <leader>ss :Sscratch<ESC>i
 set laststatus=2
 set noshowmode
 
-let g:airline_theme='wombat'
+let g:airline_theme='one'
 
 let g:airline_extensions = []
 
