@@ -43,6 +43,7 @@ Plug 'pangloss/vim-javascript', { 'for': 'javascript' }         " Vastly improve
 Plug 'mxw/vim-jsx',             { 'for': 'javascript' }         " React JSX syntax highlighting and indenting for vim.
 Plug 'ap/vim-css-color',        { 'for': ['css', 'scss'] }      " Preview colours in source code while editing
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
+Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
 
 " == Deprecated
 "
