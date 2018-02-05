@@ -552,6 +552,7 @@ let g:ale_linters = {
 \   'json': ['jsonlint'],
 \   'yaml': ['yamllint'],
 \   'ruby': ['ruby', 'rubocop'],
+\   'eruby': [],
 \}
 
 let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
