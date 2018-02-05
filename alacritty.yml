@@ -1,6 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator
 
-
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty it self.
@@ -16,11 +15,10 @@ env:
 
 window:
   # Window dimensions in character columns and lines
-  # Falls back to size specified by window manager if set to 0x0.
   # (changes require restart)
   dimensions:
-    columns: 80
-    lines: 24
+    columns: 160
+    lines: 40
 
   # Adds this many blank pixels of padding around the window
   # Units are physical pixels; this is not DPI aware.
@@ -31,7 +29,7 @@ window:
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: true
+  decorations: false
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
@@ -40,51 +38,33 @@ tabspaces: 8
 draw_bold_text_with_bright_colors: true
 
 # Font configuration (changes require restart)
-#
-# Important font attributes like antialiasing, subpixel aa, and hinting can be
-# controlled through fontconfig. Specifically, the following attributes should
-# have an effect:
-#
-# * hintstyle
-# * antialias
-# * lcdfilter
-# * rgba
-#
-# For instance, if you wish to disable subpixel antialiasing, you might set the
-# rgba property to "none". If you wish to completely disable antialiasing, you
-# can set antialias to false.
-#
-# Please see these resources for more information on how to use fontconfig
-#
-# * https://wiki.archlinux.org/index.php/font_configuration#Fontconfig_configuration
-# * file:///usr/share/doc/fontconfig/fontconfig-user.html
 font:
   # The normal (roman) font face to use.
   normal:
-    family: monospace # should be "Menlo" or something on macOS.
+    family: Monaco # Menlo
     # Style can be specified to pick a specific face.
     # style: Regular
 
   # The bold font face
   bold:
-    family: monospace # should be "Menlo" or something on macOS.
+    family: Monaco # Menlo
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: monospace # should be "Menlo" or something on macOS.
+    family: Monaco # Menlo
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size of the font
-  size: 11.0
+  size: 12.0
 
   # Offset is the extra space around each character. offset.y can be thought of
   # as modifying the linespacing, and offset.x as modifying the letter spacing.
   offset:
     x: 0.0
-    y: 0.0
+    y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increase the x offset to move the glyph to
@@ -103,40 +83,86 @@ render_timer: false
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
-custom_cursor_colors: false
+custom_cursor_colors: true
 
-# Colors (Tomorrow Night Bright)
+# == Colors (Default: Tomorrow Night Bright)
+#
+# colors:
+#   # Default colors
+#   primary:
+#     background: '0x000000'
+#     foreground: '0xeaeaea'
+#
+#   # Colors the cursor will use if `custom_cursor_colors` is true
+#   cursor:
+#     text: '0x000000'
+#     cursor: '0xffffff'
+#
+#   # Normal colors
+#   normal:
+#     black:   '0x000000'
+#     red:     '0xd54e53'
+#     green:   '0xb9ca4a'
+#     yellow:  '0xe6c547'
+#     blue:    '0x7aa6da'
+#     magenta: '0xc397d8'
+#     cyan:    '0x70c0ba'
+#     white:   '0xffffff'
+#
+#   # Bright colors
+#   bright:
+#     black:   '0x666666'
+#     red:     '0xff3334'
+#     green:   '0x9ec400'
+#     yellow:  '0xe7c547'
+#     blue:    '0x7aa6da'
+#     magenta: '0xb77ee0'
+#     cyan:    '0x54ced6'
+#     white:   '0xffffff'
+#
+#   # Dim colors (Optional)
+#   dim:
+#     black:   '0x333333'
+#     red:     '0xf2777a'
+#     green:   '0x99cc99'
+#     yellow:  '0xffcc66'
+#     blue:    '0x6699cc'
+#     magenta: '0xcc99cc'
+#     cyan:    '0x66cccc'
+#     white:   '0xdddddd'
+
+# == Colors (Di)
 colors:
   # Default colors
   primary:
     background: '0x000000'
-    foreground: '0xeaeaea'
+    foreground: '0x00c200'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x000000'
-    cursor: '0xffffff'
+    text: '0x019705'
+    cursor: '0xc7c7c7'
 
   # Normal colors
   normal:
     black:   '0x000000'
-    red:     '0xd54e53'
-    green:   '0xb9ca4a'
-    yellow:  '0xe6c547'
-    blue:    '0x7aa6da'
-    magenta: '0xc397d8'
-    cyan:    '0x70c0ba'
-    white:   '0xffffff'
+    red:     '0xc91b00'
+    green:   '0x01f900'
+    yellow:  '0xc7c400'
+    blue:    '0x0225c7'
+    magenta: '0xca30c7'
+    cyan:    '0x00c5c7'
+    white:   '0xc7c7c7'
 
   # Bright colors
   bright:
-    black:   '0x666666'
-    red:     '0xff3334'
-    green:   '0x9ec400'
-    yellow:  '0xe7c547'
-    blue:    '0x7aa6da'
-    magenta: '0xb77ee0'
-    cyan:    '0x54ced6'
+    black:   '0x686868'
+    red:     '0xff6e67'
+    green:   '0x5ffa68'
+    yellow:  '0xfffc67'
+    blue:    '0x6871ff'
+    magenta: '0xff77ff'
+    cyan:    '0x60fdff'
     white:   '0xffffff'
 
   # Dim colors (Optional)
@@ -149,6 +175,7 @@ colors:
     magenta: '0xcc99cc'
     cyan:    '0x66cccc'
     white:   '0xdddddd'
+
 
 # Visual Bell
 #
@@ -239,10 +266,10 @@ live_config_reload: true
 # You can set shell.program to the path of your favorite shell, e.g. /bin/fish.
 # Entries in shell.args are passed unmodified as arguments to the shell.
 #
-# shell:
-#   program: /bin/bash
-#   args:
-#     - --login
+shell:
+  program: /usr/local/bin/bash
+  args:
+    - --login
 
 # Key bindings
 #
@@ -279,23 +306,18 @@ live_config_reload: true
 #   `command` must be a map containing a `program` string, and `args` array of
 #     strings. For example:
 #     - { ... , command: { program: "alacritty", args: ["-e", "vttest"] } }
-#
-# Want to add a binding (e.g. "PageUp") but are unsure what the X sequence
-# (e.g. "\x1b[5~") is? Open another terminal (like xterm) without tmux,
-# then run `showkey -a` to get the sequence associated to a key combination.
 key_bindings:
-  - { key: V,        mods: Control|Shift,    action: Paste               }
-  - { key: C,        mods: Control|Shift,    action: Copy                }
+  - { key: V,        mods: Command, action: Paste                        }
+  - { key: C,        mods: Command, action: Copy                         }
   - { key: Q,        mods: Command, action: Quit                         }
   - { key: W,        mods: Command, action: Quit                         }
-  - { key: Insert,   mods: Shift,   action: PasteSelection               }
-  - { key: Key0,     mods: Control, action: ResetFontSize                }
-  - { key: Equals,   mods: Control, action: IncreaseFontSize             }
-  - { key: Subtract, mods: Control, action: DecreaseFontSize             }
   - { key: Home,                    chars: "\x1bOH",   mode: AppCursor   }
   - { key: Home,                    chars: "\x1b[H",   mode: ~AppCursor  }
   - { key: End,                     chars: "\x1bOF",   mode: AppCursor   }
   - { key: End,                     chars: "\x1b[F",   mode: ~AppCursor  }
+  - { key: Key0,     mods: Command, action: ResetFontSize                }
+  - { key: Equals,   mods: Command, action: IncreaseFontSize             }
+  - { key: Minus,    mods: Command, action: DecreaseFontSize             }
   - { key: PageUp,   mods: Shift,   chars: "\x1b[5;2~"                   }
   - { key: PageUp,   mods: Control, chars: "\x1b[5;5~"                   }
   - { key: PageUp,                  chars: "\x1b[5~"                     }
@@ -375,15 +397,15 @@ key_bindings:
   - { key: F10,      mods: Alt,     chars: "\x1b[21;6~"                  }
   - { key: F11,      mods: Alt,     chars: "\x1b[23;6~"                  }
   - { key: F12,      mods: Alt,     chars: "\x1b[24;6~"                  }
-  - { key: F1,       mods: Super,   chars: "\x1b[1;3P"                   }
-  - { key: F2,       mods: Super,   chars: "\x1b[1;3Q"                   }
-  - { key: F3,       mods: Super,   chars: "\x1b[1;3R"                   }
-  - { key: F4,       mods: Super,   chars: "\x1b[1;3S"                   }
-  - { key: F5,       mods: Super,   chars: "\x1b[15;3~"                  }
-  - { key: F6,       mods: Super,   chars: "\x1b[17;3~"                  }
-  - { key: F7,       mods: Super,   chars: "\x1b[18;3~"                  }
-  - { key: F8,       mods: Super,   chars: "\x1b[19;3~"                  }
-  - { key: F9,       mods: Super,   chars: "\x1b[20;3~"                  }
-  - { key: F10,      mods: Super,   chars: "\x1b[21;3~"                  }
-  - { key: F11,      mods: Super,   chars: "\x1b[23;3~"                  }
-  - { key: F12,      mods: Super,   chars: "\x1b[24;3~"                  }
+  - { key: F1,       mods: Command, chars: "\x1b[1;3P"                   }
+  - { key: F2,       mods: Command, chars: "\x1b[1;3Q"                   }
+  - { key: F3,       mods: Command, chars: "\x1b[1;3R"                   }
+  - { key: F4,       mods: Command, chars: "\x1b[1;3S"                   }
+  - { key: F5,       mods: Command, chars: "\x1b[15;3~"                  }
+  - { key: F6,       mods: Command, chars: "\x1b[17;3~"                  }
+  - { key: F7,       mods: Command, chars: "\x1b[18;3~"                  }
+  - { key: F8,       mods: Command, chars: "\x1b[19;3~"                  }
+  - { key: F9,       mods: Command, chars: "\x1b[20;3~"                  }
+  - { key: F10,      mods: Command, chars: "\x1b[21;3~"                  }
+  - { key: F11,      mods: Command, chars: "\x1b[23;3~"                  }
+  - { key: F12,      mods: Command, chars: "\x1b[24;3~"                  }
