@@ -13,10 +13,9 @@
 #   - http://shopify.github.io/ruby-style-guide/rubocop.yml
 
 AllCops:
-  TargetRubyVersion: 2.3
   Exclude:
-    - 'db/schema.rb'
-    - 'tmp/*'
+  - 'db/schema.rb'
+  - 'tmp/*'
   DisabledByDefault: true
 
 Layout/AccessModifierIndentation:
@@ -178,7 +177,7 @@ Layout/ExtraSpacing:
   AllowForAlignment: true
   ForceEqualSignAlignment: false
 
-Style/FileName:
+Naming/FileName:
   Exclude: []
   ExpectMatchingDefinition: false
   Regex:
@@ -280,7 +279,7 @@ Style/MethodDefParentheses:
   - require_no_parentheses
   - require_no_parentheses_except_multiline
 
-Style/MethodName:
+Naming/MethodName:
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
@@ -294,7 +293,7 @@ Layout/MultilineArrayBraceLayout:
   - same_line
 
 Layout/MultilineHashBraceLayout:
-  EnforcedStyle: symmetrical
+  EnforcedStyle: new_line
   SupportedStyles:
   - symmetrical
   - new_line
@@ -349,7 +348,7 @@ Style/PercentQLiterals:
   - lower_case_q
   - upper_case_q
 
-Style/PredicateName:
+Naming/PredicateName:
   NamePrefix:
   - is_
   NamePrefixBlacklist:
@@ -436,6 +435,7 @@ Layout/SpaceAroundOperators:
 
 Layout/SpaceBeforeBlockBraces:
   EnforcedStyle: space
+  EnforcedStyleForEmptyBraces: space
   SupportedStyles:
   - space
   - no_space
@@ -504,14 +504,14 @@ Style/TrivialAccessors:
   - to_s
   - to_sym
 
-Style/VariableName:
+Naming/VariableName:
   EnforcedStyle: snake_case
   SupportedStyles:
   - snake_case
   - camelCase
 
 Style/WhileUntilModifier:
-  MaxLineLength: 80
+  Enabled: true
 
 Style/WordArray:
   EnforcedStyle: percent
@@ -658,7 +658,7 @@ Rails/Validation:
   Include:
   - app/models/**/*.rb
 
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: true
 
 Layout/AlignArray:
@@ -667,7 +667,7 @@ Layout/AlignArray:
 Style/ArrayJoin:
   Enabled: true
 
-Style/AsciiIdentifiers:
+Naming/AsciiIdentifiers:
   Enabled: true
 
 Style/Attr:
@@ -688,7 +688,7 @@ Style/CaseEquality:
 Style/CharacterLiteral:
   Enabled: true
 
-Style/ClassAndModuleCamelCase:
+Naming/ClassAndModuleCamelCase:
   Enabled: true
 
 Style/ClassMethods:
@@ -706,7 +706,7 @@ Style/ColonMethodCall:
 Layout/CommentIndentation:
   Enabled: true
 
-Style/ConstantName:
+Naming/ConstantName:
   Enabled: true
 
 Style/DefWithParentheses:
@@ -817,7 +817,7 @@ Style/Not:
 Style/OneLineConditional:
   Enabled: true
 
-Style/OpMethod:
+Naming/BinaryOperatorParameterName:
   Enabled: true
 
 Style/OptionalArguments:
@@ -889,7 +889,7 @@ Layout/SpaceInsideArrayPercentLiteral:
 Layout/SpaceInsidePercentLiteralDelimiters:
   Enabled: true
 
-Layout/SpaceInsideBrackets:
+Layout/SpaceInsideArrayLiteralBrackets:
   Enabled: true
 
 Layout/SpaceInsideParens:
@@ -993,11 +993,7 @@ Lint/IneffectiveAccessModifier:
   Description: Checks for attempts to use `private` or `protected` to set the visibility
     of a class method, which does not work.
 
-Lint/InvalidCharacterLiteral:
-  Description: Checks for invalid character literals with a non-escaped whitespace
-    character.
-
-Lint/LiteralInCondition:
+Lint/LiteralAsCondition:
   Enabled: true
 
 Lint/LiteralInInterpolation:
