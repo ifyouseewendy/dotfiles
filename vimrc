@@ -9,7 +9,6 @@
 
 call plug#begin("~/.vim/bundle")
 
-Plug 'Shougo/neocomplcache'                                     " Ultimate auto-completion system for Vim.
 Plug 'Townk/vim-autoclose'                                      " This plugin for Vim enable an auto-close chars feature for you
 Plug 'Yggdroot/indentLine'                                      " A vim plugin to display the indention levels with thin vertical lines
 Plug 'airblade/vim-gitgutter'                                   " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
@@ -45,9 +44,11 @@ Plug 'ap/vim-css-color',        { 'for': ['css', 'scss'] }      " Preview colour
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
 Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }          " Syntax Highlighting and Indentation for Haskell and Cabal
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
 
 " == Deprecated
 "
+" Plug 'Shougo/neocomplcache'                                     " Ultimate auto-completion system for Vim.
 " Plug 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
 " Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
 " Plug 'danchoi/ri.vim'                   " browse ri documentation from Vim
@@ -367,36 +368,6 @@ nmap <leader>gs :Gstatus<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>gt :!tig status<cr>"}}}
 
-" autocomplete"{{{
-" set complete=.,w,b,u,t,i
-" set completeopt=longest,menu
-" " <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" highlight Pmenu ctermbg=238 gui=bold"}}}
-
-" neocomplcache {{{
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case = 1
-let g:neocomplcache_enable_underbar_completion = 1
-let g:neocomplcache_force_overwrite_completefunc = 1
-if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
-endif
-let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
-
-" Enable omni completion.
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown,mkd setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-
-inoremap <expr><C-g>  neocomplcache#undo_completion()
-" inoremap <expr><C-l>  neocomplcache#complete_common_string()
-inoremap <expr><C-e>  neocomplcache#close_popup()
-inoremap <expr><C-y>  neocomplcache#cancel_popup()
-inoremap <expr><BS>   neocomplcache#smart_close_popup()."\<C-h>""}}}
-
 " nerdtree "{{{
 let NERDTreeWinSize = 26
 let NERDTreeAutoCenter=1
@@ -606,4 +577,8 @@ let g:fzf_commits_log_options ='--pretty=format:"%C(yellow)%h%Creset %ad %s %C(r
 
 "{{{vim-javascript
 let g:javascript_plugin_flow = 1
+"}}}
+
+" Use deoplete.{{{
+let g:deoplete#enable_at_startup = 1
 "}}}
