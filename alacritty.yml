@@ -29,7 +29,7 @@ window:
 
   # Window decorations
   # Setting this to false will result in window without borders and title bar.
-  decorations: false
+  decorations: true
 
 # Display tabs using this many cells (changes require restart)
 tabspaces: 8
@@ -223,6 +223,7 @@ background_opacity: 1.0
 # - Copy (TODO)
 mouse_bindings:
   - { mouse: Middle, action: PasteSelection }
+  - { mouse: Left, action: Copy }
 
 mouse:
   # Click settings
