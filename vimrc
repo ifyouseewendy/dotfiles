@@ -525,6 +525,7 @@ let g:ale_linters = {
 \   'yaml': ['yamllint'],
 \   'ruby': ['ruby', 'rubocop'],
 \   'eruby': [],
+\   'haskell': ['hlint', 'stack-ghc-mod']
 \}
 
 let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
