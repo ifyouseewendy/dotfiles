@@ -308,10 +308,7 @@ endif
 let g:airline_symbols.space = "\ua0"
 
 " Display ale linting result
-function ALE() abort
-    return exists('*ALEGetStatusLine') ? ALEGetStatusLine() : ''
-endfunction
-let g:airline_section_error = '%{ALE()}'
+let g:airline#extensions#ale#enabled = 1
 
 " When use powerline font, the percentage/line/column chaos displayed
 " let g:airline_powerline_fonts = 1
