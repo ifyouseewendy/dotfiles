@@ -533,14 +533,16 @@ let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
 
 " Config :ALEFix to use prettier
 let g:ale_fixers = {
-\  'javascript': ['prettier'],
+\  'javascript': ['eslint', 'prettier'],
 \  'json': ['prettier'],
 \  'ruby': ['rubocop'],
 \  'css': ['stylelint'],
+\  'haskell': ['brittany'],
 \}
 
 let g:ale_javascript_prettier_options = "--trailing-comma all"
 let g:ale_scss_stylelint_options = "--fix"
+let g:ale_haskell_brittany_options = "--write-mode inplace"
 
 " Run fixer on save
 let g:ale_fix_on_save = 0
