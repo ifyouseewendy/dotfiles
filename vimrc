@@ -171,7 +171,8 @@ if has('nvim')
   " setting c-h as escape [104;5u in iterm
 
   set mouse-=a                           " Disable mouse
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 "" " Switch cursor shape when using NeoVim
+  let g:python_host_prog = '/Users/wendi/.pyenv/versions/2.7.11/bin/python'
+  let g:python3_host_prog = '/Users/wendi/.pyenv/versions/neovim3/bin/python'
 
   if (has("termguicolors"))
     set termguicolors
