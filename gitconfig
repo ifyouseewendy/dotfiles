@@ -23,8 +23,8 @@
     last     = log --stat -1
     logg     = log --pretty=format:'%h - %an -%ad -%s'
     glog     = log --graph
-    h        = log --pretty=format:\"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset\" --graph --date=short -10
-    hist     = log --pretty=format:\"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset\" --graph --date=short
+    h        = log --pretty=format:\"%C(yellow)%h%Creset %C(red)[%an]%Creset%C(auto)%d%Creset %s %Cgreen(%cr)%Creset\" --graph --date=short -10
+    hist     = log --pretty=format:\"%C(yellow)%h%Creset %C(red)[%an]%Creset%C(auto)%d%Creset %s %Cgreen(%cr)%Creset\" --graph --date=short
     news     = log -p HEAD@{1}..HEAD@{0}
 
     pb       = pull --rebase
