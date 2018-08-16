@@ -153,7 +153,7 @@ autocmd BufNewFile,BufRead Capfile set filetype=ruby
 autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
-autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:>
+autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
@@ -508,8 +508,8 @@ let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
 
 " Use quickfix instead of loclist
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
 
 " Open list to show warnings or errors
 " let g:ale_open_list = 1
@@ -542,7 +542,7 @@ let g:ale_fixers = {
 
 let g:ale_javascript_prettier_options = "--trailing-comma all"
 let g:ale_scss_stylelint_options = "--fix"
-let g:ale_haskell_brittany_options = "--write-mode inplace"
+" let g:ale_haskell_brittany_options = ""
 
 " Run fixer on save
 let g:ale_fix_on_save = 0
@@ -574,6 +574,14 @@ let g:fzf_buffers_jump = 1
 
 " [[B]Commits] Customize the options used by 'git log'
 let g:fzf_commits_log_options ='--pretty=format:"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset" --graph --date=short'
+
+command! -bang -nargs=* Ag
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview(s:ag_opts, 'down:50%')
+  \           : fzf#vim#with_preview(s:ag_opts, s:horiz_preview_layout, '?'),
+  \   <bang>0)
+
 "}}}
 
 "{{{vim-javascript
