@@ -65,4 +65,14 @@ if [ -f '/Users/wendi/Workspace/google-cloud-sdk/path.bash.inc' ]; then source '
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/wendi/Workspace/google-cloud-sdk/completion.bash.inc' ]; then source '/Users/wendi/Workspace/google-cloud-sdk/completion.bash.inc'; fi
 
-export PATH="$HOME/Library/Haskell/bin/:$PATH"
+export PATH="$HOME/.local/bin:$HOME/Library/Haskell/bin/:$PATH"
+
+if [ -f ~/.config/exercism/exercism_completion.bash ]; then
+  . ~/.config/exercism/exercism_completion.bash
+fi
+
+if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv init - && pyenv virtualenv-init -)"; fi
+
+export PYENV_ROOT="$HOME/.pyenv"
+
+ulimit -Sn 4096
