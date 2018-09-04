@@ -3,7 +3,7 @@
 	email = ifyouseewendy@gmail.com
 [core]
 	excludesfile = /Users/wendi/.gitignore
-    pager        = less -+FRSX -FRX
+  pager = diff-so-fancy | less --tabs=2 -RFX
     editor       = nvim
     autocrlf     = input
     safecrlf     = true
@@ -55,13 +55,10 @@
 [push]
     default = tracking
 [color]
-    ui = true
+	ui = true
 [i18n]
     commitEncoding = utf8
     logOutputEncoding = utf8
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
@@ -70,3 +67,15 @@
 	autosetuprebase = always
 [pull]
 	rebase = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
