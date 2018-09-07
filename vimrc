@@ -45,6 +45,7 @@ Plug 'rakr/vim-one'                                             " Adaptation of 
 Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }          " Syntax Highlighting and Indentation for Haskell and Cabal
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
+Plug 'dag/vim-fish', { 'for': 'fish' }                          " Vim support for editing fish scripts
 
 " == Deprecated
 "
@@ -588,7 +589,13 @@ command! -bang -nargs=* Ag
 let g:javascript_plugin_flow = 1
 "}}}
 
-" Use deoplete.{{{
+" Use deoplete{{{
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><C-e> deoplete#close_popup()
 "}}}
+
+" vim-fish{{{
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+""}}}
