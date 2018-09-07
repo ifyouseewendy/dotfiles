@@ -76,3 +76,9 @@ if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv init - && pyenv v
 export PYENV_ROOT="$HOME/.pyenv"
 
 ulimit -Sn 4096
+
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+# brew unlink imagemagick
+# brew install imagemagick@6 && brew link imagemagick@6 --force
+
+export PKG_CONFIG_PATH=/usr/local/Cellar/imagemagick@6/6.9.10-9/lib/pkgconfig
