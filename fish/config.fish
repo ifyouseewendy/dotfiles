@@ -9,6 +9,15 @@ if test -e /opt/dev/dev.fish
   source /opt/dev/dev.fish
 end
 
+# fzf
+source "/usr/local/opt/fzf/shell/key-bindings.fish"
+# set -x FZF_DEFAULT_OPTS "--bind='ctrl-o:execute(code {})+abort'"
+set -x FZF_DEFAULT_OPTS '--reverse --bind ctrl-d:page-down,ctrl-u:page-up'
+set -x FZF_TMUX 1
+set -x FZF_TMUX_HEIGHT 30%
+set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set -x FZF_DEFAULT_COMMAND 'ag -g ""'
+
 # directory operations
 alias la='ls -AF'
 alias ll='ls -alhF'
