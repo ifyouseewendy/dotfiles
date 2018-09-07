@@ -7,7 +7,11 @@ Check [Larry's Dotfile](https://github.com/larrylv/dotfiles) for details on
 + Vim (Ruby support mainly)
 + Git
 + Tmux
-+ Zsh
++ Fish
+
+## Shell setup
+
+Soft link `fish/config.fish` and `fish/functions` to your local fish configs, which is `~/.config/fish/` in my local.
 
 ## Vim Setup
 
