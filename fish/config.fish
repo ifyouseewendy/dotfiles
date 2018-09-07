@@ -59,10 +59,18 @@ alias ping='prettyping --nolegend'
 alias quickview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias crontab="VIM_CRONTAB=true crontab"
+alias vcf="vim ~/.config/fish/config.fish"
 # alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 # alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # dev
-alias ffs="dev down and dev up and dev s"
+alias ffs="dev down; dev up; dev s"
 alias push-pr="git push -u origin HEAD --no-verify and dev open pr"
-set -x PKG_CONFIG_PATH (brew --prefix imagemagick@6)/6.9.10-9/lib/pkgconfig
+set -x PKG_CONFIG_PATH (brew --prefix imagemagick@6)/lib/pkgconfig
+
+# NOTE
+#
+# How to run something like `FOO=BAR dev s`?
+#
+#   1. begin; set -lx FOO BAR; dev s; end
+#   2. env FOO=BAR fish -c "dev s"
