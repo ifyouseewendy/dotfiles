@@ -19,9 +19,9 @@ set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -x FZF_DEFAULT_COMMAND 'ag -g ""'
 
 # directory operations
-alias la='ls -AF'
-alias ll='ls -alhF'
-alias l='ls -CF'
+alias l='exa --group-directories-first' # 'ls -CF'
+alias la='exa -all --group-directories-first' # 'ls -AF'
+alias ll='exa --all --long --grid --group --group-directories-first --color=automatic' # 'ls -alhF'
 alias ..='cd ..'         # Go up one directory
 alias ...='cd ../..'     # Go up two directories
 alias ....='cd ../../..' # Go up three directories
