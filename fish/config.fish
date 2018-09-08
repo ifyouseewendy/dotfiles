@@ -1,6 +1,9 @@
 # fish
 set fish_greeting "Hello mate, welcome to Fish!"
 
+# env
+set -x EDITOR "nvim"
+
 # system
 ulimit -Sn 4096
 
