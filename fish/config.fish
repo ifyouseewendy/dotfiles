@@ -44,8 +44,8 @@ set -U fish_user_paths $HOME/.local/bin $HOME/Library/Haskell/bin/
 # command alias
 alias tigs='tig status'
 alias g='git status'
-alias f='open -a Finder '
 alias h='history'
+alias vi='nvim'
 alias vim='nvim'
 alias vif='nvim (fzf)'
 alias pre='open -a Preview'
