@@ -39,7 +39,7 @@ alias be='bundle exec'
 alias ri='ri -f ansi'
 
 # haskell
-set -U fish_user_paths $HOME/.local/bin $HOME/Library/Haskell/bin/ $fish_user_paths
+set -U fish_user_paths $HOME/.local/bin $HOME/Library/Haskell/bin/
 
 # command alias
 alias tigs='tig status'
@@ -66,7 +66,7 @@ alias vcf="vim ~/.config/fish/config.fish"
 # dev
 alias ffs="dev down; dev up; dev s"
 alias push-pr="git push -u origin HEAD --no-verify and dev open pr"
-set -x PKG_CONFIG_PATH (brew --prefix imagemagick@6)/lib/pkgconfig
+set -x PKG_CONFIG_PATH /usr/local/opt/imagemagick@6/lib/pkgconfig
 
 # NOTE
 #
