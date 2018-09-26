@@ -68,7 +68,7 @@ alias vcf="vim ~/.config/fish/config.fish"
 
 # dev
 alias ffs="dev down; dev up; dev s"
-alias push-pr="git push -u origin HEAD --no-verify and dev open pr"
+alias push-pr="git push -u origin HEAD --no-verify; dev open pr"
 set -x PKG_CONFIG_PATH /usr/local/opt/imagemagick@6/lib/pkgconfig
 
 # NOTE
