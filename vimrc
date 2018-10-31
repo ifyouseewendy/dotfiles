@@ -279,7 +279,7 @@ map <leader>sp :split<cr>
 map <leader>vs :vsplit<cr>
 
 " Select entire line without newline
-nnoremap <leader>v<CR> 0vg_
+nmap VV ^v$h
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION

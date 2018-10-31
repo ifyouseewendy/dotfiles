@@ -1,3 +1,5 @@
+# https://github.com/jonas/tig/wiki/Bindings
+
 bind status a !git commit --amend
 set refresh-mode = periodic
 set refresh-interval = 2
