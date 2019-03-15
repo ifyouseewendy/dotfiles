@@ -44,6 +44,10 @@ alias ri='ri -f ansi'
 # haskell
 set -U fish_user_paths $HOME/.local/bin $HOME/Library/Haskell/bin/
 
+# Go
+set -x -U GOPATH $HOME/Workspace/go
+set -U fish_user_paths $HOME/Workspace/go/bin
+
 # command alias
 alias tigs='tig status'
 alias g='git status'
@@ -77,3 +81,6 @@ set -x PKG_CONFIG_PATH /usr/local/opt/imagemagick@6/lib/pkgconfig
 #
 #   1. begin; set -lx FOO BAR; dev s; end
 #   2. env FOO=BAR fish -c "dev s"
+
+# direnv
+direnv hook fish | source
