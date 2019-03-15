@@ -82,3 +82,5 @@ export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
 # brew install imagemagick@6 && brew link imagemagick@6 --force
 
 export PKG_CONFIG_PATH=/usr/local/Cellar/imagemagick@6/6.9.10-9/lib/pkgconfig
+
+export PATH="$HOME/.cargo/bin:$PATH"
