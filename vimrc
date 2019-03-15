@@ -45,7 +45,10 @@ Plug 'rakr/vim-one'                                             " Adaptation of 
 Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
 Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }          " Syntax Highlighting and Indentation for Haskell and Cabal
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
-Plug 'dag/vim-fish', { 'for': 'fish' }                          " Vim support for editing fish scripts
+Plug 'dag/vim-fish',         { 'for': 'fish' }                  " Vim support for editing fish scripts
+Plug 'fatih/vim-go',         { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
+Plug 'mdempsky/gocode',      { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' } " An autocompletion daemon for the Go programming language
+Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
 
 " == Deprecated
 "
@@ -159,7 +162,9 @@ autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType elm set ai ts=4 sw=4 sts=4 et
-autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype rust setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype go setlocal ts=4 sw=4 sts=0 expandtab
 
 " Filetype colorschemes
 
@@ -279,11 +284,17 @@ map <leader>sp :split<cr>
 map <leader>vs :vsplit<cr>
 
 " Select entire line without newline
-nmap VV ^v$h
+nmap <leader>V ^v$h
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" vim-fish{{{
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+""}}}
 
 " scratch.vim"{{{
 map <leader>ss :Sscratch<ESC>i
@@ -524,7 +535,8 @@ let g:ale_linters = {
 \   'yaml': ['yamllint'],
 \   'ruby': ['ruby', 'rubocop'],
 \   'eruby': [],
-\   'haskell': ['hlint', 'stack-ghc-mod']
+\   'haskell': ['hlint', 'stack-ghc-mod'],
+\   'rust': ['cargo'],
 \}
 
 let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
@@ -539,6 +551,7 @@ let g:ale_fixers = {
 \  'ruby': ['rubocop'],
 \  'css': ['stylelint'],
 \  'haskell': ['brittany'],
+\  'rust': ['rustfmt'],
 \}
 
 let g:ale_javascript_prettier_options = "--trailing-comma all"
@@ -594,8 +607,15 @@ let g:deoplete#enable_at_startup = 1
 inoremap <expr><C-e> deoplete#close_popup()
 "}}}
 
-" vim-fish{{{
-if &shell =~# 'fish$'
-    set shell=sh
-endif
-""}}}
+" vim-go{{{
+function! SetupMapForVimGo()
+  nmap <leader>gi <Plug>(go-info)
+  nmap <leader>gr <Plug>(go-run)
+  nmap <leader>gt <Plug>(go-test)
+
+  nmap <leader>gd :<C-u>GoDeclsDir<CR>
+  nmap <leader>gl :<C-u>GoDecls<CR>
+endfunction
+
+autocmd FileType go call SetupMapForVimGo()
+"}}}
