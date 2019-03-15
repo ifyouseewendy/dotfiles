@@ -79,3 +79,11 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[commit]
+	template = /Users/wendi/.gitmessage
+[diff]
+	algorithm = patience
+[protocol]
+	version = 2
+[credential]
+	helper = osxkeychain
