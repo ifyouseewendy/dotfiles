@@ -63,7 +63,6 @@ Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous G
 " Plug 'scratch.vim'                      " Plugin to create and use a scratch Vim buffer
 " Plug 'taglist.vim'                      " Source code browser
 " Plug 'tpope/vim-abolish'                " Easily search for, substitute, and abbreviate multiple variants of a word
-" Plug 'tpope/vim-dispatch'               " Asynchronous build and test dispatcher
 " Plug 'lambdatoast/elm.vim'
 " Plug 'scrooloose/syntastic'             " Syntax checking hacks for vim
 " Plug 'tpope/vim-rails' 							    " rails.vim: Ruby on Rails power tools
@@ -450,6 +449,10 @@ let test#javascript#jest#options = {
 \}
 "}}}
 
+" vim-dispatch "{{{
+nnoremap <leader>r :Dispatch<CR>
+"}}}
+
 " vim-expand-region"{{{
 vmap v <Plug>(expand_region_expand)
 vmap <c-v> <Plug>(expand_region_shrink)"}}}
@@ -618,4 +621,18 @@ function! SetupMapForVimGo()
 endfunction
 
 autocmd FileType go call SetupMapForVimGo()
+
+" Disable default shortcut s-k
+let g:go_doc_keywordprg_enabled = 0
+
+" https://github.com/fatih/vim-go/wiki/Tutorial
+let g:go_fmt_command = "goimports"
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
 "}}}
