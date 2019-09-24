@@ -9,13 +9,10 @@
 
 call plug#begin("~/.vim/bundle")
 
-Plug 'Townk/vim-autoclose'                                      " This plugin for Vim enable an auto-close chars feature for you
+Plug 'ferranpm/vim-autopairs'
+" Plug 'Townk/vim-autoclose'                                      " This plugin for Vim enable an auto-close chars feature for you
 Plug 'Yggdroot/indentLine'                                      " A vim plugin to display the indention levels with thin vertical lines
-Plug 'airblade/vim-gitgutter'                                   " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 Plug 'benmills/vimux'                                           " Vim plugin to interact with tmux
-Plug 'danro/rename.vim'                                         " Rename the current file in the vim buffer + retain relative path.
-Plug 'docunext/closetag.vim'                                    " Functions and mappings to close open HTML/XML tags
-Plug 'duwanis/tomdoc.vim'                                       " A simple syntax add-on for vim that highlights your TomDoc comments.
 Plug 'ervandew/supertab'                                        " Perform all your vim insert mode completions with Tab
 Plug 'godlygeek/tabular'                                        " Vim script for text filtering and alignment
 Plug 'majutsushi/tagbar'                                        " Vim plugin that displays tags in a window, ordered by scope
@@ -28,31 +25,33 @@ Plug 'tpope/vim-fugitive'                                       " a Git wrapper 
 Plug 'tpope/vim-ragtag'                                         " Ghetto HTML/XML mappings (formerly allml.vim)
 Plug 'tpope/vim-repeat'							                            " repeat.vim: enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-surround' 					                            " surround.vim: quoting/parenthesizing made simple
-Plug 'vim-ruby/vim-ruby' 						                            " Vim/Ruby Configuration Files
 Plug 'vim-airline/vim-airline'                                  " Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tmux-plugins/vim-tmux-focus-events'                       " Makes the autoread option work properly for terminal vim
 Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
 Plug 'junegunn/fzf.vim'                                         " 🌸 A command-line fuzzy finder written in Go
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
-Plug 'mhartington/oceanic-next'                                 " Oceanic Next theme for neovim
-Plug 'tpope/vim-dispatch'                                       " dispatch.vim: asynchronous build and test dispatcher
-Plug 'w0rp/ale'                                                 " Asynchronous Lint Engine
-Plug 'pangloss/vim-javascript', { 'for': 'javascript' }         " Vastly improved Javascript indentation and syntax support in Vim.
-Plug 'mxw/vim-jsx',             { 'for': 'javascript' }         " React JSX syntax highlighting and indenting for vim.
-Plug 'ap/vim-css-color',        { 'for': ['css', 'scss'] }      " Preview colours in source code while editing
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
 Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
-Plug 'neovimhaskell/haskell-vim', { 'for': 'haskell' }          " Syntax Highlighting and Indentation for Haskell and Cabal
+Plug 'tpope/vim-dispatch'                                       " dispatch.vim: asynchronous build and test dispatcher
+Plug 'w0rp/ale'                                                 " Asynchronous Lint Engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
-Plug 'dag/vim-fish',         { 'for': 'fish' }                  " Vim support for editing fish scripts
-Plug 'fatih/vim-go',         { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
-Plug 'mdempsky/gocode',      { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' } " An autocompletion daemon for the Go programming language
+Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
+Plug 'docunext/closetag.vim',       { 'for': ['html', 'erb'] }  " Functions and mappings to close open HTML/XML tags
+Plug 'pangloss/vim-javascript',     { 'for': 'javascript' }     " Vastly improved Javascript indentation and syntax support in Vim.
+Plug 'mxw/vim-jsx',                 { 'for': 'javascript' }     " React JSX syntax highlighting and indenting for vim.
+Plug 'leafgarland/typescript-vim',  { 'for': 'typescript' }     " Typescript syntax files for Vim
+" Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
+Plug 'neovimhaskell/haskell-vim',   { 'for': 'haskell' }        " Syntax Highlighting and Indentation for Haskell and Cabal
+Plug 'dag/vim-fish',                { 'for': 'fish' }           " Vim support for editing fish scripts
+Plug 'fatih/vim-go',                { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
+Plug 'mdempsky/gocode',             { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' } " An autocompletion daemon for the Go programming language
 Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
+Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configuration for Rust.
 
 " == Deprecated
 "
-" Plug 'Shougo/neocomplcache'                                     " Ultimate auto-completion system for Vim.
+" Plug 'Shougo/neocomplcache'             " Ultimate auto-completion system for Vim.
 " Plug 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
 " Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
 " Plug 'danchoi/ri.vim'                   " browse ri documentation from Vim
@@ -68,6 +67,10 @@ Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous G
 " Plug 'tpope/vim-rails' 							    " rails.vim: Ruby on Rails power tools
 " Plug 'elmcast/elm-vim'                  " Elm plugin for Vim
 " Plug 'vim-scripts/wombat256.vim'        " Wombat for 256 color xterms
+" Plug 'airblade/vim-gitgutter'           " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
+" Plug 'danro/rename.vim'                 " Rename the current file in the vim buffer + retain relative path.
+" Plug 'duwanis/tomdoc.vim'               " A simple syntax add-on for vim that highlights your TomDoc comments.
+" Plug 'mhartington/oceanic-next'         " Oceanic Next theme for neovim
 
 call plug#end()
 
@@ -158,12 +161,15 @@ autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
 autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
+autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.wat set filetype=wast
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType elm set ai ts=4 sw=4 sts=4 et
-autocmd Filetype javascript setlocal ts=4 sw=4 sts=0 expandtab
-autocmd Filetype rust setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
+autocmd Filetype typescript setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype go setlocal ts=4 sw=4 sts=0 expandtab
+autocmd Filetype wast setlocal ts=2 sw=0 sts=0 expandtab
 
 " Filetype colorschemes
 
@@ -532,16 +538,19 @@ let g:ale_set_quickfix = 1
 
 " Enable particular linters
 let g:ale_linters = {
-\   'javascript': ['stylelint', 'eslint', 'flow'],
-\   'scss': ['stylelint'],
-\   'json': ['jsonlint'],
-\   'yaml': ['yamllint'],
-\   'ruby': ['ruby', 'rubocop'],
 \   'eruby': [],
+\   'go': ['gometalinter'],
 \   'haskell': ['hlint', 'stack-ghc-mod'],
+\   'javascript': ['stylelint', 'eslint', 'flow'],
+\   'json': ['jsonlint'],
+\   'ruby': ['ruby', 'rubocop'],
 \   'rust': ['cargo'],
+\   'scss': ['stylelint'],
+\   'typescript': ['eslint'],
+\   'yaml': ['yamllint'],
 \}
 
+let g:ale_rust_cargo_use_clippy = 1
 let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
 
 " Use stylelint to lint jsx
