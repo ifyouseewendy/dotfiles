@@ -8,6 +8,7 @@
     autocrlf     = input
     safecrlf     = true
     whitespace   = cr-at-eol
+	commitGraph = true
 [alias]
     alias   = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
 
@@ -87,3 +88,7 @@
 	version = 2
 [credential]
 	helper = osxkeychain
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[gc]
+	writeCommitGraph = true
