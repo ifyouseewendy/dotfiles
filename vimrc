@@ -10,7 +10,6 @@
 call plug#begin("~/.vim/bundle")
 
 Plug 'ferranpm/vim-autopairs'
-" Plug 'Townk/vim-autoclose'                                      " This plugin for Vim enable an auto-close chars feature for you
 Plug 'Yggdroot/indentLine'                                      " A vim plugin to display the indention levels with thin vertical lines
 Plug 'benmills/vimux'                                           " Vim plugin to interact with tmux
 Plug 'ervandew/supertab'                                        " Perform all your vim insert mode completions with Tab
@@ -22,18 +21,14 @@ Plug 'terryma/vim-expand-region'                                " Vim plugin tha
 Plug 'tomtom/tcomment_vim'                                      " An extensible & universal comment plugin that also handles embedded filetypes
 Plug 'tpope/vim-endwise'                                        " wisely add 'end' in ruby, endfunction/endif/more in vim script, etc
 Plug 'tpope/vim-fugitive'                                       " a Git wrapper so awesome
-Plug 'tpope/vim-ragtag'                                         " Ghetto HTML/XML mappings (formerly allml.vim)
+Plug 'tpope/vim-ragtag', { 'for': ['html', 'erb'] }             " Ghetto HTML/XML mappings (formerly allml.vim)
 Plug 'tpope/vim-repeat'							                            " repeat.vim: enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-surround' 					                            " surround.vim: quoting/parenthesizing made simple
 Plug 'vim-airline/vim-airline'                                  " Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tmux-plugins/vim-tmux-focus-events'                       " Makes the autoread option work properly for terminal vim
-Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
 Plug 'junegunn/fzf.vim'                                         " 🌸 A command-line fuzzy finder written in Go
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
-Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
-Plug 'tpope/vim-dispatch'                                       " dispatch.vim: asynchronous build and test dispatcher
 Plug 'w0rp/ale'                                                 " Asynchronous Lint Engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
 Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
@@ -41,7 +36,6 @@ Plug 'docunext/closetag.vim',       { 'for': ['html', 'erb'] }  " Functions and 
 Plug 'pangloss/vim-javascript',     { 'for': 'javascript' }     " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mxw/vim-jsx',                 { 'for': 'javascript' }     " React JSX syntax highlighting and indenting for vim.
 Plug 'leafgarland/typescript-vim',  { 'for': 'typescript' }     " Typescript syntax files for Vim
-" Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
 Plug 'neovimhaskell/haskell-vim',   { 'for': 'haskell' }        " Syntax Highlighting and Indentation for Haskell and Cabal
 Plug 'dag/vim-fish',                { 'for': 'fish' }           " Vim support for editing fish scripts
 Plug 'fatih/vim-go',                { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
@@ -51,26 +45,32 @@ Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configurat
 
 " == Deprecated
 "
-" Plug 'Shougo/neocomplcache'             " Ultimate auto-completion system for Vim.
-" Plug 'Shougo/neosnippet'                " neo-snippet plugin contains neocomplcache snippets source
-" Plug 'christoomey/vim-tmux-navigator'   " Seamless navigation between tmux panes and vim splits
-" Plug 'danchoi/ri.vim'                   " browse ri documentation from Vim
-" Plug 'dracula/vim'                      " A dark theme for Vim
-" Plug 'flazz/vim-colorschemes'           " one colorscheme pack to rule them all!
-" Plug 'hail2u/vim-css3-syntax'           " Add CSS3 syntax support to vim's built-in `syntax/css.vim
-" Plug 'ifyouseewendy/vim-snippets'       " Vim-snipmate default snippets
-" Plug 'scratch.vim'                      " Plugin to create and use a scratch Vim buffer
-" Plug 'taglist.vim'                      " Source code browser
-" Plug 'tpope/vim-abolish'                " Easily search for, substitute, and abbreviate multiple variants of a word
+" Plug 'Shougo/neocomplcache'                                   " Ultimate auto-completion system for Vim.
+" Plug 'Shougo/neosnippet'                                      " neo-snippet plugin contains neocomplcache snippets source
+" Plug 'christoomey/vim-tmux-navigator'                         " Seamless navigation between tmux panes and vim splits
+" Plug 'danchoi/ri.vim'                                         " browse ri documentation from Vim
+" Plug 'dracula/vim'                                            " A dark theme for Vim
+" Plug 'flazz/vim-colorschemes'                                 " one colorscheme pack to rule them all!
+" Plug 'hail2u/vim-css3-syntax'                                 " Add CSS3 syntax support to vim's built-in `syntax/css.vim
+" Plug 'ifyouseewendy/vim-snippets'                             " Vim-snipmate default snippets
+" Plug 'scratch.vim'                                            " Plugin to create and use a scratch Vim buffer
+" Plug 'taglist.vim'                                            " Source code browser
+" Plug 'tpope/vim-abolish'                                      " Easily search for, substitute, and abbreviate multiple variants of a word
 " Plug 'lambdatoast/elm.vim'
-" Plug 'scrooloose/syntastic'             " Syntax checking hacks for vim
-" Plug 'tpope/vim-rails' 							    " rails.vim: Ruby on Rails power tools
-" Plug 'elmcast/elm-vim'                  " Elm plugin for Vim
-" Plug 'vim-scripts/wombat256.vim'        " Wombat for 256 color xterms
-" Plug 'airblade/vim-gitgutter'           " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
-" Plug 'danro/rename.vim'                 " Rename the current file in the vim buffer + retain relative path.
-" Plug 'duwanis/tomdoc.vim'               " A simple syntax add-on for vim that highlights your TomDoc comments.
-" Plug 'mhartington/oceanic-next'         " Oceanic Next theme for neovim
+" Plug 'scrooloose/syntastic'                                   " Syntax checking hacks for vim
+" Plug 'tpope/vim-rails' 							                          " rails.vim: Ruby on Rails power tools
+" Plug 'elmcast/elm-vim'                                        " Elm plugin for Vim
+" Plug 'vim-scripts/wombat256.vim'                              " Wombat for 256 color xterms
+" Plug 'airblade/vim-gitgutter'                                 " A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
+" Plug 'danro/rename.vim'                                       " Rename the current file in the vim buffer + retain relative path.
+" Plug 'duwanis/tomdoc.vim'                                     " A simple syntax add-on for vim that highlights your TomDoc comments.
+" Plug 'mhartington/oceanic-next'                               " Oceanic Next theme for neovim
+" Plug 'tmux-plugins/vim-tmux-focus-events'                     " Makes the autoread option work properly for terminal vim
+" Plug 'Townk/vim-autoclose'                                    " This plugin for Vim enable an auto-close chars feature for you
+" Plug 'kshenoy/vim-signature'                                  " Plugin to toggle, display and navigate marks
+" Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
+" Plug 'tpope/vim-dispatch'                                       " dispatch.vim: asynchronous build and test dispatcher
+" Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
 
 call plug#end()
 
@@ -85,7 +85,7 @@ colorscheme one
 set background=dark
 
 " Basic configuration
-syntax on
+syntax off
 set nu
 set ruler                                   " Show the line and column number of the cursor position.
 set showcmd                                 " Show the size of block one selected in visual mode.
