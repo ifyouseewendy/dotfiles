@@ -32,7 +32,6 @@ Plug 'janko-m/vim-test'                                         " Run your tests
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
 Plug 'w0rp/ale'                                                 " Asynchronous Lint Engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
-" Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
 Plug 'docunext/closetag.vim',       { 'for': ['html', 'erb'] }  " Functions and mappings to close open HTML/XML tags
 Plug 'pangloss/vim-javascript',     { 'for': 'javascript' }     " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mxw/vim-jsx',                 { 'for': 'javascript' }     " React JSX syntax highlighting and indenting for vim.
@@ -42,6 +41,7 @@ Plug 'dag/vim-fish',                { 'for': 'fish' }           " Vim support fo
 Plug 'fatih/vim-go',                { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
 Plug 'mdempsky/gocode',             { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' } " An autocompletion daemon for the Go programming language
 Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
+Plug 'mattn/webapi-vim',            { 'for': 'rust' }           " vim interface to Web API
 Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configuration for Rust.
 
 " == Deprecated
@@ -72,6 +72,7 @@ Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configurat
 " Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
 " Plug 'tpope/vim-dispatch'                                       " dispatch.vim: asynchronous build and test dispatcher
 " Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
+" Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
 
 call plug#end()
 
@@ -649,4 +650,6 @@ let g:go_highlight_extra_types = 1
 
 " rust.vim{{{
 let g:rustfmt_autosave = 1
+let g:rust_clip_command = 'pbcopy'
 "}}}
+
