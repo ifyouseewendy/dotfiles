@@ -43,6 +43,11 @@ Plug 'mdempsky/gocode',             { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/b
 Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
 Plug 'mattn/webapi-vim',            { 'for': 'rust' }           " vim interface to Web API
 Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configuration for Rust.
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'for': 'rust',
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }                                                         " Language Server Protocol (LSP) support for vim and neovim
 
 " == Deprecated
 "
@@ -398,7 +403,7 @@ set tags=./tags;
 " supertab"{{{
 let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 
-" vim-text && vimux "{{{
+" vim-test && vimux "{{{
 let test#strategy = "vimux"
 
 nmap <silent> <leader>tl :TestNearest<CR>
@@ -409,10 +414,6 @@ nmap <silent> <leader>tg :TestVisit<CR>
 let test#javascript#jest#options = {
 \ 'suite': '--bail',
 \}
-"}}}
-
-" vim-dispatch "{{{
-nnoremap <leader>r :Dispatch<CR>
 "}}}
 
 " vim-expand-region"{{{
@@ -605,3 +606,21 @@ let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'pbcopy'
 "}}}
 
+" LanguageClient-neovim{{{
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ }
+" Disable diagnostic messages. Let ale handle it
+let g:LanguageClient_diagnosticsEnable = 0
+
+map <silent> <leader>g :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+noremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
+noremap <silent> <leader>td :call LanguageClient_textDocument_typeDefinition()<CR>
+noremap <silent> <leader>ti :call LanguageClient_textDocument_implementation()<CR>
+noremap <silent> <leader>tr :call LanguageClient_textDocument_references()<CR>
+map <F2> :call LanguageClient_textDocument_rename()<CR>
+"}}}
