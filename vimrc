@@ -26,12 +26,13 @@ Plug 'tpope/vim-repeat'							                            " repeat.vim: enable r
 Plug 'tpope/vim-surround' 					                            " surround.vim: quoting/parenthesizing made simple
 Plug 'vim-airline/vim-airline'                                  " Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'                                         " 🌸 A command-line fuzzy finder written in Go
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
 Plug 'w0rp/ale'                                                 " Asynchronous Lint Engine
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
-Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
+" Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
 Plug 'docunext/closetag.vim',       { 'for': ['html', 'erb'] }  " Functions and mappings to close open HTML/XML tags
 Plug 'pangloss/vim-javascript',     { 'for': 'javascript' }     " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mxw/vim-jsx',                 { 'for': 'javascript' }     " React JSX syntax highlighting and indenting for vim.
@@ -85,7 +86,7 @@ colorscheme one
 set background=dark
 
 " Basic configuration
-syntax off
+syntax on
 set nu
 set ruler                                   " Show the line and column number of the cursor position.
 set showcmd                                 " Show the size of block one selected in visual mode.
@@ -163,6 +164,7 @@ autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> 
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.wat set filetype=wast
+autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd Filetype gitcommit setlocal textwidth=72
 autocmd FileType c setlocal tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType elm set ai ts=4 sw=4 sts=4 et
@@ -309,6 +311,7 @@ map <leader>ss :Sscratch<ESC>i
 set laststatus=2
 set noshowmode
 
+let g:airline#extensions#branch#enabled = 0
 let g:airline_theme='one'
 
 let g:airline_extensions = []
@@ -588,8 +591,6 @@ let g:jsx_ext_required = 0
 "}}}
 
 "{{{fzf
-set rtp+=/usr/local/opt/fzf
-
 silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
 silent! nnoremap <unique> <silent> <leader>b :Buffers<CR>
 " silent! nnoremap <unique> <silent> <leader>fg :Commits<CR>
