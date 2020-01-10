@@ -40,6 +40,8 @@ alias dm="docker-machine"
 alias bi='bundle install --path=vendor/bundle --binstubs .bundle/bin'
 alias be='bundle exec'
 alias ri='ri -f ansi'
+# source /usr/local/share/chruby/auto.fish
+# source /usr/local/share/chruby/chruby.fish
 
 # haskell
 set -U fish_user_paths $HOME/.local/bin $HOME/Library/Haskell/bin/
@@ -47,6 +49,9 @@ set -U fish_user_paths $HOME/.local/bin $HOME/Library/Haskell/bin/
 # Go
 set -x -U GOPATH $HOME/Workspace/go
 set -U fish_user_paths $HOME/Workspace/go/bin
+
+# C
+set -x -U SDKROOT /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk
 
 # command alias
 alias tigs='tig status'
@@ -59,16 +64,10 @@ alias pre='open -a Preview'
 alias tailf='tail -f'
 alias lessf='less +F'
 alias cat='bat'
-alias cleardns="sudo killall -HUP mDNSResponder"
-alias flush='dscacheutil -flushcache'
-alias pt='pstree'
 alias ping='prettyping --nolegend'
 alias quickview="fzf --preview 'bat --color \"always\" {}'"
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
-alias crontab="VIM_CRONTAB=true crontab"
 alias vcf="vim ~/.config/fish/config.fish"
-# alias pg-start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
-# alias pg-stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 # dev
 alias ffs="dev down; dev up; dev s"
@@ -84,3 +83,13 @@ set -x PKG_CONFIG_PATH /usr/local/opt/imagemagick@6/lib/pkgconfig
 
 # direnv
 direnv hook fish | source
+
+# Wasmer
+# export WASMER_DIR="/Users/wendi/.wasmer"
+# [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+# LLVM
+set -g fish_user_paths "/usr/local/opt/llvm/bin/" $fish_user_paths
+set -e LDFLAGS
+set -gx CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v2/ -I/usr/local/include"
+set -gx CPATH "/usr/local/include" $CPATH
