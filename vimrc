@@ -573,6 +573,7 @@ let g:javascript_plugin_flow = 1
 " Use deoplete{{{
 let g:deoplete#enable_at_startup = 1
 inoremap <expr><C-e> deoplete#close_popup()
+set completeopt-=preview
 "}}}
 
 " vim-go{{{
