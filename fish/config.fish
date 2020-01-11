@@ -21,6 +21,16 @@ set -x FZF_TMUX_HEIGHT 30%
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -x FZF_DEFAULT_COMMAND 'ag -g ""'
 
+# fasd
+alias a='fasd -a'        # any
+# alias s='fasd -si'       # show / search / select
+# alias d='fasd -d'        # directory
+# alias f='fasd -f'        # file
+# alias sd='fasd -sid'     # interactive directory selection
+# alias sf='fasd -sif'     # interactive file selection
+alias z='fasd_cd -d'     # cd, same functionality as j in autojump
+alias zz='fasd_cd -d -i' # cd with interactive selection
+
 # directory operations
 alias l='exa --group-directories-first' # 'ls -CF'
 alias la='exa -all --group-directories-first' # 'ls -AF'
