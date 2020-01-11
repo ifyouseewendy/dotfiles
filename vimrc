@@ -75,7 +75,6 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Plug 'Townk/vim-autoclose'                                    " This plugin for Vim enable an auto-close chars feature for you
 " Plug 'kshenoy/vim-signature'                                  " Plugin to toggle, display and navigate marks
 " Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
-" Plug 'tpope/vim-dispatch'                                       " dispatch.vim: asynchronous build and test dispatcher
 " Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
 " Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
 
@@ -411,6 +410,8 @@ nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>tg :TestVisit<CR>
 
+nmap <silent> <leader>cb :call VimuxRunCommand("cargo build")<CR>
+
 let test#javascript#jest#options = {
 \ 'suite': '--bail',
 \}
@@ -616,7 +617,7 @@ let g:LanguageClient_serverCommands = {
 " Disable diagnostic messages. Let ale handle it
 let g:LanguageClient_diagnosticsEnable = 0
 
-map <silent> <leader>g :call LanguageClient_contextMenu()<CR>
+map <silent> <leader>gg :call LanguageClient_contextMenu()<CR>
 " Or map each action separately
 noremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
 noremap <silent> <leader>td :call LanguageClient_textDocument_typeDefinition()<CR>
