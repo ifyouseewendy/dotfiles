@@ -298,6 +298,10 @@ map <leader>vs :vsplit<cr>
 " Select entire line without newline
 nmap <leader>V ^v$h
 
+" Enter normal mode in terminal mode (:term fish)
+nmap <leader>T :term fish<cr>GA
+tnoremap <C-[><C-[> <C-\><C-n>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
