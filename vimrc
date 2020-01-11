@@ -415,6 +415,7 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>tg :TestVisit<CR>
 
 nmap <silent> <leader>cb :call VimuxRunCommand("cargo build")<CR>
+nmap <silent> <leader>cr :call VimuxRunCommand("cargo run")<CR>
 
 let test#javascript#jest#options = {
 \ 'suite': '--bail',
