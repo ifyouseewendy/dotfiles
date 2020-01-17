@@ -25,7 +25,8 @@ set -x FZF_DEFAULT_COMMAND 'ag -g ""'
 alias a='fasd -a'        # any
 # alias s='fasd -si'       # show / search / select
 # alias d='fasd -d'        # directory
-# alias f='fasd -f'        # file
+alias v='fasd -f -t -e nvim'        # file
+alias vv='fasd -f -i -t -e nvim'        # file
 # alias sd='fasd -sid'     # interactive directory selection
 # alias sf='fasd -sif'     # interactive file selection
 alias j='fasd_cd -d'     # cd, same functionality as j in autojump
