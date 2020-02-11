@@ -32,6 +32,11 @@ alias vv='fasd -f -i -t -e nvim'        # file
 alias j='fasd_cd -d'     # cd, same functionality as j in autojump
 alias jj='fasd_cd -d -i' # cd with interactive selection
 
+# config
+alias configure-vim='vim ~/.vimrc'
+alias configure-fish='vim ~/.config/fish/config.fish'
+alias configure-tmux='vim ~/.tmux.conf'
+
 # directory operations
 alias l='exa --group-directories-first' # 'ls -CF'
 alias la='exa -all --group-directories-first' # 'ls -AF'
