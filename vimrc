@@ -13,7 +13,6 @@ Plug 'ferranpm/vim-autopairs'
 Plug 'Yggdroot/indentLine'                                      " A vim plugin to display the indention levels with thin vertical lines
 Plug 'benmills/vimux'                                           " Vim plugin to interact with tmux
 Plug 'ervandew/supertab'                                        " Perform all your vim insert mode completions with Tab
-Plug 'godlygeek/tabular'                                        " Vim script for text filtering and alignment
 Plug 'majutsushi/tagbar'                                        " Vim plugin that displays tags in a window, ordered by scope
 Plug 'rking/ag.vim'                                             " Vim plugin for the_silver_searcher, 'ag'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }          " A tree explorer plugin for vim
@@ -77,6 +76,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 " Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
 " Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
 " Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
+" Plug 'godlygeek/tabular'                                        " Vim script for text filtering and alignment
 
 call plug#end()
 
@@ -396,11 +396,43 @@ vmap <leader>ta :Tab /
 "}}}
 
 " tagbar (ctags) "{{{
+" Configure according to https://users.rust-lang.org/t/taglist-like-vim-plugin-for-rust/21924/13
 nmap <F2> :TagbarToggle<CR>
-map <F5> :!/usr/local/bin/ctags --recurse=yes --languages=-javascript --exclude=.git --exclude=log --fields=+iaS --extra=+q .<CR>
-map <F6> :tprevious<CR>
-map <F7> :tnext<CR>
-set tags=./tags;
+
+let g:rust_use_custom_ctags_defs = 1
+let g:tagbar_type_rust = {
+  \ 'ctagsbin' : '/usr/local/bin/ctags',
+  \ 'ctagstype' : 'rust',
+  \ 'kinds' : [
+      \ 'n:modules',
+      \ 's:structures:1',
+      \ 'i:interfaces',
+      \ 'c:implementations',
+      \ 'f:functions:1',
+      \ 'g:enumerations:1',
+      \ 't:type aliases:1:0',
+      \ 'v:constants:1:0',
+      \ 'M:macros:1',
+      \ 'm:fields:1:0',
+      \ 'e:enum variants:1:0',
+      \ 'P:methods:1',
+  \ ],
+  \ 'sro': '::',
+  \ 'kind2scope' : {
+      \ 'n': 'module',
+      \ 's': 'struct',
+      \ 'i': 'interface',
+      \ 'c': 'implementation',
+      \ 'f': 'function',
+      \ 'g': 'enum',
+      \ 't': 'typedef',
+      \ 'v': 'variable',
+      \ 'M': 'macro',
+      \ 'm': 'field',
+      \ 'e': 'enumerator',
+      \ 'P': 'method',
+  \ },
+\ }
 "}}}
 
 " supertab"{{{
@@ -629,5 +661,4 @@ noremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
 noremap <silent> <leader>td :call LanguageClient_textDocument_typeDefinition()<CR>
 noremap <silent> <leader>ti :call LanguageClient_textDocument_implementation()<CR>
 noremap <silent> <leader>tr :call LanguageClient_textDocument_references()<CR>
-map <F2> :call LanguageClient_textDocument_rename()<CR>
 "}}}
