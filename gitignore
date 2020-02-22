@@ -50,3 +50,4 @@ dev
 
 # Rust
 */target/
+.envrc
