@@ -122,13 +122,23 @@ set wildchar=<Tab> wildmenu wildmode=full   " Tab triggers buffer-name auto-comp
 set wildmenu                                " Autocomplete commands using nice menu in place of window status.
 
 " Tab/indent configuration
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set softtabstop=2
-set autoindent                              " Autoindent when starting new line, or using o or O
-set cindent
-set smarttab                                " Use 'shiftwidth' when using <Tab> in front of a line. By default it's used only for shift commands (<, >).
+" https://stackoverflow.com/a/48390668/1331774
+function! UseTabs()
+  set tabstop=4                             " Size of a hard tabstop (ts).
+  set shiftwidth=4                          " Size of an indentation (sw).
+  set noexpandtab                           " Always uses tabs instead of space characters (noet).
+  set autoindent                            " Copy indent from current line when starting a new line (ai).
+endfunction
+
+function! UseSpaces()
+  set tabstop=2                             " Size of a hard tabstop (ts).
+  set shiftwidth=2                          " Size of an indentation (sw).
+  set expandtab                             " Always uses spaces instead of tab characters (et).
+  set softtabstop=2                         " Number of spaces a <Tab> counts for. When 0, featuer is off (sts).
+  set autoindent                            " Copy indent from current line when starting a new line.
+  set smarttab                              " Inserts blanks on a <Tab> key (as per sw, ts and sts).
+endfunction
+call UseSpaces()
 
 " Search configuration
 set smartcase                               " Don't ignore case when search has capital letter (although also don't ignore case by default).
@@ -177,6 +187,7 @@ autocmd Filetype javascript setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype typescript setlocal ts=2 sw=2 sts=0 expandtab
 autocmd Filetype go setlocal ts=4 sw=4 sts=0 expandtab
 autocmd Filetype wast setlocal ts=2 sw=0 sts=0 expandtab
+autocmd Filetype rust call UseTabs()
 
 " Filetype colorschemes
 
@@ -447,6 +458,7 @@ nmap <silent> <leader>tf :TestFile<CR>
 nmap <silent> <leader>tg :TestVisit<CR>
 
 nmap <silent> <leader>cb :call VimuxRunCommand("cargo build")<CR>
+nmap <silent> <leader>cc :call VimuxRunCommand("cargo check")<CR>
 nmap <silent> <leader>cr :call VimuxRunCommand("cargo run")<CR>
 
 let test#javascript#jest#options = {
