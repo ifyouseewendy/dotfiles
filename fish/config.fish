@@ -53,7 +53,7 @@ alias dm="docker-machine"
 # eval (docker-machine env default)
 
 # ruby
-alias bi='bundle install --path=vendor/bundle --binstubs .bundle/bin'
+alias bi='bundle install' # --path=vendor/bundle --binstubs .bundle/bin'
 alias be='bundle exec'
 alias ri='ri -f ansi'
 # source /usr/local/share/chruby/auto.fish
@@ -106,6 +106,14 @@ direnv hook fish | source
 
 # LLVM
 set -g fish_user_paths "/usr/local/opt/llvm/bin/" $fish_user_paths
-set -e LDFLAGS
-set -gx CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v2/ -I/usr/local/include"
+# set -e LDFLAGS
+set -gx LDFLAGS "-L/usr/local/opt/gmp/lib"
+set -gx CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v2/ -I/usr/local/include -I/usr/local/opt/gmp/include"
 set -gx CPATH "/usr/local/include" $CPATH
+
+# Wasmer
+set -gx WASMER_DIR "/Users/wendi/.wasmer"
+if test -e "$WASMER_DIR/wasmer.sh"
+  source "$WASMER_DIR/wasmer.sh"
+end
+
