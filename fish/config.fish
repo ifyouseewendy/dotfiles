@@ -13,7 +13,7 @@ if test -e /opt/dev/dev.fish
 end
 
 # fzf
-source "/usr/local/opt/fzf/shell/key-bindings.fish"
+source "$HOME/.config/fish/functions/fish_user_key_bindings.fish"
 # set -x FZF_DEFAULT_OPTS "--bind='ctrl-o:execute(code {})+abort'"
 set -x FZF_DEFAULT_OPTS '--reverse --bind ctrl-d:page-down,ctrl-u:page-up'
 set -x FZF_TMUX 1
@@ -21,12 +21,15 @@ set -x FZF_TMUX_HEIGHT 30%
 set -x FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 set -x FZF_DEFAULT_COMMAND 'ag -g ""'
 
+# Vagrant
+alias v='vagrant'
+
 # fasd
 alias a='fasd -a'        # any
 # alias s='fasd -si'       # show / search / select
 # alias d='fasd -d'        # directory
-alias v='fasd -f -t -e nvim'        # file
-alias vv='fasd -f -i -t -e nvim'        # file
+# alias v='fasd -f -t -e nvim'        # file
+# alias vv='fasd -f -i -t -e nvim'        # file
 # alias sd='fasd -sid'     # interactive directory selection
 # alias sf='fasd -sif'     # interactive file selection
 alias j='fasd_cd -d'     # cd, same functionality as j in autojump
