@@ -25,7 +25,7 @@ Plug 'tpope/vim-repeat'							                            " repeat.vim: enable r
 Plug 'tpope/vim-surround' 					                            " surround.vim: quoting/parenthesizing made simple
 Plug 'vim-airline/vim-airline'                                  " Lean & mean status/tabline for vim that's light as air
 Plug 'vim-airline/vim-airline-themes'
-Plug '/usr/local/bin/fzf'
+Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'                                         " 🌸 A command-line fuzzy finder written in Go
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
