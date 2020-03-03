@@ -93,6 +93,13 @@ Vagrant.configure("2") do |config|
     ln -svf $HOME/.dotfiles/gitignore $HOME/.gitignore
     ln -svf $HOME/.dotfiles/tigrc $HOME/.tigrc
 
+    if [[ -n $(which diff-so-fancy) ]]; then
+      "diff-so-fancy exists"
+    else
+      wget -q https://raw.githubusercontent.com/so-fancy/diff-so-fancy/master/third_party/build_fatpack/diff-so-fancy
+      chmod +x diff-so-fancy && sudo mv diff-so-fancy /usr/local/bin/diff-so-fancy
+    fi
+
     echo "==> apt-get update"
     export DEBIAN_FRONTEND=noninteractive
     sudo apt-get update >/dev/null
