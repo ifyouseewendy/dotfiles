@@ -157,3 +157,5 @@ source /usr/local/share/chruby/auto.sh
 alias bi='bundle install'
 alias be='bundle exec'
 
+# direnv
+eval "$(direnv hook bash)"
