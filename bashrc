@@ -159,3 +159,12 @@ alias be='bundle exec'
 
 # direnv
 eval "$(direnv hook bash)"
+
+# bash-git-prompt
+# https://github.com/magicmonty/bash-git-prompt
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+  GIT_PROMPT_ONLY_IN_REPO=1
+  GIT_PROMPT_FETCH_REMOTE_STATUS=0 # avoid fetching remote status
+  GIT_PROMPT_THEME=Custom
+  source $HOME/.bash-git-prompt/gitprompt.sh
+fi
