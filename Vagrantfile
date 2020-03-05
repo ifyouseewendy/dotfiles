@@ -281,5 +281,13 @@ EOF
       curl -sfL https://direnv.net/install.sh | bash
     fi
     # add ripgrep
+
+    echo "==> install bash-git-prompt"
+    if [[ -d $HOME/.bash-git-prompt ]]; then
+      echo "bash-git-prompt exists"
+    else
+      git clone https://github.com/magicmonty/bash-git-prompt.git ~/.bash-git-prompt --depth=1
+      ln -svf $HOME/.dotfiles/git-prompt-colors.sh $HOME/.git-prompt-colors.sh
+    fi
   SHELL
 end
