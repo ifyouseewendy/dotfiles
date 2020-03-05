@@ -43,12 +43,11 @@ Vagrant.configure("2") do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  # config.vm.synced_folder "../data", "/vagrant_data"
+  config.vm.synced_folder ".", "/vagrant/"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
-  #
   config.vm.provider "virtualbox" do |vb|
     # Display the VirtualBox GUI when booting the machine
     vb.gui = false
@@ -58,12 +57,24 @@ Vagrant.configure("2") do |config|
     vb.memory = 1*1024
     vb.cpus = 2
   end
-  #
+
+  # https://github.com/dotless-de/vagrant-vbguest
+  # vagrant plugin install vagrant-vbguest
+  config.vbguest.auto_update = true
+
+  # https://github.com/tmatilai/vagrant-timezone
+  # vagrant plugin install vagrant-timezone
+  if Vagrant.has_plugin?("vagrant-timezone")
+    config.timezone.value = "EST"
+  end
+
   # View the documentation for the provider you are using for more
   # information on available options.
 
-  # ssh-add ~/.ssh/YOUR_RSA
+  # Run: ssh-add ~/.ssh/YOUR_RSA
   config.ssh.forward_agent = true
+  # https://bitboxer.de/2017/08/06/ssh-with-clipboard/
+  config.ssh.forward_x11 = true
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
@@ -93,6 +104,7 @@ Vagrant.configure("2") do |config|
     ln -svf $HOME/.dotfiles/gitignore $HOME/.gitignore
     ln -svf $HOME/.dotfiles/tigrc $HOME/.tigrc
 
+    # https://github.com/so-fancy/diff-so-fancy
     if [[ -n $(which diff-so-fancy) ]]; then
       "diff-so-fancy exists"
     else
@@ -261,5 +273,13 @@ EOF
       rm -rf tig-2.5.0/
       cd $HOME
     fi
+
+    echo "==> install direnv"
+    if [[ -n $(which direnv) ]]; then
+      echo "direnv exists"
+    else
+      curl -sfL https://direnv.net/install.sh | bash
+    fi
+    # add ripgrep
   SHELL
 end
