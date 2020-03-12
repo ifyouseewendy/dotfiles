@@ -112,14 +112,19 @@ set history=1000                            " Increase history size to 1000 item
 set scrolloff=8                             " Keep 8 lines above or below the cursor when scrolling.
 set sidescroll=1                            " Keep 15 columns next to the cursor when scrolling horizontally.
 set sidescrolloff=15
-set wrap linebreak                          " Wrap lines by default
-set showbreak=" "
 set noerrorbells                            " Disable any annoying beeps on errors.
 set visualbell
 set nomodeline                              " Don't parse modelines (google 'vim modeline vulnerability')
 set iskeyword+=-                            " Use dash as word separator.
 set wildchar=<Tab> wildmenu wildmode=full   " Tab triggers buffer-name auto-completion
 set wildmenu                                " Autocomplete commands using nice menu in place of window status.
+
+" Line Wrapping
+set textwidth=80
+set colorcolumn=+1
+set wrap
+set linebreak
+set showbreak=+++
 
 " Tab/indent configuration
 " https://stackoverflow.com/a/48390668/1331774
@@ -175,7 +180,7 @@ autocmd BufNewFile,BufRead Capfile set filetype=ruby
 autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
-autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120
+autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120 textwidth=80
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.wat set filetype=wast
