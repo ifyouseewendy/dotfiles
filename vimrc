@@ -47,6 +47,7 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }                                                         " Language Server Protocol (LSP) support for vim and neovim
+Plug 'https://github.com/alok/notational-fzf-vim'
 
 " == Deprecated
 "
@@ -679,3 +680,21 @@ noremap <silent> <leader>td :call LanguageClient_textDocument_typeDefinition()<C
 noremap <silent> <leader>ti :call LanguageClient_textDocument_implementation()<CR>
 noremap <silent> <leader>tr :call LanguageClient_textDocument_references()<CR>
 "}}}
+
+"{{{ notational-fzf-vim
+" https://github.com/Alok/notational-fzf-vim#optional-settings-and-their-defaults
+let g:nv_search_paths = ['~/notes']
+nmap <leader>nn :NV<cr>
+
+" Dictionary with string keys and values. Must be in the form 'ctrl-KEY':
+" 'command' or 'alt-KEY' : 'command'. See examples below.
+let g:nv_keymap = {
+                    \ 'ctrl-s': 'split ',
+                    \ 'ctrl-v': 'vertical split ',
+                    \ 'ctrl-t': 'tabedit'
+                    \ }
+
+" String. Must be in the form 'ctrl-KEY' or 'alt-KEY'
+let g:nv_create_note_key = 'ctrl-o'
+
+" }}}
