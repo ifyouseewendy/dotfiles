@@ -48,6 +48,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }                                                         " Language Server Protocol (LSP) support for vim and neovim
 Plug 'https://github.com/alok/notational-fzf-vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 " == Deprecated
 "
@@ -125,7 +127,7 @@ set textwidth=80
 set colorcolumn=+1
 set wrap
 set linebreak
-set showbreak=+++
+set showbreak=" "
 
 " Tab/indent configuration
 " https://stackoverflow.com/a/48390668/1331774
@@ -181,7 +183,7 @@ autocmd BufNewFile,BufRead Capfile set filetype=ruby
 autocmd BufNewFile,BufRead pryrc set filetype=ruby
 autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
-autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120 textwidth=80
+" autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120 textwidth=80
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.wat set filetype=wast
@@ -698,3 +700,21 @@ let g:nv_keymap = {
 let g:nv_create_note_key = 'ctrl-o'
 
 " }}}
+
+"{{{ vim_markdown_folding_style_pythonic
+" Use :Toch to open a TOC window
+let g:vim_markdown_folding_style_pythonic = 1
+
+"Allow for the TOC window to auto-fit when it's possible for it to shrink
+let g:vim_markdown_toc_autofit = 1
+
+"To disable concealing
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+" Enable strikethrough
+let g:vim_markdown_strikethrough = 1
+
+" Adjust new list item indent
+let g:vim_markdown_new_list_item_indent = 0
+"}}}
