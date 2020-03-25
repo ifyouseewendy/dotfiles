@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  # config.vm.network "private_network", ip: "192.168.33.10"
+  config.vm.network "private_network", ip: "192.168.33.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -53,19 +53,23 @@ Vagrant.configure("2") do |config|
     vb.gui = false
     vb.name = "my-dev-box"
 
-    # Customize the amount of memory on the VM:
-    vb.memory = 1*1024
-    vb.cpus = 2
+    # LLVM ld fails by "memory exhausted" with 2G memory
+    vb.memory = 6*1024
+    vb.cpus = 4
   end
+
+  # Compiling LLVM takes ~60G (half src and half compiled artifacts) space. To resize a disk:
+  #   * Use the "Virtual Media Manager" on VirtualBox to create a *.vdi from the default *.vdmk
+  #   * Refer to this fantastic post https://t.co/NOdgAVwhcY?amp=1 on enlarging the actual disk
 
   # https://github.com/dotless-de/vagrant-vbguest
   # vagrant plugin install vagrant-vbguest
-  config.vbguest.auto_update = true
+  # config.vbguest.auto_update = true
 
   # https://github.com/tmatilai/vagrant-timezone
   # vagrant plugin install vagrant-timezone
   if Vagrant.has_plugin?("vagrant-timezone")
-    config.timezone.value = "EST"
+    config.timezone.value = "Canada/Eastern"
   end
 
   # View the documentation for the provider you are using for more
