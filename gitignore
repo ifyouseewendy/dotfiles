@@ -51,3 +51,4 @@ dev
 # Rust
 */target/
 .envrc
+tmp/
