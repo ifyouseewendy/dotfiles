@@ -50,6 +50,7 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'kshenoy/vim-signature'                                  " Plugin to toggle, display and navigate marks
 
 " == Deprecated
 "
@@ -75,7 +76,6 @@ Plug 'plasticboy/vim-markdown'
 " Plug 'mhartington/oceanic-next'                               " Oceanic Next theme for neovim
 " Plug 'tmux-plugins/vim-tmux-focus-events'                     " Makes the autoread option work properly for terminal vim
 " Plug 'Townk/vim-autoclose'                                    " This plugin for Vim enable an auto-close chars feature for you
-" Plug 'kshenoy/vim-signature'                                  " Plugin to toggle, display and navigate marks
 " Plug 'terryma/vim-multiple-cursors'                             " True Sublime Text style multiple selections for Vim
 " Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
 " Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
@@ -299,7 +299,8 @@ nmap <leader>e :e!<cr>
 nmap <leader>q :q!<cr>
 cmap w!! %!sudo tee > /dev/null %
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
-command! InsertDate :normal a<c-r>=strftime('%F')<cr>
+command! InsertDate :normal a<c-r>=strftime('%a, %d %b %Y')<cr>
+nnoremap <F5> :InsertDate<cr>
 
 " System clipboard copy/paste
 " set clipboard=unnamedplus
@@ -332,7 +333,7 @@ endif
 ""}}}
 
 " scratch.vim"{{{
-map <leader>ss :Sscratch<ESC>i
+" map <leader>ss :Sscratch<ESC>i
 "}}}
 
 " vim-airline"{{{
@@ -529,9 +530,7 @@ let g:SignatureMap = {
 " :au BufWritePost *.elm ElmMakeCurrentFile
 " :au BufWritePost *.elm ElmMakeFile("Main.elm")
 " :au! BufWritePost *.elm
-" }}}
 
-" elm-vim"{{{
 " https://github.com/ElmCast/elm-vim
 let g:elm_setup_keybindings = 0
 let g:elm_format_autosave = 1
