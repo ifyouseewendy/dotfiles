@@ -123,7 +123,7 @@ set wildchar=<Tab> wildmenu wildmode=full   " Tab triggers buffer-name auto-comp
 set wildmenu                                " Autocomplete commands using nice menu in place of window status.
 
 " Line Wrapping
-set textwidth=80
+set textwidth=100
 set colorcolumn=+1
 set wrap
 set linebreak
