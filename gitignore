@@ -49,6 +49,9 @@ _yardoc
 dev
 
 # Rust
-*/target/
+target/
 .envrc
 tmp/
+
+# NPM
+node_modules/
