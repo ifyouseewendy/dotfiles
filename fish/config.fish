@@ -24,6 +24,9 @@ set -x FZF_DEFAULT_COMMAND 'ag -g ""'
 # Vagrant
 alias v='vagrant'
 
+# Notes
+alias n='nvim -c NV'
+
 # fasd
 alias a='fasd -a'        # any
 # alias s='fasd -si'       # show / search / select
@@ -103,14 +106,10 @@ set -x PKG_CONFIG_PATH /usr/local/opt/imagemagick@6/lib/pkgconfig
 # direnv
 direnv hook fish | source
 
-# Wasmer
-# export WASMER_DIR="/Users/wendi/.wasmer"
-# [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
-
 # LLVM
 set -g fish_user_paths "/usr/local/opt/llvm/bin/" $fish_user_paths
 # set -e LDFLAGS
-set -gx LDFLAGS "-L/usr/local/opt/gmp/lib"
+# set -gx LDFLAGS "-L/usr/local/opt/gmp/lib"
 set -gx CPPFLAGS "-I/usr/local/opt/llvm/include -I/usr/local/opt/llvm/include/c++/v2/ -I/usr/local/include -I/usr/local/opt/gmp/include"
 set -gx CPATH "/usr/local/include" $CPATH
 
