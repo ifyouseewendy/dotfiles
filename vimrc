@@ -390,20 +390,12 @@ map <F1> :NERDTreeToggle<CR>"}}}
 
 " ag.vim "{{{
 let g:ag_working_path_mode="r" "always start searching from your project root instead of the cwd
-if executable('Ag')
-  let g:ag_prg="Ag --vimgrep"
+let g:ag_prg="rg --vimgrep --no-heading --smart-case"
 
-  nnoremap <leader>a :Ag 
+nnoremap <leader>a :Rg 
 
-  " Word under cursor
-  nnoremap <leader>A :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
-
-  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-  " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-
-  " ag is fast enough that CtrlP doesn't need to cache
-  " let g:ctrlp_use_caching = 0
-endif
+" Word under cursor
+nnoremap <leader>A :Rg! <C-R><C-W><CR>
 
 " Close quickfix window
 map <leader>cc :ccl<cr>
