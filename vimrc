@@ -161,7 +161,7 @@ set undolevels=1000
 set undoreload=10000
 
 " Encoding configuration
-" set encoding=utf-8
+set encoding=utf-8 nobomb
 set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set formatoptions+=mM
@@ -212,8 +212,8 @@ if has('nvim')
   " setting c-h as escape [104;5u in iterm
 
   set mouse-=a                           " Disable mouse
-  " let g:python_host_prog = '/Users/wendi/.pyenv/versions/2.7.11/bin/python'
-  " let g:python3_host_prog = '/Users/wendi/.pyenv/versions/neovim3/bin/python'
+  let g:python_host_prog = '/usr/bin/python'
+  let g:python3_host_prog = '/usr/bin/python3'
 
   if (has("termguicolors"))
     set termguicolors
