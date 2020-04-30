@@ -147,10 +147,13 @@ alias ....='cd ../../..' # Go up three directories
 export FZF_DEFAULT_OPTS='--reverse --bind ctrl-d:page-down,ctrl-u:page-up'
 export FZF_TMUX=1
 export FZF_TMUX_HEIGHT=30%
+# make fzf respect gitignore
+export FZF_DEFAULT_COMMAND='fd --type f'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # chruby
-source /usr/local/share/chruby/chruby.sh
-source /usr/local/share/chruby/auto.sh
+# source /usr/local/share/chruby/chruby.sh
+# source /usr/local/share/chruby/auto.sh
 
 # ruby
 alias bi='bundle install'
