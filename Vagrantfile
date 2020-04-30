@@ -56,6 +56,7 @@ Vagrant.configure("2") do |config|
     # LLVM ld fails by "memory exhausted" with 2G memory
     vb.memory = 6*1024
     vb.cpus = 4
+    vb.customize ['modifyvm', :id, '--clipboard-mode', 'bidirectional']
   end
 
   # Compiling LLVM takes ~60G (half src and half compiled artifacts) space. To resize a disk:
@@ -78,7 +79,7 @@ Vagrant.configure("2") do |config|
   # Run: ssh-add ~/.ssh/YOUR_RSA
   config.ssh.forward_agent = true
   # https://bitboxer.de/2017/08/06/ssh-with-clipboard/
-  config.ssh.forward_x11 = true
+  # config.ssh.forward_x11 = true
 
   # Enable provisioning with a shell script. Additional provisioners such as
   # Ansible, Chef, Docker, Puppet and Salt are also available. Please see the
