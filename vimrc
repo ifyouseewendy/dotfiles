@@ -23,8 +23,7 @@ Plug 'tpope/vim-fugitive'                                       " a Git wrapper 
 Plug 'tpope/vim-ragtag', { 'for': ['html', 'erb'] }             " Ghetto HTML/XML mappings (formerly allml.vim)
 Plug 'tpope/vim-repeat'							                            " repeat.vim: enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-surround' 					                            " surround.vim: quoting/parenthesizing made simple
-Plug 'vim-airline/vim-airline'                                  " Lean & mean status/tabline for vim that's light as air
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'                                    " A light and configurable statusline/tabline plugin for Vim
 Plug '~/.fzf'
 Plug 'junegunn/fzf.vim'                                         " 🌸 A command-line fuzzy finder written in Go
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
@@ -336,34 +335,54 @@ endif
 " map <leader>ss :Sscratch<ESC>i
 "}}}
 
+" lightline"{{{
+let g:lightline = {
+      \ 'colorscheme': 'one',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'filename': 'LightlineFilename',
+      \   'cocstatus': 'coc#status'
+      \ },
+      \ }
+function! LightlineFilename()
+  return expand('%:t') !=# '' ? @% : '[No Name]'
+endfunction
+
+" Use auocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+" }}}
+
 " vim-airline"{{{
-set laststatus=2
-set noshowmode
-
-let g:airline#extensions#branch#enabled = 0
-let g:airline_theme='one'
-
-let g:airline_extensions = ['coc']
-
-let g:airline#extensions#default#layout = [
-      \ [ 'a', 'b', 'c' ],
-      \ [ 'x', 'y', 'z', 'error', 'warning' ]
-      \ ]
-
-" Display airline symbols
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
-endif
-let g:airline_symbols.space = "\ua0"
-
-" Display ale linting result
-let g:airline#extensions#ale#enabled = 1
-
-" When use powerline font, the percentage/line/column chaos displayed
-" let g:airline_powerline_fonts = 1
-
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
+" set laststatus=2
+" set noshowmode
+"
+" let g:airline#extensions#branch#enabled = 0
+" let g:airline_theme='one'
+"
+" let g:airline_extensions = ['coc']
+"
+" let g:airline#extensions#default#layout = [
+"       \ [ 'a', 'b', 'c' ],
+"       \ [ 'x', 'y', 'z', 'error', 'warning' ]
+"       \ ]
+"
+" " Display airline symbols
+" if !exists('g:airline_symbols')
+"   let g:airline_symbols = {}
+" endif
+" let g:airline_symbols.space = "\ua0"
+"
+" " Display ale linting result
+" let g:airline#extensions#ale#enabled = 1
+"
+" " When use powerline font, the percentage/line/column chaos displayed
+" " let g:airline_powerline_fonts = 1
+"
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
 "}}}
 
 " vim-speeddating"{{{
@@ -702,7 +721,7 @@ set nobackup
 set nowritebackup
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=1
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
@@ -732,12 +751,12 @@ endfunction
 " Use <c-.> to trigger completion.
 inoremap <silent><expr> <c-.> coc#refresh()"
 
-" Use <c-e> to confirm completion, `<C-g>u` means break undo chain at current
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
 if exists('*complete_info')
-  inoremap <expr> <c-e> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 else
-  imap <expr> <c-e> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
 " Use `[g` and `]g` to navigate diagnostics
