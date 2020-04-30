@@ -3,11 +3,11 @@
 	email = ifyouseewendy@gmail.com
 [core]
 	excludesfile = ~/.gitignore
-  pager = diff-so-fancy | less --tabs=2 -RFX
-    editor       = nvim
-    autocrlf     = input
-    safecrlf     = true
-    whitespace   = cr-at-eol
+	pager = diff-so-fancy | less --tabs=2 -RFX
+    	editor       = nvim
+    	autocrlf     = input
+    	safecrlf     = true
+    	whitespace   = cr-at-eol
 	commitGraph = true
 [alias]
     alias   = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\t=> \\2/' | sort
@@ -88,3 +88,5 @@
 	insteadOf = https://github.com/
 [gc]
 	writeCommitGraph = true
+[mergetool "vimdiff"]
+	path = nvim
