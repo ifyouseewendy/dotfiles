@@ -664,8 +664,9 @@ let g:rust_clip_command = 'pbcopy'
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
+" 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'rust': ['rust-analyzer'],
     \ }
 " Disable diagnostic messages. Let ale handle it
 let g:LanguageClient_diagnosticsEnable = 0
