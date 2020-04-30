@@ -30,7 +30,7 @@ Plug 'junegunn/fzf.vim'                                         " 🌸 A command
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
 Plug 'w0rp/ale'                                                 " Asynchronous Lint Engine
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }   " Dark powered asynchronous completion framework for neovim/Vim8
 Plug 'docunext/closetag.vim',       { 'for': ['html', 'erb'] }  " Functions and mappings to close open HTML/XML tags
 Plug 'pangloss/vim-javascript',     { 'for': 'javascript' }     " Vastly improved Javascript indentation and syntax support in Vim.
 Plug 'mxw/vim-jsx',                 { 'for': 'javascript' }     " React JSX syntax highlighting and indenting for vim.
@@ -39,18 +39,14 @@ Plug 'neovimhaskell/haskell-vim',   { 'for': 'haskell' }        " Syntax Highlig
 Plug 'dag/vim-fish',                { 'for': 'fish' }           " Vim support for editing fish scripts
 Plug 'fatih/vim-go',                { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
 Plug 'mdempsky/gocode',             { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' } " An autocompletion daemon for the Go programming language
-Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
+" Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
 Plug 'mattn/webapi-vim',            { 'for': 'rust' }           " vim interface to Web API
 Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configuration for Rust.
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'for': 'rust',
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }                                                         " Language Server Protocol (LSP) support for vim and neovim
 Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'kshenoy/vim-signature'                                  " Plugin to toggle, display and navigate marks
+Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
+Plug 'neoclide/coc.nvim', {'branch': 'release'} 		" Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
 
 " == Deprecated
 "
@@ -146,7 +142,7 @@ function! UseSpaces()
   set autoindent                            " Copy indent from current line when starting a new line.
   set smarttab                              " Inserts blanks on a <Tab> key (as per sw, ts and sts).
 endfunction
-" call UseSpaces()
+call UseSpaces()
 
 " Search configuration
 set smartcase                               " Don't ignore case when search has capital letter (although also don't ignore case by default).
@@ -347,11 +343,11 @@ set noshowmode
 let g:airline#extensions#branch#enabled = 0
 let g:airline_theme='one'
 
-let g:airline_extensions = []
+let g:airline_extensions = ['coc']
 
 let g:airline#extensions#default#layout = [
-      \ [ 'a', 'error', 'warning', 'c' ],
-      \ [ 'y', 'z' ]
+      \ [ 'a', 'b', 'c' ],
+      \ [ 'x', 'y', 'z', 'error', 'warning' ]
       \ ]
 
 " Display airline symbols
@@ -376,12 +372,13 @@ let g:airline_right_sep = ''
 
 " vim-fugtive"{{{
 nmap <leader>gb :Gblame<cr>
-nmap <leader>gd :Gdiff<cr>
-nmap <leader>gh :Git hist<cr>
-nmap <leader>gl :Git l<cr>
-nmap <leader>gs :Gstatus<cr>
-nmap <leader>gc :Gcommit<cr>
-nmap <leader>gt :!tig status<cr>"}}}
+" nmap <leader>gd :Gdiff<cr>
+" nmap <leader>gh :Git hist<cr>
+" nmap <leader>gl :Git l<cr>
+" nmap <leader>gs :Gstatus<cr>
+" nmap <leader>gc :Gcommit<cr>
+" nmap <leader>gt :!tig status<cr>
+"}}}
 
 " nerdtree "{{{
 let NERDTreeWinSize = 26
@@ -623,9 +620,9 @@ let g:javascript_plugin_flow = 1
 "}}}
 
 " Use deoplete{{{
-let g:deoplete#enable_at_startup = 1
-inoremap <expr><C-e> deoplete#close_popup()
-set completeopt-=preview
+" let g:deoplete#enable_at_startup = 1
+" inoremap <expr><C-e> deoplete#close_popup()
+" set completeopt-=preview
 "}}}
 
 " vim-go{{{
@@ -658,25 +655,6 @@ let g:go_highlight_extra_types = 1
 " rust.vim{{{
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'pbcopy'
-"}}}
-
-" LanguageClient-neovim{{{
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-" 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rust-analyzer'],
-    \ }
-" Disable diagnostic messages. Let ale handle it
-let g:LanguageClient_diagnosticsEnable = 0
-
-map <silent> <leader>gg :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-noremap <silent> <leader>d :call LanguageClient_textDocument_definition()<CR>
-noremap <silent> <leader>td :call LanguageClient_textDocument_typeDefinition()<CR>
-noremap <silent> <leader>ti :call LanguageClient_textDocument_implementation()<CR>
-noremap <silent> <leader>tr :call LanguageClient_textDocument_references()<CR>
 "}}}
 
 "{{{ notational-fzf-vim
@@ -713,4 +691,102 @@ let g:vim_markdown_strikethrough = 1
 
 " Adjust new list item indent
 let g:vim_markdown_new_list_item_indent = 0
+"}}}
+
+"{{{ coc.nvim
+" TextEdit might fail if hidden is not set.
+set hidden
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" Give more space for displaying messages.
+set cmdheight=2
+
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+" Don't pass messages to |ins-completion-menu|.
+set shortmess+=c
+
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resolved.
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
+inoremap <silent><expr> <TAB>
+  \ pumvisible() ? "\<C-n>" :
+  \ <SID>check_back_space() ? "\<TAB>" :
+  \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+	let col = col('.') - 1
+	return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-.> to trigger completion.
+inoremap <silent><expr> <c-.> coc#refresh()"
+
+" Use <c-e> to confirm completion, `<C-g>u` means break undo chain at current
+" position. Coc only does snippet and additional edit on confirm.
+if exists('*complete_info')
+  inoremap <expr> <c-e> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+else
+  imap <expr> <c-e> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gt <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Introduce function text object
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <TAB> for selections ranges.
+nmap <silent> <TAB> <Plug>(coc-range-select)
+xmap <silent> <TAB> <Plug>(coc-range-select)
+
+" Find symbol of current document.
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+
+" Search workspace symbols.
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+
+" Implement methods for trait
+nnoremap <silent> <space>i  :call CocActionAsync('codeAction', '', 'Implement missing members')<cr>
+
+" Show actions available at this location
+nnoremap <silent> <space>a  :CocAction<cr>
 "}}}
