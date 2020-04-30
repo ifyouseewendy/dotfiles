@@ -121,6 +121,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias tigs='tig status'
 alias n='nvim -c NV'
+alias v='vagrant'
 alias g='git status'
 alias tailf='tail -f'
 alias configure-vim='nvim ~/.vimrc'
@@ -134,6 +135,7 @@ alias jj='fasd_cd -d -i' # cd with interactive selection
 
 # exa
 alias l='exa --group-directories-first' # 'ls -CF'
+alias ls='exa'
 alias la='exa -all --group-directories-first' # 'ls -AF'
 alias ll='exa --all --long --grid --group --group-directories-first --color=automatic' # 'ls -alhF'
 alias ..='cd ..'         # Go up one directory
