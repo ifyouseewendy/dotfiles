@@ -694,9 +694,12 @@ let g:nv_create_note_key = 'ctrl-o'
 
 " }}}
 
-"{{{ vim_markdown_folding_style_pythonic
+"{{{ vim_markdown
 " Use :Toch to open a TOC window
 let g:vim_markdown_folding_style_pythonic = 1
+
+" header folding level
+let g:vim_markdown_folding_level = 0
 
 "Allow for the TOC window to auto-fit when it's possible for it to shrink
 let g:vim_markdown_toc_autofit = 1
