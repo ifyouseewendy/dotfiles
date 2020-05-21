@@ -55,3 +55,6 @@ tmp/
 
 # NPM
 node_modules/
+
+# Note for a specific project
+.note
