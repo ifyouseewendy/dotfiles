@@ -321,6 +321,9 @@ nmap <leader>V ^v$h
 nmap <leader>T :term fish<cr>GA
 tnoremap <C-[><C-[> <C-\><C-n>
 
+" Open TOC in markdown files
+nmap <leader>tc :Toch<cr>
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIGURATION
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -330,10 +333,6 @@ if &shell =~# 'fish$'
     set shell=sh
 endif
 ""}}}
-
-" scratch.vim"{{{
-" map <leader>ss :Sscratch<ESC>i
-"}}}
 
 " lightline"{{{
 let g:lightline = {
@@ -696,13 +695,15 @@ let g:nv_create_note_key = 'ctrl-o'
 
 "{{{ vim_markdown
 " Use :Toch to open a TOC window
-let g:vim_markdown_folding_style_pythonic = 1
+" let g:vim_markdown_folding_style_pythonic = 0
 
 " header folding level
-let g:vim_markdown_folding_level = 0
+" let g:vim_markdown_folding_level = 6
 
 "Allow for the TOC window to auto-fit when it's possible for it to shrink
-let g:vim_markdown_toc_autofit = 1
+" let g:vim_markdown_toc_autofit = 0
+
+let g:vim_markdown_folding_disabled = 1
 
 "To disable concealing
 let g:vim_markdown_conceal = 0
