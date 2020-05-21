@@ -354,36 +354,6 @@ endfunction
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 " }}}
 
-" vim-airline"{{{
-" set laststatus=2
-" set noshowmode
-"
-" let g:airline#extensions#branch#enabled = 0
-" let g:airline_theme='one'
-"
-" let g:airline_extensions = ['coc']
-"
-" let g:airline#extensions#default#layout = [
-"       \ [ 'a', 'b', 'c' ],
-"       \ [ 'x', 'y', 'z', 'error', 'warning' ]
-"       \ ]
-"
-" " Display airline symbols
-" if !exists('g:airline_symbols')
-"   let g:airline_symbols = {}
-" endif
-" let g:airline_symbols.space = "\ua0"
-"
-" " Display ale linting result
-" let g:airline#extensions#ale#enabled = 1
-"
-" " When use powerline font, the percentage/line/column chaos displayed
-" " let g:airline_powerline_fonts = 1
-"
-" let g:airline_left_sep = ''
-" let g:airline_right_sep = ''
-"}}}
-
 " vim-speeddating"{{{
 " map <c-i> <c-a>
 "}}}
