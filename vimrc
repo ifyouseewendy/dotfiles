@@ -36,7 +36,6 @@ Plug 'mxw/vim-jsx',                 { 'for': 'javascript' }     " React JSX synt
 Plug 'leafgarland/typescript-vim',  { 'for': 'typescript' }     " Typescript syntax files for Vim
 Plug 'neovimhaskell/haskell-vim',   { 'for': 'haskell' }        " Syntax Highlighting and Indentation for Haskell and Cabal
 Plug 'dag/vim-fish',                { 'for': 'fish' }           " Vim support for editing fish scripts
-Plug 'fatih/vim-go',                { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
 Plug 'mdempsky/gocode',             { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/bundle/gocode/vim/symlink.sh' } " An autocompletion daemon for the Go programming language
 " Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
 Plug 'mattn/webapi-vim',            { 'for': 'rust' }           " vim interface to Web API
@@ -75,6 +74,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} 		" Intellisense engine for Vim8
 " Plug 'ap/vim-css-color',            { 'for': ['css', 'scss'] }  " Preview colours in source code while editing
 " Plug 'vim-ruby/vim-ruby',           { 'for': 'ruby' } 					" Vim/Ruby Configuration Files
 " Plug 'godlygeek/tabular'                                        " Vim script for text filtering and alignment
+" Plug 'fatih/vim-go',                { 'for': 'go', 'do': 'make' }      " Go development plugin for Vim
 
 call plug#end()
 
@@ -645,30 +645,30 @@ let g:javascript_plugin_flow = 1
 "}}}
 
 " vim-go{{{
-function! SetupMapForVimGo()
-  nmap <leader>gi <Plug>(go-info)
-  nmap <leader>gr <Plug>(go-run)
-  nmap <leader>gt <Plug>(go-test)
-
-  nmap <leader>gd :<C-u>GoDeclsDir<CR>
-  nmap <leader>gl :<C-u>GoDecls<CR>
-endfunction
-
-autocmd FileType go call SetupMapForVimGo()
-
-" Disable default shortcut s-k
-let g:go_doc_keywordprg_enabled = 0
-
-" https://github.com/fatih/vim-go/wiki/Tutorial
-let g:go_fmt_command = "goimports"
-let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_extra_types = 1
+" function! SetupMapForVimGo()
+"   nmap <leader>gi <Plug>(go-info)
+"   nmap <leader>gr <Plug>(go-run)
+"   nmap <leader>gt <Plug>(go-test)
+"
+"   nmap <leader>gd :<C-u>GoDeclsDir<CR>
+"   nmap <leader>gl :<C-u>GoDecls<CR>
+" endfunction
+"
+" autocmd FileType go call SetupMapForVimGo()
+"
+" " Disable default shortcut s-k
+" let g:go_doc_keywordprg_enabled = 0
+"
+" " https://github.com/fatih/vim-go/wiki/Tutorial
+" let g:go_fmt_command = "goimports"
+" let g:go_highlight_functions = 1
+" let g:go_highlight_function_calls = 1
+" let g:go_highlight_types = 1
+" let g:go_highlight_fields = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_structs = 1
+" let g:go_highlight_operators = 1
+" let g:go_highlight_extra_types = 1
 "}}}
 
 " rust.vim{{{
