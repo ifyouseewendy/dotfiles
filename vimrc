@@ -539,7 +539,7 @@ let g:ale_linters = {
 \   'javascript': ['stylelint', 'eslint', 'flow'],
 \   'json': ['jsonlint'],
 \   'ruby': ['ruby', 'rubocop'],
-\   'rust': ['cargo'],
+\   'rust': [],
 \   'scss': ['stylelint'],
 \   'typescript': ['eslint'],
 \   'yaml': ['yamllint'],
@@ -561,6 +561,7 @@ let g:ale_fixers = {
 \  'rust': ['rustfmt'],
 \}
 
+let g:ale_rust_rustfmt_options = "--edition=2018"
 let g:ale_javascript_prettier_options = "--trailing-comma all"
 let g:ale_scss_stylelint_options = "--fix"
 " let g:ale_haskell_brittany_options = ""
