@@ -265,6 +265,15 @@ set pastetoggle=<F3>
 " Remove trailing whitespaces
 nnoremap <silent> <F4> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
 
+" Replace invalid quotes
+" https://stackoverflow.com/questions/43384677/in-vim-how-do-i-efficiently-search-and-replace-and-with-normal-double-quotes
+function! ReplaceQuotes()
+  silent! %s/[“”]/"/g
+  silent! %s/’/'/g
+endfunction
+nnoremap <silent> <F6> :call ReplaceQuotes()<CR>
+
+
 " Automatically jump to end of text you pasted
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
@@ -567,7 +576,7 @@ let g:ale_scss_stylelint_options = "--fix"
 " let g:ale_haskell_brittany_options = ""
 
 " Run fixer on save
-let g:ale_fix_on_save = 0
+let g:ale_fix_on_save = 1
 
 " Message format
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
