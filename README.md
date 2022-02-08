@@ -7,24 +7,114 @@ Check [Larry's Dotfile](https://github.com/larrylv/dotfiles) for details on
 + Vim (Ruby support mainly)
 + Git
 + Tmux
-+ Fish
 
-## Shell setup
+## Usage
 
-Soft link `fish/config.fish` and `fish/functions` to your local fish configs, which is `~/.config/fish/` in my local.
+Prep
 
-## Vim Setup
-
-+ Create vimrc by `curl https://raw.githubusercontent.com/ifyouseewendy/dotfiles/master/vimrc -o ~/.vimrc`
-+ [Install Neovim](https://github.com/neovim/neovim/wiki/Installing-Neovim). To let nvim use vim config, create `~/.config/nvim/init.vim` with these contents:
-
-```vim
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath = &runtimepath
-source ~/.vimrc
+```
+git clone git@github.com:ifyouseewendy/dotfiles.git ~/.dotfiles
 ```
 
-+ [Install vim-plug](https://github.com/junegunn/vim-plug#neovim)  as vim plugin manager
-+ Open file by neovim, and input `:PlugInstall`.
-+ Install external dependency (optional)
-  + [junegunn/fzf](https://github.com/junegunn/fzf)
+### zsh
+
+Install [oh-my-zsh](https://ohmyz.sh/#install)
+
+Configure zsh
+```
+cp ~/.dotfiles/wendi.zsh-theme ~/.oh-my-zsh/themes/
+```
+
+Install [direnv](https://direnv.net/)
+
+```
+brew install direnv
+```
+
+Install [ripgrep](https://github.com/BurntSushi/ripgrep)
+
+```
+brew install ripgrep && ln -svf ~/.dotfiles/ripgreprc ~/.ripgreprc
+```
+
+Use theme
+
+```
+ln -svf ~/.dotfiles/wendi.zsh-theme ~/.oh-my-zsh/themes/wendi.zsh-theme
+```
+
+Link zshrc
+
+```
+ln -svf ~/.dotfiles/zshrc ~/.zshrc
+```
+
+### git
+
+Install tig
+```
+brew install tig
+ln -svf ~/.dotfiles/tigrc ~/.tigrc
+```
+
+Install [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
+```
+brew install diff-so-fancy
+```
+
+Configure
+
+```
+ln -svf ~/.dotfiles/gitconfig.shop ~/.gitconfig
+ln -svf ~/.dotfiles/gitignore ~/.gitignore
+```
+
+### vim
+
+Install [Neovim](https://neovim.io/)
+
+```
+brew install neovim
+
+mkdir -p ~/.config/nvim
+vim ~/.config/nvim/init.vim
+
+	set runtimepath^=~/.vim runtimepath+=~/.vim/after
+	let &packpath = &runtimepath
+	source ~/.vimrc
+```
+
+Install [vim-plug](https://github.com/junegunn/vim-plug#unix-linux)
+```
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+Install [fzf](https://github.com/junegunn/fzf)
+
+```
+brew install fzf
+```
+
+Install [fd](https://github.com/sharkdp/fd)
+```
+brew install fd
+```
+
+Configure
+
+```
+ln -svf ~/.dotfiles/vimrc ~/.vimrc
+
+vim .vimrc
+
+	:PlugInstall
+```
+
+### tmux
+
+```
+ln -svf $HOME/.dotfiles/tmux.conf $HOME/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
+$HOME/.tmux/plugins/tpm/bin/install_plugins
+```
+
