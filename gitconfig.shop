@@ -1,6 +1,6 @@
 [user]
 	name = Di Wen
-	email = ifyouseewendy@gmail.com
+	email = di.wen@shopify.com
 [core]
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=2 -RFX
