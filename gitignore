@@ -46,7 +46,7 @@ _yardoc
 # doc/
 
 # FLOW
-dev
+# dev
 
 # Rust
 target/
@@ -58,3 +58,6 @@ node_modules/
 
 # Note for a specific project
 .note
+
+Justfile
+logs/
