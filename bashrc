@@ -109,8 +109,9 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 # Use bash-completion, if available https://github.com/scop/bash-completion
-[[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
-    . /usr/share/bash-completion/bash_completion
+# [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+#     . /usr/share/bash-completion/bash_completion
+[[ -r "/usr/local/etc/bash_completion" ]] && . "/usr/local/etc//bash_completion"
 
 ########################## Customization ####################################
 # env
@@ -159,14 +160,45 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 alias bi='bundle install'
 alias be='bundle exec'
 
+# rust
+# export RUST_SRC_PATH=`rustc --print sysroot`/lib/rustlib/src/rust
+
 # direnv
 eval "$(direnv hook bash)"
 
 # bash-git-prompt
 # https://github.com/magicmonty/bash-git-prompt
-if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
   GIT_PROMPT_FETCH_REMOTE_STATUS=0 # avoid fetching remote status
   GIT_PROMPT_THEME=Custom
-  source $HOME/.bash-git-prompt/gitprompt.sh
+  __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+  source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
 fi
+
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+################## MacOS
+
+# cargo
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# load dev, but only if present and the shell is interactive
+if [[ -f /opt/dev/dev.sh ]] && [[ $- == *i* ]]; then
+  source /opt/dev/dev.sh
+fi
+
+# TEMP
+# export LDFLAGS="-L/usr/local/opt/snappy/lib"
+# export CPPFLAGS="-I/usr/local/opt/snappy/include"
+
+# to compile on Catalina
+# `xcrun --show-sdk-path`
+export SDKROOT="/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+
+alias push-pr="git push -u origin HEAD && dev open pr"
+
+[[ -f /opt/dev/sh/chruby/chruby.sh ]] && type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; }
+
+[[ -x /usr/local/bin/brew ]] && eval $(/usr/local/bin/brew shellenv)

@@ -45,6 +45,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 		" Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
+":CocInstall coc-tabnine
 
 " == Deprecated
 "
@@ -118,7 +119,9 @@ set wildchar=<Tab> wildmenu wildmode=full   " Tab triggers buffer-name auto-comp
 set wildmenu                                " Autocomplete commands using nice menu in place of window status.
 
 " Line Wrapping
-set textwidth=100
+" set textwidth=100
+set textwidth=0
+set wrapmargin=0
 set colorcolumn=+1
 set wrap
 set linebreak
@@ -195,6 +198,7 @@ autocmd Filetype rust setlocal ts=4 sw=4 sts=0 expandtab
 " Disable quote concealing in JSON files
 autocmd Filetype json :IndentLinesDisable
 autocmd Filetype json setlocal conceallevel=0
+autocmd BufNewFile,BufRead Justfile set filetype=make
 
 " Filetype colorschemes
 
@@ -573,6 +577,7 @@ let g:ale_fixers = {
 let g:ale_rust_rustfmt_options = "--edition=2018"
 let g:ale_javascript_prettier_options = "--trailing-comma all"
 let g:ale_scss_stylelint_options = "--fix"
+let g:ale_ruby_rubocop_executable = 'bundle'
 " let g:ale_haskell_brittany_options = ""
 
 " Run fixer on save
