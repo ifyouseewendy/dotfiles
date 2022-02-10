@@ -10,13 +10,15 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
   INSTALLER="brew install"
 elif [[ "$(uname)" == "Linux"* ]]; then
-  export PATH=/home/spin/.nix-profile/bin:$PATH
+  # Source /etc/profile, it will set up nix, shadowenv and other goodies
+  . /etc/profile
 
   if ! command -v nix-env -f &> /dev/null; then
     echo "No proper installer found. Please install Nix"
     exit 1
   fi
 
+  nix-channel --update && nix upgrade-nix
   INSTALLER="nix-env -f '<nixpkgs>' -iA"
 else
   echo "Unsupported system: $(uname)"
