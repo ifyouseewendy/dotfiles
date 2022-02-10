@@ -2,9 +2,28 @@
 
 ### Prep
 
-if [ "$(uname)" == "Darwin" ]; then
+if [[ "$(uname)" == "Darwin" ]]; then
+  if ! command -v brew -f &> /dev/null; then
+    echo "No proper installer found. Please install homebrew"
+    exit 1
+  fi
+
   INSTALLER="brew install"
-elif [ "$(uname)" == "Linux" ]; then
+elif [[ "$(uname)" == "Linux"* ]]; then
+
+  n=1
+  while [[ $n -le 10 ]] && ! command -v nix-env -f &> /dev/null
+  do
+    echo "--> Cannot find nix-env, sleep 5s"
+    sleep 5
+    n=$(( n+1 ))	 # increments $n
+  done
+
+  if ! command -v nix-env -f &> /dev/null; then
+    echo "No proper installer found. Please install Nix"
+    exit 1
+  fi
+
   INSTALLER="nix-env -f '<nixpkgs>'"
 else
   echo "Unsupported system: $(uname)"
