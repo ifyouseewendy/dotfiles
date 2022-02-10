@@ -8,3 +8,12 @@
     type = "file"
     url = "https://raw.githubusercontent.com/ifyouseewendy/dotfiles/bak/2022-02-09/wendi.zsh-theme"
     exact = true
+[".config/nvim/autoload/plug.vim"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    exact = true
+    refreshPeriod = "168h"
+[".tmux/plugins/tpm"]
+    type = "archive"
+    url = "https://github.com/tmux-plugins/tpm/archive/refs/heads/master.zip"
+    exact = true
