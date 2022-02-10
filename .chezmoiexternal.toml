@@ -1,0 +1,10 @@
+[".oh-my-zsh"]
+    type = "archive"
+    url = "https://github.com/ohmyzsh/ohmyzsh/archive/master.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+[".oh-my-zsh/custom/themes/powerlevel10k"]
+    type = "file"
+    url = "https://raw.githubusercontent.com/ifyouseewendy/dotfiles/bak/2022-02-09/wendi.zsh-theme"
+    exact = true
