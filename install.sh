@@ -12,20 +12,12 @@ if [[ "$(uname)" == "Darwin" ]]; then
 elif [[ "$(uname)" == "Linux"* ]]; then
   export PATH=/home/spin/.nix-profile/bin:$PATH
 
-  n=1
-  while [[ $n -le 6 ]] && ! command -v nix-env -f &> /dev/null
-  do
-    echo "--> Cannot find nix-env, sleep 5s"
-    sleep 10
-    n=$(( n+1 ))	 # increments $n
-  done
-
   if ! command -v nix-env -f &> /dev/null; then
     echo "No proper installer found. Please install Nix"
     exit 1
   fi
 
-  INSTALLER="nix-env -f '<nixpkgs>'"
+  INSTALLER="nix-env -f '<nixpkgs>' -iA"
 else
   echo "Unsupported system: $(uname)"
   exit 1
