@@ -40,11 +40,11 @@ Plug 'mdempsky/gocode',             { 'for': 'go', 'rtp': 'vim', 'do': '~/.vim/b
 " Plug 'deoplete-plugins/deoplete-go', { 'for': 'go' }            " Asynchronous Go completion for Neovim. deoplete source for Go
 Plug 'mattn/webapi-vim',            { 'for': 'rust' }           " vim interface to Web API
 Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configuration for Rust.
-Plug 'https://github.com/alok/notational-fzf-vim'
+" Plug 'https://github.com/alok/notational-fzf-vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
-Plug 'neoclide/coc.nvim', {'branch': 'release'} 		" Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
+" Plug 'neoclide/coc.nvim', {'branch': 'release'} 		" Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
 ":CocInstall coc-tabnine
 
 " == Deprecated
@@ -743,11 +743,11 @@ inoremap <silent><expr> <c-.> coc#refresh()"
 
 " Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
 " position. Coc only does snippet and additional edit on confirm.
-if exists('*complete_info')
-  inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-else
-  imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-endif
+" if exists('*complete_info')
+"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -771,7 +771,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -794,7 +794,7 @@ nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 
 " Implement methods for trait
-nnoremap <silent> <space>i  :call CocActionAsync('codeAction', '', 'Implement missing members')<cr>
+" nnoremap <silent> <space>i  :call CocActionAsync('codeAction', '', 'Implement missing members')<cr>
 
 " Show actions available at this location
 nnoremap <silent> <space>a  :CocAction<cr>
