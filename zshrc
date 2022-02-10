@@ -70,9 +70,7 @@ ZSH_THEME="wendi"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git direnv ripgrep fzf)
-
-source $ZSH/oh-my-zsh.sh
+plugins=(direnv ripgrep fzf)
 
 # User configuration
 
@@ -119,3 +117,6 @@ alias configure-tmux='nvim ~/.tmux.conf'
 # ruby
 alias bi='bundle install'
 alias be='bundle exec'
+
+########################## Launch oh-my-zsh ####################################
+source $ZSH/oh-my-zsh.sh
