@@ -10,7 +10,6 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
   INSTALLER="brew install"
 elif [[ "$(uname)" == "Linux"* ]]; then
-
   n=1
   while [[ $n -le 10 ]] && ! command -v nix-env -f &> /dev/null
   do
