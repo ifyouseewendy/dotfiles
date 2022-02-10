@@ -4,7 +4,7 @@
     exact = true
     stripComponents = 1
     refreshPeriod = "168h"
-[".oh-my-zsh/custom/themes/powerlevel10k"]
+[".oh-my-zsh/custom/themes/wendi.zsh-theme"]
     type = "file"
     url = "https://raw.githubusercontent.com/ifyouseewendy/dotfiles/bak/2022-02-09/wendi.zsh-theme"
     exact = true
