@@ -11,7 +11,7 @@ if [[ "$(uname)" == "Darwin" ]]; then
   INSTALLER="brew install"
 elif [[ "$(uname)" == "Linux"* ]]; then
   echo "--> Sleep to wait nix-env ready"
-  sleep 180
+  sleep 300
 
   # Source /etc/profile, it will set up nix, shadowenv and other goodies
   . /etc/profile
