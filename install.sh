@@ -10,6 +10,8 @@ if [[ "$(uname)" == "Darwin" ]]; then
 
   INSTALLER="brew install"
 elif [[ "$(uname)" == "Linux"* ]]; then
+  sleep 60
+
   # Source /etc/profile, it will set up nix, shadowenv and other goodies
   . /etc/profile
 
