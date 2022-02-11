@@ -33,21 +33,18 @@ if ! command -v diff-so-fancy &> /dev/null; then
   sudo apt-get install -y diff-so-fancy -o DPkg::Lock::Timeout=600
 fi
 
-# chezmoi
-# sh -c "$(curl -fsLS chezmoi.io/get)" -- init ifyouseewendy --branch=chezmoi --one-shot
 
-#
-# ### Apply dotfiles
-#
-# chezmoi init https://github.com/ifyouseewendy/dotfiles.git --branch=chezmoi
-# chezmoi apply
-#
-# ### Post hooks
-# # neovim
-# ln -s ~/.vimrc ~/.config/nvim/init.vim
-#
-# # vim-plug
-# nvim --headless +PlugInstall +qa
-#
-# # tpm
-# $HOME/.tmux/plugins/tpm/bin/install_plugins
+### Apply dotfiles
+
+# chezmoi
+sh -c "$(curl -fsLS chezmoi.io/get)" -- init ifyouseewendy --branch=chezmoi --one-shot
+
+### Post hooks
+# neovim
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+
+# vim-plug
+nvim --headless +PlugInstall +qa
+
+# tpm
+$HOME/.tmux/plugins/tpm/bin/install_plugins
