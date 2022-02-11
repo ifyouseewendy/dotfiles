@@ -8,6 +8,12 @@ Check [Larry's Dotfile](https://github.com/larrylv/dotfiles) for details on
 + Git
 + Tmux
 
+## Quick set up in a Linux virtual env
+
+```
+./install.sh
+```
+
 ## Usage
 
 Prep
