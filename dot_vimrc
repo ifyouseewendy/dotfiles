@@ -24,7 +24,7 @@ Plug 'tpope/vim-ragtag', { 'for': ['html', 'erb'] }             " Ghetto HTML/XM
 Plug 'tpope/vim-repeat'							                            " repeat.vim: enable repeating supported plugin maps with '.'
 Plug 'tpope/vim-surround' 					                            " surround.vim: quoting/parenthesizing made simple
 Plug 'itchyny/lightline.vim'                                    " A light and configurable statusline/tabline plugin for Vim
-Plug '/opt/homebrew/opt/fzf'
+Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'                                         " 🌸 A command-line fuzzy finder written in Go
 Plug 'janko-m/vim-test'                                         " Run your tests at the speed of thought
 Plug 'rakr/vim-one'                                             " Adaptation of one-light and one-dark colorschemes for Vim
