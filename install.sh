@@ -2,41 +2,40 @@
 
 ### Prep
 
-if [[ "$(uname)" == "Darwin" ]]; then
-  if ! command -v brew -f &> /dev/null; then
-    echo "No proper installer found. Please install homebrew"
-    exit 1
-  fi
-
-  INSTALLER="brew install"
-elif [[ "$(uname)" == "Linux"* ]]; then
-  echo "--> Sleep to wait nix-env ready"
-  sleep 120
-
-  # Source /etc/profile, it will set up nix, shadowenv and other goodies
-  # . /etc/profile
-
-  if ! command -v nix-env -f &> /dev/null; then
-    echo "No proper installer found. Please install Nix"
-    exit 1
-  fi
-
-  nix-channel --update && nix upgrade-nix
-  INSTALLER="nix-env -f '<nixpkgs>' -iA"
-else
+if [[ "$(uname)" != "Linux"* ]]; then
   echo "Unsupported system: $(uname)"
   exit 1
 fi
 
-# ### Install utils
-#
-UTILS=(direnv ripgrep neovim fzf fd tig diff-so-fancy chezmoi)
+### Install utils
+UTILS=(direnv ripgrep neovim fzf tig)
 
 for i in "${UTILS[@]}"
 do
-  echo "--> installing $i"
-  $(echo "$INSTALLER $i")
+  if ! command -v $i &> /dev/null; then
+    echo "--> Installing $i"
+    sudo apt-get install -y $i -o DPkg::Lock::Timeout=600
+  fi
 done
+
+# fd
+if ! command -v fdfind &> /dev/null; then
+  echo "--> Installing fdfind"
+  sudo apt-get install -y fd-find -o DPkg::Lock::Timeout=600
+  sudo ln -svf /usr/bin/fdfind /usr/bin/fd
+fi
+
+# diff-so-fancy
+if ! command -v diff-so-fancy &> /dev/null; then
+  echo "--> Installing diff-so-fancy"
+  sudo add-apt-repository -y ppa:aos1/diff-so-fancy
+  sudo apt-get update -o DPkg::Lock::Timeout=600
+  sudo apt-get install -y diff-so-fancy -o DPkg::Lock::Timeout=600
+fi
+
+# chezmoi
+# sh -c "$(curl -fsLS chezmoi.io/get)" -- init ifyouseewendy --branch=chezmoi --one-shot
+
 #
 # ### Apply dotfiles
 #
