@@ -372,7 +372,7 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 "}}}
 
 " vim-fugtive"{{{
-nmap <leader>gb :Gblame<cr>
+nmap <leader>gb :Git blame<cr>
 " nmap <leader>gd :Gdiff<cr>
 " nmap <leader>gh :Git hist<cr>
 " nmap <leader>gl :Git l<cr>
