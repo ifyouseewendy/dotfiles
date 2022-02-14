@@ -102,6 +102,7 @@ plugins=(direnv ripgrep fzf)
 
 # env
 export EDITOR='nvim'
+export TZ="/usr/share/zoneinfo/America/Vancouver"
 
 # common
 alias vi='nvim'
