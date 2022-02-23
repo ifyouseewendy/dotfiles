@@ -125,9 +125,8 @@ alias jc='journalctl'
 alias before-push-hooks='echo "dev style && dev typecheck && dev dump-graphql admin"'
 
 # fzf
-export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --color=always'
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export FZF_DEFAULT_OPTS="--ansi"
 
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
