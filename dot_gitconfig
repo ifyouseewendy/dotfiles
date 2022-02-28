@@ -87,3 +87,5 @@
 	path = nvim
 [include]
 	path = /Users/wendi/.config/dev/gitconfig
+[log]
+  date = local
