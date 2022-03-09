@@ -8,7 +8,7 @@ if [[ "$(uname)" != "Linux"* ]]; then
 fi
 
 ### Install utils
-UTILS=(direnv ripgrep neovim fzf tig tmux)
+UTILS=(direnv neovim fzf tig tmux)
 
 for i in "${UTILS[@]}"
 do
@@ -17,6 +17,12 @@ do
     sudo apt-get install -y $i -o DPkg::Lock::Timeout=600
   fi
 done
+
+# ripgrep
+if ! command -v rg &> /dev/null; then
+  echo "--> Installing ripgrep"
+  sudo apt-get install -y ripgrep -o DPkg::Lock::Timeout=600
+fi
 
 # fd
 if ! command -v fdfind &> /dev/null; then
