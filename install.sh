@@ -8,7 +8,7 @@ if [[ "$(uname)" != "Linux"* ]]; then
 fi
 
 ### Install utils
-UTILS=(direnv ripgrep neovim fzf tig)
+UTILS=(direnv ripgrep neovim fzf tig tmux)
 
 for i in "${UTILS[@]}"
 do
