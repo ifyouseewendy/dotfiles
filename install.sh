@@ -8,7 +8,7 @@ if [[ "$(uname)" != "Linux"* ]]; then
 fi
 
 ### Install utils
-UTILS=(direnv neovim fzf tig tmux)
+UTILS=(direnv fzf tig tmux)
 
 for i in "${UTILS[@]}"
 do
@@ -17,6 +17,12 @@ do
     sudo apt-get install -y $i -o DPkg::Lock::Timeout=600
   fi
 done
+
+# neovim
+if ! command -v nvim &> /dev/null; then
+  echo "--> Installing neovim"
+  sudo apt-get install -y neovim -o DPkg::Lock::Timeout=600
+fi
 
 # ripgrep
 if ! command -v rg &> /dev/null; then
