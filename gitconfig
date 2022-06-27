@@ -80,8 +80,8 @@
 	new = green bold
 	whitespace = red reverse
 [diff]
-# [url "git@github.com:"]
-# 	insteadOf = https://github.com/
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [gc]
 [mergetool "vimdiff"]
 	path = nvim
