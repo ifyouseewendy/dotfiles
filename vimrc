@@ -44,8 +44,9 @@ Plug 'rust-lang/rust.vim',          { 'for': 'rust' }           " Vim configurat
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
-" Plug 'neoclide/coc.nvim', {'branch': 'release'} 		" Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
-":CocInstall coc-tabnine
+Plug 'neoclide/coc.nvim', {'branch': 'release'} 		            " Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
+":CocInstall coc-json coc-solargraph" for json language extension and ruby LSP
+":CocConfig " to open config and set up sorbet https://github.com/neoclide/coc.nvim/wiki/Language-servers#using-sorbet
 
 " == Deprecated
 "

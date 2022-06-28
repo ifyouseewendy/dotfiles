@@ -53,10 +53,14 @@ sh -c "$(curl -fsLS chezmoi.io/get)" -- init ifyouseewendy --branch=chezmoi --on
 
 ### Post hooks
 # neovim
-ln -s ~/.vimrc ~/.config/nvim/init.vim
+ln -svf ~/.vimrc ~/.config/nvim/init.vim
 
 # vim-plug
 nvim --headless +PlugInstall +qa
+
+# coc: Ruby LSP
+sudo gem install sorbet sorbet-runtime solargraph
+cp ~/dotifles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # tpm
 $HOME/.tmux/plugins/tpm/bin/install_plugins
