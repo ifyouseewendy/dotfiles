@@ -60,7 +60,9 @@ nvim --headless +PlugInstall +qa
 
 # coc: Ruby LSP
 sudo gem install sorbet sorbet-runtime solargraph
-cp ~/dotifles/coc-settings.json ~/.config/nvim/coc-settings.json
+cp ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # tpm
 $HOME/.tmux/plugins/tpm/bin/install_plugins
+
+echo "succeed"
