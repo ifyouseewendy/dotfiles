@@ -116,7 +116,7 @@ alias configure-bash='nvim ~/.bashrc'
 alias configure-tmux='nvim ~/.tmux.conf'
 
 # ruby
-alias bi='bundle install'
+alias bi='bundle install --path=vendor/bundle'
 alias be='bundle exec'
 
 # spin
