@@ -9,7 +9,7 @@
 
 call plug#begin("~/.vim/bundle")
 
-Plug 'ferranpm/vim-autopairs'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'                                      " A vim plugin to display the indention levels with thin vertical lines
 Plug 'benmills/vimux'                                           " Vim plugin to interact with tmux
 Plug 'ervandew/supertab'                                        " Perform all your vim insert mode completions with Tab
