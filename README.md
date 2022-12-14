@@ -2,16 +2,20 @@
 
 After using Larry's Dotfile for a really long time, I've learned to configure vim, tmux, zsh and many other dev tools. THANKS so much. :kissing_heart:
 
-Check [Larry's Dotfile](https://github.com/larrylv/dotfiles) for details on
+Check [Larry's Dotfile](https://github.com/larrylv/dotfiles) for details.
 
-+ Vim (Ruby support mainly)
-+ Git
-+ Tmux
+## Quick setup
 
-## Quick set up in a Linux virtual env
+Linux
 
 ```
 ./install.sh
+```
+
+Mac
+
+```
+./install.mac.sh
 ```
 
 ## Usage
