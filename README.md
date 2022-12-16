@@ -35,18 +35,6 @@ Configure zsh
 cp ~/.dotfiles/wendi.zsh-theme ~/.oh-my-zsh/themes/
 ```
 
-Install [direnv](https://direnv.net/)
-
-```
-brew install direnv
-```
-
-Install [ripgrep](https://github.com/BurntSushi/ripgrep)
-
-```
-brew install ripgrep && ln -svf ~/.dotfiles/ripgreprc ~/.ripgreprc
-```
-
 Use theme
 
 ```
@@ -99,6 +87,31 @@ Install [vim-plug](https://github.com/junegunn/vim-plug#unix-linux)
 curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
+Configure
+
+```
+ln -svf ~/.dotfiles/vimrc ~/.vimrc
+
+vim .vimrc
+
+	:PlugInstall
+```
+
+### Others
+
+Install [direnv](https://direnv.net/)
+
+```
+brew install direnv
+```
+
+Install [ripgrep](https://github.com/BurntSushi/ripgrep)
+
+```
+brew install ripgrep && ln -svf ~/.dotfiles/ripgreprc ~/.ripgreprc
+```
+
+
 Install [fzf](https://github.com/junegunn/fzf)
 
 ```
@@ -108,16 +121,6 @@ brew install fzf
 Install [fd](https://github.com/sharkdp/fd)
 ```
 brew install fd
-```
-
-Configure
-
-```
-ln -svf ~/.dotfiles/vimrc ~/.vimrc
-
-vim .vimrc
-
-	:PlugInstall
 ```
 
 ### tmux
