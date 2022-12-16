@@ -119,34 +119,18 @@ alias configure-tmux='nvim ~/.tmux.conf'
 alias bi='bundle install --path=vendor/bundle'
 alias be='bundle exec'
 
-# spin
-alias sc='systemctl'
-alias jc='journalctl'
-alias before-push-hooks='echo "dev style && dev typecheck && dev dump-graphql admin"'
+# Shop/spin
+# alias sc='systemctl'
+# alias jc='journalctl'
+# alias before-push-hooks='echo "dev style && dev typecheck && dev dump-graphql admin"'
 
 # fzf
-# Setup fzf
-# ---------
-if [[ ! "$PATH" == */opt/homebrew/opt/fzf/bin* ]]; then
-  PATH="${PATH:+${PATH}:}/opt/homebrew/opt/fzf/bin"
+if [ -n "${commands[fzf-share]}" ]; then
+  source "$(fzf-share)/key-bindings.zsh"
+  source "$(fzf-share)/completion.zsh"
 fi
-
-# Auto-completion
-# ---------------
-[[ $- == *i* ]] && source "/opt/homebrew/opt/fzf/shell/completion.zsh" 2> /dev/null
-
-# Key bindings
-# ------------
-source "/opt/homebrew/opt/fzf/shell/key-bindings.zsh"
-
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
-
-# [[ -f /opt/homebrew/opt/chruby/share/chruby/chruby.sh ]] && source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh
-source $(brew --prefix)/opt/chruby/share/chruby/auto.sh
-
-[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
