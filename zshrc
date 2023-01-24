@@ -70,7 +70,7 @@ ZSH_THEME="wendi"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(direnv ripgrep)
+plugins=(direnv ripgrep poetry)
 
 # User configuration
 
@@ -103,6 +103,10 @@ plugins=(direnv ripgrep)
 # env
 export EDITOR='nvim'
 export TZ="/usr/share/zoneinfo/America/Vancouver"
+export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+
+# homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # common
 alias vi='nvim'
@@ -114,15 +118,22 @@ alias tailf='tail -f'
 alias configure-vim='nvim ~/.vimrc'
 alias configure-bash='nvim ~/.bashrc'
 alias configure-tmux='nvim ~/.tmux.conf'
+alias make=gmake
 
 # ruby
 alias bi='bundle install --path=vendor/bundle'
 alias be='bundle exec'
 
-# Shop/spin
-# alias sc='systemctl'
-# alias jc='journalctl'
-# alias before-push-hooks='echo "dev style && dev typecheck && dev dump-graphql admin"'
+# python
+## pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+## pipenv
+export PATH="/Users/di/.local/bin:$PATH"
+## poetry
+export PATH="/Users/di/.poetry/bin:$PATH"
+
 
 # fzf
 if [ -n "${commands[fzf-share]}" ]; then
@@ -134,3 +145,4 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
+
