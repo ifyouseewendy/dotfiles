@@ -185,6 +185,7 @@ autocmd BufNewFile,BufRead *.less set filetype=css
 " autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120 textwidth=80
 autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 autocmd BufNewFile,BufRead *.wat set filetype=wast
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd Filetype gitcommit setlocal textwidth=72
@@ -549,11 +550,12 @@ let g:ale_set_quickfix = 1
 
 " Enable particular linters
 " 'python': ['flake8']
+" 'javascript': ['stylelint', 'eslint', 'flow'],
 let g:ale_linters = {
 \   'eruby': [],
 \   'go': ['gometalinter'],
 \   'haskell': ['hlint', 'stack-ghc-mod'],
-\   'javascript': ['stylelint', 'eslint', 'flow'],
+\   'javascript': [],
 \   'json': ['jsonlint'],
 \   'ruby': ['ruby', 'rubocop'],
 \   'rust': [],
@@ -572,7 +574,7 @@ let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
 " Config :ALEFix to use prettier
 " 'python': ['black', 'isort']
 let g:ale_fixers = {
-\  'javascript': ['eslint', 'prettier'],
+\  'javascript': ['prettier'],
 \  'typescript': ['prettier'],
 \  'json': ['prettier'],
 \  'ruby': ['rubocop'],
@@ -583,7 +585,8 @@ let g:ale_fixers = {
 \}
 
 let g:ale_rust_rustfmt_options = "--edition=2018"
-let g:ale_javascript_prettier_options = "--trailing-comma all"
+" let g:ale_javascript_prettier_options = "--trailing-comma all"
+let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_scss_stylelint_options = "--fix"
 let g:ale_ruby_rubocop_executable = 'bundle'
 " let g:ale_haskell_brittany_options = ""
@@ -850,4 +853,8 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+" Python
+autocmd BufWritePre *.py :silent call CocAction('format') 
+autocmd BufWritePre *.py :silent call CocAction('runCommand', 'editor.action.organizeImport') 
 "}}}

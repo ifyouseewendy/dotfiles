@@ -1,12 +1,15 @@
 {
-  "languageserver": {
-    "sorbet": {
-      "command": "srb",
-      "args": ["tc", "--typed", "true", "--enable-all-experimental-lsp-features", "--lsp", "--disable-watchman"],
-      "filetypes": ["ruby"],
-      "rootPatterns": ["sorbet/config"],
-      "initializationOptions": {},
-      "settings": {}
-    }
-  }
+  "python.pythonPath": "/Users/di/.pyenv/shims/python",
+  "python.linting.flake8Enabled": true,
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/Users/di/.pyenv/shims/black",
+  "python.formatting.blackArgs": ["--line-length=120"],
+  "python.sortImports.path": "/Users/di/.pyenv/shims/isort",
+  "pyright.organizeimports.provider": "isort",
+  "pyright.testing.provider": "pytest",
+  "python.analysis.diagnosticSeverityOverrides": {
+    "reportGeneralTypeIssues": "none"
+  },
+  "python.linting.mypyEnabled": "true",
+  "coc.preferences.formatOnSaveFiletypes": []
 }
