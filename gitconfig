@@ -1,6 +1,7 @@
 [user]
 	name = Di Wen
-	email = di.wen@shopify.com
+	email = di@cointracker.com
+  signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMLL0n+Yum4vV3lCBeJ35RrPPBS5+wRzVPS/b2X59WE+
 [core]
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less --tabs=2 -RFX
