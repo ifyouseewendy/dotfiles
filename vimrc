@@ -13,7 +13,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'                                      " A vim plugin to display the indention levels with thin vertical lines
 Plug 'benmills/vimux'                                           " Vim plugin to interact with tmux
 Plug 'ervandew/supertab'                                        " Perform all your vim insert mode completions with Tab
-Plug 'majutsushi/tagbar'                                        " Vim plugin that displays tags in a window, ordered by scope
+Plug 'majutsushi/tagbar',           { 'for': 'rust' }           " Vim plugin that displays tags in a window, ordered by scope
 Plug 'rking/ag.vim'                                             " Vim plugin for the_silver_searcher, 'ag'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }          " A tree explorer plugin for vim
 Plug 'terryma/vim-expand-region'                                " Vim plugin that allows you to visually select increasingly larger regions of text using the same key combination.
@@ -412,7 +412,7 @@ vmap <leader>ta :Tab /
 
 " tagbar (ctags) "{{{
 " Configure according to https://users.rust-lang.org/t/taglist-like-vim-plugin-for-rust/21924/13
-nmap <F2> :TagbarToggle<CR>
+" nmap <F2> :TagbarToggle<CR>
 
 let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
@@ -741,9 +741,8 @@ let g:vim_markdown_new_list_item_indent = 0
 "}}}
 
 "{{{ coc.nvim
-" TextEdit might fail if hidden is not set.
-set hidden
-
+" utf-8 byte sequence
+set encoding=utf-8
 " Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
@@ -760,16 +759,21 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-" set signcolumn=yes
+set signcolumn=yes
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-  \ pumvisible() ? "\<C-n>" :
-  \ <SID>check_back_space() ? "\<TAB>" :
-  \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 function! s:check_back_space() abort
 	let col = col('.') - 1
@@ -779,17 +783,10 @@ endfunction
 " Use <c-.> to trigger completion.
 inoremap <silent><expr> <c-.> coc#refresh()"
 
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current
-" position. Coc only does snippet and additional edit on confirm.
-" if exists('*complete_info')
-"   inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-" else
-"   imap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" endif
-
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> <space>a  :<C-u>CocDiagnostics<cr>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -809,7 +806,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-" autocmd CursorHold * silent call CocActionAsync('highlight')
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -834,6 +831,23 @@ nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
 " Implement methods for trait
 " nnoremap <silent> <space>i  :call CocActionAsync('codeAction', '', 'Implement missing members')<cr>
 
-" Show actions available at this location
-nnoremap <silent> <space>a  :CocAction<cr>
+" Show all commands
+nnoremap <silent> ]c  :CocCommand<cr>
+
+" Add (Neo)Vim's native statusline support
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Show outline
+nmap <F2> :CocOutline<CR>
+
+" Add `:Format` command to format current buffer
+command! -nargs=0 Format :call CocActionAsync('format')
+
+" Add `:Fold` command to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 "}}}

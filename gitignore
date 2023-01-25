@@ -61,5 +61,8 @@ node_modules/
 
 Justfile
 logs/
+
+# Python
 Procfile.di
+pyrightconfig.json
 
