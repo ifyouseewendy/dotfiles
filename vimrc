@@ -456,6 +456,8 @@ let g:SuperTabDefaultCompletionType = "<c-n>""}}}
 " vim-test && vimux "{{{
 let test#strategy = "vimux"
 
+let test#python#runner = 'pytest'
+
 nmap <silent> <leader>tl :TestNearest<CR>
 nmap <silent> <leader>ts :TestSuite<CR>
 nmap <silent> <leader>tf :TestFile<CR>
@@ -546,6 +548,7 @@ let g:ale_set_quickfix = 1
 " let g:ale_keep_list_window_open = 0
 
 " Enable particular linters
+" 'python': ['flake8']
 let g:ale_linters = {
 \   'eruby': [],
 \   'go': ['gometalinter'],
@@ -555,9 +558,9 @@ let g:ale_linters = {
 \   'ruby': ['ruby', 'rubocop'],
 \   'rust': [],
 \   'scss': ['stylelint'],
-\   'typescript': ['eslint'],
+\   'typescript': [],
 \   'yaml': ['yamllint'],
-\   'python': ['flake8']
+\   'python': []
 \}
 
 let g:ale_rust_cargo_use_clippy = 1
@@ -567,6 +570,7 @@ let g:ale_yaml_yamllint_options = "-c ~/.yamllint"
 " let g:ale_linter_aliases = {'jsx': 'css'}
 
 " Config :ALEFix to use prettier
+" 'python': ['black', 'isort']
 let g:ale_fixers = {
 \  'javascript': ['eslint', 'prettier'],
 \  'typescript': ['prettier'],
@@ -575,7 +579,7 @@ let g:ale_fixers = {
 \  'css': ['stylelint'],
 \  'haskell': ['brittany'],
 \  'rust': ['rustfmt'],
-\  'python': ['black', 'isort']
+\  'python': []
 \}
 
 let g:ale_rust_rustfmt_options = "--edition=2018"

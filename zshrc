@@ -128,12 +128,21 @@ alias be='bundle exec'
 ## pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+## pip
+export PIP_REQUIRE_VIRTUALENV=true
+alias gpip='PIP_REQUIRE_VIRTUALENV=false pip "$@"'
+
 eval "$(pyenv init -)"
 ## pipenv
 export PATH="/Users/di/.local/bin:$PATH"
 ## poetry
 export PATH="/Users/di/.poetry/bin:$PATH"
+alias act='source ./.venv/bin/activate'
 
+# javascript
+export NVM_DIR="$HOME/.nvm"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 # fzf
 if [ -n "${commands[fzf-share]}" ]; then
@@ -142,6 +151,9 @@ if [ -n "${commands[fzf-share]}" ]; then
 fi
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+# rust
+export PATH="$HOME/.cargo/bin:$PATH"
 
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
