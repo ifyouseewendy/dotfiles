@@ -76,4 +76,5 @@ build/
 *.egg-info/
 Procfile.di
 pyrightconfig.json
+.venv/
 
