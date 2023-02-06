@@ -119,6 +119,7 @@ alias configure-vim='nvim ~/.vimrc'
 alias configure-bash='nvim ~/.bashrc'
 alias configure-tmux='nvim ~/.tmux.conf'
 alias make=gmake
+alias note="vim ~/.note"
 
 # ruby
 alias bi='bundle install --path=vendor/bundle'
@@ -155,6 +156,11 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+# java
+# export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
-

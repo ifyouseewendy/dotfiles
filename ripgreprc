@@ -9,6 +9,8 @@ web:*.{html,css,js}*
 # Using glob patterns to include/exclude files or folders
 --glob
 !.git/*
+--glob
+!package-lock.json
 
 # Set the colors.
 --colors=line:none
