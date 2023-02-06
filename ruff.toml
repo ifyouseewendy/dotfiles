@@ -1,0 +1,7 @@
+select = ["E", "F", "G", "B", "C4", "INP", "T20", "PT"]
+ignore = ["B008", "B009", "B010", "B017", "C408", "D203", "E501", "E741", "E743", "B904", "B905", "PT004", "PT011", "PT018", "PT019"]
+
+# Avoid trying to fix flake8-bugbear (`B`) violations.
+unfixable = ["B"]
+
+line-length = 120
