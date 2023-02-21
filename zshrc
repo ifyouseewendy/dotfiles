@@ -115,15 +115,23 @@ alias tigs='tig status'
 # alias v='vagrant'
 alias g='git status'
 alias tailf='tail -f'
-alias configure-vim='nvim ~/.vimrc'
-alias configure-bash='nvim ~/.bashrc'
-alias configure-tmux='nvim ~/.tmux.conf'
+alias config-vim='nvim ~/.vimrc'
+alias config-bash='nvim ~/.bashrc'
+alias config-zsh='nvim ~/.zshrc'
+alias config-tmux='nvim ~/.tmux.conf'
+alias config-git='nvim ~/.gitconfig'
 alias make=gmake
 alias note="vim ~/.note"
+
+# autojump
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # ruby
 alias bi='bundle install --path=vendor/bundle'
 alias be='bundle exec'
+## chruby
+source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
 
 # python
 ## pyenv
@@ -152,6 +160,7 @@ if [ -n "${commands[fzf-share]}" ]; then
 fi
 export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
