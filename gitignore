@@ -78,3 +78,8 @@ Procfile.di
 pyrightconfig.json
 .venv/
 
+# Terraform
+.terraform/
+
+# env
+.envrc.test
