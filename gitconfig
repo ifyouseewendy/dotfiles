@@ -32,6 +32,8 @@
   pick     = cherry-pick
   pl       = pull
   ps       = push
+  pu       = push -u origin HEAD
+  pf       = push -fu origin HEAD
 
   df       = diff
   dfs      = diff --stat -r
