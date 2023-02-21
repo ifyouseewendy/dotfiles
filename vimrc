@@ -582,7 +582,7 @@ let g:ale_fixers = {
 \  'css': ['stylelint'],
 \  'haskell': ['brittany'],
 \  'rust': ['rustfmt'],
-\  'python': []
+\  'python': ["ruff"]
 \}
 
 let g:ale_rust_rustfmt_options = "--edition=2018"
@@ -591,6 +591,7 @@ let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_scss_stylelint_options = "--fix"
 let g:ale_ruby_rubocop_executable = 'bundle'
 " let g:ale_haskell_brittany_options = ""
+" let g:ale_python_ruff_options = "--select I001 --fix"
 
 " Run fixer on save
 let g:ale_fix_on_save = 1

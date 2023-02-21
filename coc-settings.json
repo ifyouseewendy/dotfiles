@@ -3,15 +3,13 @@
   "python.linting.flake8Enabled": false,
   "python.linting.flake8Args": ["--verbose", "--max-line-length=120"],
   "python.linting.ruffEnabled": true,
+  "python.linting.mypyEnabled": true,
   "python.formatting.provider": "black",
   "python.formatting.blackPath": "/Users/di/.pyenv/shims/black",
   "python.formatting.blackArgs": ["--line-length=120"],
-  "python.sortImports.path": "/Users/di/.pyenv/shims/isort",
-  "pyright.organizeimports.provider": "isort",
   "pyright.testing.provider": "pytest",
   "python.analysis.diagnosticSeverityOverrides": {
     "reportGeneralTypeIssues": "none"
   },
-  "python.linting.mypyEnabled": "true",
   "coc.preferences.formatOnSaveFiletypes": []
 }
