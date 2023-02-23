@@ -864,3 +864,10 @@ autocmd BufWritePre *.py :silent call CocAction('format')
 "
 " autocmd BufWritePre *.py :silent call CocAction('runCommand', 'editor.action.organizeImport') 
 "}}}
+
+"{{{ NOTE
+"
+" use :AleInfo to check logging of Ale linters and fixers
+" use :CocOpenLog to check logging of Coc
+"
+"}}}
