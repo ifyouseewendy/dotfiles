@@ -591,7 +591,7 @@ let g:ale_javascript_prettier_use_local_config = 1
 let g:ale_scss_stylelint_options = "--fix"
 let g:ale_ruby_rubocop_executable = 'bundle'
 " let g:ale_haskell_brittany_options = ""
-" let g:ale_python_ruff_options = "--select I001 --fix"
+let g:ale_python_ruff_options = "--select I001"
 
 " Run fixer on save
 let g:ale_fix_on_save = 1
@@ -858,5 +858,9 @@ command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.org
 
 " Python
 autocmd BufWritePre *.py :silent call CocAction('format') 
-autocmd BufWritePre *.py :silent call CocAction('runCommand', 'editor.action.organizeImport') 
+" ruff comfigured by pyright doesn't respect the pyproject.toml, which applies
+" the fix option '--select I001'. So the solution is to disable organizeImport
+" in Coc and let Ale to use ruff fixer.
+"
+" autocmd BufWritePre *.py :silent call CocAction('runCommand', 'editor.action.organizeImport') 
 "}}}
