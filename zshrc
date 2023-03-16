@@ -122,6 +122,7 @@ alias config-tmux='nvim ~/.tmux.conf'
 alias config-git='nvim ~/.gitconfig'
 alias make=gmake
 alias note="vim ~/.note"
+alias create-pr="gh pr create -w"
 
 # autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
