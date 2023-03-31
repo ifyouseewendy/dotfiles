@@ -47,15 +47,15 @@ Plug 'hashivim/vim-terraform'                                   " basic vim/terr
 Plug 'nvim-lua/plenary.nvim'                                    " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }        " Find, Filter, Preview, Pick. All lua, all the time.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " Required by telescope.nvim. Nvim Treesitter configurations and abstraction layer
-Plug 'neovim/nvim-lspconfig'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'neovim/nvim-lspconfig'                                    " nvim-lspconfig
+Plug 'hrsh7th/cmp-nvim-lsp'                                     " nvim-cmp
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'onsails/diaglist.nvim'                                    " Live render workspace diagnostics in quickfix with current buf errors on top, buffer diagnostics in loclist
 
 " == Deprecated
 "
@@ -804,7 +804,7 @@ EOF
       -- { name = 'snippy' }, -- For snippy users.
     }, {
       { name = 'buffer' },
-    })
+    }),
   })
 
   -- Set configuration for specific filetype.
@@ -885,6 +885,23 @@ lspconfig.pyright.setup {
 EOF
 "}}}
 
+"{{{ diaglist.nvim
+"
+:lua << EOF
+  require("diaglist").init({
+    -- optional settings
+    -- below are defaults
+    debug = false, 
+
+    -- increase for noisy servers
+    debounce_ms = 150,
+  })
+EOF
+
+nmap [l <cmd>lua require('diaglist').open_all_diagnostics()<cr>
+"
+"}}}
+ 
 "{{{ NOTE
 "
 " use :AleInfo to check logging of Ale linters and fixers
