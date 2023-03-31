@@ -55,7 +55,6 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'onsails/diaglist.nvim'                                    " Live render workspace diagnostics in quickfix with current buf errors on top, buffer diagnostics in loclist
 
 " == Deprecated
 "
@@ -702,6 +701,13 @@ let g:vim_markdown_new_list_item_indent = 0
 "
 " https://github.com/nvim-telescope/telescope.nvim
 "
+" Ohter usage:
+" 
+" * <C-x> open file as a split
+" * <C-v> open file as a vsplit
+" * <C-t> open file in a tab
+" * <C-Q> send all items to quickfix
+"
 " Lists Built-in pickers and run them on <cr>.
 :nnoremap <Leader>tc :Telescope builtin theme=ivy<CR>
 
@@ -710,6 +716,7 @@ let g:vim_markdown_new_list_item_indent = 0
 :nnoremap <Leader>a :Telescope live_grep theme=ivy<CR>
 :nnoremap <Leader>tb :Telescope buffers theme=ivy<CR>
 :nnoremap <Leader>th :Telescope help_tags theme=ivy<CR>
+:nnoremap [l :Telescope diagnostics theme=ivy<CR>
 
 " Lists buffer's (current file's) git commits with diff preview and checks them out on <cr>
 " :nnoremap <Leader>ppp :Telescope git_bcommits theme=ivy<CR>
@@ -883,23 +890,6 @@ lspconfig.pyright.setup {
   capabilities = capabilities
 }
 EOF
-"}}}
-
-"{{{ diaglist.nvim
-"
-:lua << EOF
-  require("diaglist").init({
-    -- optional settings
-    -- below are defaults
-    debug = false, 
-
-    -- increase for noisy servers
-    debounce_ms = 150,
-  })
-EOF
-
-nmap [l <cmd>lua require('diaglist').open_all_diagnostics()<cr>
-"
 "}}}
  
 "{{{ NOTE
