@@ -714,8 +714,8 @@ let g:vim_markdown_new_list_item_indent = 0
 :nnoremap <Leader>f :Telescope git_files theme=ivy<CR>
 :nnoremap <Leader>A :Telescope grep_string theme=ivy<CR>
 :nnoremap <Leader>a :Telescope live_grep theme=ivy<CR>
-:nnoremap <Leader>tb :Telescope buffers theme=ivy<CR>
-:nnoremap <Leader>th :Telescope help_tags theme=ivy<CR>
+:nnoremap <Leader>gB :Telescope buffers theme=ivy<CR>
+:nnoremap <Leader>gh :Telescope help_tags theme=ivy<CR>
 :nnoremap [l :Telescope diagnostics theme=ivy<CR>
 
 " Lists buffer's (current file's) git commits with diff preview and checks them out on <cr>
@@ -862,17 +862,17 @@ local on_attach = function(client, bufnr)
 
   -- Mappings.
   local opts = {noremap = true, silent = true}
-  buf_set_keymap('n', '<leader><leader>d', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>D', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>c', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>i', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>S', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<leader><leader>i', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<leader>gD', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '<leader>gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<leader>gc', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<leader>gS', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader>gR', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  -- buf_set_keymap('n', '<leader>ga', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '[g', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+  buf_set_keymap('n', ']g', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   if client.server_capabilities.document_formatting then
