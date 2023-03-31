@@ -48,6 +48,7 @@ Plug 'hashivim/vim-terraform'                                   " basic vim/terr
 Plug 'nvim-lua/plenary.nvim'                                    " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }        " Find, Filter, Preview, Pick. All lua, all the time.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " Required by telescope.nvim. Nvim Treesitter configurations and abstraction layer
+Plug 'neovim/nvim-lspconfig'
 
 " == Deprecated
 "
@@ -764,6 +765,48 @@ EOF
 "
 "}}}
 
+"{{{ nvim-lspconfig
+"
+:lua << EOF
+
+-- Setup language servers.
+local lspconfig = require('lspconfig')
+
+-- Global mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local on_attach = function(client, bufnr)
+  local function buf_set_keymap(...)
+    vim.api.nvim_buf_set_keymap(bufnr, ...)
+  end
+
+  -- Mappings.
+  local opts = {noremap = true, silent = true}
+  buf_set_keymap('n', '<leader><leader>d', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>D', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>c', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>h', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>i', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>S', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>R', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+  buf_set_keymap('n', '<leader><leader>i', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
+  buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
+  -- Set some keybinds conditional on server capabilities
+  if client.server_capabilities.document_formatting then
+    buf_set_keymap("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  elseif client.server_capabilities.document_range_formatting then
+    buf_set_keymap("n", "<leader>=", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  end
+end
+
+lspconfig.pyright.setup {
+  on_attach = on_attach,
+}
+EOF
+"}}}
+"
 "{{{ NOTE
 "
 " use :AleInfo to check logging of Ale linters and fixers
