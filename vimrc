@@ -46,6 +46,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'kshenoy/vim-signature'                                    " Plugin to toggle, display and navigate marks
 Plug 'neoclide/coc.nvim', {'branch': 'release'} 		            " Intellisense engine for Vim8 & Neovim, full language server protocol support as VSCode
 Plug 'hashivim/vim-terraform'                                   " basic vim/terraform integration
+Plug 'nvim-lua/plenary.nvim'                                    " Required by telescope.nvim
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }        " Find, Filter, Preview, Pick. All lua, all the time.
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " Required by telescope.nvim. Nvim Treesitter configurations and abstraction layer
+
 " :CocInstall coc-json coc-solargraph" for json language extension and ruby LSP
 ":CocConfig " to open config and set up sorbet https://github.com/neoclide/coc.nvim/wiki/Language-servers#using-sorbet
 
@@ -610,58 +614,6 @@ nmap <silent> <leader>= <Plug>(ale_fix)
 let g:jsx_ext_required = 0
 "}}}
 
-"{{{fzf
-" silent! nnoremap <unique> <silent> <leader>f :FZF<CR>
-silent! nnoremap <unique> <silent> <leader>b :Buffers<CR>
-" silent! nnoremap <unique> <silent> <leader>fg :Commits<CR>
-" Maps, Tags, BCommits are also useful ones.
-let g:fzf_layout = { 'down': '40%' }
-
-" [Buffers] Jump to the existing window if possible
-let g:fzf_buffers_jump = 1
-
-" [[B]Commits] Customize the options used by 'git log'
-let g:fzf_commits_log_options ='--pretty=format:"%C(yellow)%h%Creset %ad %s %C(red)[%an]%Creset" --graph --date=short'
-
-" command! -bang -nargs=* Ag
-"   \ call fzf#vim#grep(
-"   \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-"   \   <bang>0 ? fzf#vim#with_preview(s:ag_opts, 'down:50%')
-"   \           : fzf#vim#with_preview(s:ag_opts, s:horiz_preview_layout, '?'),
-"   \   <bang>0)
-
-" Copied from https://github.com/larrylv/dotfiles/blob/006838a5381ace55ba6bbdd96ec389d71850f5b5/vimrc#L960
-function! CacheListCmd()
-  let ref = system('git symbolic-ref -q HEAD 2>/dev/null')
-  if ref == ''
-    return $FZF_DEFAULT_COMMAND
-  endif
-
-  " trim the newline output from rev-parse
-  let head_commit = system('git rev-parse HEAD | tr -d "\n"')
-  let cache_file = '/tmp/'.head_commit.'.files'
-  if !filereadable(expand(cache_file))
-    execute 'silent !' . $FZF_DEFAULT_COMMAND . ' > '.cache_file
-  endif
-
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ?
-    \ printf('cat %s', cache_file) :
-    \ printf('cat %s | proximity-sort %s', cache_file, expand('%'))
-endfunction
-command! -bang -nargs=? -complete=dir MyFiles
-  \ call fzf#vim#files(<q-args>, {'source': CacheListCmd(),
-  \                               'options': ['--tiebreak=index', '--preview', '~/.vim/bundle/fzf.vim/bin/preview.sh {}']}, <bang>0)
-
-silent! nnoremap <unique> <silent> <leader>f :MyFiles<cr>
-
-" Show search results from files and directories that would otherwise be ignored
-" by '.gitignore', '.ignore', '.fdignore', or the global ignore file.
-command! -bang -nargs=* FilesNoIgnore
-  \ call fzf#run(fzf#wrap({'source': 'fd --hidden --follow --no-ignore --type f', 'width': '90%', 'height': '60%', 'options': '--expect=ctrl-t,ctrl-x,ctrl-v --multi' }))
-silent! nnoremap <unique> <silent> <leader>F :FilesNoIgnore<cr>
-"}}}
-
 "{{{vim-javascript
 let g:javascript_plugin_flow = 1
 "}}}
@@ -863,6 +815,27 @@ autocmd BufWritePre *.py :silent call CocAction('format')
 " in Coc and let Ale to use ruff fixer.
 "
 " autocmd BufWritePre *.py :silent call CocAction('runCommand', 'editor.action.organizeImport') 
+"}}}
+
+"{{{ telescope.nvim
+"
+" https://github.com/nvim-telescope/telescope.nvim
+"
+" Lists Built-in pickers and run them on <cr>.
+:nnoremap <Leader>tc :Telescope builtin theme=ivy<CR>
+
+:nnoremap <Leader>f :Telescope git_files theme=ivy<CR>
+:nnoremap <Leader>A :Telescope grep_string theme=ivy<CR>
+:nnoremap <Leader>a :Telescope live_grep theme=ivy<CR>
+:nnoremap <Leader>tb :Telescope buffers theme=ivy<CR>
+:nnoremap <Leader>th :Telescope help_tags theme=ivy<CR>
+
+" Lists buffer's (current file's) git commits with diff preview and checks them out on <cr>
+" :nnoremap <Leader>ppp :Telescope git_bcommits theme=ivy<CR>
+" :nnoremap <Leader>ppp :Telescope git_status theme=ivy<CR>
+" :nnoremap <Leader>ppp :Telescope commands theme=ivy<CR>
+
+
 "}}}
 
 "{{{ NOTE
