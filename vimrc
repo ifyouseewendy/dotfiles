@@ -47,6 +47,8 @@ Plug 'hashivim/vim-terraform'                                   " basic vim/terr
 Plug 'nvim-lua/plenary.nvim'                                    " Required by telescope.nvim
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }        " Find, Filter, Preview, Pick. All lua, all the time.
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}     " Required by telescope.nvim. Nvim Treesitter configurations and abstraction layer
+Plug 'nvim-treesitter/playground'                               " :TSPlaygroundToggle, :TSHighlightCapturesUnderCursor
+Plug 'nvim-treesitter/nvim-treesitter-context'                  " show code context
 Plug 'neovim/nvim-lspconfig'                                    " nvim-lspconfig
 Plug 'hrsh7th/cmp-nvim-lsp'                                     " nvim-cmp
 Plug 'hrsh7th/cmp-buffer'
@@ -176,6 +178,15 @@ set fileencoding=utf-8
 set fileencodings=utf-8,ucs-bom,chinese
 set formatoptions+=mM
 set ambiwidth=double
+
+" folding
+hi! Folded cterm=NONE gui=NONE ctermfg=NONE guifg=NONE ctermbg=0 guibg=#3c3d3a
+" use treesitter for folding https://www.jmaguire.tech/posts/treesitter_folding/
+set foldlevelstart=99                      " Open all folds by default
+set foldenable                             " Enable folding
+set foldmethod=expr
+set foldexpr=nvim_treesitter#foldexpr()
+set foldcolumn=0                           " Column to show folds
 
 " Highlight trailing whitespace
 " highlight ExtraWhitespace ctermbg=red guibg=red
