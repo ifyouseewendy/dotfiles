@@ -21,6 +21,9 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+-- Plugins
+require("lazy").setup("plugins")
+
 -- Basic config
 local conf_files = { "basic.vim", "keys.lua" }
 for _, name in ipairs(conf_files) do
@@ -28,6 +31,3 @@ for _, name in ipairs(conf_files) do
 	local source_cmd = "source " .. path
 	vim.cmd(source_cmd)
 end
-
--- Plugins
-require("lazy").setup("plugins")
