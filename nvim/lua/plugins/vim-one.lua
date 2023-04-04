@@ -6,5 +6,5 @@ return {
     -- load the colorscheme here
     vim.cmd([[colorscheme one]])
     vim.cmd([[set background=dark]])
-    end,
+  end,
 }
