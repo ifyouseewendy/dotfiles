@@ -1,4 +1,5 @@
 return {
+  -- https://github.com/nvim-treesitter/nvim-treesitter
   "nvim-treesitter/nvim-treesitter",
   build = function()
       require("nvim-treesitter.install").update({ with_sync = true })
@@ -6,7 +7,7 @@ return {
   config = function()
     require'nvim-treesitter.configs'.setup {
       -- A list of parser names, or "all" (the five listed parsers should always be installed)
-      ensure_installed = { "python", "vim" },
+      ensure_installed = { "python", "vim", "lua" },
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
@@ -43,6 +44,16 @@ return {
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
         additional_vim_regex_highlighting = false,
+      },
+
+      -- Incremental selection based on the named nodes from the grammar.
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "vv",
+          node_incremental = "vv",
+          node_decremental = "vV",
+        },
       },
     }
   end
