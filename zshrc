@@ -172,5 +172,10 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 # java
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
+# go
+# export GOPATH=$HOME/go
+# export GOROOT="$(brew --prefix golang)/libexec"
+# export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
