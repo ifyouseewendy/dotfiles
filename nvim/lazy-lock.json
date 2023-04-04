@@ -5,6 +5,7 @@
   "nvim-autopairs": { "branch": "master", "commit": "0fd6519d44eac3a6736aafdb3fe9da916c3701d4" },
   "nvim-web-devicons": { "branch": "master", "commit": "d92b3f4275f4774c0cb23b8b094a41d1dbb3e78c" },
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
+  "tcomment_vim": { "branch": "master", "commit": "b4930f9da28647e5417d462c341013f88184be7e" },
   "vim-expand-region": { "branch": "master", "commit": "966513543de0ddc2d673b5528a056269e7917276" },
   "vim-one": { "branch": "master", "commit": "187f5c85b682c1933f8780d4d419c55d26a82e24" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
