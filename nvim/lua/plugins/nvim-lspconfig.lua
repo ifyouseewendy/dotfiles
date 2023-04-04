@@ -16,7 +16,7 @@ return {
 			local opts = { noremap = true, silent = true }
 			buf_set_keymap("n", "<leader>gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
 			buf_set_keymap("n", "<leader>gi", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-			buf_set_keymap("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+			-- buf_set_keymap("n", "<leader>gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 			buf_set_keymap("n", "<leader>gc", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 			-- buf_set_keymap('n', '<leader>gi', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 			-- buf_set_keymap('n', '<leader>gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
