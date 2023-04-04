@@ -8,7 +8,7 @@ Check [Larry's Dotfile](https://github.com/larrylv/dotfiles) for details.
 
 * [zsh](https://www.zsh.org/) with [oh-my-zsh](https://ohmyz.sh/)
 * [git](https://git-scm.com/) with [tig](https://github.com/jonas/tig), and [diff-so-fancy](https://github.com/so-fancy/diff-so-fancy)
-* [neovim](https://neovim.io/) with [vim-plug](https://github.com/junegunn/vim-plug#unix-linux) and plugins defined in [vimrc](./vimrc)
+* [neovim](https://neovim.io/) with configuration defined in [nvim](./nvim)
 * [tmux](https://github.com/tmux/tmux) with [tpm](https://github.com/tmux-plugins/tpm)
 * Others
   - [direnv](https://direnv.net/)
@@ -84,13 +84,6 @@ Install [Neovim](https://neovim.io/)
 ```
 brew install neovim
 nix-env -iA nixpkgs.neovim
-
-mkdir -p ~/.config/nvim
-vim ~/.config/nvim/init.vim
-
-	set runtimepath^=~/.vim runtimepath+=~/.vim/after
-	let &packpath = &runtimepath
-	source ~/.vimrc
 ```
 
 Install [vim-plug](https://github.com/junegunn/vim-plug#unix-linux)
@@ -101,11 +94,7 @@ curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubuserc
 Configure
 
 ```
-ln -svf ~/.dotfiles/vimrc ~/.vimrc
-
-vim .vimrc
-
-	:PlugInstall
+ln -svf ~/.dotfiles/nvim ~/.config/nvim
 ```
 
 ### tmux
