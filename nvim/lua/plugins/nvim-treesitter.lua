@@ -2,7 +2,7 @@ return {
   -- https://github.com/nvim-treesitter/nvim-treesitter
   "nvim-treesitter/nvim-treesitter",
   build = function()
-      require("nvim-treesitter.install").update({ with_sync = true })
+    require("nvim-treesitter.install").update({ with_sync = true })
   end,
   config = function()
     require'nvim-treesitter.configs'.setup {
@@ -55,6 +55,17 @@ return {
           node_decremental = "vV",
         },
       },
+
+      -- Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
+      indent = {
+        enable = true
+      }
     }
+
+    vim.opt.foldenable = true
+    vim.opt.foldlevelstart = 99 -- Open all folds by default
+    vim.opt.foldmethod = "expr"
+    vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
   end
 }
+
