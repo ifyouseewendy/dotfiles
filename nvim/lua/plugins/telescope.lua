@@ -22,7 +22,7 @@ return {
     local builtin = require('telescope.builtin')
     local theme = require('telescope.themes').get_ivy()
 
-    vim.keymap.set('n', '<leader>f',  function() builtin.git_files(theme) end)
+    vim.keymap.set('n', '<leader>f',  function() builtin.find_files(theme) end)
     vim.keymap.set('n', '<leader>b', function() builtin.buffers(theme) end)
     vim.keymap.set('n', '<leader>A',  function() builtin.grep_string(theme) end)
     vim.keymap.set('n', '<leader>a',  function() builtin.live_grep(theme) end)
