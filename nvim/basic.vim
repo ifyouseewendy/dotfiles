@@ -212,7 +212,7 @@ noremap N Nzz
 let mapleader=","
 nmap <leader>bp orequire'pry-byebug';binding.pry<ESC>
 " Nab lines from ~/.pry_history (respects 'count')
-nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=pc<cr> ~/.pry_history<cr>:.-<c-r>=pc-1<cr>:norm <c-r>=pc<cr>==<cr>
+" nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=pc<cr> ~/.pry_history<cr>:.-<c-r>=pc-1<cr>:norm <c-r>=pc<cr>==<cr>
 " nmap <leader>co i# Copyright (c) 2015 Di Wen <ifyouseewendy@gmail.com><ESC>
 nmap <leader>no :set nonu<cr>
 nmap <leader>nu :set nu<cr>
@@ -245,8 +245,8 @@ map <leader>vs :vsplit<cr>
 nmap <leader>V ^v$h
 
 " Enter normal mode in terminal mode (:term fish)
-nmap <leader>T :term fish<cr>GA
-tnoremap <C-[><C-[> <C-\><C-n>
+" nmap <leader>T :term fish<cr>GA
+" tnoremap <C-[><C-[> <C-\><C-n>
 
 " Open TOC in markdown files
-nmap <leader>tc :Toch<cr>
+" nmap <leader>tc :Toch<cr>
