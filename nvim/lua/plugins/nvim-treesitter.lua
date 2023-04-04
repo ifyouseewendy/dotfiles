@@ -65,7 +65,7 @@ return {
       indent = {enable = true}
     }
 
-    vim.opt.foldenable = true
+    vim.opt.foldenable = false
     vim.opt.foldlevelstart = 99 -- Open all folds by default
     vim.opt.foldmethod = "expr"
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
