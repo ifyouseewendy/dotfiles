@@ -4,6 +4,7 @@
   "nui.nvim": { "branch": "main", "commit": "1f43b13d133eb4b4f53a4485379d9afa58808389" },
   "nvim-autopairs": { "branch": "master", "commit": "0fd6519d44eac3a6736aafdb3fe9da916c3701d4" },
   "nvim-treesitter": { "branch": "master", "commit": "871f5665d92d59a369cf916e9aa4d321d466f1e3" },
+  "nvim-treesitter-context": { "branch": "master", "commit": "68eaeb86738c660f7f31afb2cbfb2bdec50bbd92" },
   "nvim-web-devicons": { "branch": "master", "commit": "0568104bf8d0c3ab16395433fcc5c1638efc25d4" },
   "plenary.nvim": { "branch": "master", "commit": "253d34830709d690f013daf2853a9d21ad7accab" },
   "tcomment_vim": { "branch": "master", "commit": "b4930f9da28647e5417d462c341013f88184be7e" },
