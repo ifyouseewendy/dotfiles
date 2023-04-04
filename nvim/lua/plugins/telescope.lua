@@ -11,6 +11,7 @@ return {
 	tag = "0.1.1",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
+		"folke/trouble.nvim",
 		-- There is no auto bulding. You have to call build manually.
 		-- In addition, lazy would not automatically build again if the plugin is already installed or not updated,
 		-- so to re-build, delete the folder ~/.local/share/nvim/lazy/
@@ -51,7 +52,19 @@ return {
 		--  :nnoremap <Leader>ppp :Telescope git_status theme=ivy<CR>
 		--  :nnoremap <Leader>ppp :Telescope commands theme=ivy<CR>
 
+		-- Use <c-T> to open Telescope results in Trouble
+		-- https://github.com/folke/trouble.nvim
+		local actions = require("telescope.actions")
+		local trouble = require("trouble.providers.telescope")
+
 		require("telescope").setup({
+			-- Use <c-T> to open Telescope results in Trouble
+			defaults = {
+				mappings = {
+					i = { ["<c-t>"] = trouble.open_with_trouble },
+					n = { ["<c-t>"] = trouble.open_with_trouble },
+				},
+			},
 			extensions = {
 				-- telescope-fzf-native.nvim
 				fzf = {
