@@ -20,6 +20,7 @@ return {
 					["o"] = "open",
 					["H"] = "prev_source",
 					["L"] = "next_source",
+					["i"] = "open_split",
 				},
 			},
 		})

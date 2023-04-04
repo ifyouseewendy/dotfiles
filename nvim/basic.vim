@@ -87,15 +87,9 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Filetype detection
-autocmd BufNewFile,BufRead Thorfile set filetype=ruby
-autocmd BufNewFile,BufRead *.thor set filetype=ruby
 autocmd BufNewFile,BufRead Gemfile set filetype=ruby
-autocmd BufNewFile,BufRead Capfile set filetype=ruby
 autocmd BufNewFile,BufRead pryrc set filetype=ruby
-autocmd BufNewFile,BufRead *.god set filetype=ruby
 autocmd BufNewFile,BufRead *.less set filetype=css
-" autocmd BufNewFile,BufRead *.mkd, *md set ai formatoptions=tcroqn2 comments=n:> columns=120 textwidth=80
-autocmd BufNewFile,BufRead *.babel set filetype=javascript
 autocmd BufNewFile,BufRead *.ts set filetype=typescript
 autocmd BufNewFile,BufRead *.tsx set filetype=typescript
 autocmd BufNewFile,BufRead *.wat set filetype=wast
@@ -202,14 +196,13 @@ nnoremap <silent> p p`]
 noremap Q @q
 
 " Auto center on matched string.
-noremap n nzz
-noremap N Nzz
+" noremap n nzz
+" noremap N Nzz
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " KEY MAPPINGS with LEADERSHIP
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let mapleader=","
 nmap <leader>bp orequire'pry-byebug';binding.pry<ESC>
 " Nab lines from ~/.pry_history (respects 'count')
 " nmap <Leader>bph :<c-u>let pc = (v:count1 ? v:count1 : 1)<cr>:read !tail -<c-r>=pc<cr> ~/.pry_history<cr>:.-<c-r>=pc-1<cr>:norm <c-r>=pc<cr>==<cr>
@@ -226,7 +219,7 @@ nmap <leader>q :q!<cr>
 cmap w!! %!sudo tee > /dev/null %
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 command! InsertDate :normal a<c-r>=strftime('%a, %d %b %Y')<cr>
-nnoremap <F5> :InsertDate<cr>
+" nnoremap <F5> :InsertDate<cr>
 
 " System clipboard copy/paste
 " set clipboard=unnamedplus

@@ -20,38 +20,6 @@ return {
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = false },
 	},
 	config = function()
-		local builtin = require("telescope.builtin")
-		local theme = require("telescope.themes").get_ivy()
-
-		vim.keymap.set("n", "<leader>f", function()
-			builtin.find_files(theme)
-		end)
-		vim.keymap.set("n", "<leader>b", function()
-			builtin.buffers(theme)
-		end)
-		vim.keymap.set("n", "<leader>A", function()
-			builtin.grep_string(theme)
-		end)
-		vim.keymap.set("n", "<leader>a", function()
-			builtin.live_grep(theme)
-		end)
-
-		vim.keymap.set("n", "<leader>tc", function()
-			builtin.builtin(theme)
-		end)
-		vim.keymap.set("n", "<leader>th", function()
-			builtin.help_tags(theme)
-		end)
-
-		vim.keymap.set("n", "[l", function()
-			builtin.diagnostics(theme)
-		end)
-
-		--  Lists buffer's (current file's) git commits with diff preview and checks them out on <cr>
-		--  :nnoremap <Leader>ppp :Telescope git_bcommits theme=ivy<CR>
-		--  :nnoremap <Leader>ppp :Telescope git_status theme=ivy<CR>
-		--  :nnoremap <Leader>ppp :Telescope commands theme=ivy<CR>
-
 		-- Use <c-T> to open Telescope results in Trouble
 		-- https://github.com/folke/trouble.nvim
 		local actions = require("telescope.actions")

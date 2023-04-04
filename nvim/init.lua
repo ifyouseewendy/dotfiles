@@ -22,7 +22,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+	change_detection = {
+		notify = false,
+	},
+})
 
 -- Basic config
 local conf_files = { "basic.vim", "keys.lua" }
