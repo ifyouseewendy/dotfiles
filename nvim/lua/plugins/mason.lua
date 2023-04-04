@@ -14,14 +14,10 @@ return {
       -- start; they should be the names Mason uses for each tool
       ensure_installed = {
         -- Python
-        "pyright",
-        "ruff",
-        "black",
-
-        -- Lua
+        "pyright", "ruff", "black", -- Lua
         "luaformatter"
       }
-  }
+    }
     require("mason-lspconfig").setup()
   end
 }

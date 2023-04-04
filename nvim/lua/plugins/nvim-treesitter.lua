@@ -6,12 +6,12 @@ return {
     "nvim-treesitter/nvim-treesitter-context"
   },
   build = function()
-    require("nvim-treesitter.install").update({ with_sync = true })
+    require("nvim-treesitter.install").update({with_sync = true})
   end,
   config = function()
     require'nvim-treesitter.configs'.setup {
       -- A list of parser names, or "all" (the five listed parsers should always be installed)
-      ensure_installed = { "python", "vim", "lua" },
+      ensure_installed = {"python", "vim", "lua"},
 
       -- Install parsers synchronously (only applied to `ensure_installed`)
       sync_install = false,
@@ -36,18 +36,19 @@ return {
         disable = {},
         -- Or use a function for more flexibility, e.g. to disable slow treesitter highlight for large files
         disable = function(lang, buf)
-            local max_filesize = 100 * 1024 -- 100 KB
-            local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
-            if ok and stats and stats.size > max_filesize then
-                return true
-            end
+          local max_filesize = 100 * 1024 -- 100 KB
+          local ok, stats = pcall(vim.loop.fs_stat,
+                                  vim.api.nvim_buf_get_name(buf))
+          if ok and stats and stats.size > max_filesize then
+            return true
+          end
         end,
 
         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
         -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
         -- Using this option may slow down your editor, and you may see some duplicate highlights.
         -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
+        additional_vim_regex_highlighting = false
       },
 
       -- Incremental selection based on the named nodes from the grammar.
@@ -56,14 +57,12 @@ return {
         keymaps = {
           init_selection = "vv",
           node_incremental = "vv",
-          node_decremental = "vV",
-        },
+          node_decremental = "vV"
+        }
       },
 
       -- Indentation based on treesitter for the = operator. NOTE: This is an experimental feature.
-      indent = {
-        enable = true
-      }
+      indent = {enable = true}
     }
 
     vim.opt.foldenable = true
@@ -72,4 +71,3 @@ return {
     vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
   end
 }
-

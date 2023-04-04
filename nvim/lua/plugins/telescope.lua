@@ -16,16 +16,16 @@ return {
     -- so to re-build, delete the folder ~/.local/share/nvim/lazy/
     -- https://github.com/nvim-telescope/telescope-fzf-native.nvim/issues/96
     -- :Lazy build telescope-fzf-native.nvim
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = false }
+    {"nvim-telescope/telescope-fzf-native.nvim", build = "make", lazy = false}
   },
   config = function()
     local builtin = require('telescope.builtin')
     local theme = require('telescope.themes').get_ivy()
 
-    vim.keymap.set('n', '<leader>f',  function() builtin.find_files(theme) end)
+    vim.keymap.set('n', '<leader>f', function() builtin.find_files(theme) end)
     vim.keymap.set('n', '<leader>b', function() builtin.buffers(theme) end)
-    vim.keymap.set('n', '<leader>A',  function() builtin.grep_string(theme) end)
-    vim.keymap.set('n', '<leader>a',  function() builtin.live_grep(theme) end)
+    vim.keymap.set('n', '<leader>A', function() builtin.grep_string(theme) end)
+    vim.keymap.set('n', '<leader>a', function() builtin.live_grep(theme) end)
 
     vim.keymap.set('n', '<leader>tc', function() builtin.builtin(theme) end)
     vim.keymap.set('n', '<leader>th', function() builtin.help_tags(theme) end)
@@ -41,11 +41,11 @@ return {
       extensions = {
         -- telescope-fzf-native.nvim
         fzf = {
-          fuzzy = true,                    -- false will only do exact matching
-          override_generic_sorter = true,  -- override the generic sorter
-          override_file_sorter = true,     -- override the file sorter
-          case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
-                                           -- the default case_mode is "smart_case"
+          fuzzy = true, -- false will only do exact matching
+          override_generic_sorter = true, -- override the generic sorter
+          override_file_sorter = true, -- override the file sorter
+          case_mode = "smart_case" -- or "ignore_case" or "respect_case"
+          -- the default case_mode is "smart_case"
         }
       }
     }
@@ -56,5 +56,3 @@ return {
     require('telescope').load_extension('fzf')
   end
 }
-
-
