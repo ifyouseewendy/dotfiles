@@ -64,9 +64,7 @@ return {
 			["[g"] = { ":lua vim.diagnostic.goto_next()<cr>", "LSP diagnostic next" },
 			["]g"] = { ":lua vim.diagnostic.goto_next()<cr>", "LSP diagnostic prev" },
 			gl = {
-				function()
-					telescope.diagnostics(theme)
-				end,
+				":Trouble workspace_diagnostics<cr>",
 				"LSP show diagnostic list",
 			},
 		}, { prefix = "<leader>" })

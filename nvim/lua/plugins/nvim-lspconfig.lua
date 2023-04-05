@@ -35,6 +35,13 @@ return {
 				client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
 			end,
 			capabilities = capabilities,
+			python = {
+				analysis = {
+					autoSearchPaths = true,
+					diagnosticMode = "workspace",
+					useLibraryCodeForTypes = true,
+				},
+			},
 		})
 
 		-- Show diagnostic source
