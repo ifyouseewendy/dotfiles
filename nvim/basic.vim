@@ -190,10 +190,10 @@ nnoremap <silent> <F6> :call ReplaceQuotes()<CR>
 vnoremap <silent> y y`]
 vnoremap <silent> p p`]
 nnoremap <silent> p p`]
-
 " Playback of recorded keys. http://goo.gl/ZlXa8X
-" start by qq, end by q, replay by Q
-noremap Q @q
+" start by QQ, end by Q, replay by @Q
+nnoremap Q q
+nnoremap q <Nop>
 
 " Auto center on matched string.
 " noremap n nzz
