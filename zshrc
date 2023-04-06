@@ -71,8 +71,9 @@ ZSH_THEME="wendi"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-# fzf-tab needs to be manual installed https://github.com/Aloxaf/fzf-tab
-plugins=(direnv ripgrep poetry fzf-tab)
+# fzf-tab needs to be installed https://github.com/Aloxaf/fzf-tab
+# zsh-vi-mode needs to be installed https://github.com/jeffreytse/zsh-vi-mode
+plugins=(direnv ripgrep poetry fzf-tab zsh-vi-mode)
 
 # User configuration
 
