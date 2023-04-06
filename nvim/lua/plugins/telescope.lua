@@ -29,8 +29,12 @@ return {
 			-- Use <c-T> to open Telescope results in Trouble
 			defaults = {
 				mappings = {
-					i = { ["<c-t>"] = trouble.open_with_trouble },
-					n = { ["<c-t>"] = trouble.open_with_trouble },
+					i = {
+						["<C-t>"] = trouble.open_with_trouble,
+						["<C-h>"] = "which_key",
+						["<C-s>"] = actions.select_horizontal,
+					},
+					n = { ["<C-t>"] = trouble.open_with_trouble },
 				},
 			},
 			extensions = {
