@@ -154,15 +154,6 @@ export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-# fzf
-if [ -n "${commands[fzf-share]}" ]; then
-  source "$(fzf-share)/key-bindings.zsh"
-  source "$(fzf-share)/completion.zsh"
-fi
-export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
 # rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
@@ -177,5 +168,31 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 # export GOROOT="$(brew --prefix golang)/libexec"
 # export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
+# ai
+# * aicommits to auto generate git message
+
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
+
+# fzf
+#
+# Usage: 
+#
+# * <c-T> search files
+# * <c-R> search histories
+# * <a-C> search cd histories
+# * Use ** to trigger fzf, such as vim **<TAB>, kill -9 **<TAB>
+export FZF_TMUX=1
+export FZF_DEFAULT_COMMAND='fd --type file --follow --hidden'
+export FZF_DEFAULT_OPTS='--no-height --no-reverse'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_CTRL_T_OPTS="
+  --select-1
+  --exit-0
+  --preview 'bat -n --color=always {}"
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
