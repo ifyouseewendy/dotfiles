@@ -70,10 +70,14 @@ ZSH_THEME="wendi"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-
+#
+# PLUGINS
+#
 # fzf-tab needs to be installed https://github.com/Aloxaf/fzf-tab
 # zsh-vi-mode needs to be installed https://github.com/jeffreytse/zsh-vi-mode
-plugins=(direnv ripgrep poetry fzf-tab zsh-vi-mode)
+#   - It might be useful to use the normal mode to move around in terminal. Let's see
+# forgit needs to be installed https://github.com/wfxr/forgit
+plugins=(direnv ripgrep poetry fzf-tab zsh-vi-mode forgit)
 
 # User configuration
 
@@ -114,18 +118,13 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # common
 alias vi='nvim'
 alias vim='nvim'
-alias tigs='tig status'
-# alias v='vagrant'
-alias g='git status'
 alias tailf='tail -f'
 alias config-vim='nvim ~/.vimrc'
 alias config-bash='nvim ~/.bashrc'
 alias config-zsh='nvim ~/.zshrc'
 alias config-tmux='nvim ~/.tmux.conf'
-alias config-git='nvim ~/.gitconfig'
 alias make=gmake
 alias note="vim ~/.note"
-alias create-pr="gh pr create -w"
 
 # autojump
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
@@ -203,3 +202,19 @@ export FZF_CTRL_R_OPTS="
 # bat
 alias cat='bat --theme="OneHalfDark" --style=header'
 alias bat='bat --theme="OneHalfDark" --style=numbers,changes,grid,header'
+
+# Git && forgit (using git interactively with fzf)
+#
+alias tigs='tig status'
+alias g='git status'
+alias config-git='nvim ~/.gitconfig'
+alias create-pr="gh pr create -w"
+# glo - log viewer
+# gfu - git commit --fixup && git rebase -i --autosquash
+export FORGIT_FZF_DEFAULT_OPTS="
+  --exact
+  --border
+  --cycle
+  --reverse
+  --height '80%'
+"
