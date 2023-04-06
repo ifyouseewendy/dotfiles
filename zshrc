@@ -198,3 +198,7 @@ export FZF_CTRL_R_OPTS="
   --color header:italic
   --header 'Press CTRL-Y to copy command into clipboard'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# bat
+alias cat='bat --theme="OneHalfDark" --style=header'
+alias bat='bat --theme="OneHalfDark" --style=numbers,changes,grid,header'
