@@ -70,7 +70,9 @@ ZSH_THEME="wendi"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(direnv ripgrep poetry)
+
+# fzf-tab needs to be manual installed https://github.com/Aloxaf/fzf-tab
+plugins=(direnv ripgrep poetry fzf-tab)
 
 # User configuration
 
