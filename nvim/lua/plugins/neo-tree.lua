@@ -24,6 +24,9 @@ return {
 					["i"] = "open_split",
 				},
 			},
+			filesystem = {
+				follow_current_file = true,
+			},
 		})
 	end,
 }
