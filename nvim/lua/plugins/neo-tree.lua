@@ -15,13 +15,16 @@ return {
 			window = {
 				mappings = {
 					["x"] = {
-						"toggle_node",
-						nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+						"close_node",
 					},
 					["o"] = "open",
 					["H"] = "prev_source",
 					["L"] = "next_source",
 					["i"] = "open_split",
+					["s"] = "open_vsplit",
+					["Y"] = "copy_to_clipboard",
+					["X"] = "cut_to_clipboard",
+					["P"] = "paste_from_clipboard",
 				},
 			},
 			filesystem = {
