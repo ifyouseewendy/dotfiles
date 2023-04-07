@@ -72,7 +72,7 @@ return {
 		-- DAP
 		wk.register({
 			dd = { ":lua require('dap').toggle_breakpoint()<cr>", "" },
-			ds = { ":lua require('dap').continue()<cr>", "" },
+			dc = { ":lua require('dap').continue()<cr>", "" },
 			dr = { ":lua require('dap').repl.open()<cr>", "" },
 			di = { ":lua require('dap').step_into()<cr>", "" },
 			["do"] = { ":lua require('dap').step_out()<cr>", "" },
