@@ -68,5 +68,15 @@ return {
 				"LSP show diagnostic list",
 			},
 		}, { prefix = "<leader>" })
+
+		-- DAP
+		wk.register({
+			dd = { ":lua require('dap').toggle_breakpoint()<cr>", "" },
+			ds = { ":lua require('dap').continue()<cr>", "" },
+			dr = { ":lua require('dap').repl.open()<cr>", "" },
+			di = { ":lua require('dap').step_into()<cr>", "" },
+			["do"] = { ":lua require('dap').step_out()<cr>", "" },
+			dn = { ":lua require('dap').step_over()<cr>", "" },
+		}, { prefix = "<leader>" })
 	end,
 }

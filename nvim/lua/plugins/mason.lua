@@ -16,6 +16,7 @@ return {
 				"pyright",
 				"ruff",
 				"black",
+				"debugpy",
 				-- Lua
 				"stylua",
 			},

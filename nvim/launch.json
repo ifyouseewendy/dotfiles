@@ -1,0 +1,73 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Current File",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": false,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Flask",
+      "type": "python",
+      "request": "launch",
+      "module": "flask",
+      "envFile": "${workspaceFolder}/.env",
+      "env": {
+        "FLASK_APP": "app",
+        "FLASK_ENV": "development"
+      },
+      "args": ["run", "--no-debugger"],
+      "jinja": true,
+      "justMyCode": false,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug Worker",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/run_worker.py",
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env",
+      "args": ["--all"],
+      "justMyCode": false
+    },
+    {
+      "name": "Debug Admin",
+      "type": "python",
+      "request": "launch",
+      "module": "flask",
+      "args": ["run", "--no-reload", "--port", "5050"],
+      "env": {
+        "FLASK_APP": "admin"
+      },
+      "jinja": true,
+      "cwd": "${workspaceFolder}",
+      "presentation": {
+        "hidden": true,
+        "group": "",
+        "order": 1
+      }
+    },
+    {
+      "name": "Python: Test",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/run_worker.py",
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env",
+      "justMyCode": false
+    },
+    {
+      "name": "Launch Chrome",
+      "request": "launch",
+      "type": "chrome",
+      "url": "http://localhost:5000/add-wallet-beta",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}
