@@ -26,6 +26,15 @@ return {
 			},
 			filesystem = {
 				follow_current_file = true,
+				filtered_items = {
+					visible = true,
+					hide_gitignored = false,
+					hide_by_name = {
+						".DS_Store",
+						"thumbs.db",
+						"node_modules",
+					},
+				},
 			},
 		})
 	end,
