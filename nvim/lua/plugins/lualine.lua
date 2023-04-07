@@ -1,4 +1,5 @@
 return {
+	-- https://github.com/nvim-lualine/lualine.nvim
 	"nvim-lualine/lualine.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -24,7 +25,16 @@ return {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = { "filename" },
+				lualine_c = {
+					{
+						"filename",
+						path = 3, -- 0: Just the filename
+						-- 1: Relative path
+						-- 2: Absolute path
+						-- 3: Absolute path, with tilde as the home directory
+						-- 4: Filename and parent dir, with tilde as the home directory
+					},
+				},
 				lualine_x = { "encoding", "filetype" },
 				lualine_y = { "progress" },
 				lualine_z = { "location" },
