@@ -13,6 +13,12 @@ return {
 			["<F1>"] = { ":Neotree toggle=true<cr>", "Show Neotree" },
 		}, {})
 
+		-- Nav
+		wk.register({
+			-- "]]", "[[", navigate Python blocks (functions, method, class)
+			-- "[c", "]c", navigate to GIT changes in the file
+		}, {})
+
 		-- Global
 		wk.register({
 			f = {
