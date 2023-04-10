@@ -9,6 +9,7 @@ return {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
+		"uga-rosa/cmp-dictionary", -- https://github.com/uga-rosa/cmp-dictionary
 	},
 	config = function()
 		-- Set up nvim-cmp.
@@ -43,6 +44,11 @@ return {
 				-- { name = 'luasnip' }, -- For luasnip users.
 				-- { name = 'ultisnips' }, -- For ultisnips users.
 				-- { name = 'snippy' }, -- For snippy users.
+				-- other sources
+				{
+					name = "dictionary",
+					keyword_length = 2,
+				},
 			}, { { name = "buffer" } }),
 		})
 
@@ -82,6 +88,14 @@ return {
 						fallback()
 					end
 				end),
+			},
+		})
+
+		-- cmp-dictionary
+		local dict = require("cmp_dictionary")
+		dict.switcher({
+			spelllang = {
+				en = "/usr/share/dict/words",
 			},
 		})
 	end,
