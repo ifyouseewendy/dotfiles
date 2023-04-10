@@ -213,9 +213,9 @@ nmap <leader>nh :nohls<cr>
 nmap <leader>so :source ~/.config/nvim/init.lua<cr>
 nmap <leader>se :vsp ~/.config/nvim/init.lua<cr>
 nmap <leader>w :wq<cr>
-nmap <leader>s :w<cr>
 nmap <leader>e :e!<cr>
 nmap <leader>q :q!<cr>
+nmap <leader>Q :qa!<cr>
 cmap w!! %!sudo tee > /dev/null %
 command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S')<cr>
 command! InsertDate :normal a<c-r>=strftime('%a, %d %b %Y')<cr>

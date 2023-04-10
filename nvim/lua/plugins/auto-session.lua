@@ -1,4 +1,5 @@
 return {
+	-- https://github.com/rmagatti/auto-session
 	"rmagatti/auto-session",
 	config = function()
 		require("auto-session").setup({

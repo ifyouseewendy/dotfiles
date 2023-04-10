@@ -45,6 +45,10 @@ return {
 				end,
 				"Search word under the cursor",
 			},
+			s = {
+				":SearchSession<cr>",
+				"Search session",
+			},
 			gh = {
 				function()
 					telescope.help_tags(theme)
