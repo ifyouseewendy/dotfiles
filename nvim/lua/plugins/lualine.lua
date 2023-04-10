@@ -49,9 +49,9 @@ return {
 			},
 			tabline = {
 				lualine_a = {},
-				lualine_b = { "tabs", "filename" },
-				lualine_c = {},
-				lualine_x = {},
+				lualine_b = {},
+				lualine_c = { require("tabline").tabline_buffers },
+				lualine_x = { require("tabline").tabline_tabs },
 				lualine_y = {},
 				lualine_z = {},
 			},
