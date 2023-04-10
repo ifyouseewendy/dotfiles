@@ -1,7 +1,7 @@
 return {
 	-- https://github.com/nvim-lualine/lualine.nvim
 	"nvim-lualine/lualine.nvim",
-	dependencies = { "nvim-tree/nvim-web-devicons" },
+	dependencies = { "nvim-tree/nvim-web-devicons", "rmagatti/auto-session" },
 	config = function()
 		require("lualine").setup({
 			options = {
@@ -34,6 +34,7 @@ return {
 						-- 3: Absolute path, with tilde as the home directory
 						-- 4: Filename and parent dir, with tilde as the home directory
 					},
+					{ require("auto-session-library").current_session_name },
 				},
 				lualine_x = { "encoding", "filetype" },
 				lualine_y = { "progress" },
