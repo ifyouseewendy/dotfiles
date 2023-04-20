@@ -81,13 +81,13 @@ return {
 
 		-- DAP
 		wk.register({
-			dd = { ":lua require('dap').toggle_breakpoint()<cr>", "" }, -- 1. Add breakpoint
-			ds = { ":lua require('dap').conitnue()<cr>", "" }, -- 2. Start debugging
-			dr = { ":lua require('dap').repl.open()<cr>", "" }, -- REPL
-			dc = { ":lua require('dap').continue()<cr>", "" }, -- Continue
-			di = { ":lua require('dap').step_into()<cr>", "" }, -- Step in
-			["do"] = { ":lua require('dap').step_out()<cr>", "" }, -- Step out
-			dn = { ":lua require('dap').step_over()<cr>", "" }, -- Step next
+			dd = { ":lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" }, -- 1. Add breakpoint
+			ds = { ":lua require('dap').conitnue()<cr>", "Start/Continue" }, -- 2. Start debugging
+			dr = { ":lua require('dap').repl.open()<cr>", "Open REPL" }, -- REPL
+			dc = { ":lua require('dap').continue()<cr>", "Continue" }, -- Continue
+			di = { ":lua require('dap').step_into()<cr>", "Step in" }, -- Step in
+			["do"] = { ":lua require('dap').step_out()<cr>", "Step out" }, -- Step out
+			dn = { ":lua require('dap').step_over()<cr>", "Step over" }, -- Step next
 		}, { prefix = "<leader>" })
 	end,
 }
