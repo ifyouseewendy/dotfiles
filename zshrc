@@ -218,3 +218,6 @@ export FORGIT_FZF_DEFAULT_OPTS="
   --reverse
   --height '80%'
 "
+
+# asdf
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
