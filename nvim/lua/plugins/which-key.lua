@@ -10,7 +10,8 @@ return {
 
 		-- Function keys
 		wk.register({
-			["<F1>"] = { ":Neotree toggle=true<cr>", "Show Neotree" },
+			["<F1>"] = { ":Neotree toggle=true<cr>", "Toggle Neotree" },
+			["<F2>"] = { ":SymbolsOutline<cr>", "Toggle Symbols outline" },
 		}, {})
 
 		-- Nav
