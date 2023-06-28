@@ -77,7 +77,7 @@ ZSH_THEME="wendi"
 # zsh-vi-mode needs to be installed https://github.com/jeffreytse/zsh-vi-mode
 #   - It might be useful to use the normal mode to move around in terminal. Let's see
 # forgit needs to be installed https://github.com/wfxr/forgit
-plugins=(direnv ripgrep poetry fzf-tab forgit)
+plugins=(direnv ripgrep fzf-tab forgit)
 
 # User configuration
 
@@ -115,6 +115,9 @@ export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# rtx
+eval "$(/opt/homebrew/bin/rtx activate zsh)"
+
 # common
 alias vi='nvim'
 alias vim='nvim'
@@ -133,20 +136,21 @@ alias note="vim ~/.note"
 alias bi='bundle install --path=vendor/bundle'
 alias be='bundle exec'
 ## chruby
-source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
-source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
+# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/chruby.sh
+# source $HOMEBREW_PREFIX/opt/chruby/share/chruby/auto.sh
 
 # python
+export PYTHONBREAKPOINT=ipdb.set_trace
 ## pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# export PYENV_ROOT="$HOME/.pyenv"
+# command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+# export PATH="/Users/di/.local/bin:$PATH"
+
 ## pip
 export PIP_REQUIRE_VIRTUALENV=true
 alias gpip='PIP_REQUIRE_VIRTUALENV=false pip "$@"'
 
-eval "$(pyenv init -)"
-## pipenv
-export PATH="/Users/di/.local/bin:$PATH"
 ## poetry
 export PATH="/Users/di/.poetry/bin:$PATH"
 alias act='source ./.venv/bin/activate'
@@ -218,6 +222,3 @@ export FORGIT_FZF_DEFAULT_OPTS="
   --reverse
   --height '80%'
 "
-
-# asdf
-. /opt/homebrew/opt/asdf/libexec/asdf.sh

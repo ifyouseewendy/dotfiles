@@ -83,3 +83,5 @@ pyrightconfig.json
 
 # env
 .envrc.test
+
+.python-version
