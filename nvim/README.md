@@ -12,6 +12,12 @@ A new world is open with modern Neovim plugins and componentized configurations.
 * Use [telescope.nvim](https://github.com/nvim-telescope/telescope.nvim) as the command pallette to find, search and pick
 * Use [which-key](https://github.com/folke/which-key.nvim) to deal with key mappings
 
+Usage
+
+```
+ln -svf ~/.dotfiles/nvim ~/.config/nvim
+```
+
 Reference
 
 * [jdhao/nvim-config](https://github.com/jdhao/nvim-config)

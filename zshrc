@@ -107,6 +107,14 @@ plugins=(direnv ripgrep fzf-tab forgit)
 
 ########################## Customization ####################################
 
+# https://github.com/zsh-users/zsh-completions
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh-completions:$FPATH
+
+  autoload -Uz compinit
+  compinit
+fi
+
 # env
 export EDITOR='nvim'
 export TZ="/usr/share/zoneinfo/America/Vancouver"
@@ -176,6 +184,9 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 
 # ai
 # * aicommits to auto generate git message
+
+# dart
+export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 ########################## Launch oh-my-zsh ####################################
 source $ZSH/oh-my-zsh.sh
