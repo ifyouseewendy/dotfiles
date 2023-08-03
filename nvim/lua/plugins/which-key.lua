@@ -62,7 +62,7 @@ return {
 		-- Task runner and tests
 		wk.register({
 			tl = { ":TestNearest<cr>", "Run test nearby" },
-			tf = { ":TestNearest<cr>", "Run test file" },
+			tf = { ":TestFile<cr>", "Run test file" },
 			-- cb = { ":call VimuxRunCommand('cargo build')<CR>", "Cargo build" },
 		}, { prefix = "<leader>" })
 
