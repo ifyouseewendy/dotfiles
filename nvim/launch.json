@@ -11,6 +11,16 @@
       "console": "integratedTerminal"
     },
     {
+      "name": "Python: Debug Tests",
+      "type": "python",
+      "request": "launch",
+      "program": "${file}",
+      "purpose": ["debug-test"],
+      "envFile": "${workspaceFolder}/.env",
+      "console": "integratedTerminal",
+      "justMyCode": false
+    },
+    {
       "name": "Python: Flask",
       "type": "python",
       "request": "launch",
@@ -22,8 +32,7 @@
       },
       "args": ["run", "--no-debugger"],
       "jinja": true,
-      "justMyCode": false,
-      "console": "integratedTerminal"
+      "justMyCode": false
     },
     {
       "name": "Debug Worker",
@@ -52,15 +61,6 @@
         "group": "",
         "order": 1
       }
-    },
-    {
-      "name": "Python: Test",
-      "type": "python",
-      "request": "launch",
-      "program": "${workspaceFolder}/run_worker.py",
-      "console": "integratedTerminal",
-      "envFile": "${workspaceFolder}/.env",
-      "justMyCode": false
     },
     {
       "name": "Launch Chrome",
