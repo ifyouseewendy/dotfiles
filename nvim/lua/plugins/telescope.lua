@@ -8,7 +8,6 @@ return {
 	-- * <C-t> open file in a tab
 	-- * <C-Q> send all items to quickfix
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.1",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"folke/trouble.nvim",
