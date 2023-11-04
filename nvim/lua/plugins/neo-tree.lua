@@ -2,7 +2,7 @@ return {
 	-- https://github.com/nvim-neo-tree/neo-tree.nvim/
 	"nvim-neo-tree/neo-tree.nvim",
 	event = { "VimEnter" },
-	branch = "v2.x",
+	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons",
@@ -28,7 +28,9 @@ return {
 				},
 			},
 			filesystem = {
-				follow_current_file = true,
+				follow_current_file = {
+					enabled = true,
+				},
 				filtered_items = {
 					visible = true,
 					hide_gitignored = false,
