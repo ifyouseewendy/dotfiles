@@ -1,6 +1,6 @@
 return {
 	-- https://github.com/jose-elias-alvarez/null-ls.nvim
-	"jose-elias-alvarez/null-ls.nvim",
+	url = "https://github.com/ifyouseewendy/null-ls.nvim",
 	config = function()
 		local null_ls = require("null-ls")
 
