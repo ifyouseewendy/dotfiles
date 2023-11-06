@@ -18,6 +18,11 @@ Usage
 ln -svf ~/.dotfiles/nvim ~/.config/nvim
 ```
 
+Note
+
+* Logs are stored at `~/.cache/nvim/`
+
+
 Reference
 
 * [jdhao/nvim-config](https://github.com/jdhao/nvim-config)
