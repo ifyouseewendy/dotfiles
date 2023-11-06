@@ -21,6 +21,7 @@ ln -svf ~/.dotfiles/nvim ~/.config/nvim
 Note
 
 * Logs are stored at `~/.cache/nvim/`
+* `null-ls.nvim` is not being maintained. I've forked it to enable `ruff` import fix and format.
 
 
 Reference
