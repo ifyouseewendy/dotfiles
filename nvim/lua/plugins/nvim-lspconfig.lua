@@ -46,5 +46,8 @@ return {
 
 		-- Show diagnostic source
 		vim.diagnostic.config({ virtual_text = { source = true } })
+
+		-- Set up lspconfig for typescript
+		lspconfig.tsserver.setup({})
 	end,
 }
