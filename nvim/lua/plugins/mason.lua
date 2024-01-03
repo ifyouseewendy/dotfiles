@@ -7,7 +7,11 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
-		require("mason").setup()
+		-- require("mason").setup()
+		require("mason").setup({
+			log_level = vim.log.levels.DEBUG,
+		})
+
 		require("mason-tool-installer").setup({
 			-- a list of all tools you want to ensure are installed upon
 			-- start; they should be the names Mason uses for each tool

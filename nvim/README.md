@@ -5,7 +5,9 @@ A new world is open with modern Neovim plugins and componentized configurations.
 
 * Use [lazy.nvim](https://github.com/folke/lazy.nvim) to manage plugins
 * Use [mason.nvim](https://github.com/williamboman/mason.nvim) to manage LSP, linters and fixers
-* Use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) to configure LSP
+  - Packages are installed at `~/.local/share/nvim/mason/packages/{PACKAGE}`
+  - Binstubs are installed at `~/.local/share/nvim/mason/bin/{PACKAGE}`
+* Use [nvim-lspconfig](https://github.com/neovim/nvim-lspconfig) to configure LSP. Check server configuration [here](https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md)
 * Use [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim) to configure linters and fixers
 * Use [nvim-cmp](https://github.com/hrsh7th/nvim-cmp) to auto complete
 * Use [nvim-treesitter.lua](nvim-treesitter) to unblock better language support
