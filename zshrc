@@ -118,7 +118,7 @@ fi
 # env
 export EDITOR='nvim'
 export TZ="/usr/share/zoneinfo/America/Vancouver"
-export PATH="/opt/homebrew/opt/postgresql@13/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
