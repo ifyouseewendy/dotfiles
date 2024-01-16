@@ -123,8 +123,8 @@ export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
 # homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# rtx
-eval "$(/opt/homebrew/bin/rtx activate zsh)"
+# rtx / mise
+eval "$(/opt/homebrew/bin/mise activate zsh)"
 
 # common
 alias vi='nvim'
@@ -160,7 +160,7 @@ export PIP_REQUIRE_VIRTUALENV=true
 alias gpip='PIP_REQUIRE_VIRTUALENV=false pip "$@"'
 
 ## poetry
-export PATH="/Users/di/.poetry/bin:$PATH"
+# export PATH="/Users/di/.poetry/bin:$PATH"
 alias act='source ./.venv/bin/activate'
 
 # javascript
@@ -233,3 +233,7 @@ export FORGIT_FZF_DEFAULT_OPTS="
   --reverse
   --height '80%'
 "
+
+# autin
+# https://github.com/atuinsh/atuin
+eval "$(atuin init zsh)"
