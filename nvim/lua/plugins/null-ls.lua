@@ -16,6 +16,9 @@ return {
 				null_ls.builtins.formatting.ruff_import,
 				null_ls.builtins.formatting.ruff,
 				null_ls.builtins.formatting.ruff_format,
+				-- Javascript
+				-- null_ls.builtins.diagnostics.eslint_d,
+				null_ls.builtins.formatting.prettier,
 				-- Lua
 				-- Use extra_args = { "--indent-type", "Spaces" } to format with spaces
 				null_ls.builtins.formatting.stylua,
