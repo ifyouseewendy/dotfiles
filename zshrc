@@ -125,6 +125,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # rtx / mise
 eval "$(/opt/homebrew/bin/mise activate zsh)"
+alias mr='mise r'
 
 # common
 alias vi='nvim'
