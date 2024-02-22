@@ -48,6 +48,9 @@ return {
 		vim.diagnostic.config({ virtual_text = { source = true } })
 
 		-- Set up lspconfig for typescript
-		lspconfig.tsserver.setup({})
+		-- lspconfig.tsserver.setup({})
+		require("lspconfig").eslint.setup({
+			root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git"),
+		})
 	end,
 }
