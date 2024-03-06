@@ -104,7 +104,7 @@ autocmd Filetype wast setlocal ts=2 sw=0 sts=0 expandtab
 autocmd Filetype rust setlocal ts=4 sw=4 sts=0 expandtab
 " autocmd Filetype rust call UseTabs()
 " Disable quote concealing in JSON files
-autocmd Filetype json :IndentLinesDisable
+" autocmd Filetype json :IndentLinesDisable
 autocmd Filetype json setlocal conceallevel=0
 autocmd BufNewFile,BufRead Justfile set filetype=make
 
