@@ -179,6 +179,7 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 # export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
 
 # go
+export GO111MODULE=on
 # export GOPATH=$HOME/go
 # export GOROOT="$(brew --prefix golang)/libexec"
 # export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
@@ -190,6 +191,11 @@ export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 
 ########################## Launch oh-my-zsh ####################################
+
+# TEMP fix on missing git_prompt info
+# issue https://github.com/ohmyzsh/ohmyzsh/issues/12328
+zstyle ':omz:alpha:lib:git' async-prompt no
+
 source $ZSH/oh-my-zsh.sh
 
 # fzf
