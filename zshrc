@@ -77,7 +77,7 @@ ZSH_THEME="wendi"
 # zsh-vi-mode needs to be installed https://github.com/jeffreytse/zsh-vi-mode
 #   - It might be useful to use the normal mode to move around in terminal. Let's see
 # forgit needs to be installed https://github.com/wfxr/forgit
-plugins=(direnv ripgrep fzf-tab forgit)
+plugins=(direnv fzf-tab forgit)
 
 # User configuration
 
