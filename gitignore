@@ -85,3 +85,6 @@ pyrightconfig.json
 .envrc.test
 
 .python-version
+
+*.mjs
+*.tsbuildinfo
