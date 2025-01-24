@@ -9,86 +9,157 @@ return {
 		local theme = require("telescope.themes").get_ivy()
 
 		-- Function keys
-		wk.register({
-			["<F1>"] = { ":Neotree toggle=true<cr>", "Toggle Neotree" },
-			["<F2>"] = { ":SymbolsOutline<cr>", "Toggle Symbols outline" },
+		wk.add({
+			{ "<F1>", "<cmd>Neotree toggle=true<cr>" },
+			{ "<F2>", "<cmd>SymbolsOutline<cr>" },
 		}, {})
 
 		-- Nav
-		wk.register({
-			-- "]]", "[[", navigate Python blocks (functions, method, class)
-			-- "[c", "]c", navigate to GIT changes in the file
-		}, {})
+		-- wk.register({
+		-- "]]", "[[", navigate Python blocks (functions, method, class)
+		-- "[c", "]c", navigate to GIT changes in the file
+		-- }, {})
 
 		-- Global
-		wk.register({
-			f = {
+		wk.add({
+			{
+				"<leader>f",
 				function()
 					telescope.find_files(theme)
 				end,
-				"Find files",
+				desc = "Find files",
 			},
-			b = {
+			{
+				"<leader>b",
 				function()
 					telescope.buffers(theme)
 				end,
-				"Find files in buffer",
+				desc = "Find files in buffer",
 			},
-			a = {
+			{
+				"<leader>a",
 				function()
 					telescope.live_grep(theme)
 				end,
-				"Search...",
+				desc = "Search...",
 			},
-			A = {
+			{
+				"<leader>A",
 				function()
 					telescope.grep_string(theme)
 				end,
-				"Search word under the cursor",
+				desc = "Search word under the cursor",
 			},
-			s = {
-				":SearchSession<cr>",
-				"Search session",
+			{
+				"<leader>s",
+				"<cmd>SearchSession<cr>",
+				desc = "Search session",
 			},
-			gh = {
+			{
+				"<leader>gh",
 				function()
 					telescope.help_tags(theme)
 				end,
-				"Search all help tags",
+				desc = "Search all help tags",
 			},
-			gb = { ":Git blame<cr>", "Git blame" },
-		}, { prefix = "<leader>" })
+			{
+				"<leader>gh",
+				"<cmd>Git blame<cr>",
+				desc = "Git blame",
+			},
+		}, {})
 
 		-- Task runner and tests
-		wk.register({
-			tl = { ":TestNearest<cr>", "Run test nearby" },
-			tf = { ":TestFile<cr>", "Run test file" },
+		wk.add({
+			{
+				"<leader>tl",
+				"<cmd>TestNearest<cr>",
+				desc = "Run test nearby",
+			},
+			{
+				"<leader>tf",
+				"<cmd>TestFile<cr>",
+				desc = "Run test file",
+			},
 			-- cb = { ":call VimuxRunCommand('cargo build')<CR>", "Cargo build" },
-		}, { prefix = "<leader>" })
+		}, {})
 
 		-- LSP
-		wk.register({
-			gd = { ":lua vim.lsp.buf.definition()<cr>", "LSP definition" },
-			gr = { ":Trouble lsp_references<cr>", "LSP reference" },
-			gR = { ":lua vim.lsp.buf.rename()<cr>", "LSP rename" },
-			ga = { ":lua vim.lsp.buf.code_action()<cr>", "LSP code action" },
-			["[g"] = { ":lua vim.diagnostic.goto_next()<cr>", "LSP diagnostic next" },
-			["]g"] = { ":lua vim.diagnostic.goto_next()<cr>", "LSP diagnostic prev" },
-			gl = {
-				":Trouble workspace_diagnostics<cr>",
-				"LSP show diagnostic list",
+		wk.add({
+			{
+				"<leader>gd",
+				"<cmd>lua vim.lsp.buf.definition()<cr>",
+				desc = "LSP definition",
 			},
-		}, { prefix = "<leader>" })
+			{
+				"<leader>gr",
+				"<cmd>Trouble lsp_references<cr>",
+				desc = "LSP reference",
+			},
+			{
+				"<leader>gR",
+				"<cmd>lua vim.lsp.buf.rename()<cr>",
+				desc = "LSP rename",
+			},
+			{
+				"<leader>ga",
+				"<cmd>lua vim.lsp.buf.code_action()<cr>",
+				desc = "LSP code action",
+			},
+			{
+				"<leader>[g",
+				"<cmd>lua vim.diagnostic.goto_next()<cr>",
+				desc = "LSP diagnostic next",
+			},
+			{
+				"<leader>]g",
+				"<cmd>lua vim.diagnostic.goto_next()<cr>",
+				desc = "LSP diagnostic prev",
+			},
+			{
+				"<leader>gl",
+				"<cmd>Trouble workspace_diagnostics<cr>",
+				desc = "LSP show diagnostic list",
+			},
+		}, {})
 
 		-- DAP
-		wk.register({
-			dd = { ":lua require('dap').toggle_breakpoint()<cr>", "Toggle breakpoint" }, -- 1. Add breakpoint
-			ds = { ":lua require('dap').conitnue()<cr>", "Start/Continue" }, -- 2. Start debugging
-			dr = { ":lua require('dap').repl.open()<cr>", "Open REPL" }, -- REPL
-			dc = { ":lua require('dap').continue()<cr>", "Continue" }, -- Continue
-			di = { ":lua require('dap').step_into()<cr>", "Step in" }, -- Step in
-			["do"] = { ":lua require('dap').step_out()<cr>", "Step out" }, -- Step out
-			dn = { ":lua require('dap').step_over()<cr>", "Step over" }, -- Step next
-		}, { prefix = "<leader>" })
+		wk.add({
+			{ -- 1. Add breakpoint
+				"<leader>dd",
+				"<cmd>lua require('dap').toggle_breakpoint()<cr>",
+				desc = "Toggle breakpoint",
+			},
+			{ -- 2. Start debugging
+				"<leader>ds",
+				"<cmd>lua require('dap').conitnue()<cr>",
+				desc = "Start/Continue",
+			},
+			{ -- REPL
+				"<leader>dr",
+				"<cmd>lua require('dap').repl.open()<cr>",
+				desc = "Open REPL",
+			},
+			{ -- Continue
+				"<leader>dc",
+				"<cmd>lua require('dap').continue()<cr>",
+				desc = "Continue",
+			},
+			{ -- Step in
+				"<leader>di",
+				"<cmd>lua require('dap').step_into()<cr>",
+				desc = "Step in",
+			},
+			{ -- Step out
+				"<leader>do",
+				"<cmd>lua require('dap').step_out()<cr>",
+				desc = "Step out",
+			},
+			{ -- Step next
+				"<leader>dn",
+				"<cmd>lua require('dap').step_over()<cr>",
+				desc = "Step next",
+			},
+		}, {})
 	end,
 }
