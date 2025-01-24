@@ -6,7 +6,7 @@ return {
 	dependencies = {
 		"mfussenegger/nvim-dap",
 		-- https://github.com/rcarriga/nvim-dap-ui
-		{ "rcarriga/nvim-dap-ui", lazy = false },
+		{ "rcarriga/nvim-dap-ui", lazy = false, dependencies = { "nvim-neotest/nvim-nio" } },
 	},
 	config = function()
 		require("dap-python").setup("~/Workspace/.virtualenvs/debugpy/bin/python")
