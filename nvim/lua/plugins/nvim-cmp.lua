@@ -93,10 +93,8 @@ return {
 
 		-- cmp-dictionary
 		local dict = require("cmp_dictionary")
-		dict.switcher({
-			spelllang = {
-				en = "/usr/share/dict/words",
-			},
+		dict.setup({
+			paths = { "/usr/share/dict/words" },
 		})
 	end,
 }
