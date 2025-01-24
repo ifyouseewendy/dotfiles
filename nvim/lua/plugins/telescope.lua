@@ -22,18 +22,18 @@ return {
 		-- Use <c-T> to open Telescope results in Trouble
 		-- https://github.com/folke/trouble.nvim
 		local actions = require("telescope.actions")
-		local trouble = require("trouble.providers.telescope")
+		local trouble = require("trouble.sources.telescope")
 
 		require("telescope").setup({
 			-- Use <c-T> to open Telescope results in Trouble
 			defaults = {
 				mappings = {
 					i = {
-						["<C-t>"] = trouble.open_with_trouble,
+						["<C-t>"] = trouble.open,
 						["<C-h>"] = "which_key",
 						["<C-s>"] = actions.select_horizontal,
 					},
-					n = { ["<C-t>"] = trouble.open_with_trouble },
+					n = { ["<C-t>"] = trouble.open },
 				},
 			},
 			extensions = {
