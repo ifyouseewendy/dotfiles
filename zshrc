@@ -213,7 +213,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_OPTS="
   --select-1
   --exit-0
-  --preview 'bat -n --color=always {}"
+  --preview 'bat -n --color=always {}'"
 export FZF_CTRL_R_OPTS="
   --preview 'echo {}' --preview-window up:3:hidden:wrap
   --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
