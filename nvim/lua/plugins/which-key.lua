@@ -63,7 +63,7 @@ return {
 				desc = "Search all help tags",
 			},
 			{
-				"<leader>gh",
+				"<leader>gb",
 				"<cmd>Git blame<cr>",
 				desc = "Git blame",
 			},
