@@ -88,3 +88,5 @@ pyrightconfig.json
 
 *.mjs
 *.tsbuildinfo
+
+.aider*
