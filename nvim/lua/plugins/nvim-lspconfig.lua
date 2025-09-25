@@ -2,9 +2,6 @@ return {
 	"neovim/nvim-lspconfig",
 	dependencies = { "hrsh7th/nvim-cmp" },
 	config = function()
-		-- Setup language servers.
-		local lspconfig = require("lspconfig")
-
 		-- Hook nvim-cmp
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
@@ -30,7 +27,7 @@ return {
 		end
 
 		-- Set up lspconfig for pyright
-		lspconfig.pyright.setup({
+		vim.lsp.enable('pyright', {
 			on_init = function(client)
 				client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
 			end,
@@ -49,8 +46,8 @@ return {
 
 		-- Set up lspconfig for typescript
 		-- lspconfig.tsserver.setup({})
-		require("lspconfig").eslint.setup({
-			root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", "jsconfig.json", ".git"),
+		vim.lsp.config('eslint', {
+      root_markers = { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' }
 		})
 	end,
 }
