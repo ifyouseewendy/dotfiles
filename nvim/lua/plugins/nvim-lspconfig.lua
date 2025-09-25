@@ -27,7 +27,7 @@ return {
 		end
 
 		-- Set up lspconfig for pyright
-		vim.lsp.enable('pyright', {
+		vim.lsp.enable("pyright", {
 			on_init = function(client)
 				client.config.settings.python.pythonPath = get_python_path(client.config.root_dir)
 			end,
@@ -46,8 +46,8 @@ return {
 
 		-- Set up lspconfig for typescript
 		-- lspconfig.tsserver.setup({})
-		vim.lsp.config('eslint', {
-      root_markers = { 'tsconfig.json', 'package.json', 'jsconfig.json', '.git' }
+		vim.lsp.config("eslint", {
+			root_markers = { "tsconfig.json", "package.json", "jsconfig.json", ".git" },
 		})
 	end,
 }
